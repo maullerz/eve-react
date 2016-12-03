@@ -6,7 +6,7 @@ export default class panel_content extends Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <div className="panel-content">Market Monitoring</div>
+          <div className="panel-content">{this.props.title}</div>
         </div>
       </div>
     );

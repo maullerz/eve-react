@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-export default class oneColumnTable extends Component {
+export default class OneColumnTable extends Component {
   render() {
     return (
       <table>

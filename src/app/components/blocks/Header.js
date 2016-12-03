@@ -27,7 +27,9 @@ export default class Header extends Component {
                   </ul>
                 </li>
                 <li>Market</li>
-                <li>Item</li>
+                <li>
+                  <Link to="/Item">Item</Link>
+                </li>
                 <li className="red-cell">
                   <Link to="/donate">Donate</Link>
                 </li>

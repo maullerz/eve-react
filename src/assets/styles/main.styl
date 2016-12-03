@@ -8,6 +8,7 @@ color-blue-hover = #0F4E61
 color = #B9964D
 color-dark = #e4d6ba
 color-white = whitesmoke
+color-red = rgba(187, 70, 48, 0.9)
 
 // CSS
 body {
@@ -73,8 +74,29 @@ body {
   }
 }
 
+.donatedSum {
+  display none
+  position absolute
+  bottom  0
+  text-align center
+  background-color color-blue-hover
+  text-transform uppercase
+  color white
+  width 100%
+  font-size 0.65em
+  padding 0 2px
+}
+
+:hover > ul {
+  display block
+}
+
 .inline {
+  position relative
   display inline-block
+  &:hover > .donatedSum {
+    display block
+  }
 }
 
 .user_img {

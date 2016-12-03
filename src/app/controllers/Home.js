@@ -49,7 +49,7 @@ class Home extends Component {
       <div>
         <IndexTables listTables={this.state.tableData}/>
 
-        <PanelContent />
+        <PanelContent title="Market Monitoring"/>
 
         <div className="row">
           <div className="col-md-12">

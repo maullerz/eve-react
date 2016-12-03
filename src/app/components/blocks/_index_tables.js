@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import OneColumnTable from "./../oneColumnTable";
+import OneColumnTable from "../OneColumnTable";
 import SimpleList from "./../SimpleList";
 
 export default class index_tables extends Component {

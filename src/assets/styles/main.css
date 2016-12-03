@@ -58,8 +58,27 @@ body #root table tfoot tr td ul > li:hover {
   cursor: pointer;
   background-color: rgba(22,112,146,0.4);
 }
+.donatedSum {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background-color: #0f4e61;
+  text-transform: uppercase;
+  color: #fff;
+  width: 100%;
+  font-size: 0.65em;
+  padding: 0 2px;
+}
+:hover > ul {
+  display: block;
+}
 .inline {
+  position: relative;
   display: inline-block;
+}
+.inline:hover > .donatedSum {
+  display: block;
 }
 .user_img {
   cursor: pointer;

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import OneColumnTable from "../components/oneColumnTable";
+import OneColumnTable from "../components/OneColumnTable";
 import UsersList from "../components/UsersList";
 import api_url from "../api";
 import _ from "lodash";
@@ -35,8 +35,9 @@ class Donate extends Component {
 
         _.forEach(response.data.authors, function (val, index) {
           authors.push({
-            char_id  : index,
-            char_name: val.name
+            char_id    : index,
+            char_name  : val.name,
+            description: val.about
           });
         });
 
@@ -56,9 +57,7 @@ class Donate extends Component {
 
         this.setState({prevState});
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch();
   }
 
   render() {
@@ -70,10 +69,10 @@ class Donate extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-4 col-first">
+          <div className="col-md-4 t-a_l col-first">
             <OneColumnTable _class="td-padd-rb" title={this.state.contribute.title} list={this.state.contribute.list}/>
           </div>
-          <div className="col-md-8 col-last">
+          <div className="col-md-8 t-a_l col-last">
             <OneColumnTable _class="td-padd-rb" title={this.state.donators.title} list={this.state.donators.list}/>
           </div>
         </div>
