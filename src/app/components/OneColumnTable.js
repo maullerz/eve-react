@@ -1,20 +1,20 @@
-import React, {Component} from "react";
+import React, {Component} from 'react'
 
 export default class OneColumnTable extends Component {
-  render() {
+  render () {
     return (
       <table>
         <thead>
-        <tr>
-          <th>{this.props.title}</th>
-        </tr>
+          <tr>
+            <th>{this.props.title}</th>
+          </tr>
         </thead>
         <tbody>
-        <tr>
-          <td className={this.props._class}>{this.props.list}</td>
-        </tr>
+          <tr>
+            <td className={this.props._class}>{this.props.list}</td>
+          </tr>
         </tbody>
       </table>
-    );
+    )
   }
 }

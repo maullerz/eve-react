@@ -58,6 +58,40 @@ body #root table tfoot tr td ul > li:hover {
   cursor: pointer;
   background-color: rgba(22,112,146,0.4);
 }
+.react-autosuggest__container {
+  z-index: 5;
+  position: relative;
+}
+.react-autosuggest__container .react-autosuggest__suggestions-container {
+  width: 100%;
+  position: absolute;
+}
+.react-autosuggest__container .react-autosuggest__suggestions-container ul {
+  background-color: #ffedcb;
+}
+.react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion {
+  list-style: none;
+  padding: 2px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccab84;
+  color: #314756;
+}
+.react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion:hover {
+  background-color: #ccab84;
+}
+.react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion:last-child {
+  border: 0;
+}
+.react-autosuggest__container .react-autosuggest__suggestions-container ul .react-autosuggest__suggestion--focused {
+  background-color: #ccab84;
+}
+.react-autosuggest__container .input-search {
+  color: #b9964d;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
 .donatedSum {
   display: none;
   position: absolute;

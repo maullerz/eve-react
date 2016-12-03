@@ -1,10 +1,10 @@
-import React, {Component} from "react";
+import React, {Component} from 'react'
 
 export default class _copyright extends Component {
-  render() {
-    return (<div className="row">
-      <div className="col-md-12">
-        <div className="grayback t-small">
+  render () {
+    return (<div className='row'>
+      <div className='col-md-12'>
+        <div className='grayback t-small'>
           EVE Online and the EVE logo are the registered trademarks of CCP hf.
           All rights are reserved worldwide.
           All other trademarks are the property of their respective owners.
@@ -20,6 +20,6 @@ export default class _copyright extends Component {
           nor can it be liable for any damage arising from the use of this website.
         </div>
       </div>
-    </div>);
+    </div>)
   }
 }
