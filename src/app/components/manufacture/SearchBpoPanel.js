@@ -1,29 +1,23 @@
-import React, {Component} from "react"
-import Autosuggest from "react-autosuggest"
-//import Api from "./../../api"
-import {connect} from 'react-redux';
-import {searchBpo, getBlueprint} from "./../../actions/manufactureActions"
+import React, {Component} from 'react'
+import Autosuggest from 'react-autosuggest'
+import {connect} from 'react-redux'
+import {searchBpo, getBlueprint} from '../../controllers/actions/manufactureActions'
 
 const getSuggestionValue = suggestion => suggestion.blueprint_name
 const renderSuggestion = suggestion => suggestion.blueprint_name
-
-const onSuggestionSelected = (event, {suggestion}) => {
-
-
-
-
-  console.log(suggestion.blueprint_name);
-}
 
 class SearchBpoPanel extends Component {
 
   constructor() {
     super()
     this.state = {
-      value: "",
-      suggestions: []
+      value: ""
     }
   }
+
+  onSuggestionSelected = (event, {suggestion}) => {
+    this.props.getBlueprint(suggestion.url)
+  };
 
   // Api Call to fetch items
   onSuggestionsFetchRequested = value => {
@@ -58,7 +52,8 @@ class SearchBpoPanel extends Component {
       <div className="row">
         <div className="col-md-12">
           <div className="panel-content">
-            <h1>Manufacture Calculator</h1>
+            <h1>Manufacture Calculator {this.props.bpc_title}</h1>
+
             <div id="autocomplete">
               <Autosuggest
                 suggestions={this.props.suggestions}
@@ -66,7 +61,7 @@ class SearchBpoPanel extends Component {
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
-                onSuggestionSelected={onSuggestionSelected}
+                onSuggestionSelected={this.onSuggestionSelected}
                 inputProps={inputProps}
               />
             </div>
@@ -79,7 +74,9 @@ class SearchBpoPanel extends Component {
 
 function mapStateToProps(state) {
   return {
-    suggestions: state.manufactureReducers.suggestions || []
+    suggestions: state.manufactureReducers.suggestions || [],
+    bpc: state.manufactureReducers.bpc || "",
+    bpc_title: state.manufactureReducers.bpc_title
   }
 }
-export default connect(mapStateToProps, {searchBpo})(SearchBpoPanel);
+export default connect(mapStateToProps, {searchBpo, getBlueprint})(SearchBpoPanel);

@@ -11,12 +11,12 @@ import thunk from 'redux-thunk'
 import {createStore, applyMiddleware} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-import rootReducer from "./rootReducer"
+import rootReducer from './rootReducer'
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes}/>
+    <Router history={browserHistory} routes={routes} />
   </Provider>,
   document.getElementById('root'))

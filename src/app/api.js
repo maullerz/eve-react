@@ -8,6 +8,7 @@ export default {
       return axios.get(baseUrl + '/donate.json')
     }
   },
+
   Manufacture: {
     searchBpc: function (term) {
       return axios.get(baseUrl + '/search/bpc.json', {
@@ -16,7 +17,7 @@ export default {
         }
       })
     },
-    getBpo: function (url) {
+    getBpc: function (url) {
       return axios.get(baseUrl + '/manufacture/' + url + '.json')
     }
   }
