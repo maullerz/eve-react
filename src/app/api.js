@@ -15,6 +15,9 @@ export default {
           term: term
         }
       })
+    },
+    getBpo: function (url) {
+      return axios.get(baseUrl + '/manufacture/' + url + '.json')
     }
   }
 }

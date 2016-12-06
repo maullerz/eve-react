@@ -1,43 +1,33 @@
 import React, {Component} from "react"
 import Autosuggest from "react-autosuggest"
-import Api from "./../../api"
+//import Api from "./../../api"
+import {connect} from 'react-redux';
+import {searchBpo, getBlueprint} from "./../../actions/manufactureActions"
 
 const getSuggestionValue = suggestion => suggestion.blueprint_name
 const renderSuggestion = suggestion => suggestion.blueprint_name
 
-const onSuggestionSelected = (event, {suggestion, suggestionValue, sectionIndex, method}) => {
+const onSuggestionSelected = (event, {suggestion}) => {
+
+
+
+
   console.log(suggestion.blueprint_name);
 }
 
-export default class SearchBpoPanel extends Component {
+class SearchBpoPanel extends Component {
 
   constructor() {
     super()
     this.state = {
-      value      : "",
+      value: "",
       suggestions: []
     }
   }
 
-  onChange = (event, {newValue}) => {
-    this.setState({
-      value: newValue
-    });
-  };
-
   // Api Call to fetch items
   onSuggestionsFetchRequested = value => {
-
-    if (value.value.length > 2) {
-
-      Api.Manufacture.searchBpc(value.value)
-        .then(json => {
-          this.setState({
-            suggestions: json.data.items
-          });
-        })
-        .catch();
-    }
+    this.props.searchBpo(value.value);
   };
 
   onSuggestionsClearRequested = () => {
@@ -46,15 +36,22 @@ export default class SearchBpoPanel extends Component {
     });
   };
 
+  onChange = (event, {newValue}) => {
+
+    this.setState({
+      value: newValue
+    });
+  };
+
   render() {
 
-    const {value, suggestions} = this.state;
+    const {value} = this.state;
 
     const inputProps = {
       placeholder: 'Search blueprint',
       value,
-      className  : "input-search",
-      onChange   : this.onChange
+      className: "input-search",
+      onChange: this.onChange
     };
 
     return (
@@ -64,7 +61,7 @@ export default class SearchBpoPanel extends Component {
             <h1>Manufacture Calculator</h1>
             <div id="autocomplete">
               <Autosuggest
-                suggestions={suggestions}
+                suggestions={this.props.suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
@@ -79,3 +76,10 @@ export default class SearchBpoPanel extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    suggestions: state.manufactureReducers.suggestions || []
+  }
+}
+export default connect(mapStateToProps, {searchBpo})(SearchBpoPanel);
