@@ -1,4 +1,8 @@
-import {MANUFACTURE_SEARCH_BPO, MANUFACTURE_GET_BPC} from '../controllers/actions/manufactureActions'
+import {
+  SEARCH_BPC,
+  GET_BPC,
+  RESET_SEARCH
+} from '../controllers/actions/manufactureActions'
 
 const initialState = {
   suggestions: [],
@@ -7,18 +11,18 @@ const initialState = {
 }
 
 export default (state = initialState, action = {}) => {
+
   switch (action.type) {
 
-    case MANUFACTURE_SEARCH_BPO:
-      return Object.assign({}, state, {
-        suggestions: action.suggestions
-      })
+    case SEARCH_BPC:
+      return Object.assign({}, state, action)
 
-    case MANUFACTURE_GET_BPC:
-      return Object.assign({}, state, {
-        bpc: action.bpc,
-        bpc_title: action.bpc_title
-      })
+    case GET_BPC:
+      return Object.assign({}, state, action)
+
+    case RESET_SEARCH: {
+      return Object.assign({}, state, action)
+    }
 
     default:
       return state

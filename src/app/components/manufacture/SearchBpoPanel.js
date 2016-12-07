@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
-import {searchBpo, getBlueprint} from '../../controllers/actions/manufactureActions'
+import {searchBpc, getBpc, resetSearch} from '../../controllers/actions/manufactureActions'
 
 const getSuggestionValue = suggestion => suggestion.blueprint_name
 const renderSuggestion = suggestion => suggestion.blueprint_name
@@ -16,22 +16,15 @@ class SearchBpoPanel extends Component {
   }
 
   onSuggestionSelected = (event, {suggestion}) => {
-    this.props.getBlueprint(suggestion.url)
+    this.props.getBpc(suggestion.url)
   };
-
-  // Api Call to fetch items
   onSuggestionsFetchRequested = value => {
-    this.props.searchBpo(value.value);
+    this.props.searchBpc(value.value);
   };
-
   onSuggestionsClearRequested = () => {
-    this.setState({
-      suggestions: []
-    });
+    this.props.resetSearch();
   };
-
   onChange = (event, {newValue}) => {
-
     this.setState({
       value: newValue
     });
@@ -75,8 +68,8 @@ class SearchBpoPanel extends Component {
 function mapStateToProps(state) {
   return {
     suggestions: state.manufactureReducers.suggestions || [],
-    bpc: state.manufactureReducers.bpc || "",
+    bpc: state.manufactureReducers.bpc,
     bpc_title: state.manufactureReducers.bpc_title
   }
 }
-export default connect(mapStateToProps, {searchBpo, getBlueprint})(SearchBpoPanel);
+export default connect(mapStateToProps, {searchBpc, getBpc, resetSearch})(SearchBpoPanel);
