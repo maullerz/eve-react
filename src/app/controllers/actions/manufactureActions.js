@@ -8,18 +8,18 @@ export const RESET_SEARCH = 'RESET_SEARCH'
 export function searchBpc(term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-    .then((res) => {
-      dispatch(setAutocompleteItems(res.data.items))
-    })
+      .then((res) => {
+        dispatch(setAutocompleteItems(res.data.items))
+      })
   }
 }
 // get bpc by url
 export function getBpc(url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-    .then((res) => {
-      dispatch(setBlueprint(res.data))
-    })
+      .then((res) => {
+        dispatch(setBlueprint(res.data))
+      })
   }
 }
 
@@ -50,8 +50,6 @@ export function setAutocompleteItems(suggestions) {
 export function unsetSearch() {
   return {
     type: RESET_SEARCH,
-    suggestions: [],
-    bpc: {},
-    bpc_title: ""
+    suggestions: []
   }
 }

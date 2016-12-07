@@ -14,7 +14,6 @@ class SearchBpoPanel extends Component {
       value: ""
     }
   }
-
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.getBpc(suggestion.url)
   };
@@ -23,6 +22,7 @@ class SearchBpoPanel extends Component {
   };
   onSuggestionsClearRequested = () => {
     this.props.resetSearch();
+    this.setState({value: ""})
   };
   onChange = (event, {newValue}) => {
     this.setState({
@@ -45,7 +45,7 @@ class SearchBpoPanel extends Component {
       <div className="row">
         <div className="col-md-12">
           <div className="panel-content">
-            <h1>Manufacture Calculator {this.props.bpc_title}</h1>
+            <h1>{this.props.bpc_title ? this.props.bpc_title : "Manufacture Calculator"}</h1>
 
             <div id="autocomplete">
               <Autosuggest
