@@ -22,6 +22,10 @@ body {
       color color-dark;
       background-color rgba(39, 39, 40, .9);
       padding panel-padding
+      h1,h2,h3,h4{
+        padding 0
+        margin 0
+      }
     }
 
     .grayback {
@@ -159,7 +163,6 @@ body {
       list-style none
       position relative
       display inline-block
-      padding main-padding main-padding+ 3
       background-color color-blue
       margin-right main-padding
       &:hover {
@@ -169,6 +172,8 @@ body {
       a {
         color color
         text-decoration none
+        padding main-padding main-padding+3
+        display inline-block
         &:hover {
           color color
         }
