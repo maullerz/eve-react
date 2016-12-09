@@ -11,7 +11,19 @@ class UsedIn extends Component {
   render() {
 
     this.used_in = this.props.used_in.map((val, index) => {
-      return <li key={index}>{val.blueprint_name}</li>
+      return <li key={index}>
+        <div className="padd-b-3">
+          <div className="used_in bpc">
+            <img
+              className="img32 used_in info"
+              alt={val.blueprint_id}
+              src={'https://image.eveonline.com/Type/' + val.blueprint_id + '_64.png'}/>
+          </div>
+          <div className="used_in_info">
+            {val.blueprint_name}
+          </div>
+        </div>
+      </li>
     })
 
     if (this.used_in.length) {

@@ -12,6 +12,7 @@ color-red = rgba(187, 70, 48, 0.9)
 
 // CSS
 body {
+
   background url("../img/bg.jpg") repeat;
 
   #root {
@@ -22,7 +23,7 @@ body {
       color color-dark;
       background-color rgba(39, 39, 40, .9);
       padding panel-padding
-      h1,h2,h3,h4{
+      h1, h2, h3, h4 {
         padding 0
         margin 0
       }
@@ -76,6 +77,10 @@ body {
       }
     }
   }
+}
+
+.img32 {
+  width 32px
 }
 
 // Autocomplete
@@ -172,7 +177,7 @@ body {
       a {
         color color
         text-decoration none
-        padding main-padding main-padding+3
+        padding main-padding main-padding+ 3
         display inline-block
         &:hover {
           color color
@@ -210,6 +215,13 @@ nav#header-menu > ul > li > ul {
 }
 
 //  Header Menu
+.used_in_bpc {
+  display: inline-block
+}
+
+.used_in_info {
+  display: inline-block
+}
 
 .t-small
   fontSize(0.85em)
@@ -237,6 +249,12 @@ nav#header-menu > ul > li > ul {
 
 .padd-3
   padding 3px
+
+.padd-b-3
+  padding-bottom main-padding
+
+.m-r-3
+  margin-right main-padding
 
 @media (max-width: 1024px)
   .row

@@ -65,6 +65,9 @@ body #root table tfoot tr td ul > li:hover {
   cursor: pointer;
   background-color: rgba(22,112,146,0.4);
 }
+.img32 {
+  width: 32px;
+}
 .react-autosuggest__container {
   z-index: 5;
   position: relative;
@@ -178,6 +181,12 @@ nav#header-menu > ul > li > ul li {
   min-width: 130px;
   border-top: 1px solid rgba(39,39,40,0.9);
 }
+.used_in_bpc {
+  display: inline-block;
+}
+.used_in_info {
+  display: inline-block;
+}
 .t-small {
   font-size: 0.85em;
   color: #f5f5f5;
@@ -203,6 +212,12 @@ nav#header-menu > ul > li > ul li {
 }
 .padd-3 {
   padding: 3px;
+}
+.padd-b-3 {
+  padding-bottom: 3px;
+}
+.m-r-3 {
+  margin-right: 3px;
 }
 @media (max-width: 1024px) {
   .row {
