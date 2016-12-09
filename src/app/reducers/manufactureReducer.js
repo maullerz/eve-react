@@ -6,8 +6,9 @@ import {
 
 const initialState = {
   suggestions: [],
-  bpc: {},
-  bpc_title: ""
+  manufacture: {},
+  bpc_title: "",
+  used_in: []
 }
 
 export default (state = initialState, action = {}) => {
@@ -18,7 +19,7 @@ export default (state = initialState, action = {}) => {
       return Object.assign({}, state, action)
 
     case GET_BPC:
-      return Object.assign({}, state, action)
+      return Object.assign({}, state, {manufacture: action.manufacture, used_in: action.used_in})
 
     case RESET_SEARCH: {
       return Object.assign({}, state, action)

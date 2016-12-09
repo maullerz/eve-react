@@ -12,12 +12,9 @@ class Manufacture extends Component {
         <SearchBpoPanel />
         <div className='row'>
           <div className='col-md-3 t-a_l'>
-
-
             <UsedIn />
-
           </div>
-          <div className='col-md-9 t-a_l'>{this.props.bpc.bpc ? this.props.bpc.bpc.blueprint_name : "null"}</div>
+          <div className='col-md-9 t-a_l'></div>
         </div>
       </div>
     )
@@ -25,7 +22,7 @@ class Manufacture extends Component {
 }
 function mapStateToProps(state) {
   return {
-    bpc: state.manufactureReducers.bpc
+    manufacture: state.manufactureReducers.manufacture
   }
 }
 export default connect(mapStateToProps, {})(Manufacture);

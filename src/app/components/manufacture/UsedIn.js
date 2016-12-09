@@ -1,60 +1,50 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-let used_in = [];
-
 class UsedIn extends Component {
 
-  constructor(){
-    super()
-    this.state = {
-      used_in: []
-    }
-  }
-  componentDidUpdate() {
-
-    if (this.props.bpc.used_in) {
-
-      let used_in = this.props.bpc.used_in.map((val) => {
-        return <li>{val.blueprint_name}</li>
-      });
-      this.setState({
-        used_in: used_in
-      })
-    }
-    console.log(this.state);
+  constructor(props) {
+    super(props)
+    this.used_in = this.props.used_in
   }
 
   render() {
 
+    this.used_in = this.props.used_in.map((val, index) => {
+      return <li key={index}>{val.blueprint_name}</li>
+    })
 
-
-    return (
-      <div className="row">
-        <div className="col-md-12">
-          <table>
-            <thead>
-            <tr>
-              <th>Used In</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>
-                <ul></ul>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+    if (this.used_in.length) {
+      return (
+        <div className="row">
+          <div className="col-md-12">
+            <table>
+              <thead>
+              <tr>
+                <th>Used In</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <ul>{this.used_in}</ul>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return <div></div>
+    }
   }
 }
 
 function mapStateToProps(state) {
   return {
-    bpc: state.manufactureReducers.bpc
+    manufacture: state.manufactureReducers.manufacture,
+    used_in: state.manufactureReducers.used_in
   }
 }
 export default connect(mapStateToProps, {})(UsedIn)
