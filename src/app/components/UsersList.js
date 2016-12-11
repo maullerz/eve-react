@@ -15,7 +15,7 @@ export default class UsersList extends Component {
       <div className='inline user_img'>
         <img alt={this.props.char.char_name}
           src={'https://image.eveonline.com/Character/' + this.props.char.char_id + '_64.jpg'} />
-        <div className='donatedSum'>{additionBlock}</div>
+        <div className='bottom_description'>{additionBlock}</div>
       </div>
     )
   }

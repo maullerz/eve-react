@@ -52,7 +52,7 @@ body #root table tfoot tr td {
 }
 body #root table tbody tr td ul > li,
 body #root table tfoot tr td ul > li {
-  padding: 1px 6px;
+  padding: 1px 3px;
   background-color: rgba(22,112,146,0.2);
   margin-top: 1px;
 }
@@ -65,8 +65,38 @@ body #root table tfoot tr td ul > li:hover {
   cursor: pointer;
   background-color: rgba(22,112,146,0.4);
 }
-.img32 {
-  width: 32px;
+body #root table tbody tr td ul > li .img24,
+body #root table tfoot tr td ul > li .img24 {
+  margin-right: 6px;
+  width: 28px;
+}
+ul.components li .containter {
+  margin: 0;
+  overflow: hidden;
+}
+ul.components li .text-holder {
+  overflow: visible;
+  padding: 0;
+  font-size: 0.85em;
+}
+ul.components li .img-box {
+  float: left;
+  margin-right: 3px;
+}
+ul.components li .left {
+  float: right;
+}
+.txt-yellow {
+  color: #cddc39;
+}
+.txt-lime {
+  color: #a5d6a7;
+}
+.b {
+  font-weight: bold;
+}
+.used_img {
+  width: 24px;
 }
 .react-autosuggest__container {
   z-index: 5;
@@ -102,7 +132,14 @@ body #root table tfoot tr td ul > li:hover {
   border: 0;
   outline: none;
 }
-.donatedSum {
+.inline {
+  position: relative;
+  display: inline-block;
+}
+.inline:hover > .bottom_description {
+  display: block;
+}
+.bottom_description {
   display: none;
   position: absolute;
   bottom: 0;
@@ -117,19 +154,14 @@ body #root table tfoot tr td ul > li:hover {
 :hover > ul {
   display: block;
 }
-.inline {
-  position: relative;
-  display: inline-block;
-}
-.inline:hover > .donatedSum {
-  display: block;
-}
-.user_img {
+.user_img,
+.item_img {
   cursor: pointer;
   margin: 3px 0 0 3px;
   border: 1px solid #0d3647;
 }
-.user_img:hover {
+.user_img:hover,
+.item_img:hover {
   border-color: #0f4e61;
 }
 .td-padd-rb {
@@ -181,12 +213,6 @@ nav#header-menu > ul > li > ul li {
   min-width: 130px;
   border-top: 1px solid rgba(39,39,40,0.9);
 }
-.used_in_bpc {
-  display: inline-block;
-}
-.used_in_info {
-  display: inline-block;
-}
 .t-small {
   font-size: 0.85em;
   color: #f5f5f5;
@@ -197,8 +223,8 @@ nav#header-menu > ul > li > ul li {
 .p-b-3 {
   padding-bottom: 3px;
 }
-.m-b-3 {
-  margin-bottom: 3px;
+.m-b-1 {
+  margin-bottom: 1px;
 }
 .col-first {
   padding-right: 1px;

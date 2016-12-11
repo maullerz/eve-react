@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
 import {searchBpc, getBpc, resetSearch} from '../../controllers/actions/manufactureActions'
+import {browserHistory} from "react-router"
 
 const getSuggestionValue = suggestion => suggestion.blueprint_name
 const renderSuggestion = suggestion => suggestion.blueprint_name
@@ -14,8 +15,10 @@ class SearchBpoPanel extends Component {
       value: ""
     }
   }
+
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.getBpc(suggestion.url)
+    browserHistory.push("/manufacture/" + suggestion.url)
   };
   onSuggestionsFetchRequested = value => {
     this.props.searchBpc(value.value);
@@ -45,7 +48,7 @@ class SearchBpoPanel extends Component {
       <div className="row">
         <div className="col-md-12">
           <div className="panel-content">
-            <h1>{this.props.bpc_title ? this.props.bpc_title : "Manufacture Calculator"}</h1>
+            <h1>{this.props.bpc.blueprint_name || "Manufacture Calculator"}</h1>
 
             <div id="autocomplete">
               <Autosuggest
@@ -69,7 +72,11 @@ function mapStateToProps(state) {
   return {
     suggestions: state.manufactureReducers.suggestions || [],
     bpc: state.manufactureReducers.bpc,
-    bpc_title: state.manufactureReducers.bpc_title
+    used_in: state.manufactureReducers.used_in,
+    bpc_components: state.manufactureReducers.bpc_components,
+    decryptors: state.manufactureReducers.decryptors,
+    item: state.manufactureReducers.item,
+    price_items: state.manufactureReducers.price_items
   }
 }
 export default connect(mapStateToProps, {searchBpc, getBpc, resetSearch})(SearchBpoPanel);

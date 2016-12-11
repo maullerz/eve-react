@@ -63,7 +63,7 @@ body {
         background-color rgba(39, 39, 40, 1);
         color color-dark
         ul > li {
-          padding 1px 6px
+          padding 1px 3px
           background-color rgba(22, 112, 146, 0.2)
           margin-top 1px
           &:last-child {
@@ -73,14 +73,50 @@ body {
             cursor pointer
             background-color rgba(22, 112, 146, .4)
           }
+          .img24 {
+            margin-right 6px
+            width 28px
+          }
         }
       }
     }
   }
 }
 
-.img32 {
-  width 32px
+// Manufacture Ul => LI component
+ul.components {
+  li {
+    .containter {
+      margin 0
+      overflow: hidden;
+    }
+    .text-holder {
+      overflow: visible;
+      padding 0
+      font-size 0.85em
+    }
+    .img-box {
+      float left
+      margin-right 3px
+    }
+    .left {
+      float right
+    }
+  }
+}
+
+// Color Text
+.txt-yellow {
+  color #CDDC39
+}
+.txt-lime {
+  color #A5D6A7
+}
+.b {
+  font-weight bold
+}
+.used_img {
+  width 24px
 }
 
 // Autocomplete
@@ -121,7 +157,15 @@ body {
 
 //  Search input
 
-.donatedSum {
+.inline {
+  position relative
+  display inline-block
+  &:hover > .bottom_description {
+    display block
+  }
+}
+
+.bottom_description {
   display none
   position absolute
   bottom 0
@@ -138,15 +182,7 @@ body {
   display block
 }
 
-.inline {
-  position relative
-  display inline-block
-  &:hover > .donatedSum {
-    display block
-  }
-}
-
-.user_img {
+.user_img, .item_img {
   cursor pointer
   margin main-padding 0 0 main-padding
   border: 1px solid color-blue
@@ -215,14 +251,6 @@ nav#header-menu > ul > li > ul {
 }
 
 //  Header Menu
-.used_in_bpc {
-  display: inline-block
-}
-
-.used_in_info {
-  display: inline-block
-}
-
 .t-small
   fontSize(0.85em)
   fontColor (color-white)
@@ -234,8 +262,8 @@ nav#header-menu > ul > li > ul {
 .p-b-3
   padding-bottom main-padding
 
-.m-b-3
-  margin-bottom main-padding
+.m-b-1
+  margin-bottom 1px
 
 .col-first
   padding-right 1px

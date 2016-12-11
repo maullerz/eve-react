@@ -1,28 +1,37 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {getBpc} from './actions/manufactureActions'
+// components
 import SearchBpoPanel from './../components/manufacture/SearchBpoPanel'
 import UsedIn from './../components/manufacture/UsedIn'
-import {connect} from 'react-redux'
+import BpoComponents from './../components/manufacture/BpoComponents'
 
 class Manufacture extends Component {
 
-  render() {
+  componentWillMount() {
+    // Initial bpc when load Url
+    if (this.props.params.url) {
+      this.props.getBpc(this.props.params.url)
+    }
+  }
 
+  render() {
     return (
       <div>
         <SearchBpoPanel />
         <div className='row'>
-          <div className='col-md-3 t-a_l'>
+          <div className='col-md-4 t-a_l col-first'>
             <UsedIn />
           </div>
-          <div className='col-md-9 t-a_l'></div>
+          <div className='col-md-8 t-a_l col-last'>
+            <BpoComponents />
+          </div>
         </div>
       </div>
     )
   }
 }
 function mapStateToProps(state) {
-  return {
-    manufacture: state.manufactureReducers.manufacture
-  }
+  return state.manufactureReducers
 }
-export default connect(mapStateToProps, {})(Manufacture);
+export default connect(mapStateToProps, {getBpc})(Manufacture);

@@ -8,18 +8,18 @@ export const RESET_SEARCH = 'RESET_SEARCH'
 export function searchBpc(term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-    .then((res) => {
-      dispatch(setAutocompleteItems(res.data.items))
-    })
+      .then((res) => {
+        dispatch(setAutocompleteItems(res.data.items))
+      })
   }
 }
 // get bpc by url
 export function getBpc(url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-    .then((res) => {
-      dispatch(setBlueprint(res.data))
-    })
+      .then((res) => {
+        dispatch(setBlueprint(res.data))
+      })
   }
 }
 
@@ -31,13 +31,15 @@ export function resetSearch() {
 }
 
 // Export Dispatches functions
-
-export function setBlueprint(manufacture) {
+export function setBlueprint(response) {
   return {
     type: GET_BPC,
-    manufacture: manufacture,
-    used_in: manufacture.used_in,
-    bpc_title: manufacture.bpc.blueprint_name
+    bpc: response.bpc,
+    used_in: response.used_in,
+    bpc_components: response.bpc_components,
+    decryptors: response.decryptors,
+    item: response.item,
+    price_items: response.price_items
   }
 }
 
