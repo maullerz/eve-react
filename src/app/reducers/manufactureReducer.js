@@ -1,4 +1,4 @@
-import {SEARCH_BPC, GET_BPC, RESET_SEARCH} from '../controllers/actions/manufactureActions'
+import {SEARCH_BPC, GET_BPC, RESET_SEARCH, SET_PRICES} from '../controllers/actions/manufactureActions'
 
 const initialState = {
   suggestions: [],
@@ -8,12 +8,19 @@ const initialState = {
   bpc_components: [],
   decryptors: [],
   item: {},
+  price_items: [],
+  prices: {}
 }
 
 export default (state = initialState, action = {}) => {
 
   switch (action.type) {
 
+    case SET_PRICES: {
+      return Object.assign({}, state, {
+        prices: action.prices
+      })
+    }
     case SEARCH_BPC:
       return Object.assign({}, state, action)
 

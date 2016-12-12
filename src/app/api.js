@@ -3,6 +3,11 @@ let baseUrl = 'https://silex.eve-productions.org'
 
 export default {
 
+  Main: {
+    prices: function (system_id, items) {
+      return axios.get(baseUrl + '/prices/' + system_id + '/' + items)
+    }
+  },
   Donate: {
     donate: function () {
       return axios.get(baseUrl + '/donate.json')

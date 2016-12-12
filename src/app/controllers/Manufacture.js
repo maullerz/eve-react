@@ -9,6 +9,7 @@ import BpoComponents from './../components/manufacture/BpoComponents'
 class Manufacture extends Component {
 
   componentWillMount() {
+    
     // Initial bpc when load Url
     if (this.props.params.url) {
       this.props.getBpc(this.props.params.url)
