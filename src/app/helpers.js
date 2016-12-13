@@ -8,6 +8,7 @@ let Helper = {
   qty (n) {
     return numeraljs(n).format('0,0')
   },
+
   price (n) {
     return numeraljs(n).format('0,0.00')
   }

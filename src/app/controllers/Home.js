@@ -5,7 +5,7 @@ import IndexTables from '../components/blocks/_index_tables'
 
 class Home extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       tableData: [
@@ -44,25 +44,23 @@ class Home extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <IndexTables listTables={this.state.tableData} />
-
-        <PanelContent title='Market Monitoring' />
-
+        <IndexTables listTables={this.state.tableData}/>
+        <PanelContent title='Market Monitoring'/>
         <div className='row'>
           <div className='col-md-12'>
             <table>
               <thead>
-                <tr>
-                  <th className='t-a_l'>Market</th>
-                </tr>
+              <tr>
+                <th className='t-a_l'>Market</th>
+              </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className='padd-3' />
-                </tr>
+              <tr>
+                <td className='padd-3'/>
+              </tr>
               </tbody>
             </table>
           </div>
