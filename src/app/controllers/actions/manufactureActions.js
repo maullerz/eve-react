@@ -56,7 +56,11 @@ export function setBlueprint(response) {
     bpc_components: response.bpc_components,
     decryptors: response.decryptors,
     item: response.item,
-    price_items: response.price_items
+    price_items: response.price_items,
+    prices: {
+      sell: {},
+      buy: {}
+    }
   }
 }
 

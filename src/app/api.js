@@ -1,5 +1,5 @@
 import axios from 'axios'
-let baseUrl = 'https://silex.eve-productions.org'
+let baseUrl = 'https://api.eve-productions.org'
 
 export default {
 

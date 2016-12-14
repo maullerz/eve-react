@@ -1,4 +1,5 @@
 import {SEARCH_BPC, GET_BPC, RESET_SEARCH, GET_PRICES} from '../controllers/actions/manufactureActions'
+import {zipObject, range} from "lodash"
 
 const initialState = {
   suggestions: [],
@@ -9,7 +10,10 @@ const initialState = {
   decryptors: [],
   item: {},
   price_items: [],
-  prices: {}
+  prices: {
+    sell: {},
+    buy: {}
+  }
 }
 
 export default (state = initialState, action = {}) => {
@@ -25,6 +29,9 @@ export default (state = initialState, action = {}) => {
       return Object.assign({}, state, action)
 
     case GET_BPC:
+
+      let formatedPrices = zipObject(action.price_items, range(0, action.price_items.length, 0));
+
       return Object.assign({}, state, {
         bpc: action.bpc,
         bpc_title: action.bpc.blueprint_name,
@@ -32,7 +39,11 @@ export default (state = initialState, action = {}) => {
         bpc_components: action.bpc_components,
         decryptors: action.decryptors,
         item: action.item,
-        price_items: action.price_items
+        price_items: action.price_items,
+        prices: {
+          sell: formatedPrices,
+          buy: formatedPrices
+        }
       })
 
     case RESET_SEARCH: {
