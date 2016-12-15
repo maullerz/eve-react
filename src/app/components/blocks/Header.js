@@ -20,13 +20,13 @@ export default class Header extends Component {
             <nav id='header-menu'>
               <ul>
                 <li>
-                  <a href="#">Calculators</a>
+                  <a href='#'>Calculators</a>
                   <ul>
                     <li><Link to='/manufacture'>BPC calculator</Link></li>
-                    <li><a href="#">Cargo, fitting</a></li>
+                    <li><a href='#'>Cargo, fitting</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Market</a></li>
+                <li><a href='#'>Market</a></li>
                 <li>
                   <Link to='/Item'>Item</Link>
                 </li>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {clone} from "lodash"
+import {clone} from 'lodash'
 import {getBpc, getPrices} from './actions/manufactureActions'
 // components
 import SearchBpoPanel from './../components/manufacture/SearchBpoPanel'
@@ -10,7 +10,7 @@ import Calculator from './../components/manufacture/Calculator'
 
 class Manufacture extends Component {
 
-  componentWillMount() {
+  componentWillMount () {
     // Initial bpc when load Url
     if (this.props.params.url) {
       this.props.getBpc(this.props.params.url)
@@ -18,13 +18,13 @@ class Manufacture extends Component {
   }
 
   // Update prices when update some blueprint
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.props.bpc_title !== nextProps.bpc_title) {
       let items = clone(nextProps.price_items)
       this.props.getPrices(30000142, items)
     }
   }
-  render() {
+  render () {
     return (
       <div>
         <SearchBpoPanel />
@@ -41,7 +41,7 @@ class Manufacture extends Component {
     )
   }
 }
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return state.manufactureReducers
 }
-export default connect(mapStateToProps, {getBpc, getPrices})(Manufacture);
+export default connect(mapStateToProps, {getBpc, getPrices})(Manufacture)

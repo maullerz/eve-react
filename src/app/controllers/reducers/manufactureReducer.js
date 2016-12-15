@@ -3,14 +3,15 @@ import {
   GET_BPC,
   RESET_SEARCH,
   GET_PRICES,
-  SET_COMPONENTS_AMOUNT
+  SET_COMPONENTS_AMOUNT,
+  CHANGE_ME
 } from '../actions/manufactureActions'
-import {zipObject, range} from "lodash"
+import {zipObject, range} from 'lodash'
 
 const initialState = {
   suggestions: [],
   bpc: {},
-  bpc_title: "",
+  bpc_title: '',
   used_in: [],
   bpc_components: [],
   decryptors: [],
@@ -24,8 +25,12 @@ const initialState = {
 }
 
 export default (state = initialState, action = {}) => {
-
   switch (action.type) {
+
+    case CHANGE_ME:
+      return Object.assign({}, state, {
+        components_amount: action.components_amount
+      })
 
     case GET_PRICES: {
       return Object.assign({}, state, {
@@ -37,7 +42,7 @@ export default (state = initialState, action = {}) => {
 
     case GET_BPC:
 
-      let formatedPrices = zipObject(action.price_items, range(0, action.price_items.length, 0));
+      let formatedPrices = zipObject(action.price_items, range(0, action.price_items.length, 0))
 
       return Object.assign({}, state, {
         bpc: action.bpc,
@@ -59,7 +64,9 @@ export default (state = initialState, action = {}) => {
     }
 
     case SET_COMPONENTS_AMOUNT: {
-      return Object.assign({}, state, action)
+      return Object.assign({}, state, {
+        components_amount: action.components_amount
+      })
     }
 
     default:

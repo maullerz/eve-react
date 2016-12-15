@@ -5,15 +5,26 @@ import {setComponentsAmount} from "../../controllers/actions/manufactureActions"
 
 class BpoComponents extends Component {
 
-  _components = []
-
-  componentWillReceiveProps(newProps) {
+  componentWillUpdate() {
     let amount = 0
-    this._components = newProps.bpc_components.map((val) => {
+    this.props.bpc_components.forEach((val) => {
+      let item_id = val.item_id
+      let price = this.props.prices['sell'][item_id]
+      amount += price * val.orig_qty
+      console.log(item_id, price);
+
+      return 1;
+
+    })
+    this.props.setComponentsAmount(amount)
+  }
+
+  render() {
+
+    this._components = this.props.bpc_components.map((val) => {
 
       let item_id = val.item_id
-      let price = newProps.prices['sell'][item_id]
-      amount += price * val.orig_qty
+      let price = this.props.prices['sell'][item_id]
       return (<li key={val.item_id}>
         <div className="containter">
           <div className="img-box">
@@ -30,17 +41,14 @@ class BpoComponents extends Component {
         </div>
       </li>)
     });
-    this.props.setComponentsAmount(amount)
-  }
 
-  render() {
     let components = (
       <div className="row">
         <div className="col-md-12">
           <table>
             <thead>
             <tr>
-              <th>Components</th>
+              <th>Components {Helper.price(this.props.components_amount)} ISK</th>
             </tr>
             </thead>
             <tbody>

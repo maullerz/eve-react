@@ -7,8 +7,8 @@ import Manufacture from './controllers/Manufacture'
 
 export default (
   <Route path='/' component={App}>
-    <IndexRoute component={Home}/>
-    <Route path='/donate' component={Donate}/>
-    <Route path='/manufacture(/:url)' component={Manufacture}/>
+    <IndexRoute component={Home} />
+    <Route path='/donate' component={Donate} />
+    <Route path='/manufacture(/:url)' component={Manufacture} />
   </Route>
 )

@@ -11,30 +11,36 @@ export const CHANGE_ME = 'CHANGE_ME'
 export function searchBpc(term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-    .then((res) => {
-      dispatch(setAutocompleteItems(res.data.items))
-    })
+      .then((res) => {
+        dispatch(setAutocompleteItems(res.data.items))
+      })
   }
 }
 // get bpc by url
 export function getBpc(url) {
-
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-    .then((res) => {
-      dispatch(setBlueprint(res.data))
-    })
+      .then((res) => {
+        dispatch(setBlueprint(res.data))
+      })
   }
 }
 
 export function getPrices(system_id, items) {
   return dispatch => {
     return ApiService.Main.prices(system_id, items)
-    .then((json) => {
-      dispatch(setPrices(json.data.prices))
-    })
+      .then((json) => {
+        dispatch(setPrices(json.data.prices))
+      })
   }
 }
+
+export function changeMe(me) {
+  return dispatch => {
+    return dispatch(updateMe(me))
+  }
+}
+
 // reset suggestions
 export function resetSearch() {
   return dispatch => {
@@ -42,11 +48,10 @@ export function resetSearch() {
   }
 }
 
-export function changeMe(me) {
-  console.log(me);
+export function updateMe(me) {
   return {
     type: CHANGE_ME,
-    bpc_components: []
+    components_amount: me
   }
 }
 
