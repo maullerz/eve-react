@@ -8,6 +8,7 @@ color-blue-hover = #0F4E61
 color = #B9964D
 color-dark = #e4d6ba
 color-white = whitesmoke
+color-input = #314756
 color-red = rgba(187, 70, 48, 0.9)
 
 // CSS
@@ -109,12 +110,15 @@ ul.components {
 .txt-yellow {
   color #CDDC39
 }
+
 .txt-lime {
   color #A5D6A7
 }
+
 .b {
   font-weight bold
 }
+
 .used_img {
   width 24px
 }
@@ -234,6 +238,27 @@ ul.components {
   }
 }
 
+// tables BPC
+.inside-table {
+  .row {
+    margin 0
+    background-color rgba(22, 112, 146, .2)
+    margin-top 1px
+    padding 1px 3px
+    &:hover {
+      background-color rgba(22, 112, 146, .4)
+    }
+    div[class^=col-md] {
+      padding 1px 2px
+    }
+    div[class^=col-]:nth-child(1) {
+      text-align right
+      padding-right 6px
+    }
+  }
+
+}
+
 nav#header-menu > ul > li:hover > ul {
   display block
 }
@@ -256,8 +281,38 @@ nav#header-menu > ul > li > ul {
   fontColor (color-white)
 
 //  Global styles
+input
+  border 0
+  border-color #ffe4b2
+  background-color #ffedcb
+  outline none
+  color color-input
+  width 65px
+  padding 0
+  margin-right 3px
+  &:last-child {
+    margin-right 0
+  }
+
+
+select, textarea, button
+  border-color #ffe4b2
+  background-color #ffedcb
+  outline none
+  color color-input
+  margin-right 3px
+  &:last-child {
+    margin-right 0
+  }
+
+.w100
+  width 100%
+
 .t-a_l
   text-align left
+
+.t-a_r
+  text-align right
 
 .p-b-3
   padding-bottom main-padding

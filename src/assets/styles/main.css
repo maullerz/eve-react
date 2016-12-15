@@ -199,6 +199,22 @@ ul.components li .left {
 #header-menu ul li.red-cell a {
   color: #fff;
 }
+.inside-table .row {
+  margin: 0;
+  background-color: rgba(22,112,146,0.2);
+  margin-top: 1px;
+  padding: 1px 3px;
+}
+.inside-table .row:hover {
+  background-color: rgba(22,112,146,0.4);
+}
+.inside-table .row div[class^=col-md] {
+  padding: 1px 2px;
+}
+.inside-table .row div[class^=col-]:nth-child(1) {
+  text-align: right;
+  padding-right: 6px;
+}
 nav#header-menu > ul > li:hover > ul {
   display: block;
 }
@@ -217,8 +233,41 @@ nav#header-menu > ul > li > ul li {
   font-size: 0.85em;
   color: #f5f5f5;
 }
+input {
+  border: 0;
+  border-color: #ffe4b2;
+  background-color: #ffedcb;
+  outline: none;
+  color: #314756;
+  width: 65px;
+  padding: 0;
+  margin-right: 3px;
+}
+input:last-child {
+  margin-right: 0;
+}
+select,
+textarea,
+button {
+  border-color: #ffe4b2;
+  background-color: #ffedcb;
+  outline: none;
+  color: #314756;
+  margin-right: 3px;
+}
+select:last-child,
+textarea:last-child,
+button:last-child {
+  margin-right: 0;
+}
+.w100 {
+  width: 100%;
+}
 .t-a_l {
   text-align: left;
+}
+.t-a_r {
+  text-align: right;
 }
 .p-b-3 {
   padding-bottom: 3px;

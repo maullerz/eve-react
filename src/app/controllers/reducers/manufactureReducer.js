@@ -1,4 +1,10 @@
-import {SEARCH_BPC, GET_BPC, RESET_SEARCH, GET_PRICES} from '../controllers/actions/manufactureActions'
+import {
+  SEARCH_BPC,
+  GET_BPC,
+  RESET_SEARCH,
+  GET_PRICES,
+  SET_COMPONENTS_AMOUNT
+} from '../actions/manufactureActions'
 import {zipObject, range} from "lodash"
 
 const initialState = {
@@ -13,7 +19,8 @@ const initialState = {
   prices: {
     sell: {},
     buy: {}
-  }
+  },
+  components_amount: 0
 }
 
 export default (state = initialState, action = {}) => {
@@ -43,10 +50,15 @@ export default (state = initialState, action = {}) => {
         prices: {
           sell: formatedPrices,
           buy: formatedPrices
-        }
+        },
+        components_amount: 0
       })
 
     case RESET_SEARCH: {
+      return Object.assign({}, state, action)
+    }
+
+    case SET_COMPONENTS_AMOUNT: {
       return Object.assign({}, state, action)
     }
 

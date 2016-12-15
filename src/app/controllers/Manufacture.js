@@ -29,11 +29,11 @@ class Manufacture extends Component {
       <div>
         <SearchBpoPanel />
         <div className='row'>
-          <div className='col-md-4 t-a_l col-first'>
+          <div className='col-md-6 t-a_l col-first'>
             <Calculator />
             <UsedIn />
           </div>
-          <div className='col-md-8 t-a_l col-last'>
+          <div className='col-md-6 t-a_l col-last'>
             <BpoComponents />
           </div>
         </div>

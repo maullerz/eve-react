@@ -4,6 +4,8 @@ export const SEARCH_BPC = 'SEARCH_BPC'
 export const GET_BPC = 'GET_BPC'
 export const RESET_SEARCH = 'RESET_SEARCH'
 export const GET_PRICES = 'GET_PRICES'
+export const SET_COMPONENTS_AMOUNT = 'SET_COMPONENTS_AMOUNT'
+export const CHANGE_ME = 'CHANGE_ME'
 
 // autocomplete search bpc
 export function searchBpc(term) {
@@ -37,6 +39,21 @@ export function getPrices(system_id, items) {
 export function resetSearch() {
   return dispatch => {
     return dispatch(unsetSearch())
+  }
+}
+
+export function changeMe(me) {
+  console.log(me);
+  return {
+    type: CHANGE_ME,
+    bpc_components: []
+  }
+}
+
+export function setComponentsAmount(amount) {
+  return {
+    type: SET_COMPONENTS_AMOUNT,
+    components_amount: amount
   }
 }
 
