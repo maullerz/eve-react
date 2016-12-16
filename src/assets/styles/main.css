@@ -86,11 +86,15 @@ ul.components li .img-box {
 ul.components li .left {
   float: right;
 }
-.txt-yellow {
+.txt-yellow,
+.profit {
   color: #cddc39;
 }
 .txt-lime {
   color: #a5d6a7;
+}
+.profit-minus {
+  color: #e57373;
 }
 .b {
   font-weight: bold;

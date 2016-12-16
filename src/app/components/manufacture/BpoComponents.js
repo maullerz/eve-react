@@ -1,30 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Helper from "../../helpers"
-import {setComponentsAmount} from "../../controllers/actions/manufactureActions"
 
 class BpoComponents extends Component {
-
-  componentWillUpdate() {
-    let amount = 0
-    this.props.bpc_components.forEach((val) => {
-      let item_id = val.item_id
-      let price = this.props.prices['sell'][item_id]
-      amount += price * val.orig_qty
-      console.log(item_id, price);
-
-      return 1;
-
-    })
-    this.props.setComponentsAmount(amount)
-  }
 
   render() {
 
     this._components = this.props.bpc_components.map((val) => {
-
       let item_id = val.item_id
-      let price = this.props.prices['sell'][item_id]
+      let price = this.props.prices[this.props.type_p_components][item_id]
       return (<li key={val.item_id}>
         <div className="containter">
           <div className="img-box">
@@ -41,14 +25,13 @@ class BpoComponents extends Component {
         </div>
       </li>)
     });
-
     let components = (
       <div className="row">
         <div className="col-md-12">
           <table>
             <thead>
             <tr>
-              <th>Components {Helper.price(this.props.components_amount)} ISK</th>
+              <th>Components ({Helper.shortNum(this.props.components_amount)} isk)</th>
             </tr>
             </thead>
             <tbody>
@@ -71,4 +54,4 @@ class BpoComponents extends Component {
 function mapStateToProps(state) {
   return state.manufactureReducers
 }
-export default connect(mapStateToProps, {setComponentsAmount})(BpoComponents)
+export default connect(mapStateToProps, {})(BpoComponents)

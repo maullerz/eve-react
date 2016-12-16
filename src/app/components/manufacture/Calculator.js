@@ -1,109 +1,148 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Helper from '../../helpers'
-import {changeMe} from '../../controllers/actions/manufactureActions'
+import {
+  changeMe,
+  changeRun,
+  changeTe,
+  changeBpcCost,
+  recalculateManufacture,
+  changePriceTypeItem,
+  changePriceTypeComponents
+} from '../../controllers/actions/manufactureActions'
 
 class Calculator extends Component {
 
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      defaultMe: 10,
-      defaultTe: 10,
-      run: 1,
-      output: 1,
-      components_amount: 0
+  componentWillReceiveProps(np) {
+    // if changes selectors - update calculator values
+    if (np.run !== this.props.run || np.me !== this.props.me || np.bpc_cost !== this.props.bpc_cost || np.te !== this.props.te) {
+      this.props.recalculateManufacture(np)
+    }
+    if(np.type_p_item !== this.props.type_p_item || np.type_p_components !== this.props.type_p_components) {
+      this.props.recalculateManufacture(np)
     }
   }
 
-  changeRun (event) {
-    this.setState({
-      run: event.target.value,
-      output: event.target.value * this.props.bpc.output
-    })
+  changePriceTypeItem(event) {
+    this.props.changePriceTypeItem(event.target.value)
+  }
+  changePriceTypeComponents(event) {
+    this.props.changePriceTypeComponents(event.target.value)
   }
 
-  changeMe (event) {
-    this.setState({defaultMe: event.target.value})
+  changeBpcCost(event) {
+    this.props.changeBpcCost(event.target.value)
+  }
+
+  changeRun(event) {
+    this.props.changeRun(event.target.value)
+  }
+
+  changeMe(event) {
     this.props.changeMe(event.target.value)
   }
 
-  changeTe (event) {
-    this.setState({defaultTe: event.target.value})
+  changeTe(event) {
+    this.props.changeTe(event.target.value)
   }
 
-  render () {
+  render() {
     let calculator = (
       <div className='row'>
         <div className='col-md-12'>
           <table className='inside'>
             <thead>
-              <tr>
-                <th>Calculator</th>
-                <th>Value</th>
-              </tr>
+            <tr>
+              <th colSpan="2">Calculator</th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colSpan='2' className='inside-table'>
-                  <div className='row'>
-                    <div className='col-md-6'>Factory</div>
-                    <div className='col-md-6'>
-                      <select className='w100'>
-                        <option value='12'>Status</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>ME / TE</div>
-                    <div className='col-md-6'>
-                      <select value={this.state.defaultMe} onChange={this.changeMe.bind(this)}>
-                        {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map((val) => {
-                          return <option key={val} value={val}>ME {val * 2}</option>
-                        })}
-                      </select>
-                      <select value={this.state.defaultTe} onChange={this.changeTe.bind(this)}>
-                        {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map((val) => {
-                          return <option key={val} value={val}>TE {val}</option>
-                        })}
-                      </select>
-                    </div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>Run / Output items</div>
-                    <div className='col-md-6'>
-                      <input type='text' onChange={this.changeRun.bind(this)}
-                        value={this.state.run} /> x {this.state.output}
-                    </div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>Cost components</div>
-                    <div className='col-md-6'>{Helper.price(this.props.components_amount)} isk</div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>Cost output item</div>
-                    <div className='col-md-6'>{Helper.price(560555)} isk</div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>BPC cost</div>
-                    <div className='col-md-6'><input type='text' value='' /></div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>System manufacture</div>
-                    <div className='col-md-6'>465</div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>Total, ISK</div>
-                    <div className='col-md-6'>454345</div>
-                  </div>
-                  <div className='row'>
-                    <div className='col-md-6'>Profit</div>
-                    <div className='col-md-6'>13133</div>
-                  </div>
+            <tr>
+              <td colSpan='2' className='inside-table'>
 
-                </td>
-              </tr>
+                <div className='row'>
+                  <div className='col-md-6'>Orders for output item(s)</div>
+                  <div className='col-md-6'>
+                    <select value={this.props.type_p_item} onChange={this.changePriceTypeItem.bind(this)}>
+                      {['sell', 'buy'].map(val => {
+                        return <option key={val} value={val}>{val} orders</option>
+                      })}
+                    </select>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>Orders for components</div>
+                  <div className='col-md-6'>
+                    <select value={this.props.type_p_components} onChange={this.changePriceTypeComponents.bind(this)}>
+                      {['sell', 'buy'].map(val => {
+                        return <option key={val} value={val}>{val} orders</option>
+                      })}
+                    </select>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>Factory</div>
+                  <div className='col-md-6'>
+                    <select className='w100'>
+                      <option value='12'>Status</option>
+                    </select>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>ME / TE</div>
+                  <div className='col-md-6'>
+                    <select value={this.props.me} onChange={this.changeMe.bind(this)}>
+                      {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map((val) => {
+                        return <option key={val} value={val}>ME {val}</option>
+                      })}
+                    </select>
+                    <select value={this.props.te} onChange={this.changeTe.bind(this)}>
+                      {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map((val) => {
+                        return <option key={val} value={val}>TE {val}</option>
+                      })}
+                    </select>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>Run / Output items</div>
+                  <div className='col-md-6'>
+                    <input onChange={this.changeRun.bind(this)}
+                           value={this.props.run}/> x {this.props.output}
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>Cost components, isk</div>
+                  <div className='col-md-6'>{Helper.price(this.props.components_amount)}</div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>Cost output item, isk</div>
+                  <div className='col-md-6'>{Helper.price(this.props.item_amount)}</div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>BPC cost</div>
+                  <div className='col-md-6'>
+                    <input
+                      onChange={this.changeBpcCost.bind(this)}
+                      value={this.props.bpc_cost}/></div>
+                </div>
+                {/*<div className='row'>*/}
+                  {/*<div className='col-md-6'>System manufacture</div>*/}
+                  {/*<div className='col-md-6'>465</div>*/}
+                {/*</div>*/}
+                <div className='row'>
+                  <div className='col-md-6'>Total, isk</div>
+                  <div className='col-md-6'>{Helper.price(this.props.total)}</div>
+                </div>
+                <div className='row'>
+                  <div className='col-md-6'>Profit, isk</div>
+                  <div className='col-md-6'>
+                    <span
+                      className={this.props.profit >= 0 ? 'txt-yellow' : 'profit-minus'}>{Helper.price(this.props.profit)}</span>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -114,7 +153,15 @@ class Calculator extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state.manufactureReducers
 }
-export default connect(mapStateToProps, {changeMe})(Calculator)
+export default connect(mapStateToProps, {
+  changeMe,
+  changeRun,
+  changeTe,
+  recalculateManufacture,
+  changeBpcCost,
+  changePriceTypeItem,
+  changePriceTypeComponents
+})(Calculator)
