@@ -1,6 +1,6 @@
 import ApiService from './../../api'
-import {forEach, cloneDeep, ceil} from "lodash"
-import Helper from "../../helpers"
+import {forEach, cloneDeep, ceil} from 'lodash'
+import Helper from '../../helpers'
 
 export const SEARCH_BPC = 'SEARCH_BPC'
 export const GET_BPC = 'GET_BPC'
@@ -14,95 +14,224 @@ export const RECALCULATE_MANUFACTURE = 'RECALCULATE_MANUFACTURE'
 export const SET_BPC_COST = 'SET_BPC_COST'
 export const CHANGE_TYPE_PRICE_COMPONENTS = 'CHANGE_TYPE_PRICE_COMPONENTS'
 export const CHANGE_TYPE_PRICE_ITEM = 'CHANGE_TYPE_PRICE_ITEM'
+export const SEARCH_MANUFACTURE_SYSTEM = 'SEARCH_MANUFACTURE_SYSTEM'
+export const SET_MANUFACTURE_SYSTEM = 'SET_MANUFACTURE_SYSTEM'
+export const RESET_MANUFACTURE_SUGGESTIONS = 'RESET_MANUFACTURE_SUGGESTIONS'
+export const SEARCH_COMPONENT_SYSTEM = 'SEARCH_COMPONENT_SYSTEM'
+export const RESET_COMPONENT_SYSTEM = 'RESET_COMPONENT_SYSTEM'
+export const SET_COMPONENTS_PRICES = 'SET_COMPONENTS_PRICES'
+export const SET_ITEM_PRICE = 'SET_ITEM_PRICE'
+export const SEARCH_ITEM_SYSTEM = 'SEARCH_ITEM_SYSTEM'
+export const RESET_SYSTEM_ITEM = 'RESET_SYSTEM_ITEM'
 
+export function setComponentsSystem (system, props) {
+  return dispatch => {
+    return ApiService.Main.prices(system.system_id, props.price_items.join(','))
+      .then(json => {
+        dispatch(setComponentsPrices(json.data, props))
+      })
+  }
+}
+
+export function setItemSystem (system, props) {
+  return dispatch => {
+    return ApiService.Main.prices(system.system_id, props.bpc.productTypeID)
+      .then(json => {
+        dispatch(setItemPrice(json.data, props))
+      })
+  }
+}
+
+export function searchItemSystem (term) {
+  return dispatch => {
+    return ApiService.Search.system(term)
+      .then(json => {
+        dispatch(setItemSystemSuggestions(json.data.items))
+      })
+  }
+}
+export function searchComponentsSystem (term) {
+  return dispatch => {
+    return ApiService.Search.system(term)
+      .then(json => {
+        dispatch(setComponentsSystemSuggestions(json.data.items))
+      })
+  }
+}
+export function resetManufactureSystemSuggestions () {
+  return dispatch => {
+    return dispatch(unsetManufactureSystemSuggestions())
+  }
+}
+export function resetSystemItemSuggestions () {
+  return dispatch => {
+    return dispatch(unsetSystemItemSuggestions())
+  }
+}
+export function setManufactureSystem (system) {
+  return dispatch => {
+    return dispatch(updateManufactureSystem(system))
+  }
+}
+// autocomplete search manufacture system
+export function searchManufactureSystem (term) {
+  return dispatch => {
+    return ApiService.Search.system(term)
+      .then(json => {
+        dispatch(setManufactureSystemSuggestions(json.data.items))
+      })
+  }
+}
 // autocomplete search bpc
-export function searchBpc(term) {
+export function searchBpc (term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-    .then((res) => {
-      dispatch(setAutocompleteItems(res.data.items))
-    })
+      .then(res => {
+        dispatch(setAutocompleteItems(res.data.items))
+      })
   }
 }
 
 // get bpc by url
-export function getBpc(url) {
+export function getBpc (url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-    .then((res) => {
-      dispatch(setBlueprint(res.data))
-    })
+      .then((res) => {
+        dispatch(setBlueprint(res.data))
+      })
   }
 }
 
 // get prices
-export function getPrices(system_id, items) {
+export function getPrices (systemId, items) {
   return dispatch => {
-    return ApiService.Main.prices(system_id, items)
-    .then((json) => {
-      dispatch(setPrices(json.data.prices))
-    })
+    return ApiService.Main.prices(systemId, items)
+      .then((json) => {
+        dispatch(setPrices(json.data.prices))
+      })
   }
 }
 
 // get te
-export function changeTe(te) {
+export function changeTe (te) {
   return dispatch => {
     return dispatch(updateTe(te))
   }
 }
 
 // get me
-export function changeMe(me) {
+export function changeMe (me) {
   return dispatch => {
     return dispatch(updateMe(me))
   }
 }
 
 // change cost bpc
-export function changeBpcCost(cost) {
+export function changeBpcCost (cost) {
   return dispatch => {
     return dispatch(setBpcCost(cost))
   }
 }
 
 // change price type item
-export function changePriceTypeItem(type) {
+export function changePriceTypeItem (type) {
   return dispatch => {
     return dispatch(setPriceTypeItem(type))
   }
 }
 
 // change price type component
-export function changePriceTypeComponents(type) {
+export function changePriceTypeComponents (type) {
   return dispatch => {
     return dispatch(setPriceTypeComponents(type))
   }
 }
 
 // change run
-export function changeRun(run, output_per_cycle) {
+export function changeRun (run, outputPerCycle) {
   return dispatch => {
-    return dispatch(updateRun(run, output_per_cycle))
+    return dispatch(updateRun(run, outputPerCycle))
   }
 }
 
+// reset system components
+export function resetSystemComponentsSuggestions () {
+  return dispatch => {
+    return dispatch(unsetSystemComponentsSuggestions())
+  }
+}
 // reset suggestions
-export function resetSearch() {
+export function resetSearch () {
   return dispatch => {
     return dispatch(unsetSearch())
   }
 }
 
 // recalculate all manufacture when change props
-export function recalculateManufacture(props) {
+export function recalculateManufacture (props) {
   return dispatch => {
     return dispatch(updateManufacture(props))
   }
 }
+// dispatch
+export function updateManufactureSystem (system) {
+  return {
+    type: SET_MANUFACTURE_SYSTEM,
+    costIndex: system.costIndex,
+    sm_systemType: system.systemType,
+    sm_system_id: system.system_id,
+    sm_system_name: system.system_name,
+    sm_sugg: [],
+    stationFee: system.systemType === 'NPC' ? 1.1 : 1
+  }
+}
 
 // dispatch
-export function updateRun(run) {
+export function unsetManufactureSystemSuggestions () {
+  return {
+    type: RESET_MANUFACTURE_SUGGESTIONS,
+    sm_sugg: []
+  }
+}
+
+// dispatch
+export function setComponentsPrices (prices, props) {
+  let rejectID = props.bpc.productTypeID
+  let oldPrices = props.prices
+
+  forEach(props.prices.sell, function (val, index) {
+    if (index !== rejectID) {
+      oldPrices.sell[index] = prices.prices.sell[index]
+      oldPrices.buy[index] = prices.prices.buy[index]
+    }
+  })
+  return {
+    type: SET_COMPONENTS_PRICES,
+    prices: oldPrices,
+    pcsystem_id: prices.system_id
+  }
+}
+
+export function setItemPrice (prices, props) {
+  let itemID = props.bpc.productTypeID
+  let oldPrices = props.prices
+  oldPrices.sell[itemID] = prices.prices.sell[itemID]
+  oldPrices.buy[itemID] = prices.prices.buy[itemID]
+  return {
+    type: SET_ITEM_PRICE,
+    prices: oldPrices,
+    pisystem_id: prices.system_id
+  }
+}
+
+export function unsetSystemComponentsSuggestions () {
+  return {
+    type: RESET_COMPONENT_SYSTEM,
+    pcs_sugg: []
+  }
+}
+// dispatch
+export function updateRun (run) {
   return {
     type: CHANGE_RUN,
     run: run
@@ -110,7 +239,7 @@ export function updateRun(run) {
 }
 
 // dispatch
-export function updateMe(me) {
+export function updateMe (me) {
   return {
     type: CHANGE_ME,
     me: me
@@ -118,14 +247,14 @@ export function updateMe(me) {
 }
 
 // dispatch
-export function updateTe(te) {
+export function updateTe (te) {
   return {
     type: CHANGE_TE,
     te: te
   }
 }
 
-export function setBpcCost(cost) {
+export function setBpcCost (cost) {
   return {
     type: SET_BPC_COST,
     bpc_cost: cost
@@ -133,7 +262,7 @@ export function setBpcCost(cost) {
 }
 
 // dispatch
-export function setPrices(prices) {
+export function setPrices (prices) {
   return {
     type: GET_PRICES,
     prices: prices,
@@ -141,14 +270,14 @@ export function setPrices(prices) {
   }
 }
 // dispatch
-export function setPriceTypeItem(type) {
+export function setPriceTypeItem (type) {
   return {
     type: CHANGE_TYPE_PRICE_ITEM,
     type_p_item: type
   }
 }
 // dispatch
-export function setPriceTypeComponents(type) {
+export function setPriceTypeComponents (type) {
   return {
     type: CHANGE_TYPE_PRICE_COMPONENTS,
     type_p_components: type
@@ -156,7 +285,7 @@ export function setPriceTypeComponents(type) {
 }
 
 // dispatch
-export function setBlueprint(response) {
+export function setBlueprint (response) {
   return {
     type: GET_BPC,
     bpc: response.bpc,
@@ -174,47 +303,82 @@ export function setBlueprint(response) {
 
 // dispatch
 // Update manufacture when have changes
-export function updateManufacture(props) {
-
+export function updateManufacture (props) {
   let bpcc = cloneDeep(props.origin_bpc_components)
   let percentage = (100 - +props.me) / 100
   let amount = 0
   let volume = 0
-  let item_amount = props.prices[props.type_p_item][props.bpc.productTypeID] * props.run
+  let baseCost = 0
+  let itemAmount = props.prices[props.type_p_item][props.bpc.productTypeID] * props.run
 
   forEach(bpcc, val => {
     // calculate new QTY
+    let adjustQty = cloneDeep(val)
     let qty = val.orig_qty !== 1 ? ceil(val.orig_qty * props.run * percentage) : val.orig_qty * props.run
     val.orig_qty = qty
     // total amount
     amount += qty * props.prices[props.type_p_components][val.item_id]
     // total volume
     volume += qty * val.volume
-  });
+    // total base cost
+    baseCost += +val.adjustPrice * adjustQty.orig_qty
+  })
+
+  // adust cost for run in facility
+  let adjustCost = Math.ceil(baseCost * (props.costIndex + 1) * props.stationFee * props.run)
+
   // cost components, bpc, other
-  let manufactureCost = amount + (props.bpc_cost * props.run)
+  let manufactureCost = amount + (props.bpc_cost * props.run) + adjustCost
 
   return {
     type: RECALCULATE_MANUFACTURE,
     bpc_components: bpcc,
     components_amount: amount,
     components_volume: Helper.price(volume),
-    item_amount: item_amount,
-    profit: item_amount - manufactureCost,
+    item_amount: itemAmount,
+    profit: itemAmount - manufactureCost,
     output: props.run * props.bpc.output,
     _init_calculator: true,
-    total: manufactureCost
+    total: manufactureCost,
+    adjustCost: adjustCost
   }
 }
 // dispatch
-export function setAutocompleteItems(suggestions) {
+export function setAutocompleteItems (suggestions) {
   return {
     type: SEARCH_BPC,
     suggestions: suggestions
   }
 }
+
+export function setItemSystemSuggestions (systems) {
+  return {
+    type: SEARCH_ITEM_SYSTEM,
+    pis_sugg: systems
+  }
+}
+export function setManufactureSystemSuggestions (systems) {
+  return {
+    type: SEARCH_MANUFACTURE_SYSTEM,
+    sm_sugg: systems
+  }
+}
+
+export function unsetSystemItemSuggestions () {
+  return {
+    type: RESET_SYSTEM_ITEM,
+    pis_sugg: []
+  }
+}
+
+export function setComponentsSystemSuggestions (systems) {
+  return {
+    type: SEARCH_COMPONENT_SYSTEM,
+    pcs_sugg: systems
+  }
+}
 // dispatch
-export function unsetSearch() {
+export function unsetSearch () {
   return {
     type: RESET_SEARCH,
     suggestions: []

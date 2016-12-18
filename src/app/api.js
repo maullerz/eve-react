@@ -3,11 +3,22 @@ let baseUrl = 'https://api.eve-productions.org'
 
 export default {
 
-  Main: {
-    prices: function (system_id, items) {
-      return axios.get(baseUrl + '/prices/' + system_id + '/' + items)
+  Search: {
+    system: function (term) {
+      return axios.get(baseUrl + '/search/system.json', {
+        params: {
+          term: term
+        }
+      })
     }
   },
+
+  Main: {
+    prices: function (systemId, items) {
+      return axios.get(baseUrl + '/prices/' + systemId + '/' + items)
+    }
+  },
+
   Donate: {
     donate: function () {
       return axios.get(baseUrl + '/donate.json')

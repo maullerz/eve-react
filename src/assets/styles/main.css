@@ -63,7 +63,7 @@ body #root table tfoot tr td ul > li:last-child {
 body #root table tbody tr td ul > li:hover,
 body #root table tfoot tr td ul > li:hover {
   cursor: pointer;
-  background-color: rgba(22,112,146,0.4);
+  background-color: rgba(22,112,146,0.25);
 }
 body #root table tbody tr td ul > li .img24,
 body #root table tfoot tr td ul > li .img24 {
@@ -102,6 +102,14 @@ ul.components li .left {
 .used_img {
   width: 24px;
 }
+.inline-block-search {
+  z-index: 2;
+  display: inline-block;
+  position: relative;
+}
+.inline-block-search input {
+  margin: 0;
+}
 .react-autosuggest__container {
   z-index: 5;
   position: relative;
@@ -111,23 +119,24 @@ ul.components li .left {
   position: absolute;
 }
 .react-autosuggest__container .react-autosuggest__suggestions-container ul {
-  background-color: #ffedcb;
+  background-color: #ffedcb !important;
 }
 .react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion {
   list-style: none;
   padding: 2px;
   cursor: pointer;
-  border-bottom: 1px solid #ccab84;
+  background-color: #ffedcb !important;
   color: #314756;
+  margin: 0;
 }
 .react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion:hover {
-  background-color: #ccab84;
+  background-color: #ccab84 !important;
 }
 .react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion:last-child {
   border: 0;
 }
 .react-autosuggest__container .react-autosuggest__suggestions-container ul .react-autosuggest__suggestion--focused {
-  background-color: #ccab84;
+  background-color: #ccab84 !important;
 }
 .react-autosuggest__container .input-search {
   color: #b9964d;
@@ -210,7 +219,7 @@ ul.components li .left {
   padding: 1px 3px;
 }
 .inside-table .row:hover {
-  background-color: rgba(22,112,146,0.4);
+  background-color: rgba(22,112,146,0.25);
 }
 .inside-table .row div[class^=col-md] {
   padding: 1px 2px;
@@ -244,7 +253,7 @@ input {
   outline: none;
   color: #314756;
   width: 65px;
-  padding: 0;
+  padding: 0 1px;
   margin-right: 3px;
 }
 input:last-child {
@@ -264,8 +273,26 @@ textarea:last-child,
 button:last-child {
   margin-right: 0;
 }
+.btn-group {
+  display: inline-block;
+  margin-right: 3px;
+}
+.btn-group button {
+  cursor: pointer;
+  margin: 0;
+  border: 0;
+  padding: 0 9px;
+  background-color: transparent;
+  color: #ffedcb;
+}
+.btn-group button.active {
+  background-color: #0f4e61;
+}
 .w100 {
   width: 100%;
+}
+.w130px {
+  width: 130px;
 }
 .t-a_l {
   text-align: left;
@@ -291,6 +318,12 @@ button:last-child {
 }
 .padd-3 {
   padding: 3px;
+}
+.padd-left-3 {
+  padding-left: 3px;
+}
+.padd-right-3 {
+  padding-right: 3px;
 }
 .padd-b-3 {
   padding-bottom: 3px;

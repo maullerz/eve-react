@@ -65,14 +65,14 @@ body {
         color color-dark
         ul > li {
           padding 1px 3px
-          background-color rgba(22, 112, 146, 0.2)
+          background-color rgba(22, 112, 146, .2)
           margin-top 1px
           &:last-child {
             margin-bottom 0
           }
           &:hover {
             cursor pointer
-            background-color rgba(22, 112, 146, .4)
+            background-color rgba(22, 112, 146, .25)
           }
           .img24 {
             margin-right 6px
@@ -127,6 +127,15 @@ ul.components {
   width 24px
 }
 
+.inline-block-search {
+  z-index 2
+  display inline-block
+  position relative
+  input {
+    margin 0
+  }
+}
+
 // Autocomplete
 .react-autosuggest__container {
   z-index 5
@@ -135,22 +144,23 @@ ul.components {
     width 100%
     position absolute
     ul {
-      background-color #FFEDCB;
+      background-color #FFEDCB !important
       li.react-autosuggest__suggestion {
         list-style none
         padding: 2px
         cursor pointer
-        border-bottom 1px solid #ccab84
+        background-color #ffedcb !important
         color #314756
+        margin 0
         &:hover {
-          background-color #ccab84
+          background-color #ccab84 !important
         }
         &:last-child {
           border 0
         }
       }
       .react-autosuggest__suggestion--focused {
-        background-color: #CCAB84;
+        background-color: #CCAB84 !important
       }
     }
   }
@@ -164,7 +174,6 @@ ul.components {
 }
 
 //  Search input
-
 .inline {
   position relative
   display inline-block
@@ -250,7 +259,7 @@ ul.components {
     margin-top 1px
     padding 1px 3px
     &:hover {
-      background-color rgba(22, 112, 146, .4)
+      background-color rgba(22, 112, 146, .25)
     }
     div[class^=col-md] {
       padding 1px 2px
@@ -292,7 +301,7 @@ input
   outline none
   color color-input
   width 65px
-  padding 0
+  padding 0 1px
   margin-right 3px
   &:last-child {
     margin-right 0
@@ -308,8 +317,27 @@ select, textarea, button
     margin-right 0
   }
 
+.btn-group {
+  display inline-block
+  margin-right 3px
+  button {
+    cursor pointer
+    margin 0
+    border 0
+    padding 0 main-padding+ 6
+    background-color transparent
+    color #ffedcb
+    &.active {
+      background-color color-blue-hover
+    }
+  }
+}
+
 .w100
   width 100%
+
+.w130px
+  width 130px
 
 .t-a_l
   text-align left
@@ -335,6 +363,11 @@ select, textarea, button
 
 .padd-3
   padding 3px
+
+.padd-left-3
+  padding-left 3px
+.padd-right-3
+  padding-right 3px
 
 .padd-b-3
   padding-bottom main-padding

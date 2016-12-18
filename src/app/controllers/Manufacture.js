@@ -10,7 +10,7 @@ import Calculator from './../components/manufacture/Calculator'
 
 class Manufacture extends Component {
 
-  componentWillMount() {
+  componentWillMount () {
     // Initial bpc when load Url
     if (this.props.params.url) {
       this.props.getBpc(this.props.params.url)
@@ -18,7 +18,7 @@ class Manufacture extends Component {
   }
 
   // Update prices when update some blueprint
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.props.bpc_title !== nextProps.bpc_title) {
       let items = clone(nextProps.price_items)
       // get prices
@@ -30,7 +30,7 @@ class Manufacture extends Component {
     }
   }
 
-  render() {
+  render () {
     return (
       <div>
         <SearchBpoPanel />
@@ -47,7 +47,7 @@ class Manufacture extends Component {
     )
   }
 }
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return state.manufactureReducers
 }
 export default connect(mapStateToProps, {getBpc, getPrices, recalculateManufacture})(Manufacture)
