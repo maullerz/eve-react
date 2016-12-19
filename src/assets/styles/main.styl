@@ -128,9 +128,7 @@ ul.components {
 }
 
 .inline-block-search {
-  z-index 2
   display inline-block
-  position relative
   input {
     margin 0
   }
@@ -138,9 +136,9 @@ ul.components {
 
 // Autocomplete
 .react-autosuggest__container {
-  z-index 5
   position relative
   .react-autosuggest__suggestions-container {
+    z-index 2
     width 100%
     position absolute
     ul {
@@ -175,7 +173,7 @@ ul.components {
 
 //  Search input
 .inline {
-  position relative
+//position relative
   display inline-block
   &:hover > .bottom_description {
     display block
@@ -278,11 +276,12 @@ nav#header-menu > ul > li:hover > ul {
 
 nav#header-menu > ul > li > ul {
   position absolute
-  z-index 1
+
   left 0
   top 100%
   display none
   li {
+    z-index 1
     min-width 130px
     border-top: 1px solid rgba(39, 39, 40, .9)
   }
@@ -366,6 +365,7 @@ select, textarea, button
 
 .padd-left-3
   padding-left 3px
+
 .padd-right-3
   padding-right 3px
 

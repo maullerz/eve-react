@@ -11,23 +11,22 @@ import {
   changeBpcCost,
   recalculateManufacture,
   changePriceTypeItem,
-  changePriceTypeComponents
+  changePriceTypeComponents,
+  setComponentsSystem,
+  setItemSystem
 } from '../../controllers/actions/manufactureActions'
 
 class Calculator extends Component {
 
   componentWillReceiveProps(np) {
-    // if changes selectors - update calculator values
-    if (np.run !== this.props.run || np.me !== this.props.me || np.bpc_cost !== this.props.bpc_cost || np.te !== this.props.te) {
-      this.props.recalculateManufacture(np)
+
+    if (np._need_update_prices_items) {
+      this.props.setItemSystem(this.props.pisystem_id, np)
     }
-    if (np.type_p_item !== this.props.type_p_item || np.type_p_components !== this.props.type_p_components) {
-      this.props.recalculateManufacture(np)
+    if (np._need_update_prices_componets) {
+      this.props.setComponentsSystem(this.props.pcsystem_id, np)
     }
-    if (np.costIndex !== this.props.costIndex) {
-      this.props.recalculateManufacture(np)
-    }
-    if (np.pisystem_id !== this.props.pisystem_id || np.pcsystem_id !== this.props.pcsystem_id) {
+    if (np._need_recalculate) {
       this.props.recalculateManufacture(np)
     }
   }
@@ -187,5 +186,7 @@ export default connect(mapStateToProps, {
   recalculateManufacture,
   changeBpcCost,
   changePriceTypeItem,
-  changePriceTypeComponents
+  changePriceTypeComponents,
+  setComponentsSystem,
+  setItemSystem
 })(Calculator)

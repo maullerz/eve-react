@@ -21,7 +21,7 @@ class SystemItem extends Component {
   }
 
   onSuggestionSelected = (event, {suggestion}) => {
-    this.props.setItemSystem(suggestion, this.props)
+    this.props.setItemSystem(suggestion.system_id, this.props)
   };
   onSuggestionsFetchRequested = value => {
     if (value.value.length >= 2) {

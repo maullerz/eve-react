@@ -49,18 +49,15 @@ class SearchBpoPanel extends Component {
         <div className="col-md-12">
           <div className="panel-content">
             <h1>{this.props.bpc.blueprint_name || "Manufacture Calculator"}</h1>
-
-            <div id="autocomplete">
-              <Autosuggest
-                suggestions={this.props.suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                onSuggestionSelected={this.onSuggestionSelected}
-                inputProps={inputProps}
-              />
-            </div>
+            <Autosuggest
+              suggestions={this.props.suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              onSuggestionSelected={this.onSuggestionSelected}
+              inputProps={inputProps}
+            />
           </div>
         </div>
       </div>

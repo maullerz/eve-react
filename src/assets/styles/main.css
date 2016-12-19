@@ -103,18 +103,16 @@ ul.components li .left {
   width: 24px;
 }
 .inline-block-search {
-  z-index: 2;
   display: inline-block;
-  position: relative;
 }
 .inline-block-search input {
   margin: 0;
 }
 .react-autosuggest__container {
-  z-index: 5;
   position: relative;
 }
 .react-autosuggest__container .react-autosuggest__suggestions-container {
+  z-index: 2;
   width: 100%;
   position: absolute;
 }
@@ -146,7 +144,6 @@ ul.components li .left {
   outline: none;
 }
 .inline {
-  position: relative;
   display: inline-block;
 }
 .inline:hover > .bottom_description {
@@ -233,12 +230,12 @@ nav#header-menu > ul > li:hover > ul {
 }
 nav#header-menu > ul > li > ul {
   position: absolute;
-  z-index: 1;
   left: 0;
   top: 100%;
   display: none;
 }
 nav#header-menu > ul > li > ul li {
+  z-index: 1;
   min-width: 130px;
   border-top: 1px solid rgba(39,39,40,0.9);
 }

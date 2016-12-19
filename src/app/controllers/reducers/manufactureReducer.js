@@ -2,7 +2,6 @@ import {
   SEARCH_BPC,
   GET_BPC,
   RESET_SEARCH,
-  GET_PRICES,
   SET_COMPONENTS_AMOUNT,
   CHANGE_ME,
   CHANGE_RUN,
@@ -20,11 +19,12 @@ import {
   RESET_SYSTEM_ITEM,
   SEARCH_ITEM_SYSTEM
 } from '../actions/manufactureActions'
-import {zipObject, range} from 'lodash'
 
 const initialState = {
-  _init: false,
-  _init_calculator: false,
+  _need_update_prices_items: false,
+  _need_update_prices_componets: false,
+  _need_recalculate: false,
+
   suggestions: [],
   // system manufacture suggestions
   sm_sugg: [],
@@ -86,33 +86,11 @@ export default (state = initialState, action = {}) => {
     case CHANGE_RUN:
     case CHANGE_TE:
     case CHANGE_ME:
-    case GET_PRICES:
     case SEARCH_BPC:
     case RESET_SEARCH:
+    case GET_BPC:
     case SET_COMPONENTS_AMOUNT:
       return Object.assign({}, state, action)
-
-    case GET_BPC:
-
-      let formatedPrices = zipObject(action.price_items, range(0, action.price_items.length, 0))
-      return Object.assign({}, state, {
-        bpc: action.bpc,
-        bpc_title: action.bpc.blueprint_name,
-        used_in: action.used_in,
-        bpc_components: action.bpc_components,
-        origin_bpc_components: action.bpc_components,
-        decryptors: action.decryptors,
-        item: action.item,
-        price_items: action.price_items,
-        prices: {
-          sell: formatedPrices,
-          buy: formatedPrices
-        },
-        components_amount: 0,
-        item_amount: 0,
-        _init: false,
-        _init_calculator: false
-      })
 
     default:
       return state
