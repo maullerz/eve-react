@@ -23,11 +23,6 @@ export default class Header extends Component {
                   <a href='#'>Calculators</a>
                   <ul>
                     <li><Link to='/manufacture'>BPC calculator</Link></li>
-                    <li><a href='#'>Cargo, fitting</a></li>
-                    <li><a href='#'>Cargo, fitting</a></li>
-                    <li><a href='#'>Cargo, fitting</a></li>
-                    <li><a href='#'>Cargo, fitting</a></li>
-
                   </ul>
                 </li>
                 <li><a href='#'>Market</a></li>

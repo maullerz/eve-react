@@ -36,7 +36,7 @@ class BpoComponents extends Component {
             <tbody>
               <tr>
                 <td>
-                  <ul className='components'>
+                  <ul className='components list'>
                     {this._components}
                   </ul>
                 </td>

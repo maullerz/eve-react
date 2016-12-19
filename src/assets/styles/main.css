@@ -50,23 +50,23 @@ body #root table tfoot tr td {
   background-color: #272728;
   color: #e4d6ba;
 }
-body #root table tbody tr td ul > li,
-body #root table tfoot tr td ul > li {
+body #root table tbody tr td ul.list > li,
+body #root table tfoot tr td ul.list > li {
   padding: 1px 3px;
   background-color: rgba(22,112,146,0.2);
   margin-top: 1px;
 }
-body #root table tbody tr td ul > li:last-child,
-body #root table tfoot tr td ul > li:last-child {
+body #root table tbody tr td ul.list > li:last-child,
+body #root table tfoot tr td ul.list > li:last-child {
   margin-bottom: 0;
 }
-body #root table tbody tr td ul > li:hover,
-body #root table tfoot tr td ul > li:hover {
+body #root table tbody tr td ul.list > li:hover,
+body #root table tfoot tr td ul.list > li:hover {
   cursor: pointer;
   background-color: rgba(22,112,146,0.25);
 }
-body #root table tbody tr td ul > li .img24,
-body #root table tfoot tr td ul > li .img24 {
+body #root table tbody tr td ul.list > li .img24,
+body #root table tfoot tr td ul.list > li .img24 {
   margin-right: 6px;
   width: 28px;
 }
@@ -115,28 +115,25 @@ ul.components li .left {
   z-index: 2;
   width: 100%;
   position: absolute;
+  background-color: #ffedcb;
 }
-.react-autosuggest__container .react-autosuggest__suggestions-container ul {
-  background-color: #ffedcb !important;
-}
-.react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion {
+.react-autosuggest__container .react-autosuggest__suggestions-container ul > li.react-autosuggest__suggestion {
   list-style: none;
   padding: 2px;
   cursor: pointer;
-  background-color: #ffedcb !important;
   color: #314756;
   margin: 0;
 }
-.react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion:hover {
-  background-color: #ccab84 !important;
+.react-autosuggest__container .react-autosuggest__suggestions-container ul > li.react-autosuggest__suggestion:hover {
+  background-color: #ccab84;
 }
-.react-autosuggest__container .react-autosuggest__suggestions-container ul li.react-autosuggest__suggestion:last-child {
+.react-autosuggest__container .react-autosuggest__suggestions-container ul > li.react-autosuggest__suggestion:last-child {
   border: 0;
 }
-.react-autosuggest__container .react-autosuggest__suggestions-container ul .react-autosuggest__suggestion--focused {
-  background-color: #ccab84 !important;
+.react-autosuggest__container .react-autosuggest__suggestions-container .react-autosuggest__suggestion--focused {
+  background-color: #ccab84;
 }
-.react-autosuggest__container .input-search {
+.input-search {
   color: #b9964d;
   width: 100%;
   background: transparent;
@@ -343,6 +340,9 @@ button:last-child {
   .col-midd,
   .col-last {
     margin-top: 3px;
+  }
+  .inside-table .row div[class^=col-]:nth-child(1) {
+    text-align: left;
   }
 }
 @media (max-width: 375px) {

@@ -63,7 +63,7 @@ body {
       tbody tr td, tfoot tr td {
         background-color rgba(39, 39, 40, 1);
         color color-dark
-        ul > li {
+        ul.list > li {
           padding 1px 3px
           background-color rgba(22, 112, 146, .2)
           margin-top 1px
@@ -141,34 +141,32 @@ ul.components {
     z-index 2
     width 100%
     position absolute
-    ul {
-      background-color #FFEDCB !important
-      li.react-autosuggest__suggestion {
-        list-style none
-        padding: 2px
-        cursor pointer
-        background-color #ffedcb !important
-        color #314756
-        margin 0
-        &:hover {
-          background-color #ccab84 !important
-        }
-        &:last-child {
-          border 0
-        }
+    background-color #FFEDCB
+    ul > li.react-autosuggest__suggestion {
+      list-style none
+      padding: 2px
+      cursor pointer
+      color #314756
+      margin 0
+      &:hover {
+        background-color #CCAB84
       }
-      .react-autosuggest__suggestion--focused {
-        background-color: #CCAB84 !important
+      &:last-child {
+        border 0
       }
     }
+    .react-autosuggest__suggestion--focused {
+      background-color #CCAB84
+    }
   }
-  .input-search {
-    color color
-    width 100%
-    background transparent
-    border 0
-    outline none
-  }
+}
+
+.input-search {
+  color color
+  width 100%
+  background transparent
+  border 0
+  outline none
 }
 
 //  Search input
@@ -388,6 +386,14 @@ select, textarea, button
 
   .col-midd, .col-last
     margin-top main-padding
+
+  .inside-table {
+    .row {
+      div[class^=col-]:nth-child(1) {
+        text-align left
+      }
+    }
+  }
 
 @media (max-width: 375px)
   body

@@ -28,7 +28,7 @@ class UsedIn extends Component {
           <tbody>
           <tr>
             <td>
-              <ul>{this.used_in}</ul>
+              <ul className="list">{this.used_in}</ul>
             </td>
           </tr>
           </tbody>
