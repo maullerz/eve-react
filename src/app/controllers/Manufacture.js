@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getBpc} from './actions/manufactureActions'
+import {getBpc, unmountManufacture} from './actions/manufactureActions'
 // components
 import SearchBpoPanel from './../components/manufacture/SearchBpoPanel'
 import UsedIn from './../components/manufacture/UsedIn'
@@ -14,6 +14,11 @@ class Manufacture extends Component {
     if (this.props.params.url && !this.props.bpc_title) {
       this.props.getBpc(this.props.params.url)
     }
+  }
+
+  componentWillUnmount() {
+    // reset state to initial state
+    this.props.unmountManufacture()
   }
 
   render() {
@@ -36,4 +41,4 @@ class Manufacture extends Component {
 function mapStateToProps(state) {
   return state.manufactureReducers
 }
-export default connect(mapStateToProps, {getBpc})(Manufacture)
+export default connect(mapStateToProps, {getBpc, unmountManufacture})(Manufacture)

@@ -148,8 +148,7 @@ class Calculator extends Component {
                     <div className='inline-block-search'>
                       <SystemManufacture />
                     </div>
-                    <span>&nbsp;{Helper.price(this.props.adjustCost)}
-                      ({Helper.price(+this.props.costIndex * 100)}%)</span>
+                    <span>&nbsp;{Helper.price(this.props.adjustCost)} &nbsp;({Helper.price(+this.props.costIndex * 100)}%)</span>
                   </div>
                 </div>
                 <div className='row'>

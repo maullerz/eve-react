@@ -17,7 +17,8 @@ import {
   SET_COMPONENTS_PRICES,
   SET_ITEM_PRICE,
   RESET_SYSTEM_ITEM,
-  SEARCH_ITEM_SYSTEM
+  SEARCH_ITEM_SYSTEM,
+  UNMOUNT_MANUFACTURE
 } from '../actions/manufactureActions'
 
 const initialState = {
@@ -91,6 +92,9 @@ export default (state = initialState, action = {}) => {
     case GET_BPC:
     case SET_COMPONENTS_AMOUNT:
       return Object.assign({}, state, action)
+
+    case UNMOUNT_MANUFACTURE:
+      return Object.assign({}, state, initialState)
 
     default:
       return state

@@ -1,5 +1,5 @@
 import ApiService from './../../api'
-import {forEach, cloneDeep, ceil, zipObject, range} from 'lodash'
+import {forEach, cloneDeep, ceil, zipObject, range, values} from 'lodash'
 import Helper from '../../helpers'
 
 export const SEARCH_BPC = 'SEARCH_BPC'
@@ -22,10 +22,17 @@ export const SET_COMPONENTS_PRICES = 'SET_COMPONENTS_PRICES'
 export const SET_ITEM_PRICE = 'SET_ITEM_PRICE'
 export const SEARCH_ITEM_SYSTEM = 'SEARCH_ITEM_SYSTEM'
 export const RESET_SYSTEM_ITEM = 'RESET_SYSTEM_ITEM'
+export const UNMOUNT_MANUFACTURE = 'RESET_SYSTEM_ITEM'
+
+export function unmountManufacture() {
+  return dispatch => {
+    dispatch(unmountManufactureState())
+  }
+}
 
 export function setComponentsSystem(system_id, props) {
   return dispatch => {
-    return ApiService.Main.prices(system_id, props.price_items.join(','))
+    return ApiService.Main.prices(system_id, values(props.price_items).join(','))
     .then(json => {
       dispatch(setComponentsPrices(json.data, props))
     })
@@ -179,9 +186,8 @@ export function updateManufactureSystem(system) {
 export function setComponentsPrices(prices, props) {
   let rejectID = props.bpc.productTypeID
   let oldPrices = props.prices
-
   forEach(props.prices.sell, function (val, index) {
-    if (index !== rejectID) {
+    if (index !== +rejectID) {
       oldPrices.sell[index] = prices.prices.sell[index]
       oldPrices.buy[index] = prices.prices.buy[index]
     }
@@ -326,6 +332,12 @@ export function updateManufacture(props) {
     total: manufactureCost,
     adjustCost: adjustCost,
     _need_recalculate: false
+  }
+}
+
+export function unmountManufactureState() {
+  return {
+    type: UNMOUNT_MANUFACTURE
   }
 }
 

@@ -1,6 +1,7 @@
 import numeraljs from '../../node_modules/numeral/numeral'
 
-let Helper = {
+let Helper;
+Helper = {
   shortNum (n) {
     return numeraljs(n).format('0.[00]a')
   },
@@ -11,7 +12,22 @@ let Helper = {
 
   price (n) {
     return numeraljs(n).format('0,0.00')
+  },
+
+  escapeRegexCharacters(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  },
+
+  cfg: {
+    debounceTimeout: 350
+  },
+
+  /**
+   * @return {boolean}
+   */
+  AutocompleteMinCharacters(str) {
+    return str.length >= 2
   }
-}
+};
 
 export default Helper

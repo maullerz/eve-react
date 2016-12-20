@@ -6,6 +6,8 @@ import {
   setItemSystem
 } from './../../controllers/actions/manufactureActions'
 import Autocomplete from "react-autosuggest"
+import {debounce} from "lodash"
+import Helper from "../../helpers"
 
 // autosuggest
 const getSuggestionValue = suggestion => suggestion.system_name
@@ -18,14 +20,19 @@ class SystemItem extends Component {
     this.state = {
       value: "Jita"
     }
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+  }
+
+  loadSuggestions(value) {
+    this.props.searchItemSystem(Helper.escapeRegexCharacters(value))
   }
 
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.setItemSystem(suggestion.system_id, this.props)
   };
   onSuggestionsFetchRequested = value => {
-    if (value.value.length >= 2) {
-      this.props.searchItemSystem(value.value)
+    if (Helper.AutocompleteMinCharacters(value.value)) {
+      this.debounceGetSuggestions(value.value)
     }
   };
   onSuggestionsClearRequested = () => {

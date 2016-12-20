@@ -3,6 +3,8 @@ import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
 import {searchBpc, getBpc, resetSearch} from '../../controllers/actions/manufactureActions'
 import {browserHistory} from "react-router"
+import {debounce} from "lodash"
+import Helper from "../../helpers"
 
 const getSuggestionValue = suggestion => suggestion.blueprint_name
 const renderSuggestion = suggestion => suggestion.blueprint_name
@@ -14,6 +16,11 @@ class SearchBpoPanel extends Component {
     this.state = {
       value: ""
     }
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+  }
+
+  loadSuggestions(value) {
+    this.props.searchBpc(Helper.escapeRegexCharacters(value.value))
   }
 
   onSuggestionSelected = (event, {suggestion}) => {
@@ -21,7 +28,9 @@ class SearchBpoPanel extends Component {
     browserHistory.push("/manufacture/" + suggestion.url)
   };
   onSuggestionsFetchRequested = value => {
-    this.props.searchBpc(value.value);
+    if (Helper.AutocompleteMinCharacters(value.value)) {
+      this.debounceGetSuggestions(value)
+    }
   };
   onSuggestionsClearRequested = () => {
     this.props.resetSearch();
