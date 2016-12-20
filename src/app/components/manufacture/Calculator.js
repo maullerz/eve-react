@@ -21,9 +21,9 @@ class Calculator extends Component {
   componentWillReceiveProps(np) {
 
     if (np._need_update_prices_items) {
-      this.props.setItemSystem(this.props.pisystem_id, np)
+      this.props.setItemSystem(this.props.pisystem_id, np.bpc.productTypeID, np.prices)
     }
-    if (np._need_update_prices_componets) {
+    if (np._need_update_prices_components) {
       this.props.setComponentsSystem(this.props.pcsystem_id, np)
     }
     if (np._need_recalculate) {

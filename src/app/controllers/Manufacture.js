@@ -17,7 +17,6 @@ class Manufacture extends Component {
   }
 
   componentWillUnmount() {
-    // reset state to initial state
     this.props.unmountManufacture()
   }
 

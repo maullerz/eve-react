@@ -23,7 +23,7 @@ import {
 
 const initialState = {
   _need_update_prices_items: false,
-  _need_update_prices_componets: false,
+  _need_update_prices_components: false,
   _need_recalculate: false,
 
   suggestions: [],

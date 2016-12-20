@@ -33,33 +33,35 @@ export function unmountManufacture() {
 export function setComponentsSystem(system_id, props) {
   return dispatch => {
     return ApiService.Main.prices(system_id, values(props.price_items).join(','))
-    .then(json => {
-      dispatch(setComponentsPrices(json.data, props))
-    })
+      .then(json => {
+        dispatch(setComponentsPrices(json.data, props))
+      })
   }
 }
-export function setItemSystem(system_id, props) {
+export function setItemSystem(system_id, item_id, oldPrices) {
   return dispatch => {
-    return ApiService.Main.prices(system_id, props.bpc.productTypeID)
-    .then(json => {
-      dispatch(setItemPrice(json.data, props))
-    })
+    return ApiService.Main.prices(system_id, item_id)
+      .then(json => {
+        console.log("init1");
+        console.log(json.data, item_id, oldPrices.prices);
+        dispatch(setItemPrice(json.data, item_id, oldPrices.prices))
+      })
   }
 }
 export function searchItemSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-    .then(json => {
-      dispatch(setItemSystemSuggestions(json.data.items))
-    })
+      .then(json => {
+        dispatch(setItemSystemSuggestions(json.data.items))
+      })
   }
 }
 export function searchComponentsSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-    .then(json => {
-      dispatch(setComponentsSystemSuggestions(json.data.items))
-    })
+      .then(json => {
+        dispatch(setComponentsSystemSuggestions(json.data.items))
+      })
   }
 }
 export function resetManufactureSystemSuggestions() {
@@ -81,18 +83,18 @@ export function setManufactureSystem(system) {
 export function searchManufactureSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-    .then(json => {
-      dispatch(setManufactureSystemSuggestions(json.data.items))
-    })
+      .then(json => {
+        dispatch(setManufactureSystemSuggestions(json.data.items))
+      })
   }
 }
 // autocomplete search bpc
 export function searchBpc(term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-    .then(res => {
-      dispatch(setAutocompleteItems(res.data.items))
-    })
+      .then(res => {
+        dispatch(setAutocompleteItems(res.data.items))
+      })
   }
 }
 
@@ -100,9 +102,9 @@ export function searchBpc(term) {
 export function getBpc(url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-    .then((res) => {
-      dispatch(setBlueprint(res.data))
-    })
+      .then((res) => {
+        dispatch(setBlueprint(res.data))
+      })
   }
 }
 
@@ -197,19 +199,29 @@ export function setComponentsPrices(prices, props) {
     prices: oldPrices,
     pcsystem_id: prices.system_id,
     _need_recalculate: true,
-    _need_update_prices_componets: false
+    _need_update_prices_components: false
   }
 }
 
-export function setItemPrice(prices, props) {
-  let itemID = props.bpc.productTypeID
-  let oldPrices = props.prices
-  oldPrices.sell[itemID] = prices.prices.sell[itemID]
-  oldPrices.buy[itemID] = prices.prices.buy[itemID]
+export function setItemPrice(newPrices, itemID, oldPrices) {
+
+  console.log("init2");
+  console.log(newPrices, itemID, oldPrices);
+
+  let op = cloneDeep(oldPrices)
+  console.log("before");
+  console.log(op);
+
+
+  op.sell[itemID] = newPrices.prices.sell[itemID]
+  op.buy[itemID] = newPrices.prices.buy[itemID]
+
+  console.log("after");
+  console.log(op);
   return {
     type: SET_ITEM_PRICE,
     prices: oldPrices,
-    pisystem_id: prices.system_id,
+    pisystem_id: newPrices.system_id,
     _need_recalculate: true,
     _need_update_prices_items: false
   }
@@ -270,8 +282,9 @@ export function setPriceTypeComponents(type) {
 // dispatch
 export function setBlueprint(response) {
   let prices = response.price_items
-  let sellPrices = zipObject(cloneDeep(prices), range(0, cloneDeep(cloneDeep(prices)).length, 0))
-  let buyPrices = zipObject(cloneDeep(prices), range(0, cloneDeep(cloneDeep(prices)).length, 0))
+  let sellPrices = zipObject(cloneDeep(prices), range(0, cloneDeep(prices).length, 0))
+  let buyPrices = zipObject(cloneDeep(prices), range(0, cloneDeep(prices).length, 0))
+
   return {
     type: GET_BPC,
     bpc: response.bpc,
@@ -287,7 +300,7 @@ export function setBlueprint(response) {
       buy: buyPrices
     },
     _need_update_prices_items: true,
-    _need_update_prices_componets: true,
+    _need_update_prices_components: true,
   }
 }
 
