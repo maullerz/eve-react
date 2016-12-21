@@ -1,5 +1,5 @@
 import ApiService from './../../api'
-import {forEach, cloneDeep, ceil, zipObject, range, values} from 'lodash'
+import {forEach, cloneDeep, ceil, map} from 'lodash'
 import Helper from '../../helpers'
 
 export const SEARCH_BPC = 'SEARCH_BPC'
@@ -31,20 +31,20 @@ export function unmountManufacture() {
 }
 
 export function setComponentsSystem(system_id, props) {
+
+  let componentsIds = map(props.bpc_components, 'item_id').join(",")
   return dispatch => {
-    return ApiService.Main.prices(system_id, values(props.price_items).join(','))
+    return ApiService.Main.prices(system_id, componentsIds)
       .then(json => {
         dispatch(setComponentsPrices(json.data, props))
       })
   }
 }
-export function setItemSystem(system_id, item_id, oldPrices) {
+export function setItemSystem(system_id, props) {
   return dispatch => {
-    return ApiService.Main.prices(system_id, item_id)
+    return ApiService.Main.prices(system_id, props.item.item_id)
       .then(json => {
-        console.log("init1");
-        console.log(json.data, item_id, oldPrices.prices);
-        dispatch(setItemPrice(json.data, item_id, oldPrices.prices))
+        dispatch(setItemPrice(json.data, props))
       })
   }
 }
@@ -103,7 +103,7 @@ export function getBpc(url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
       .then((res) => {
-        dispatch(setBlueprint(res.data))
+        dispatch(setBpc(res.data))
       })
   }
 }
@@ -186,13 +186,10 @@ export function updateManufactureSystem(system) {
 
 // dispatch
 export function setComponentsPrices(prices, props) {
-  let rejectID = props.bpc.productTypeID
-  let oldPrices = props.prices
-  forEach(props.prices.sell, function (val, index) {
-    if (index !== +rejectID) {
-      oldPrices.sell[index] = prices.prices.sell[index]
-      oldPrices.buy[index] = prices.prices.buy[index]
-    }
+  let oldPrices = cloneDeep(props.prices)
+  forEach(prices.prices.sell, function (val, index) {
+    oldPrices.sell[index] = prices.prices.buy[index]
+    oldPrices.buy[index] = prices.prices.buy[index]
   })
   return {
     type: SET_COMPONENTS_PRICES,
@@ -203,27 +200,19 @@ export function setComponentsPrices(prices, props) {
   }
 }
 
-export function setItemPrice(newPrices, itemID, oldPrices) {
+export function setItemPrice(newPrices, props) {
+  let oldPrices = cloneDeep(props.prices)
+  let item_id = cloneDeep(props.item.item_id)
 
-  console.log("init2");
-  console.log(newPrices, itemID, oldPrices);
+  oldPrices.sell[item_id] = newPrices.prices.sell[item_id]
+  oldPrices.buy[item_id] = newPrices.prices.buy[item_id]
 
-  let op = cloneDeep(oldPrices)
-  console.log("before");
-  console.log(op);
-
-
-  op.sell[itemID] = newPrices.prices.sell[itemID]
-  op.buy[itemID] = newPrices.prices.buy[itemID]
-
-  console.log("after");
-  console.log(op);
   return {
     type: SET_ITEM_PRICE,
     prices: oldPrices,
     pisystem_id: newPrices.system_id,
     _need_recalculate: true,
-    _need_update_prices_items: false
+    _need_update_prices_item: false
   }
 }
 
@@ -235,8 +224,6 @@ export function updateRun(run) {
     _need_recalculate: true
   }
 }
-
-// dispatch
 export function updateMe(me) {
   return {
     type: CHANGE_ME,
@@ -244,8 +231,6 @@ export function updateMe(me) {
     _need_recalculate: true
   }
 }
-
-// dispatch
 export function updateTe(te) {
   return {
     type: CHANGE_TE,
@@ -280,26 +265,26 @@ export function setPriceTypeComponents(type) {
 }
 
 // dispatch
-export function setBlueprint(response) {
-  let prices = response.price_items
-  let sellPrices = zipObject(cloneDeep(prices), range(0, cloneDeep(prices).length, 0))
-  let buyPrices = zipObject(cloneDeep(prices), range(0, cloneDeep(prices).length, 0))
-
+export function setBpc(response) {
+  let price_items = response.price_items
   return {
     type: GET_BPC,
     bpc: response.bpc,
     bpc_title: response.bpc.blueprint_name,
     used_in: response.used_in,
     bpc_components: response.bpc_components,
-    origin_bpc_components: response.bpc_components,
-    decryptors: response.decryptors,
+    origin_bpc_components: cloneDeep(response.bpc_components),
     item: response.item,
-    price_items: response.price_items,
+    price_items: price_items,
     prices: {
-      sell: sellPrices,
-      buy: buyPrices
+      sell: price_items,
+      buy: price_items
     },
-    _need_update_prices_items: true,
+    item_amount: 0,
+    components_amount: 0,
+    components_volume: 0,
+    _need_recalculate: false,
+    _need_update_prices_item: true,
     _need_update_prices_components: true,
   }
 }
@@ -308,12 +293,15 @@ export function setBlueprint(response) {
 // Update manufacture when have changes
 export function updateManufacture(props) {
 
-  let bpcc = cloneDeep(props.origin_bpc_components)
-  let percentage = (100 - +props.me) / 100
+  let oldProps = cloneDeep(props)
+  let bpcc = oldProps.origin_bpc_components
+  let percentage = (100 - +oldProps.me) / 100
   let amount = 0
   let volume = 0
   let baseCost = 0
-  let itemAmount = props.prices[props.type_p_item][props.bpc.productTypeID] * props.run
+  let itemAmount = oldProps.prices[oldProps.type_p_item][oldProps.item.item_id] * oldProps.run
+  
+  console.log(itemAmount);
 
   forEach(bpcc, val => {
     // calculate new QTY

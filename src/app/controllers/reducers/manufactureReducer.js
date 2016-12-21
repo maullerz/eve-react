@@ -22,7 +22,7 @@ import {
 } from '../actions/manufactureActions'
 
 const initialState = {
-  _need_update_prices_items: false,
+  _need_update_prices_item: false,
   _need_update_prices_components: false,
   _need_recalculate: false,
 
@@ -40,9 +40,9 @@ const initialState = {
   bpc_title: '',
   used_in: [],
   bpc_components: [],
-  decryptors: [],
+  // decryptors: [],
   item: {},
-  price_items: [],
+  price_items: {},
   prices: {
     sell: {},
     buy: {}
