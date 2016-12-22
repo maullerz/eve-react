@@ -35,33 +35,33 @@ export function setComponentsSystem(system_id, props) {
   let componentsIds = map(props.bpc_components, 'item_id').join(",")
   return dispatch => {
     return ApiService.Main.prices(system_id, componentsIds)
-      .then(json => {
-        dispatch(setComponentsPrices(json.data, props))
-      })
+    .then(json => {
+      dispatch(setComponentsPrices(json.data, props))
+    })
   }
 }
 export function setItemSystem(system_id, props) {
   return dispatch => {
     return ApiService.Main.prices(system_id, props.item.item_id)
-      .then(json => {
-        dispatch(setItemPrice(json.data, props))
-      })
+    .then(json => {
+      dispatch(setItemPrice(json.data, props))
+    })
   }
 }
 export function searchItemSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-      .then(json => {
-        dispatch(setItemSystemSuggestions(json.data.items))
-      })
+    .then(json => {
+      dispatch(setItemSystemSuggestions(json.data.items))
+    })
   }
 }
 export function searchComponentsSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-      .then(json => {
-        dispatch(setComponentsSystemSuggestions(json.data.items))
-      })
+    .then(json => {
+      dispatch(setComponentsSystemSuggestions(json.data.items))
+    })
   }
 }
 export function resetManufactureSystemSuggestions() {
@@ -83,18 +83,18 @@ export function setManufactureSystem(system) {
 export function searchManufactureSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-      .then(json => {
-        dispatch(setManufactureSystemSuggestions(json.data.items))
-      })
+    .then(json => {
+      dispatch(setManufactureSystemSuggestions(json.data.items))
+    })
   }
 }
 // autocomplete search bpc
 export function searchBpc(term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-      .then(res => {
-        dispatch(setAutocompleteItems(res.data.items))
-      })
+    .then(res => {
+      dispatch(setAutocompleteItems(res.data.items))
+    })
   }
 }
 
@@ -102,9 +102,9 @@ export function searchBpc(term) {
 export function getBpc(url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-      .then((res) => {
-        dispatch(setBpc(res.data))
-      })
+    .then((res) => {
+      dispatch(setBpc(res.data))
+    })
   }
 }
 
@@ -186,31 +186,42 @@ export function updateManufactureSystem(system) {
 
 // dispatch
 export function setComponentsPrices(prices, props) {
-  let oldPrices = cloneDeep(props.prices)
-  forEach(prices.prices.sell, function (val, index) {
-    oldPrices.sell[index] = prices.prices.buy[index]
-    oldPrices.buy[index] = prices.prices.buy[index]
+
+  let prices_sell = cloneDeep(props.prices.sell)
+  let prices_buy = cloneDeep(props.prices.buy)
+
+  forEach(map(props.bpc_components, 'item_id'), (v) => {
+    prices_sell[v] = prices.prices['sell'][v]
+    prices_buy[v] = prices.prices['buy'][v]
   })
+
   return {
     type: SET_COMPONENTS_PRICES,
-    prices: oldPrices,
+    prices: {
+      sell: prices_sell,
+      buy: prices_buy
+    },
     pcsystem_id: prices.system_id,
     _need_recalculate: true,
     _need_update_prices_components: false
   }
 }
 
-export function setItemPrice(newPrices, props) {
-  let oldPrices = cloneDeep(props.prices)
-  let item_id = cloneDeep(props.item.item_id)
+export function setItemPrice(prices, props) {
 
-  oldPrices.sell[item_id] = newPrices.prices.sell[item_id]
-  oldPrices.buy[item_id] = newPrices.prices.buy[item_id]
+  let prices_sell = cloneDeep(props.prices.sell)
+  let prices_buy = cloneDeep(props.prices.buy)
+
+  prices_sell[props.item.item_id] = prices.prices['sell'][props.item.item_id]
+  prices_buy[props.item.item_id] = prices.prices['buy'][props.item.item_id]
 
   return {
     type: SET_ITEM_PRICE,
-    prices: oldPrices,
-    pisystem_id: newPrices.system_id,
+    prices: {
+      sell: prices_sell,
+      buy: prices_buy
+    },
+    pisystem_id: prices.system_id,
     _need_recalculate: true,
     _need_update_prices_item: false
   }
@@ -300,7 +311,7 @@ export function updateManufacture(props) {
   let volume = 0
   let baseCost = 0
   let itemAmount = oldProps.prices[oldProps.type_p_item][oldProps.item.item_id] * oldProps.run
-  
+
   console.log(itemAmount);
 
   forEach(bpcc, val => {
