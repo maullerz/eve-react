@@ -288,8 +288,8 @@ export function setBpc(response) {
     item: response.item,
     price_items: price_items,
     prices: {
-      sell: price_items,
-      buy: price_items
+      sell: cloneDeep(price_items),
+      buy: cloneDeep(price_items)
     },
     item_amount: 0,
     components_amount: 0,
@@ -311,8 +311,6 @@ export function updateManufacture(props) {
   let volume = 0
   let baseCost = 0
   let itemAmount = oldProps.prices[oldProps.type_p_item][oldProps.item.item_id] * oldProps.run
-
-  console.log(itemAmount);
 
   forEach(bpcc, val => {
     // calculate new QTY
