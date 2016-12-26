@@ -140,23 +140,11 @@ ul.components li .left {
   border: 0;
   outline: none;
 }
+.input-search:focus {
+  border-bottom: 1px solid #808080;
+}
 .inline {
   display: inline-block;
-}
-.inline:hover > .bottom_description {
-  display: block;
-}
-.bottom_description {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  background-color: #0f4e61;
-  text-transform: uppercase;
-  color: #fff;
-  width: 100%;
-  font-size: 0.65em;
-  padding: 0 2px;
 }
 :hover > ul {
   display: block;
@@ -281,6 +269,27 @@ button:last-child {
 }
 .btn-group button.active {
   background-color: #0f4e61;
+}
+.reactToolTip {
+  padding: 8px !important;
+  border: 1px solid #0f4e61 !important;
+  background-color: #272728 !important;
+  opacity: 1 !important;
+}
+.reactToolTip.place-top:after {
+  border-top-color: #0f4e61 !important;
+  border-top-style: solid !important;
+  border-top-width: 6px !important;
+}
+.reactToolTip.place-left:after {
+  border-left-color: #0f4e61 !important;
+  border-left-style: solid !important;
+  border-left-width: 6px !important;
+}
+.reactToolTip.place-right:after {
+  border-right-color: #0f4e61 !important;
+  border-right-style: solid !important;
+  border-right-width: 6px !important;
 }
 .w100 {
   width: 100%;

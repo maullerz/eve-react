@@ -47,7 +47,7 @@ class SearchBpoPanel extends Component {
     const {value} = this.state;
 
     const inputProps = {
-      placeholder: 'Search blueprint',
+      placeholder: 'Search blueprint here...',
       value,
       className: "input-search",
       onChange: this.onChange
