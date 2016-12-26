@@ -13,11 +13,17 @@ import {
   changePriceTypeItem,
   changePriceTypeComponents,
   setComponentsSystem,
-  setItemSystem
+  setItemSystem,
+  getFacilities
 } from '../../controllers/actions/manufactureActions'
 
 class Calculator extends Component {
 
+  componentWillMount() {
+    if(!this.props.facility.length) {
+      this.props.getFacilities(1)
+    }
+  }
   componentWillReceiveProps(np) {
 
     if (np._need_update_prices_item) {
@@ -187,5 +193,6 @@ export default connect(mapStateToProps, {
   changePriceTypeItem,
   changePriceTypeComponents,
   setComponentsSystem,
-  setItemSystem
+  setItemSystem,
+  getFacilities
 })(Calculator)

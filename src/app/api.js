@@ -16,6 +16,13 @@ export default {
   Main: {
     prices: function (systemId, items) {
       return axios.get(baseUrl + '/prices/' + systemId + '/' + items)
+    },
+    facilities: function (activityID) {
+      return axios.get(baseUrl + '/facility.json', {
+        params: {
+          activityID: activityID
+        }
+      })
     }
   },
 

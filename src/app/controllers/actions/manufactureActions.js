@@ -23,10 +23,20 @@ export const SET_ITEM_PRICE = 'SET_ITEM_PRICE'
 export const SEARCH_ITEM_SYSTEM = 'SEARCH_ITEM_SYSTEM'
 export const RESET_SYSTEM_ITEM = 'RESET_SYSTEM_ITEM'
 export const UNMOUNT_MANUFACTURE = 'RESET_SYSTEM_ITEM'
+export const SET_FACILITY = 'SET_FACILITY'
 
 export function unmountManufacture() {
   return dispatch => {
     dispatch(unmountManufactureState())
+  }
+}
+
+export function getFacilities(activityID) {
+  return dispatch => {
+    return ApiService.Main.facilities(activityID)
+      .then(json => {
+        dispatch(setFacility(json.data.items))
+      })
   }
 }
 
@@ -35,33 +45,33 @@ export function setComponentsSystem(system_id, props) {
   let componentsIds = map(props.bpc_components, 'item_id').join(",")
   return dispatch => {
     return ApiService.Main.prices(system_id, componentsIds)
-    .then(json => {
-      dispatch(setComponentsPrices(json.data, props))
-    })
+      .then(json => {
+        dispatch(setComponentsPrices(json.data, props))
+      })
   }
 }
 export function setItemSystem(system_id, props) {
   return dispatch => {
     return ApiService.Main.prices(system_id, props.item.item_id)
-    .then(json => {
-      dispatch(setItemPrice(json.data, props))
-    })
+      .then(json => {
+        dispatch(setItemPrice(json.data, props))
+      })
   }
 }
 export function searchItemSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-    .then(json => {
-      dispatch(setItemSystemSuggestions(json.data.items))
-    })
+      .then(json => {
+        dispatch(setItemSystemSuggestions(json.data.items))
+      })
   }
 }
 export function searchComponentsSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-    .then(json => {
-      dispatch(setComponentsSystemSuggestions(json.data.items))
-    })
+      .then(json => {
+        dispatch(setComponentsSystemSuggestions(json.data.items))
+      })
   }
 }
 export function resetManufactureSystemSuggestions() {
@@ -83,18 +93,18 @@ export function setManufactureSystem(system) {
 export function searchManufactureSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-    .then(json => {
-      dispatch(setManufactureSystemSuggestions(json.data.items))
-    })
+      .then(json => {
+        dispatch(setManufactureSystemSuggestions(json.data.items))
+      })
   }
 }
 // autocomplete search bpc
 export function searchBpc(term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-    .then(res => {
-      dispatch(setAutocompleteItems(res.data.items))
-    })
+      .then(res => {
+        dispatch(setAutocompleteItems(res.data.items))
+      })
   }
 }
 
@@ -102,9 +112,9 @@ export function searchBpc(term) {
 export function getBpc(url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-    .then((res) => {
-      dispatch(setBpc(res.data))
-    })
+      .then((res) => {
+        dispatch(setBpc(res.data))
+      })
   }
 }
 
@@ -348,6 +358,13 @@ export function updateManufacture(props) {
 export function unmountManufactureState() {
   return {
     type: UNMOUNT_MANUFACTURE
+  }
+}
+
+export function setFacility(facilities) {
+  return {
+    type: SET_FACILITY,
+    facility: facilities
   }
 }
 

@@ -18,7 +18,8 @@ import {
   SET_ITEM_PRICE,
   RESET_SYSTEM_ITEM,
   SEARCH_ITEM_SYSTEM,
-  UNMOUNT_MANUFACTURE
+  UNMOUNT_MANUFACTURE,
+  SET_FACILITY
 } from '../actions/manufactureActions'
 
 const initialState = {
@@ -66,12 +67,14 @@ const initialState = {
   pcs_sugg: [],
   pis_sugg: [],
   pisystem_id: 30000142,
-  pisystem_name: 'Jita'
+  pisystem_name: 'Jita',
+  facility: []
 }
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
 
+    case SET_FACILITY:
     case RESET_SYSTEM_ITEM:
     case SEARCH_ITEM_SYSTEM:
     case SET_ITEM_PRICE:
