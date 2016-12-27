@@ -10,6 +10,13 @@ export default {
           term: term
         }
       })
+    },
+    item: function(term){
+      return axios.get(baseUrl + '/search/item.json', {
+        params: {
+          term: term
+        }
+      })
     }
   },
 

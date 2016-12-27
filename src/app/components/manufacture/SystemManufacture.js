@@ -67,7 +67,7 @@ class SystemManufacture extends Component {
 }
 
 function mapStateToProps(state) {
-  return state.manufactureReducers
+  return state.manufactureReducer
 }
 export default connect(mapStateToProps, {
   searchManufactureSystem,

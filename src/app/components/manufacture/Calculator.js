@@ -4,6 +4,7 @@ import Helper from '../../helpers'
 import SystemManufacture from '../manufacture/SystemManufacture'
 import SystemComponents from '../manufacture/SystemComponents'
 import SystemItem from '../manufacture/SystemItem'
+import {find} from 'lodash'
 import {
   changeMe,
   changeRun,
@@ -14,16 +15,18 @@ import {
   changePriceTypeComponents,
   setComponentsSystem,
   setItemSystem,
-  getFacilities
+  getFacilities,
+  setFacilityVal
 } from '../../controllers/actions/manufactureActions'
 
 class Calculator extends Component {
 
   componentWillMount() {
-    if(!this.props.facility.length) {
+    if (!this.props.facility.length) {
       this.props.getFacilities(1)
     }
   }
+
   componentWillReceiveProps(np) {
 
     if (np._need_update_prices_item) {
@@ -57,6 +60,17 @@ class Calculator extends Component {
     this.props.changeMe(event.target.value)
   }
 
+  changeFacility(event) {
+
+    let facilityId = event.target.value
+    let facilityVal = find(this.props.facility, function (val) {
+      return val.id === +facilityId
+    })
+    if (facilityVal) {
+      this.props.setFacilityVal(facilityVal.me, facilityVal.te)
+    }
+  }
+
   changeTe(event) {
     this.props.changeTe(event.target.value)
   }
@@ -82,8 +96,10 @@ class Calculator extends Component {
                 <div className='row'>
                   <div className={col.left}>Factory</div>
                   <div className={col.right}>
-                    <select className='w100'>
-                      <option value='12'>Status</option>
+                    <select className='w100' onChange={this.changeFacility.bind(this)}>
+                      {this.props.facility.map(val => {
+                        return <option key={val.id} value={val.id}>{val.name}</option>
+                      })}
                     </select>
                   </div>
                 </div>
@@ -99,7 +115,7 @@ class Calculator extends Component {
                       {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0].map((val) => {
                         return <option key={val} value={val}>TE {val}</option>
                       })}
-                    </select>
+                    </select> {this.props.timeRun}
                   </div>
                 </div>
                 <div className='row'>
@@ -182,7 +198,7 @@ class Calculator extends Component {
 }
 
 function mapStateToProps(state) {
-  return state.manufactureReducers
+  return state.manufactureReducer
 }
 export default connect(mapStateToProps, {
   changeMe,
@@ -194,5 +210,6 @@ export default connect(mapStateToProps, {
   changePriceTypeComponents,
   setComponentsSystem,
   setItemSystem,
-  getFacilities
+  getFacilities,
+  setFacilityVal
 })(Calculator)

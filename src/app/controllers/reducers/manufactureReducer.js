@@ -19,7 +19,8 @@ import {
   RESET_SYSTEM_ITEM,
   SEARCH_ITEM_SYSTEM,
   UNMOUNT_MANUFACTURE,
-  SET_FACILITY
+  SET_FACILITY,
+  SET_FACILITY_VAL
 } from '../actions/manufactureActions'
 
 const initialState = {
@@ -55,6 +56,7 @@ const initialState = {
   te: 10,
   run: 1,
   output: 0,
+  timeRun: 0,
   origin_bpc_components: [],
   profit: 0,
   bpc_cost: 0,
@@ -68,13 +70,18 @@ const initialState = {
   pis_sugg: [],
   pisystem_id: 30000142,
   pisystem_name: 'Jita',
-  facility: []
+  facility: [],
+  facility_val: {
+    me: 1,
+    te: 1
+  }
 }
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
 
     case SET_FACILITY:
+    case SET_FACILITY_VAL:
     case RESET_SYSTEM_ITEM:
     case SEARCH_ITEM_SYSTEM:
     case SET_ITEM_PRICE:
@@ -103,4 +110,3 @@ export default (state = initialState, action = {}) => {
       return state
   }
 }
-

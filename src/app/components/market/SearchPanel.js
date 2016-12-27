@@ -1,15 +1,15 @@
 import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
-import {searchBpc, getBpc, resetSearch} from '../../controllers/actions/manufactureActions'
-import {browserHistory} from "react-router"
+import {searchItem} from '../../controllers/actions/marketActions'
+
 import {debounce} from "lodash"
 import Helper from "../../helpers"
 
 const getSuggestionValue = suggestion => suggestion.blueprint_name
 const renderSuggestion = suggestion => suggestion.blueprint_name
 
-class SearchBpoPanel extends Component {
+class SearchPanel extends Component {
 
   constructor() {
     super()
@@ -20,12 +20,11 @@ class SearchBpoPanel extends Component {
   }
 
   loadSuggestions(value) {
-    this.props.searchBpc(Helper.escapeRegexCharacters(value.value))
+    this.props.searchItem(Helper.escapeRegexCharacters(value.value))
   }
 
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.getBpc(suggestion.url)
-    browserHistory.push("/manufacture/" + suggestion.url)
   };
   onSuggestionsFetchRequested = value => {
     if (Helper.AutocompleteMinCharacters(value.value)) {
@@ -43,11 +42,13 @@ class SearchBpoPanel extends Component {
   };
 
   render() {
+    
+    console.log(this.props);
 
     const {value} = this.state;
 
     const inputProps = {
-      placeholder: 'Search blueprint here...',
+      placeholder: 'Search item here...',
       value,
       className: "input-search",
       onChange: this.onChange
@@ -57,9 +58,9 @@ class SearchBpoPanel extends Component {
       <div className="row">
         <div className="col-md-12">
           <div className="panel-content">
-            <h1>{this.props.bpc.blueprint_name || "Manufacture Calculator"}</h1>
+            <h1>Market</h1>
             <Autosuggest
-              suggestions={this.props.suggestions}
+              suggestions={this.props.sugg}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               getSuggestionValue={getSuggestionValue}
@@ -75,14 +76,6 @@ class SearchBpoPanel extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    suggestions: state.manufactureReducer.suggestions || [],
-    bpc: state.manufactureReducer.bpc,
-    used_in: state.manufactureReducer.used_in,
-    bpc_components: state.manufactureReducer.bpc_components,
-    decryptors: state.manufactureReducer.decryptors,
-    item: state.manufactureReducer.item,
-    price_items: state.manufactureReducer.price_items
-  }
+  return state.marketReducer
 }
-export default connect(mapStateToProps, {searchBpc, getBpc, resetSearch})(SearchBpoPanel);
+export default connect(mapStateToProps, {searchItem})(SearchPanel);

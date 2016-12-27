@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux'
-import manufactureReducers from './app/controllers/reducers/manufactureReducer'
+import manufactureReducer from './app/controllers/reducers/manufactureReducer'
+import marketReducer from './app/controllers/reducers/marketReducer'
 
 export default combineReducers({
-  manufactureReducers
+  manufactureReducer, marketReducer
 })

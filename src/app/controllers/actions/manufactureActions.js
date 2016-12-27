@@ -24,6 +24,7 @@ export const SEARCH_ITEM_SYSTEM = 'SEARCH_ITEM_SYSTEM'
 export const RESET_SYSTEM_ITEM = 'RESET_SYSTEM_ITEM'
 export const UNMOUNT_MANUFACTURE = 'RESET_SYSTEM_ITEM'
 export const SET_FACILITY = 'SET_FACILITY'
+export const SET_FACILITY_VAL = 'SET_FACILITY_VAL'
 
 export function unmountManufacture() {
   return dispatch => {
@@ -31,12 +32,29 @@ export function unmountManufacture() {
   }
 }
 
+export function setFacilityVal(me, te) {
+  return dispatch => {
+    dispatch(updFacilityVal(me, te))
+  }
+}
+
+export function updFacilityVal(me, te) {
+  return {
+    type: SET_FACILITY_VAL,
+    facility_val: {
+      me: me,
+      te: te
+    },
+    _need_recalculate: true
+  }
+}
+
 export function getFacilities(activityID) {
   return dispatch => {
     return ApiService.Main.facilities(activityID)
-      .then(json => {
-        dispatch(setFacility(json.data.items))
-      })
+    .then(json => {
+      dispatch(setFacility(json.data.items))
+    })
   }
 }
 
@@ -45,33 +63,33 @@ export function setComponentsSystem(system_id, props) {
   let componentsIds = map(props.bpc_components, 'item_id').join(",")
   return dispatch => {
     return ApiService.Main.prices(system_id, componentsIds)
-      .then(json => {
-        dispatch(setComponentsPrices(json.data, props))
-      })
+    .then(json => {
+      dispatch(setComponentsPrices(json.data, props))
+    })
   }
 }
 export function setItemSystem(system_id, props) {
   return dispatch => {
     return ApiService.Main.prices(system_id, props.item.item_id)
-      .then(json => {
-        dispatch(setItemPrice(json.data, props))
-      })
+    .then(json => {
+      dispatch(setItemPrice(json.data, props))
+    })
   }
 }
 export function searchItemSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-      .then(json => {
-        dispatch(setItemSystemSuggestions(json.data.items))
-      })
+    .then(json => {
+      dispatch(setItemSystemSuggestions(json.data.items))
+    })
   }
 }
 export function searchComponentsSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-      .then(json => {
-        dispatch(setComponentsSystemSuggestions(json.data.items))
-      })
+    .then(json => {
+      dispatch(setComponentsSystemSuggestions(json.data.items))
+    })
   }
 }
 export function resetManufactureSystemSuggestions() {
@@ -93,18 +111,18 @@ export function setManufactureSystem(system) {
 export function searchManufactureSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term)
-      .then(json => {
-        dispatch(setManufactureSystemSuggestions(json.data.items))
-      })
+    .then(json => {
+      dispatch(setManufactureSystemSuggestions(json.data.items))
+    })
   }
 }
 // autocomplete search bpc
 export function searchBpc(term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
-      .then(res => {
-        dispatch(setAutocompleteItems(res.data.items))
-      })
+    .then(res => {
+      dispatch(setAutocompleteItems(res.data.items))
+    })
   }
 }
 
@@ -112,9 +130,9 @@ export function searchBpc(term) {
 export function getBpc(url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
-      .then((res) => {
-        dispatch(setBpc(res.data))
-      })
+    .then((res) => {
+      dispatch(setBpc(res.data))
+    })
   }
 }
 
@@ -317,16 +335,20 @@ export function updateManufacture(props) {
   let oldProps = cloneDeep(props)
   let bpcc = oldProps.origin_bpc_components
   let percentage = (100 - +oldProps.me) / 100
+  let percentageTe = (100 - +oldProps.te) / 100
   let amount = 0
   let volume = 0
   let baseCost = 0
   let itemAmount = oldProps.prices[oldProps.type_p_item][oldProps.item.item_id] * oldProps.run
+  let timeRun = percentageTe * props.bpc.productionTime * props.facility_val.te * props.run
 
   forEach(bpcc, val => {
     // calculate new QTY
     let adjustQty = cloneDeep(val)
-    let qty = val.orig_qty !== 1 ? ceil(val.orig_qty * props.run * percentage) : val.orig_qty * props.run
-    val.orig_qty = qty
+    let qty = val.orig_qty !== 1 ? val.orig_qty * percentage : val.orig_qty
+
+    // station me
+    val.orig_qty = ceil(qty * props.run * props.facility_val.me)
     // total amount
     amount += qty * props.prices[props.type_p_components][val.item_id]
     // total volume
@@ -351,6 +373,7 @@ export function updateManufacture(props) {
     output: props.run * props.bpc.output,
     total: manufactureCost,
     adjustCost: adjustCost,
+    timeRun: Helper.toHHMMSS(timeRun),
     _need_recalculate: false
   }
 }
