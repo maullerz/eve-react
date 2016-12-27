@@ -11,10 +11,17 @@ export default {
         }
       })
     },
-    item: function(term){
+    item: function (term) {
       return axios.get(baseUrl + '/search/item.json', {
         params: {
           term: term
+        }
+      })
+    },
+    similar: function (item_id) {
+      return axios.get(baseUrl + '/search/similar.json', {
+        params: {
+          item_id: item_id
         }
       })
     }

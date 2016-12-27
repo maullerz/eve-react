@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
-import {searchItem} from '../../controllers/actions/marketActions'
+import {searchItem,addItem,resetSearch,getSimilarItems} from '../../controllers/actions/marketActions'
 
 import {debounce} from "lodash"
 import Helper from "../../helpers"
 
-const getSuggestionValue = suggestion => suggestion.blueprint_name
-const renderSuggestion = suggestion => suggestion.blueprint_name
+const getSuggestionValue = suggestion => suggestion.item_name
+const renderSuggestion = suggestion => suggestion.item_name
 
 class SearchPanel extends Component {
 
@@ -24,8 +24,10 @@ class SearchPanel extends Component {
   }
 
   onSuggestionSelected = (event, {suggestion}) => {
-    this.props.getBpc(suggestion.url)
+    this.props.addItem(suggestion)
+    this.props.getSimilarItems(suggestion.item_id)
   };
+
   onSuggestionsFetchRequested = value => {
     if (Helper.AutocompleteMinCharacters(value.value)) {
       this.debounceGetSuggestions(value)
@@ -43,8 +45,6 @@ class SearchPanel extends Component {
 
   render() {
     
-    console.log(this.props);
-
     const {value} = this.state;
 
     const inputProps = {
@@ -78,4 +78,4 @@ class SearchPanel extends Component {
 function mapStateToProps(state) {
   return state.marketReducer
 }
-export default connect(mapStateToProps, {searchItem})(SearchPanel);
+export default connect(mapStateToProps, {searchItem,addItem,resetSearch,getSimilarItems})(SearchPanel);
