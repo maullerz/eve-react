@@ -7,4 +7,3 @@ script:
   - npm run build
 
 after_success:
-  - node deploy.js
