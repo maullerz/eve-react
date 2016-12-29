@@ -10,13 +10,10 @@
     "vinyl-ftp": "^0.5.0"
   },
   "dependencies": {
+    "async": "^2.1.4",
     "autotrack": "^1.0.3",
     "axios": "^0.15.3",
-    "ftp-deploy": "^1.1.0",
-    "gulp": "^3.9.1",
-    "gulp-util": "^3.0.8",
     "lodash": "^4.17.2",
-    "minimist": "^1.2.0",
     "numeral": "^2.0",
     "react": "^15.4.1",
     "react-autosuggest": "^7.0.1",
@@ -27,6 +24,7 @@
     "redux": "^3.6.0",
     "redux-devtools-extension": "^1.0.0",
     "redux-thunk": "^2.1.0",
+    "vinyl-fs": "^2.4.4",
     "vinyl-ftp": "^0.5.0"
   },
   "scripts": {
