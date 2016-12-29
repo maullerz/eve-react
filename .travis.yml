@@ -1,12 +1,11 @@
 language: node_js
 node_js:
   - "4.2"
-branches:
-  only:
-  - master
 install:
   - npm install
 script:
   - npm run build
+  - cd ./build
+  - ls -al
 
 after_success:
