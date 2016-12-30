@@ -11,6 +11,30 @@ export const SET_SYSTEM_SUGG = 'SET_SYSTEM_SUGG'
 export const SET_SYSTEM_ID = 'SET_SYSTEM_ID'
 export const UNSET_SYSTEM_SUGG = 'UNSET_SYSTEM_SUGG'
 export const SET_QTY = 'SET_QTY'
+export const UPDATE_NEED = 'UPDATE_NEED'
+export const GET_PRICES = 'GET_PRICES'
+export const REMOVE_ITEM = 'REMOVE_ITEM'
+
+export function getPrices(system_id, item_ids) {
+  return dispatch => {
+    return ApiService.Main.prices(system_id, item_ids.join(","))
+    .then(json => {
+      dispatch(updPricesState(json.data.prices))
+    })
+  }
+}
+
+export function removeItem(itemId) {
+  return dispatch => {
+    dispatch(removeItemState(itemId))
+  }
+}
+
+export function updNeed(key, value) {
+  return dispatch => {
+    dispatch(updNeedState(key, value))
+  }
+}
 
 export function setQty(item_id, qty) {
   return dispatch => {
@@ -82,6 +106,28 @@ export function unmountMarket() {
   }
 }
 
+export function removeItemState(itemID) {
+  return {
+    type: REMOVE_ITEM,
+    _item: itemID
+  }
+}
+
+export function updPricesState(prices) {
+  return {
+    type: GET_PRICES,
+    orig_prices: prices,
+    prices: prices
+  }
+}
+export function updNeedState(key, val) {
+  return {
+    type: UPDATE_NEED,
+    key: key,
+    val: val
+  }
+}
+
 export function setQtyState(item_id, qty) {
   return {
     type: SET_QTY,
@@ -93,7 +139,8 @@ export function setQtyState(item_id, qty) {
 export function setSystemState(system_id) {
   return {
     type: SET_SYSTEM_ID,
-    system_id: system_id
+    system_id: system_id,
+    _need_upd_prices: true
   }
 }
 
@@ -128,7 +175,8 @@ export function addItemState(item) {
   item.qty = 1
   return {
     type: ADD_ITEM,
-    new_item: item
+    new_item: item,
+    _need_upd_prices: true
   }
 }
 

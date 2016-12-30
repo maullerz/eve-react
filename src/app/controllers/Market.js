@@ -4,10 +4,19 @@ import SearchPanel from './../components/market/SearchPanel'
 import Settings from './../components/market/Settings'
 // import SimilarItems from './../components/market/SimilarItems'
 import Items from './../components/market/Items'
-import {unmountMarket} from './actions/marketActions'
+import {unmountMarket,updNeed,getPrices} from './actions/marketActions'
+import {map} from 'lodash'
 
 class Market extends Component {
 
+  componentWillReceiveProps(np) {
+
+    if(np._need_upd_prices) {
+
+      this.props.updNeed('_need_upd_prices', false)
+      this.props.getPrices(np.system_id, map(np.items, 'item_id'))
+    }
+  }
   componentWillUnmount() {
     this.props.unmountMarket()
   }
@@ -32,4 +41,4 @@ class Market extends Component {
 function mapStateToProps(state) {
   return state.marketReducer
 }
-export default connect(mapStateToProps, {unmountMarket})(Market)
+export default connect(mapStateToProps, {unmountMarket,updNeed,getPrices})(Market)
