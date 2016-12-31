@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
 import Copyright from '../components/blocks/_copyright'
 import PanelContent from '../components/blocks/_panel_content'
 import IndexTables from '../components/blocks/_index_tables'
+import Region from '../components/home/Region'
+import Item from '../components/home/Item'
 
 class Home extends Component {
 
@@ -50,17 +54,39 @@ class Home extends Component {
         <IndexTables listTables={this.state.tableData} />
         <PanelContent title='Market Monitoring' />
         <div className='row'>
-          <div className='col-md-12'>
+          <div className='col-md-8 col-first'>
             <table>
               <thead>
                 <tr>
-                  <th className='t-a_l'>Market</th>
+                  <th className='t-a_l'>
+                    <div className="row">
+                      <div className="col-md-6">Market</div>
+                      <div className="col-md-6">
+                        <Item />
+                        <Region />
+                      </div>
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className='padd-3' />
+                  <td className='padd-3'>dsadas</td>
                 </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className='col-md-4 col-last'>
+            <table>
+              <thead>
+              <tr>
+                <th className='t-a_l'>Facebook</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td className='padd-3'>Follow us on facebook</td>
+              </tr>
               </tbody>
             </table>
           </div>
@@ -71,4 +97,7 @@ class Home extends Component {
   }
 }
 
-export default Home
+function mapStateToProps(state) {
+	return state.homeReducer
+}
+export default connect(mapStateToProps, {})(Home)

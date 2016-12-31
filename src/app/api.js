@@ -11,6 +11,13 @@ export default {
         }
       })
     },
+    region: function (term) {
+      return axios.get(baseUrl + '/search/region.json', {
+        params: {
+          term: term
+        }
+      })
+    },
     item: function (term) {
       return axios.get(baseUrl + '/search/item.json', {
         params: {
