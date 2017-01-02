@@ -1,7 +1,15 @@
 import axios from 'axios'
 let baseUrl = 'https://api.eve-productions.org'
+// let esiUrl = 'https://esi.tech.ccp.is'
+let crestUrl = 'https://crest-tq.eveonline.com'
 
 export default {
+
+  Graph: {
+    chart: function (region_id, typeID) {
+      return axios.get(crestUrl + '/market/' + region_id + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
+    }
+  },
 
   Search: {
     system: function (term) {

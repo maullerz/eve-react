@@ -51,12 +51,11 @@ class Item extends Component {
     const inputProps = {
       placeholder: 'Item name',
       value,
-      className: "w130px",
+      className: "w100",
       onChange: this.onChange
     }
-
     return (
-      <div className="inline-block-search">
+      <div className="inline-block-search w100">
         <Autocomplete
           suggestions={this.props.item_sugg}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

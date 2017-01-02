@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {updNeed,getChartData} from '../controllers/actions/homeActions'
 
 import Copyright from '../components/blocks/_copyright'
 import PanelContent from '../components/blocks/_panel_content'
@@ -48,6 +49,13 @@ class Home extends Component {
     }
   }
 
+  componentWillReceiveProps(np) {
+    if(np._need_update_chart) {
+      this.props.getChartData(np.region_id, np.item_id)
+    }
+  }
+
+
   render () {
     return (
       <div>
@@ -58,20 +66,26 @@ class Home extends Component {
             <table>
               <thead>
                 <tr>
-                  <th className='t-a_l'>
-                    <div className="row">
-                      <div className="col-md-6">Market</div>
-                      <div className="col-md-6">
-                        <Item />
-                        <Region />
-                      </div>
-                    </div>
-                  </th>
+                  <th className='t-a_l'>Market</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className='padd-3'>dsadas</td>
+                  <td className='padd-3'>
+                    <div className="row">
+                      <div className="col-md-6 col-first">
+                        <Item />
+                        </div>
+                      <div className="col-md-6 col-last">
+                        <Region />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-12">
+                        GRAPH
+                      </div>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -100,4 +114,4 @@ class Home extends Component {
 function mapStateToProps(state) {
 	return state.homeReducer
 }
-export default connect(mapStateToProps, {})(Home)
+export default connect(mapStateToProps, {updNeed,getChartData})(Home)

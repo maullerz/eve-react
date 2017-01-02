@@ -51,12 +51,12 @@ class Region extends Component {
     const inputProps = {
       placeholder: 'Region name',
       value,
-      className: "w130px",
+      className: "w100",
       onChange: this.onChange
     }
 
     return (
-      <div className="inline-block-search">
+      <div className="inline-block-search w100">
         <Autocomplete
           suggestions={this.props.region_sugg}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
