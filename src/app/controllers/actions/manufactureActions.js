@@ -26,19 +26,19 @@ export const UNMOUNT_MANUFACTURE = 'RESET_SYSTEM_ITEM'
 export const SET_FACILITY = 'SET_FACILITY'
 export const SET_FACILITY_VAL = 'SET_FACILITY_VAL'
 
-export function unmountManufacture() {
+export function unmountManufacture () {
   return dispatch => {
     dispatch(unmountManufactureState())
   }
 }
 
-export function setFacilityVal(me, te) {
+export function setFacilityVal (me, te) {
   return dispatch => {
     dispatch(updFacilityVal(me, te))
   }
 }
 
-export function updFacilityVal(me, te) {
+export function updFacilityVal (me, te) {
   return {
     type: SET_FACILITY_VAL,
     facility_val: {
@@ -49,7 +49,7 @@ export function updFacilityVal(me, te) {
   }
 }
 
-export function getFacilities(activityID) {
+export function getFacilities (activityID) {
   return dispatch => {
     return ApiService.Main.facilities(activityID)
     .then(json => {
@@ -58,25 +58,24 @@ export function getFacilities(activityID) {
   }
 }
 
-export function setComponentsSystem(system_id, props) {
-
-  let componentsIds = map(props.bpc_components, 'item_id').join(",")
+export function setComponentsSystem (systemId, props) {
+  let componentsIds = map(props.bpc_components, 'item_id').join(',')
   return dispatch => {
-    return ApiService.Main.prices(system_id, componentsIds)
+    return ApiService.Main.prices(systemId, componentsIds)
     .then(json => {
       dispatch(setComponentsPrices(json.data, props))
     })
   }
 }
-export function setItemSystem(system_id, props) {
+export function setItemSystem (systemId, props) {
   return dispatch => {
-    return ApiService.Main.prices(system_id, props.item.item_id)
+    return ApiService.Main.prices(systemId, props.item.item_id)
     .then(json => {
       dispatch(setItemPrice(json.data, props))
     })
   }
 }
-export function searchItemSystem(term) {
+export function searchItemSystem (term) {
   return dispatch => {
     return ApiService.Search.system(term)
     .then(json => {
@@ -84,7 +83,7 @@ export function searchItemSystem(term) {
     })
   }
 }
-export function searchComponentsSystem(term) {
+export function searchComponentsSystem (term) {
   return dispatch => {
     return ApiService.Search.system(term)
     .then(json => {
@@ -92,23 +91,23 @@ export function searchComponentsSystem(term) {
     })
   }
 }
-export function resetManufactureSystemSuggestions() {
+export function resetManufactureSystemSuggestions () {
   return dispatch => {
     return dispatch(unsetManufactureSystemSuggestions())
   }
 }
-export function resetSystemItemSuggestions() {
+export function resetSystemItemSuggestions () {
   return dispatch => {
     return dispatch(unsetSystemItemSuggestions())
   }
 }
-export function setManufactureSystem(system) {
+export function setManufactureSystem (system) {
   return dispatch => {
     return dispatch(updateManufactureSystem(system))
   }
 }
 // autocomplete search manufacture system
-export function searchManufactureSystem(term) {
+export function searchManufactureSystem (term) {
   return dispatch => {
     return ApiService.Search.system(term)
     .then(json => {
@@ -117,7 +116,7 @@ export function searchManufactureSystem(term) {
   }
 }
 // autocomplete search bpc
-export function searchBpc(term) {
+export function searchBpc (term) {
   return dispatch => {
     return ApiService.Manufacture.searchBpc(term)
     .then(res => {
@@ -127,7 +126,7 @@ export function searchBpc(term) {
 }
 
 // get bpc by url
-export function getBpc(url) {
+export function getBpc (url) {
   return dispatch => {
     return ApiService.Manufacture.getBpc(url)
     .then((res) => {
@@ -137,69 +136,69 @@ export function getBpc(url) {
 }
 
 // get te
-export function changeTe(te) {
+export function changeTe (te) {
   return dispatch => {
     return dispatch(updateTe(te))
   }
 }
 
 // get me
-export function changeMe(me) {
+export function changeMe (me) {
   return dispatch => {
     return dispatch(updateMe(me))
   }
 }
 
 // change cost bpc
-export function changeBpcCost(cost) {
+export function changeBpcCost (cost) {
   return dispatch => {
     return dispatch(setBpcCost(cost))
   }
 }
 
 // change price type item
-export function changePriceTypeItem(type) {
+export function changePriceTypeItem (type) {
   return dispatch => {
     return dispatch(setPriceTypeItem(type))
   }
 }
 
 // change price type component
-export function changePriceTypeComponents(type) {
+export function changePriceTypeComponents (type) {
   return dispatch => {
     return dispatch(setPriceTypeComponents(type))
   }
 }
 
 // change run
-export function changeRun(run, outputPerCycle) {
+export function changeRun (run, outputPerCycle) {
   return dispatch => {
     return dispatch(updateRun(run, outputPerCycle))
   }
 }
 
 // reset system components
-export function resetSystemComponentsSuggestions() {
+export function resetSystemComponentsSuggestions () {
   return dispatch => {
     return dispatch(unsetSystemComponentsSuggestions())
   }
 }
 // reset suggestions
-export function resetSearch() {
+export function resetSearch () {
   return dispatch => {
     return dispatch(unsetSearch())
   }
 }
 
 // recalculate all manufacture when change props
-export function recalculateManufacture(props) {
+export function recalculateManufacture (props) {
   return dispatch => {
     return dispatch(updateManufacture(props))
   }
 }
 
 // DISPATCHING FUNCTIONS
-export function updateManufactureSystem(system) {
+export function updateManufactureSystem (system) {
   return {
     type: SET_MANUFACTURE_SYSTEM,
     costIndex: system.costIndex,
@@ -213,21 +212,20 @@ export function updateManufactureSystem(system) {
 }
 
 // dispatch
-export function setComponentsPrices(prices, props) {
-
-  let prices_sell = cloneDeep(props.prices.sell)
-  let prices_buy = cloneDeep(props.prices.buy)
+export function setComponentsPrices (prices, props) {
+  let pricesSell = cloneDeep(props.prices.sell)
+  let pricesBuy = cloneDeep(props.prices.buy)
 
   forEach(map(props.bpc_components, 'item_id'), (v) => {
-    prices_sell[v] = prices.prices['sell'][v]
-    prices_buy[v] = prices.prices['buy'][v]
+    pricesSell[v] = prices.prices['sell'][v]
+    pricesBuy[v] = prices.prices['buy'][v]
   })
 
   return {
     type: SET_COMPONENTS_PRICES,
     prices: {
-      sell: prices_sell,
-      buy: prices_buy
+      sell: pricesSell,
+      buy: pricesBuy
     },
     pcsystem_id: prices.system_id,
     _need_recalculate: true,
@@ -235,19 +233,18 @@ export function setComponentsPrices(prices, props) {
   }
 }
 
-export function setItemPrice(prices, props) {
+export function setItemPrice (prices, props) {
+  let pricesSell = cloneDeep(props.prices.sell)
+  let pricesBuy = cloneDeep(props.prices.buy)
 
-  let prices_sell = cloneDeep(props.prices.sell)
-  let prices_buy = cloneDeep(props.prices.buy)
-
-  prices_sell[props.item.item_id] = prices.prices['sell'][props.item.item_id]
-  prices_buy[props.item.item_id] = prices.prices['buy'][props.item.item_id]
+  pricesSell[props.item.item_id] = prices.prices['sell'][props.item.item_id]
+  pricesBuy[props.item.item_id] = prices.prices['buy'][props.item.item_id]
 
   return {
     type: SET_ITEM_PRICE,
     prices: {
-      sell: prices_sell,
-      buy: prices_buy
+      sell: pricesSell,
+      buy: pricesBuy
     },
     pisystem_id: prices.system_id,
     _need_recalculate: true,
@@ -256,21 +253,21 @@ export function setItemPrice(prices, props) {
 }
 
 // dispatch
-export function updateRun(run) {
+export function updateRun (run) {
   return {
     type: CHANGE_RUN,
     run: run,
     _need_recalculate: true
   }
 }
-export function updateMe(me) {
+export function updateMe (me) {
   return {
     type: CHANGE_ME,
     me: me,
     _need_recalculate: true
   }
 }
-export function updateTe(te) {
+export function updateTe (te) {
   return {
     type: CHANGE_TE,
     te: te,
@@ -278,7 +275,7 @@ export function updateTe(te) {
   }
 }
 
-export function setBpcCost(cost) {
+export function setBpcCost (cost) {
   return {
     type: SET_BPC_COST,
     bpc_cost: cost,
@@ -287,7 +284,7 @@ export function setBpcCost(cost) {
 }
 
 // dispatch
-export function setPriceTypeItem(type) {
+export function setPriceTypeItem (type) {
   return {
     type: CHANGE_TYPE_PRICE_ITEM,
     type_p_item: type,
@@ -295,7 +292,7 @@ export function setPriceTypeItem(type) {
   }
 }
 // dispatch
-export function setPriceTypeComponents(type) {
+export function setPriceTypeComponents (type) {
   return {
     type: CHANGE_TYPE_PRICE_COMPONENTS,
     type_p_components: type,
@@ -304,8 +301,8 @@ export function setPriceTypeComponents(type) {
 }
 
 // dispatch
-export function setBpc(response) {
-  let price_items = response.price_items
+export function setBpc (response) {
+  let priceItems = response.price_items
   return {
     type: GET_BPC,
     bpc: response.bpc,
@@ -314,24 +311,23 @@ export function setBpc(response) {
     bpc_components: response.bpc_components,
     origin_bpc_components: cloneDeep(response.bpc_components),
     item: response.item,
-    price_items: price_items,
+    price_items: priceItems,
     prices: {
-      sell: cloneDeep(price_items),
-      buy: cloneDeep(price_items)
+      sell: cloneDeep(priceItems),
+      buy: cloneDeep(priceItems)
     },
     item_amount: 0,
     components_amount: 0,
     components_volume: 0,
     _need_recalculate: false,
     _need_update_prices_item: true,
-    _need_update_prices_components: true,
+    _need_update_prices_components: true
   }
 }
 
 // dispatch
 // Update manufacture when have changes
-export function updateManufacture(props) {
-
+export function updateManufacture (props) {
   let oldProps = cloneDeep(props)
   let bpcc = oldProps.origin_bpc_components
   let percentage = (100 - +oldProps.me) / 100
@@ -378,13 +374,13 @@ export function updateManufacture(props) {
   }
 }
 
-export function unmountManufactureState() {
+export function unmountManufactureState () {
   return {
     type: UNMOUNT_MANUFACTURE
   }
 }
 
-export function setFacility(facilities) {
+export function setFacility (facilities) {
   return {
     type: SET_FACILITY,
     facility: facilities
@@ -392,49 +388,49 @@ export function setFacility(facilities) {
 }
 
 // SEARCH section dispatchers
-export function setAutocompleteItems(suggestions) {
+export function setAutocompleteItems (suggestions) {
   return {
     type: SEARCH_BPC,
     suggestions: suggestions
   }
 }
-export function setItemSystemSuggestions(systems) {
+export function setItemSystemSuggestions (systems) {
   return {
     type: SEARCH_ITEM_SYSTEM,
     pis_sugg: systems
   }
 }
-export function setManufactureSystemSuggestions(systems) {
+export function setManufactureSystemSuggestions (systems) {
   return {
     type: SEARCH_MANUFACTURE_SYSTEM,
     sm_sugg: systems
   }
 }
-export function setComponentsSystemSuggestions(systems) {
+export function setComponentsSystemSuggestions (systems) {
   return {
     type: SEARCH_COMPONENT_SYSTEM,
     pcs_sugg: systems
   }
 }
-export function unsetSearch() {
+export function unsetSearch () {
   return {
     type: RESET_SEARCH,
     suggestions: []
   }
 }
-export function unsetSystemItemSuggestions() {
+export function unsetSystemItemSuggestions () {
   return {
     type: RESET_SYSTEM_ITEM,
     pis_sugg: []
   }
 }
-export function unsetManufactureSystemSuggestions() {
+export function unsetManufactureSystemSuggestions () {
   return {
     type: RESET_MANUFACTURE_SUGGESTIONS,
     sm_sugg: []
   }
 }
-export function unsetSystemComponentsSuggestions() {
+export function unsetSystemComponentsSuggestions () {
   return {
     type: RESET_COMPONENT_SYSTEM,
     pcs_sugg: []

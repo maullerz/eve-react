@@ -1,11 +1,26 @@
 import axios from 'axios'
 let baseUrl = 'https://api.eve-productions.org'
+// let esiUrl = 'https://esi.tech.ccp.is'
+let crestUrl = 'https://crest-tq.eveonline.com'
 
 export default {
+
+  Graph: {
+    chart: function (regionId, typeID) {
+      return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
+    }
+  },
 
   Search: {
     system: function (term) {
       return axios.get(baseUrl + '/search/system.json', {
+        params: {
+          term: term
+        }
+      })
+    },
+    region: function (term) {
+      return axios.get(baseUrl + '/search/region.json', {
         params: {
           term: term
         }
@@ -18,16 +33,19 @@ export default {
         }
       })
     },
-    similar: function (item_id) {
+    similar: function (itemId) {
       return axios.get(baseUrl + '/search/similar.json', {
         params: {
-          item_id: item_id
+          item_id: itemId
         }
       })
     }
   },
 
   Main: {
+    facebook_feed: function () {
+      return axios.get(baseUrl + '/facebook_feed.json')
+    },
     prices: function (systemId, items) {
       return axios.get(baseUrl + '/prices/' + systemId + '/' + items)
     },

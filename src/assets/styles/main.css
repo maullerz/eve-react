@@ -86,6 +86,23 @@ ul.components li .img-box {
 ul.components li .left {
   float: right;
 }
+a:link,
+a:active,
+a:visited {
+  color: #b9964d;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.float-r {
+  float: right;
+}
+.remove-zone {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .txt-yellow,
 .profit {
   color: #cddc39;
@@ -95,6 +112,9 @@ ul.components li .left {
 }
 .profit-minus {
   color: #e57373;
+}
+.small-date {
+  font-size: 0.85em;
 }
 .b {
   font-weight: bold;
