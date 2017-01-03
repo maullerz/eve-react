@@ -86,13 +86,13 @@ ul.components li .img-box {
 ul.components li .left {
   float: right;
 }
-.theadA:link,
-.theadA:active,
-.theadA:visited {
+a:link,
+a:active,
+a:visited {
   color: #b9964d;
   text-decoration: none;
 }
-.theadA:hover {
+a:hover {
   text-decoration: underline;
 }
 .float-r {
@@ -112,6 +112,9 @@ ul.components li .left {
 }
 .profit-minus {
   color: #e57373;
+}
+.small-date {
+  font-size: 0.85em;
 }
 .b {
   font-weight: bold;

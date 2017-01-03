@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {updNeed, getChartData, unmountHome} from '../controllers/actions/homeActions'
+import {map} from "lodash"
+import {updNeed, getChartData, unmountHome, getFacebookFeed} from '../controllers/actions/homeActions'
 
 import Copyright from '../components/blocks/_copyright'
 import PanelContent from '../components/blocks/_panel_content'
@@ -9,14 +10,16 @@ import Region from '../components/home/Region'
 import SearchItem from '../components/home/Item'
 import FacebookWidget from '../components/FacebookWidget'
 import SimpleList from '../components/SimpleList'
+import FBFeedLine from "../components/home/FBFeedLine"
 
 import HighChart from '../components/HomeChart'
 
 class Home extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.props.getChartData(props.region_id, props.item_id)
+    this.props.getFacebookFeed()
     this.state = {
       tableData: [
         {
@@ -54,55 +57,61 @@ class Home extends Component {
     }
   }
 
-  componentWillReceiveProps (np) {
+  componentWillReceiveProps(np) {
     if (+np.item_id !== +this.props.item_id || +np.region_id !== +this.props.region_id) {
       this.props.getChartData(np.region_id, np.item_id)
       this.props.updNeed('_need_update_chart', false)
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.props.unmountHome()
   }
 
-  render () {
+  render() {
+
+    let facebook_feed = map(this.props.facebook_feed, v => {
+      return <FBFeedLine created_at={v.created_at} message={v.message}/>
+    })
+
+
     return (
       <div>
-        <IndexTables listTables={this.state.tableData} />
-        <PanelContent title='Market Monitoring' />
+        <IndexTables listTables={this.state.tableData}/>
+        <PanelContent title='Market Monitoring'/>
         <div className='row'>
           <div className='col-md-8 col-first'>
             <table>
               <thead>
-                <tr>
-                  <th className='t-a_l'>Market</th>
-                </tr>
+              <tr>
+                <th className='t-a_l'>Market</th>
+              </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className='padd-3'>
-                    <div className='row'>
-                      <div className='col-md-6 col-first'>
-                        <SearchItem />
-                      </div>
-                      <div className='col-md-6 col-last'>
-                        <Region />
-                      </div>
+              <tr>
+                <td className='padd-3'>
+                  <div className='row'>
+                    <div className='col-md-6 col-first'>
+                      <SearchItem />
                     </div>
-                    <div className='row'>
-                      <div className='col-md-12'>
-                        <HighChart container={'chartID'} />
-                      </div>
+                    <div className='col-md-6 col-last'>
+                      <Region />
                     </div>
-                  </td>
-                </tr>
+                  </div>
+                  <div className='row'>
+                    <div className='col-md-12'>
+                      <HighChart container={'chartID'}/>
+                    </div>
+                  </div>
+                </td>
+              </tr>
               </tbody>
             </table>
           </div>
           <div className='col-md-4 col-last'>
             <div className='row'>
               <div className='col-md-12'>
-                <FacebookWidget _class='t-a_l' list={<SimpleList list={[12, 3, 4, 5]} />} />
+                <FacebookWidget _class='t-a_l' list={<SimpleList list={facebook_feed}/>}/>
               </div>
             </div>
           </div>
@@ -113,7 +122,7 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state.homeReducer
 }
-export default connect(mapStateToProps, {updNeed, getChartData, unmountHome})(Home)
+export default connect(mapStateToProps, {updNeed, getChartData, unmountHome, getFacebookFeed})(Home)

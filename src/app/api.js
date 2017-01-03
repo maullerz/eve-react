@@ -43,6 +43,9 @@ export default {
   },
 
   Main: {
+    facebook_feed: function () {
+      return axios.get(baseUrl + '/facebook_feed.json')
+    },
     prices: function (systemId, items) {
       return axios.get(baseUrl + '/prices/' + systemId + '/' + items)
     },

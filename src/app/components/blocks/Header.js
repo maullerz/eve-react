@@ -20,15 +20,9 @@ export default class Header extends Component {
             <nav id='header-menu'>
               <ul>
                 <li>
-                  <a href='#'>Calculators</a>
-                  <ul>
-                    <li><Link to='/manufacture'>BPC calculator</Link></li>
-                  </ul>
+                  <Link to='/manufacture'>BPC calculator</Link>
                 </li>
                 <li><Link to='/market'>Market</Link></li>
-                <li>
-                  <Link to='/Item'>Item</Link>
-                </li>
                 <li className='red-cell'>
                   <Link to='/donate'>Donate</Link>
                 </li>

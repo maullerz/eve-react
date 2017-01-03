@@ -7,7 +7,8 @@ import {
   UPD_NEED,
   SET_ITEM,
   GET_CHART_DATA,
-  HOME_UNMOUNT
+  HOME_UNMOUNT,
+  FACEBOOK_FEED
 } from '../actions/homeActions'
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   region_name: 'The Forge',
   region_sugg: [],
   item_sugg: [],
+  facebook_feed: [],
   item_id: 29668,
   item_name: '30 Day Pilot\'s License Extension (PLEX)',
   chartData: []
@@ -25,6 +27,7 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_CHART_DATA:
+    case FACEBOOK_FEED:
     case RESET_ITEM:
     case SET_REGION:
       if (+state.region_id !== +action.region_id) {
