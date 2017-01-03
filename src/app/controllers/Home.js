@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {updNeed,getChartData} from '../controllers/actions/homeActions'
+
 import Copyright from '../components/blocks/_copyright'
 import PanelContent from '../components/blocks/_panel_content'
 import IndexTables from '../components/blocks/_index_tables'
+import Region from '../components/home/Region'
+import Item from '../components/home/Item'
 
 class Home extends Component {
 
@@ -44,13 +49,20 @@ class Home extends Component {
     }
   }
 
+  componentWillReceiveProps(np) {
+    if(np._need_update_chart) {
+      this.props.getChartData(np.region_id, np.item_id)
+    }
+  }
+
+
   render () {
     return (
       <div>
         <IndexTables listTables={this.state.tableData} />
         <PanelContent title='Market Monitoring' />
         <div className='row'>
-          <div className='col-md-12'>
+          <div className='col-md-8 col-first'>
             <table>
               <thead>
                 <tr>
@@ -59,8 +71,36 @@ class Home extends Component {
               </thead>
               <tbody>
                 <tr>
-                  <td className='padd-3' />
+                  <td className='padd-3'>
+                    <div className="row">
+                      <div className="col-md-6 col-first">
+                        <Item />
+                        </div>
+                      <div className="col-md-6 col-last">
+                        <Region />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-12">
+                        GRAPH
+                      </div>
+                    </div>
+                  </td>
                 </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className='col-md-4 col-last'>
+            <table>
+              <thead>
+              <tr>
+                <th className='t-a_l'>Facebook</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td className='padd-3'>Follow us on facebook</td>
+              </tr>
               </tbody>
             </table>
           </div>
@@ -71,4 +111,7 @@ class Home extends Component {
   }
 }
 
-export default Home
+function mapStateToProps(state) {
+	return state.homeReducer
+}
+export default connect(mapStateToProps, {updNeed,getChartData})(Home)
