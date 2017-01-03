@@ -6,8 +6,8 @@ let crestUrl = 'https://crest-tq.eveonline.com'
 export default {
 
   Graph: {
-    chart: function (region_id, typeID) {
-      return axios.get(crestUrl + '/market/' + region_id + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
+    chart: function (regionId, typeID) {
+      return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
     }
   },
 
@@ -33,10 +33,10 @@ export default {
         }
       })
     },
-    similar: function (item_id) {
+    similar: function (itemId) {
       return axios.get(baseUrl + '/search/similar.json', {
         params: {
-          item_id: item_id
+          item_id: itemId
         }
       })
     }

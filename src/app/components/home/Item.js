@@ -18,7 +18,7 @@ class Item extends Component {
   constructor() {
     super()
     this.state = {
-      value: "Tritanium"
+      value: "30 Day Pilot's License Extension (PLEX)"
     }
 
     this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
@@ -30,7 +30,7 @@ class Item extends Component {
 
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.setItem(suggestion)
-  };
+  }
   onSuggestionsFetchRequested = value => {
     if (Helper.AutocompleteMinCharacters(value.value)) {
       this.debounceGetSuggestions(value.value)

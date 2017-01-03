@@ -1,6 +1,6 @@
 import numeraljs from '../../node_modules/numeral/numeral'
 
-let Helper;
+let Helper
 Helper = {
   shortNum (n) {
     return numeraljs(n).format('0.[00]a')
@@ -14,8 +14,8 @@ Helper = {
     return numeraljs(n).format('0,0.00')
   },
 
-  escapeRegexCharacters(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  escapeRegexCharacters (str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   },
 
   cfg: {
@@ -25,39 +25,39 @@ Helper = {
   /**
    * @return {boolean}
    */
-  AutocompleteMinCharacters(str) {
+  AutocompleteMinCharacters (str) {
     return str.length >= 2
   },
 
-  toHHMMSS(sec) {
-    let sec_num = parseInt(sec, 10);
+  toHHMMSS (sec) {
+    let secNum = parseInt(sec, 10)
 
-    let days = Math.floor(sec_num / 86400);
-    let string_day = '';
+    let days = Math.floor(secNum / 86400)
+    let stringDay = ''
 
     if (days > 1) {
-      sec_num -= days * 86400
+      secNum -= days * 86400
     }
 
-    let hours = Math.floor(sec_num / 3600);
-    let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    let seconds = sec_num - (hours * 3600) - (minutes * 60);
+    let hours = Math.floor(secNum / 3600)
+    let minutes = Math.floor((secNum - (hours * 3600)) / 60)
+    let seconds = secNum - (hours * 3600) - (minutes * 60)
 
     if (days > 1) {
-      string_day = days + "d ";
+      stringDay = days + 'd '
     }
 
     if (hours < 10) {
-      hours = "0" + hours;
+      hours = '0' + hours
     }
     if (minutes < 10) {
-      minutes = "0" + minutes;
+      minutes = '0' + minutes
     }
     if (seconds < 10) {
-      seconds = "0" + seconds;
+      seconds = '0' + seconds
     }
-    return string_day + hours + ':' + minutes + ':' + seconds;
+    return stringDay + hours + ':' + minutes + ':' + seconds
   }
-};
+}
 
 export default Helper

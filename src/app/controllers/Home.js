@@ -1,17 +1,22 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {updNeed,getChartData} from '../controllers/actions/homeActions'
+import {updNeed, getChartData, unmountHome} from '../controllers/actions/homeActions'
 
 import Copyright from '../components/blocks/_copyright'
 import PanelContent from '../components/blocks/_panel_content'
 import IndexTables from '../components/blocks/_index_tables'
 import Region from '../components/home/Region'
-import Item from '../components/home/Item'
+import SearchItem from '../components/home/Item'
+import FacebookWidget from '../components/FacebookWidget'
+import SimpleList from '../components/SimpleList'
+
+import HighChart from '../components/HomeChart'
 
 class Home extends Component {
 
   constructor (props) {
     super(props)
+    this.props.getChartData(props.region_id, props.item_id)
     this.state = {
       tableData: [
         {
@@ -49,12 +54,16 @@ class Home extends Component {
     }
   }
 
-  componentWillReceiveProps(np) {
-    if(np._need_update_chart) {
+  componentWillReceiveProps (np) {
+    if (+np.item_id !== +this.props.item_id || +np.region_id !== +this.props.region_id) {
       this.props.getChartData(np.region_id, np.item_id)
+      this.props.updNeed('_need_update_chart', false)
     }
   }
 
+  componentWillUnmount () {
+    this.props.unmountHome()
+  }
 
   render () {
     return (
@@ -72,17 +81,17 @@ class Home extends Component {
               <tbody>
                 <tr>
                   <td className='padd-3'>
-                    <div className="row">
-                      <div className="col-md-6 col-first">
-                        <Item />
-                        </div>
-                      <div className="col-md-6 col-last">
+                    <div className='row'>
+                      <div className='col-md-6 col-first'>
+                        <SearchItem />
+                      </div>
+                      <div className='col-md-6 col-last'>
                         <Region />
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="col-md-12">
-                        GRAPH
+                    <div className='row'>
+                      <div className='col-md-12'>
+                        <HighChart container={'chartID'} />
                       </div>
                     </div>
                   </td>
@@ -91,18 +100,11 @@ class Home extends Component {
             </table>
           </div>
           <div className='col-md-4 col-last'>
-            <table>
-              <thead>
-              <tr>
-                <th className='t-a_l'>Facebook</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td className='padd-3'>Follow us on facebook</td>
-              </tr>
-              </tbody>
-            </table>
+            <div className='row'>
+              <div className='col-md-12'>
+                <FacebookWidget _class='t-a_l' list={<SimpleList list={[12, 3, 4, 5]} />} />
+              </div>
+            </div>
           </div>
         </div>
         <Copyright />
@@ -111,7 +113,7 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
-	return state.homeReducer
+function mapStateToProps (state) {
+  return state.homeReducer
 }
-export default connect(mapStateToProps, {updNeed,getChartData})(Home)
+export default connect(mapStateToProps, {updNeed, getChartData, unmountHome})(Home)

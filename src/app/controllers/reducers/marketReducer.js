@@ -27,11 +27,11 @@ const initialState = {
   items: [],
   prices: {
     sell: [],
-    buy: [],
+    buy: []
   },
   orig_prices: {
     sell: [],
-    buy: [],
+    buy: []
   },
   similarItems: [],
   s_sugg: []
@@ -40,7 +40,9 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
 
-    case GET_PRICES:
+    case UNMOUNT_MARKET:
+      return Object.assign({}, initialState, {items: []})
+
     case UNSET_SYSTEM_SUGG:
     case SET_SIMILAR:
     case SET_SUGG:
@@ -49,6 +51,31 @@ export default (state = initialState, action = {}) => {
     case SET_TYPE_PRICES:
     case SET_SYSTEM_SUGG:
       return Object.assign({}, state, action)
+
+    case GET_PRICES:
+
+      let s = cloneDeep(action.orig_prices.sell)
+      let b = cloneDeep(action.orig_prices.buy)
+
+      let nps = {}
+      let npb = {}
+
+      each(s, (p, i) => {
+        nps[i] = p * (1 + (state.percentage / 100))
+      })
+
+      each(b, (p, i) => {
+        npb[i] = p * (1 + (state.percentage / 100))
+      })
+
+      let updatedPrices = {
+        prices: {
+          sell: nps,
+          buy: npb
+        },
+        orig_prices: action.orig_prices
+      }
+      return Object.assign({}, state, updatedPrices)
 
     case REMOVE_ITEM:
       let withoutItem = reject(state.items, v => {
@@ -99,9 +126,6 @@ export default (state = initialState, action = {}) => {
     case ADD_ITEM:
       state.items.push(action.new_item)
       return Object.assign({}, state, action)
-
-    case UNMOUNT_MARKET:
-      return Object.assign({}, state, initialState)
 
     default:
       return state

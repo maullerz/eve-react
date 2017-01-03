@@ -7,16 +7,15 @@ import {range, cloneDeep, each} from 'lodash'
 
 class Settings extends Component {
 
-  changePriceTypeComponents(typePrice) {
+  changePriceTypeComponents (typePrice) {
     this.props.setTypePrice(typePrice)
   }
 
-  changePercentage(event) {
+  changePercentage (event) {
     this.props.changePercentage(event.target.value)
   }
 
-  calculateTotalAmount() {
-
+  calculateTotalAmount () {
     let prices = cloneDeep(this.props.prices[this.props.type_price])
     let amount = 0
     each(this.props.items, function (val) {
@@ -25,8 +24,7 @@ class Settings extends Component {
     return amount
   }
 
-  render() {
-
+  render () {
     let col = {
       left: 'col-md-4',
       right: 'col-md-8'
@@ -35,44 +33,44 @@ class Settings extends Component {
       <div className='col-md-12'>
         <table className='inside'>
           <thead>
-          <tr>
-            <th colSpan='2'>Calculator</th>
-          </tr>
+            <tr>
+              <th colSpan='2'>Calculator</th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-            <td colSpan='2' className='inside-table'>
-              <div className='row'>
-                <div className={col.left}>Orders system, isk</div>
-                <div className={col.right}>
-                  <SystemPrice />
-                  <div className='btn-group'>
-                    <button onClick={this.changePriceTypeComponents.bind(this, 'sell')}
-                            className={this.props.type_price === 'sell' ? 'active' : ''}>sell
+            <tr>
+              <td colSpan='2' className='inside-table'>
+                <div className='row'>
+                  <div className={col.left}>Orders system, isk</div>
+                  <div className={col.right}>
+                    <SystemPrice />
+                    <div className='btn-group'>
+                      <button onClick={this.changePriceTypeComponents.bind(this, 'sell')}
+                        className={this.props.type_price === 'sell' ? 'active' : ''}>sell
                     </button>
-                    <button onClick={this.changePriceTypeComponents.bind(this, 'buy')}
-                            className={this.props.type_price === 'buy' ? 'active' : ''}>buy
+                      <button onClick={this.changePriceTypeComponents.bind(this, 'buy')}
+                        className={this.props.type_price === 'buy' ? 'active' : ''}>buy
                     </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className='row'>
-                <div className={col.left}>Percentage</div>
-                <div className={col.right}>
-                  <select value={this.props.percentage} onChange={this.changePercentage.bind(this)}>
-                    {range(-20, 22, 2).map((val) => {
-                      return <option key={val} value={val}>{val} %</option>
-                    })}
-                  </select>
+                <div className='row'>
+                  <div className={col.left}>Percentage</div>
+                  <div className={col.right}>
+                    <select value={this.props.percentage} onChange={this.changePercentage.bind(this)}>
+                      {range(-20, 22, 2).map((val) => {
+                        return <option key={val} value={val}>{val} %</option>
+                      })}
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div className='row'>
-                <div className={col.left}>Amount, isk</div>
-                <div className={col.right}><span
-                  className="txt-yellow">{Helper.price(this.calculateTotalAmount())}</span></div>
-              </div>
-            </td>
-          </tr>
+                <div className='row'>
+                  <div className={col.left}>Amount, isk</div>
+                  <div className={col.right}><span
+                    className='txt-yellow'>{Helper.price(this.calculateTotalAmount())}</span></div>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -81,7 +79,7 @@ class Settings extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return state.marketReducer
 }
-export default connect(mapStateToProps, {setTypePrice, changePercentage})(Settings);
+export default connect(mapStateToProps, {setTypePrice, changePercentage})(Settings)

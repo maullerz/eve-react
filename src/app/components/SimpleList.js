@@ -6,7 +6,7 @@ export default class SimpleList extends Component {
       return <li key={index}>{val}</li>
     })
     return (
-      <ul className="list">{li}</ul>
+      <ul className='list'>{li}</ul>
     )
   }
 }

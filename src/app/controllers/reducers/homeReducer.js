@@ -6,27 +6,40 @@ import {
   RESET_ITEM,
   UPD_NEED,
   SET_ITEM,
-  GET_CHART_DATA
+  GET_CHART_DATA,
+  HOME_UNMOUNT
 } from '../actions/homeActions'
 
 const initialState = {
   _need_update_chart: false,
+  _need_rebuild_chart: false,
   region_id: 10000002,
-  region_name: "The Forge",
+  region_name: 'The Forge',
   region_sugg: [],
   item_sugg: [],
-  item_id: 34,
-  item_name: "Tritanium",
+  item_id: 29668,
+  item_name: '30 Day Pilot\'s License Extension (PLEX)',
   chartData: []
 }
 
 export default (state = initialState, action = {}) => {
-
   switch (action.type) {
     case GET_CHART_DATA:
     case RESET_ITEM:
     case SET_REGION:
+      if (+state.region_id !== +action.region_id) {
+        return Object.assign({}, state, action)
+      } else {
+        return state
+      }
+
     case SET_ITEM:
+      if (+state.item_id !== +action.item_id) {
+        return Object.assign({}, state, action)
+      } else {
+        return state
+      }
+
     case SET_ITEM_SUGG:
     case SET_REGION_SUGG:
     case RESET_REGION_SUGG:
@@ -36,6 +49,9 @@ export default (state = initialState, action = {}) => {
       let ns = {}
       ns[action._k] = action._v
       return Object.assign({}, state, ns)
+
+    case HOME_UNMOUNT:
+      return initialState
 
     default:
       return state

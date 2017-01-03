@@ -30,12 +30,12 @@ class Region extends Component {
 
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.setRegion(suggestion)
-  };
+  }
   onSuggestionsFetchRequested = value => {
     if (Helper.AutocompleteMinCharacters(value.value)) {
       this.debounceGetSuggestions(value.value)
     }
-  };
+  }
   onSuggestionsClearRequested = () => {
     this.props.resetRegion()
   };
