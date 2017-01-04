@@ -41,6 +41,13 @@ export default {
       })
     }
   },
+  Priceall: {
+    send: function (body) {
+      return axios.post(baseUrl + '/priceall', {
+        body: body
+      })
+    }
+  },
 
   Main: {
     facebook_feed: function () {

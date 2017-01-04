@@ -6,7 +6,7 @@ import {updNeed} from '../controllers/actions/homeActions'
 
 class HomeChart extends Component {
 
-  constructor() {
+  constructor () {
     super()
     this.init = null
     this.chartID = 'homeChart'
@@ -69,7 +69,7 @@ class HomeChart extends Component {
     }
   }
 
-  componentWillReceiveProps(np) {
+  componentWillReceiveProps (np) {
     let chartData = np.chartData
 
     if (np._need_rebuild_chart) {
@@ -96,27 +96,27 @@ class HomeChart extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.chart = new Highcharts['Chart'](
       this.chartID,
       this.chartObj
     )
   }
 
-  reloadChart(chartObj) {
+  reloadChart (chartObj) {
     this.init = new Highcharts.Chart(chartObj)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.chart = null
   }
 
-  render() {
-    return <div id={this.chartID}/>
+  render () {
+    return <div id={this.chartID} />
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return state.homeReducer
 }
 

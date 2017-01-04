@@ -13,7 +13,8 @@ import {
   SET_QTY,
   UPDATE_NEED,
   GET_PRICES,
-  REMOVE_ITEM
+  REMOVE_ITEM,
+  GET_BODY
 } from '../actions/marketActions'
 
 const initialState = {
@@ -41,7 +42,7 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
 
     case UNMOUNT_MARKET:
-      return Object.assign({}, initialState, {items: []})
+      return Object.assign({}, initialState)
 
     case UNSET_SYSTEM_SUGG:
     case SET_SIMILAR:
@@ -124,8 +125,29 @@ export default (state = initialState, action = {}) => {
       })
 
     case ADD_ITEM:
-      state.items.push(action.new_item)
-      return Object.assign({}, state, action)
+      let stateItems = cloneDeep(state.items)
+
+      let iindex = findIndex(stateItems, v => {
+        return +v.item_id === +action.item_id
+      })
+      if (iindex === -1) {
+        stateItems.push(action.new_item)
+      }
+      return Object.assign({}, state, {items: stateItems, _need_upd_prices: true})
+
+    case GET_BODY:
+      let stateItemsBody = cloneDeep(state.items)
+      if (action._new_items.length) {
+        action._new_items.forEach(item => {
+          let index = findIndex(stateItemsBody, function (i) {
+            return +i.item_id === +item.item_id
+          })
+          if (index === -1) {
+            stateItemsBody.push(item)
+          }
+        })
+      }
+      return Object.assign({}, state, {items: stateItemsBody, _need_upd_prices: true})
 
     default:
       return state

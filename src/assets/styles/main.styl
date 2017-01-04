@@ -276,7 +276,21 @@ a {
       padding-right 6px
     }
   }
+}
 
+.inside-table-form {
+  .row {
+    margin 0
+    background-color rgba(22, 112, 146, .2)
+    margin-top 1px
+    padding 2px
+    &:hover {
+      background-color rgba(22, 112, 146, .25)
+    }
+    div[class^=col-md] {
+      padding 1px
+    }
+  }
 }
 
 nav#header-menu > ul > li:hover > ul {
@@ -302,9 +316,8 @@ nav#header-menu > ul > li > ul {
   fontColor (color-white)
 
 //  Global styles
-input
+input {
   border 0
-  border-color #ffe4b2
   background-color #ffedcb
   outline none
   color color-input
@@ -314,6 +327,11 @@ input
   &:last-child {
     margin-right 0
   }
+}
+
+button {
+  border 0
+}
 
 select, textarea, button
   border-color #ffe4b2
@@ -324,6 +342,10 @@ select, textarea, button
   &:last-child {
     margin-right 0
   }
+
+textarea {
+  resize none
+}
 
 .btn-group {
   display inline-block
@@ -367,6 +389,10 @@ select, textarea, button
       border-right-width: 6px !important;
     }
   }
+}
+
+.pointer {
+  cursor pointer
 }
 
 .w100

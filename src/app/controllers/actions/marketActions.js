@@ -14,13 +14,36 @@ export const SET_QTY = 'SET_QTY'
 export const UPDATE_NEED = 'UPDATE_NEED'
 export const GET_PRICES = 'GET_PRICES'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
+export const GET_BODY = 'GET_BODY'
 
 export function getPrices (systemId, itemIds) {
   return dispatch => {
     return ApiService.Main.prices(systemId, itemIds.join(','))
-    .then(json => {
-      dispatch(updPricesState(json.data.prices))
+      .then(json => {
+        dispatch(updPricesState(json.data.prices))
+      })
+  }
+}
+
+export function sendBody (body) {
+  return dispatch => {
+    return ApiService.Priceall.send(body)
+      .then(json => {
+        dispatch(sendBodyState(json.data))
+      })
+  }
+}
+
+export function sendBodyState (json) {
+  let items = []
+  if (json.items.length) {
+    json.items.forEach(function (val) {
+      items.push(val)
     })
+  }
+  return {
+    type: GET_BODY,
+    _new_items: items
   }
 }
 
