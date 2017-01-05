@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addItem} from '../../controllers/actions/marketActions'
+import {addItem} from '../../actions/marketActions'
 
 class SimilarItems extends Component {
 

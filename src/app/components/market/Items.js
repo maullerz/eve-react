@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {setQty, removeItem} from '../../controllers/actions/marketActions'
+import {setQty, removeItem} from '../../actions/marketActions'
 import Helper from '../../helpers'
 
 class Items extends Component {

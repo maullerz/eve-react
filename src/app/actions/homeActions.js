@@ -1,4 +1,4 @@
-import ApiService from './../../api'
+import ApiService from './../api'
 
 export const SET_REGION_SUGG = 'SET_REGION_SUGG'
 export const SET_REGION = 'SET_REGION'

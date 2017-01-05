@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {map} from 'lodash'
-import {updNeed, getChartData, unmountHome, getFacebookFeed} from '../controllers/actions/homeActions'
+import {updNeed, getChartData, unmountHome, getFacebookFeed} from '../actions/homeActions'
 
 import Copyright from '../components/blocks/_copyright'
 import PanelContent from '../components/blocks/_panel_content'

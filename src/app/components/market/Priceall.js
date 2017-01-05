@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {sendBody} from '../../controllers/actions/marketActions'
+import {sendBody} from '../../actions/marketActions'
 import {debounce} from 'lodash'
 import Helper from '../../helpers'
 

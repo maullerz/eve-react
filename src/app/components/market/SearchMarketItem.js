@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
-import {searchItem, addItem, resetSearch, getSimilarItems} from '../../controllers/actions/marketActions'
+import {searchItem, addItem, resetSearch, getSimilarItems} from '../../actions/marketActions'
 
 import {debounce} from "lodash"
 import Helper from "../../helpers"

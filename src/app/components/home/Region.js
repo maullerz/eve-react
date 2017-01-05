@@ -4,7 +4,7 @@ import {
   searchRegion,
   resetRegion,
   setRegion
-} from '../../controllers/actions/homeActions'
+} from '../../actions/homeActions'
 import Autocomplete from "react-autosuggest"
 import {debounce} from "lodash"
 import Helper from "../../helpers"

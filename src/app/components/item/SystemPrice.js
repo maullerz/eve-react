@@ -1,43 +1,42 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {
-  searchItem,
-  resetItem,
-  setItem
-} from '../../actions/homeActions'
+  searchSystem,
+  setSystem,
+  resetSystem
+} from '../../actions/itemActions'
 import Autocomplete from "react-autosuggest"
 import {debounce} from "lodash"
 import Helper from "../../helpers"
 
 // autosuggest
-const getSuggestionValue = suggestion => suggestion.item_name
-const renderSuggestion = suggestion => suggestion.item_name
+const getSuggestionValue = suggestion => suggestion.system_name
+const renderSuggestion = suggestion => suggestion.system_name
 
-class Item extends Component {
+class SystemPrice extends Component {
 
   constructor() {
     super()
     this.state = {
-      value: "30 Day Pilot's License Extension (PLEX)"
+      value: "Jita"
     }
-
     this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
   }
 
   loadSuggestions(value) {
-    this.props.searchItem(Helper.escapeRegexCharacters(value));
+    this.props.searchSystem(Helper.escapeRegexCharacters(value));
   }
 
   onSuggestionSelected = (event, {suggestion}) => {
-    this.props.setItem(suggestion)
-  }
+    this.props.setSystem(suggestion.system_id)
+  };
   onSuggestionsFetchRequested = value => {
     if (Helper.AutocompleteMinCharacters(value.value)) {
       this.debounceGetSuggestions(value.value)
     }
   };
   onSuggestionsClearRequested = () => {
-    this.props.resetItem()
+    this.props.resetSystem();
   };
   onChange = (event, {newValue}) => {
     this.setState({
@@ -49,15 +48,16 @@ class Item extends Component {
 
     const {value} = this.state
     const inputProps = {
-      placeholder: 'Item name',
+      placeholder: 'System name',
       value,
-      className: "w100",
+      className: "w130px",
       onChange: this.onChange
     }
+
     return (
-      <div className="inline-block-search w100">
+      <div className="inline-block-search">
         <Autocomplete
-          suggestions={this.props.item_sugg || []}
+          suggestions={this.props.system_sugg || []}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           getSuggestionValue={getSuggestionValue}
@@ -69,8 +69,8 @@ class Item extends Component {
   }
 }
 
-export default connect(state => state.homeReducer, {
-  searchItem,
-  setItem,
-  resetItem
-})(Item)
+export default connect(state => state.itemReducer, {
+  searchSystem,
+  setSystem,
+  resetSystem
+})(SystemPrice)

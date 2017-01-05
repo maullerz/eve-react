@@ -33,6 +33,13 @@ export default {
         }
       })
     },
+    componentByUrl: function (url) {
+      return axios.get(baseUrl + '/search/component.json', {
+        params: {
+          url: url
+        }
+      })
+    },
     similar: function (itemId) {
       return axios.get(baseUrl + '/search/similar.json', {
         params: {
@@ -44,6 +51,17 @@ export default {
       return axios.get(baseUrl + '/search/component.json', {
         params: {
           term: term
+        }
+      })
+    }
+  },
+  Item: {
+    whereUsedComponent: function (component_id, page = 1, limit = 25) {
+      return axios.get(baseUrl + '/item/bpo.json', {
+        params: {
+          component_id: component_id,
+          page: page,
+          limit: limit
         }
       })
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
-import {searchBpc, getBpc, resetSearch} from '../../controllers/actions/manufactureActions'
+import {searchBpc, getBpc, resetSearch} from '../../actions/manufactureActions'
 import {browserHistory} from "react-router"
 import {debounce} from "lodash"
 import Helper from "../../helpers"

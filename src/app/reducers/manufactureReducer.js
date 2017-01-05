@@ -2,7 +2,6 @@ import {
   SEARCH_BPC,
   GET_BPC,
   RESET_SEARCH,
-  SET_COMPONENTS_AMOUNT,
   CHANGE_ME,
   CHANGE_RUN,
   CHANGE_TE,
@@ -78,7 +77,6 @@ const initialState = {
 }
 
 export default (state = initialState, action = {}) => {
-  console.log(state);
   switch (action.type) {
 
     case SET_FACILITY:
@@ -101,7 +99,6 @@ export default (state = initialState, action = {}) => {
     case SEARCH_BPC:
     case RESET_SEARCH:
     case GET_BPC:
-    case SET_COMPONENTS_AMOUNT:
       return Object.assign({}, state, action)
 
     case UNMOUNT_MANUFACTURE:

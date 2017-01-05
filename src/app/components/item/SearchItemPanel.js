@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
-import {searchItem, addItem, resetSearch} from '../../controllers/actions/itemActions'
+import {searchItem, addItem, resetSearch} from '../../actions/itemActions'
 
 import {debounce} from "lodash"
 import Helper from "../../helpers"
@@ -25,7 +25,6 @@ class SearchItemPanel extends Component {
 
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.addItem(suggestion)
-    // this.props.getSimilarItems(suggestion.item_id)
   };
 
   onSuggestionsFetchRequested = value => {
@@ -59,7 +58,7 @@ class SearchItemPanel extends Component {
           <div className="panel-content">
             <h1>Where components used?</h1>
             <Autosuggest
-              suggestions={this.props.item_sugg}
+              suggestions={this.props.item_sugg || []}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               getSuggestionValue={getSuggestionValue}

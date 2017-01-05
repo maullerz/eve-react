@@ -4,7 +4,7 @@ import SearchMarketItem from '../components/market/SearchMarketItem'
 import Settings from './../components/market/Settings'
 import Priceall from './../components/market/Priceall'
 import Items from './../components/market/Items'
-import {unmountMarket, updNeed, getPrices} from './actions/marketActions'
+import {unmountMarket, updNeed, getPrices} from '../actions/marketActions'
 import {map} from 'lodash'
 
 class Market extends Component {

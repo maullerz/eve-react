@@ -19,7 +19,8 @@ Helper = {
   },
 
   cfg: {
-    debounceTimeout: 350
+    debounceTimeout: 350,
+    debounceScrollTimeout: 750
   },
 
   /**

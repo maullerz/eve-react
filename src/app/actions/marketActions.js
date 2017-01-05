@@ -1,6 +1,6 @@
-import ApiService from './../../api'
+import ApiService from './../api'
 
-export const SET_SUGG = 'SET_SUGG'
+export const MARKET_SET_SUGG = 'MARKET_SET_SUGG'
 export const RESET_SUGG = 'RESET_SUGG'
 export const UNMOUNT_MARKET = 'UNMOUNT_MARKET'
 export const ADD_ITEM = 'ADD_ITEM'
@@ -188,7 +188,7 @@ export function addItemState (item) {
   }
 }
 
-function resetSearchState () {
+export function resetSearchState () {
   return {
     type: RESET_SUGG,
     sugg: []
@@ -204,7 +204,7 @@ export function resetSystemState () {
 
 export function setSuggMarket (items) {
   return {
-    type: SET_SUGG,
+    type: MARKET_SET_SUGG,
     sugg: items
   }
 }

@@ -4,7 +4,7 @@ import {
   searchComponentsSystem,
   resetSystemComponentsSuggestions,
   setComponentsSystem
-} from './../../controllers/actions/manufactureActions'
+} from '../../actions/manufactureActions'
 import Autocomplete from "react-autosuggest"
 import {debounce} from "lodash"
 import Helper from "../../helpers"

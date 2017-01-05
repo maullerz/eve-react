@@ -1,11 +1,10 @@
-import ApiService from './../../api'
+import ApiService from './../api'
 import {forEach, cloneDeep, ceil, map} from 'lodash'
-import Helper from '../../helpers'
+import Helper from '../helpers'
 
 export const SEARCH_BPC = 'SEARCH_BPC'
 export const GET_BPC = 'GET_BPC'
 export const RESET_SEARCH = 'RESET_SEARCH'
-export const SET_COMPONENTS_AMOUNT = 'SET_COMPONENTS_AMOUNT'
 export const CHANGE_ME = 'CHANGE_ME'
 export const CHANGE_TE = 'CHANGE_TE'
 export const CHANGE_RUN = 'CHANGE_RUN'

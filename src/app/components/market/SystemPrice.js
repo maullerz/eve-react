@@ -4,7 +4,7 @@ import {
   searchSystem,
   resetSystem,
   setSystem
-} from '../../controllers/actions/marketActions'
+} from '../../actions/marketActions'
 import Autocomplete from "react-autosuggest"
 import {debounce} from "lodash"
 import Helper from "../../helpers"

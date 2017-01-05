@@ -1,6 +1,6 @@
 import {findIndex, cloneDeep, each, reject} from 'lodash'
 import {
-  SET_SUGG,
+  MARKET_SET_SUGG,
   RESET_SUGG,
   UNMOUNT_MARKET,
   ADD_ITEM,
@@ -14,7 +14,7 @@ import {
   GET_PRICES,
   REMOVE_ITEM,
   GET_BODY
-} from '../actions/marketActions'
+} from './../actions/marketActions'
 
 const initialState = {
   _need_recalculate: false,
@@ -43,7 +43,7 @@ export default (state = initialState, action = {}) => {
       return Object.assign({}, initialState)
 
     case UNSET_SYSTEM_SUGG:
-    case SET_SUGG:
+    case MARKET_SET_SUGG:
     case SET_SYSTEM_ID:
     case RESET_SUGG:
     case SET_TYPE_PRICES:

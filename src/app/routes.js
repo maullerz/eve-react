@@ -12,7 +12,7 @@ export default (
     <IndexRoute component={Home}/>
     <Route path='/donate' component={Donate}/>
     <Route path='/market' component={Market}/>
-    <Route path='/item' component={Item}/>
+    <Route path='/item(/:url)' component={Item}/>
     <Route path='/manufacture(/:url)' component={Manufacture}/>
   </Route>
 )

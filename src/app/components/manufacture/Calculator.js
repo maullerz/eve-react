@@ -17,7 +17,7 @@ import {
   setItemSystem,
   getFacilities,
   setFacilityVal
-} from '../../controllers/actions/manufactureActions'
+} from '../../actions/manufactureActions'
 
 class Calculator extends Component {
 

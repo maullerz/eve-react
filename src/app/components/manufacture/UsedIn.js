@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getBpc} from './../../controllers/actions/manufactureActions'
+import {getBpc} from '../../actions/manufactureActions'
 
 class UsedIn extends Component {
 

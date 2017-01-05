@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import SystemPrice from './SystemPrice'
 import Helper from '../../helpers'
-import {setTypePrice, changePercentage} from '../../controllers/actions/marketActions'
+import {setTypePrice, changePercentage} from '../../actions/marketActions'
 import {range, cloneDeep, each} from 'lodash'
 
 class Settings extends Component {
