@@ -39,6 +39,13 @@ export default {
           item_id: itemId
         }
       })
+    },
+    component: function (term) {
+      return axios.get(baseUrl + '/search/component.json', {
+        params: {
+          term: term
+        }
+      })
     }
   },
   Priceall: {

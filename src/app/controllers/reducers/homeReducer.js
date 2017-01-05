@@ -25,6 +25,7 @@ const initialState = {
 }
 
 export default (state = initialState, action = {}) => {
+console.log(state);
   switch (action.type) {
     case GET_CHART_DATA:
     case FACEBOOK_FEED:
@@ -54,7 +55,7 @@ export default (state = initialState, action = {}) => {
       return Object.assign({}, state, ns)
 
     case HOME_UNMOUNT:
-      return initialState
+      return Object.assign({}, initialState)
 
     default:
       return state
