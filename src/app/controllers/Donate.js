@@ -3,7 +3,6 @@ import OneColumnTable from '../components/OneColumnTable'
 import UsersList from '../components/UsersList'
 import Api from '../api'
 import {forEach} from 'lodash'
-// axios
 
 class Donate extends Component {
 

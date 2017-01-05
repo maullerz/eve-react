@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import SearchPanel from './../components/market/SearchPanel'
+import SearchMarketItem from '../components/market/SearchMarketItem'
 import Settings from './../components/market/Settings'
 import Priceall from './../components/market/Priceall'
-// import SimilarItems from './../components/market/SimilarItems'
 import Items from './../components/market/Items'
 import {unmountMarket, updNeed, getPrices} from './actions/marketActions'
 import {map} from 'lodash'
@@ -16,6 +15,7 @@ class Market extends Component {
       this.props.getPrices(np.system_id, map(np.items, 'item_id'))
     }
   }
+
   componentWillUnmount () {
     this.props.unmountMarket()
   }
@@ -23,12 +23,11 @@ class Market extends Component {
   render () {
     return (
       <div>
-        <SearchPanel />
+        <SearchMarketItem />
         <div className='row'>
           <div className='col-md-4 t-a_l col-first'>
             <Settings />
             <Priceall />
-            {/* <SimilarItems /> */}
           </div>
           <div className='col-md-8 t-a_l col-last'>
             <Items />
@@ -38,7 +37,4 @@ class Market extends Component {
     )
   }
 }
-function mapStateToProps (state) {
-  return state.marketReducer
-}
-export default connect(mapStateToProps, {unmountMarket, updNeed, getPrices})(Market)
+export default connect(state => state.marketReducer, {unmountMarket, updNeed, getPrices})(Market)

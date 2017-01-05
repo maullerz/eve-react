@@ -11,7 +11,6 @@ import SearchItem from '../components/home/Item'
 import FacebookWidget from '../components/FacebookWidget'
 import SimpleList from '../components/SimpleList'
 import FBFeedLine from '../components/home/FBFeedLine'
-
 import HighChart from '../components/HomeChart'
 
 class Home extends Component {
@@ -120,7 +119,4 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps (state) {
-  return state.homeReducer
-}
-export default connect(mapStateToProps, {updNeed, getChartData, unmountHome, getFacebookFeed})(Home)
+export default connect(state => state.homeReducer, {updNeed, getChartData, unmountHome, getFacebookFeed})(Home)

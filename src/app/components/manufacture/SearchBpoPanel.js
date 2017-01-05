@@ -75,14 +75,6 @@ class SearchBpoPanel extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    suggestions: state.manufactureReducer.suggestions || [],
-    bpc: state.manufactureReducer.bpc,
-    used_in: state.manufactureReducer.used_in,
-    bpc_components: state.manufactureReducer.bpc_components,
-    decryptors: state.manufactureReducer.decryptors,
-    item: state.manufactureReducer.item,
-    price_items: state.manufactureReducer.price_items
-  }
+  return state.manufactureReducer
 }
 export default connect(mapStateToProps, {searchBpc, getBpc, resetSearch})(SearchBpoPanel);

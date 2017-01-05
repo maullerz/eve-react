@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
-import {searchItem,addItem,resetSearch,getSimilarItems} from '../../controllers/actions/marketActions'
+import {searchItem, addItem, resetSearch, getSimilarItems} from '../../controllers/actions/marketActions'
 
 import {debounce} from "lodash"
 import Helper from "../../helpers"
@@ -9,7 +9,7 @@ import Helper from "../../helpers"
 const getSuggestionValue = suggestion => suggestion.item_name
 const renderSuggestion = suggestion => suggestion.item_name
 
-class SearchPanel extends Component {
+class SearchMarketItem extends Component {
 
   constructor() {
     super()
@@ -25,7 +25,6 @@ class SearchPanel extends Component {
 
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.addItem(suggestion)
-    this.props.getSimilarItems(suggestion.item_id)
   };
 
   onSuggestionsFetchRequested = value => {
@@ -44,7 +43,7 @@ class SearchPanel extends Component {
   };
 
   render() {
-    
+
     const {value} = this.state;
 
     const inputProps = {
@@ -60,7 +59,7 @@ class SearchPanel extends Component {
           <div className="panel-content">
             <h1>Market</h1>
             <Autosuggest
-              suggestions={this.props.sugg}
+              suggestions={this.props.sugg || []}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               getSuggestionValue={getSuggestionValue}
@@ -75,7 +74,4 @@ class SearchPanel extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state.marketReducer
-}
-export default connect(mapStateToProps, {searchItem,addItem,resetSearch,getSimilarItems})(SearchPanel);
+export default connect(state => state.marketReducer, {searchItem, addItem, resetSearch, getSimilarItems})(SearchMarketItem);

@@ -57,7 +57,7 @@ class Item extends Component {
     return (
       <div className="inline-block-search w100">
         <Autocomplete
-          suggestions={this.props.item_sugg}
+          suggestions={this.props.item_sugg || []}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           getSuggestionValue={getSuggestionValue}
@@ -69,10 +69,7 @@ class Item extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state.homeReducer
-}
-export default connect(mapStateToProps, {
+export default connect(state => state.homeReducer, {
   searchItem,
   setItem,
   resetItem

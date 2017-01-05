@@ -4,7 +4,6 @@ export const SET_SUGG = 'SET_SUGG'
 export const RESET_SUGG = 'RESET_SUGG'
 export const UNMOUNT_MARKET = 'UNMOUNT_MARKET'
 export const ADD_ITEM = 'ADD_ITEM'
-export const SET_SIMILAR = 'SET_SIMILAR'
 export const SET_TYPE_PRICES = 'SET_TYPE_PRICES'
 export const SET_PERCENTAGE = 'SET_PERCENTAGE'
 export const SET_SYSTEM_SUGG = 'SET_SYSTEM_SUGG'
@@ -102,14 +101,6 @@ export function addItem (item) {
   }
 }
 
-export function getSimilarItems (itemId) {
-  return dispatch => {
-    return ApiService.Search.similar(itemId).then(json => {
-      dispatch(setSimilarItems(json.data.items))
-    })
-  }
-}
-
 export function resetSearch () {
   return dispatch => {
     dispatch(resetSearchState())
@@ -118,7 +109,7 @@ export function resetSearch () {
 export function searchItem (term) {
   return dispatch => {
     ApiService.Search.item(term).then(json => {
-      dispatch(setSugg(json.data.items))
+      dispatch(setSuggMarket(json.data.items))
     })
   }
 }
@@ -187,12 +178,6 @@ export function setTypePriceState (type) {
     type_price: type
   }
 }
-export function setSimilarItems (items) {
-  return {
-    type: SET_SIMILAR,
-    similarItems: items
-  }
-}
 
 export function addItemState (item) {
   item.qty = 1
@@ -217,7 +202,7 @@ export function resetSystemState () {
   }
 }
 
-export function setSugg (items) {
+export function setSuggMarket (items) {
   return {
     type: SET_SUGG,
     sugg: items

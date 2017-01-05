@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Header from '../components/blocks/Header'
 
-class App extends React.Component {
+export default class App extends Component {
 
   render () {
     return (
@@ -11,5 +11,3 @@ class App extends React.Component {
       </div>)
   }
 }
-
-export default App

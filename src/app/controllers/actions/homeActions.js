@@ -1,6 +1,6 @@
 import ApiService from './../../api'
 
-export const SET_REGION_SUGG = 'SET_SUGG'
+export const SET_REGION_SUGG = 'SET_REGION_SUGG'
 export const SET_REGION = 'SET_REGION'
 export const RESET_REGION_SUGG = 'RESET_REGION_SUGG'
 export const SET_ITEM_SUGG = 'SET_ITEM_SUGG'

@@ -4,7 +4,6 @@ import {
   RESET_SUGG,
   UNMOUNT_MARKET,
   ADD_ITEM,
-  SET_SIMILAR,
   SET_TYPE_PRICES,
   SET_PERCENTAGE,
   SET_SYSTEM_SUGG,
@@ -34,7 +33,6 @@ const initialState = {
     sell: [],
     buy: []
   },
-  similarItems: [],
   s_sugg: []
 }
 
@@ -45,7 +43,6 @@ export default (state = initialState, action = {}) => {
       return Object.assign({}, initialState)
 
     case UNSET_SYSTEM_SUGG:
-    case SET_SIMILAR:
     case SET_SUGG:
     case SET_SYSTEM_ID:
     case RESET_SUGG:
