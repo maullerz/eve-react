@@ -329,8 +329,8 @@ export function setBpc (response) {
 export function updateManufacture (props) {
   let oldProps = cloneDeep(props)
   let bpcc = oldProps.origin_bpc_components
-  let percentage = (100 - +oldProps.me) / 100
-  let percentageTe = (100 - +oldProps.te) / 100
+  let percentage = (100 - +props.me) / 100
+  let percentageTe = (100 - +props.te) / 100
   let amount = 0
   let volume = 0
   let baseCost = 0
@@ -339,21 +339,22 @@ export function updateManufacture (props) {
 
   forEach(bpcc, val => {
     // calculate new QTY
+
     let adjustQty = cloneDeep(val)
     let qty = val.orig_qty !== 1 ? val.orig_qty * percentage : val.orig_qty
-
     // station me
     val.orig_qty = ceil(qty * props.run * props.facility_val.me)
+
     // total amount
-    amount += qty * props.prices[props.type_p_components][val.item_id]
+    amount += Math.ceil(qty) * props.prices[props.type_p_components][val.item_id]
     // total volume
-    volume += qty * val.volume
+    volume += Math.ceil(qty) * val.volume
     // total base cost
     baseCost += +val.adjustPrice * adjustQty.orig_qty
   })
 
   // adust cost for run in facility
-  let adjustCost = Math.ceil(baseCost * (props.costIndex + 1) * props.stationFee * props.run)
+  let adjustCost = Math.ceil(baseCost * (props.costIndex + 1) * props.stationFee) * props.run
 
   // cost components, bpc, other
   let manufactureCost = amount + (props.bpc_cost * props.run) + adjustCost
