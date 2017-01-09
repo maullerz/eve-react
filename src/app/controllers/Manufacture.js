@@ -17,6 +17,7 @@ class Manufacture extends Component {
   }
 
   componentWillUnmount() {
+    console.log("unmount mnanu");
     this.props.unmountManufacture()
   }
 
