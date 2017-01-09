@@ -35,7 +35,6 @@ class Item extends Component {
     return (
       <div>
         <SearchItemPanel />
-
         <div className='row'>
           <div className='col-md-4 t-a_l col-first'>
             <Settings />

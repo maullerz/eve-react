@@ -77,7 +77,6 @@ const initialState = {
 }
 
 export default (state = initialState, action = {}) => {
-  console.log("reducer", action)
   switch (action.type) {
 
     case SET_FACILITY:
@@ -103,8 +102,6 @@ export default (state = initialState, action = {}) => {
       return Object.assign({}, state, action)
 
     case UNMOUNT_MANUFACTURE:
-      console.log("unmount")
-
       return Object.assign({}, initialState)
 
     default:
