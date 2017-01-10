@@ -9,18 +9,18 @@ import Calculator from './../components/manufacture/Calculator'
 
 class Manufacture extends Component {
 
-  componentWillMount() {
+  componentWillMount () {
     // Initial bpc when load Url
     if (this.props.params.url && !this.props.bpc_title) {
       this.props.getBpc(this.props.params.url)
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.props.unmountManufacture()
   }
 
-  render() {
+  render () {
     return (
       <div>
         <SearchBpoPanel />

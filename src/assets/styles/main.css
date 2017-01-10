@@ -63,12 +63,16 @@ body #root table tfoot tr td ul.list > li:last-child {
 body #root table tbody tr td ul.list > li:hover,
 body #root table tfoot tr td ul.list > li:hover {
   cursor: pointer;
-  background-color: rgba(22,112,146,0.25);
+  background-color: rgba(22,112,146,0.35);
 }
 body #root table tbody tr td ul.list > li .img24,
 body #root table tfoot tr td ul.list > li .img24 {
   margin-right: 6px;
   width: 28px;
+}
+body #root table tbody tr td ul.list > li.active,
+body #root table tfoot tr td ul.list > li.active {
+  background-color: rgba(22,112,146,0.35);
 }
 ul.components li .containter {
   margin: 0;

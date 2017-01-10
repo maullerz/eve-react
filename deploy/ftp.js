@@ -18,31 +18,31 @@ let conn = new Ftp({
 
 async.series({
     // Clean ftp before deploy
-    cleanStatic: function (callback) {
-      conn.rmdir('./static', () => {
-        callback(null, true)
-      })
-    },
-    cleanManifest: function (callback) {
-      conn.delete('./asset-manifest.json', () => {
-        callback(null, true)
-      })
-    },
-    cleanIndex: function (callback) {
-      conn.delete('./index.html', () => {
-        callback(null, true)
-      })
-    },
-    status: function (callback) {
-      fs.src(['./build/**'], {buffer: false}).pipe(conn.dest('/'))
+  cleanStatic: function (callback) {
+    conn.rmdir('./static', () => {
+      callback(null, true)
+    })
+  },
+  cleanManifest: function (callback) {
+    conn.delete('./asset-manifest.json', () => {
+      callback(null, true)
+    })
+  },
+  cleanIndex: function (callback) {
+    conn.delete('./index.html', () => {
+      callback(null, true)
+    })
+  },
+  status: function (callback) {
+    fs.src(['./build/**'], {buffer: false}).pipe(conn.dest('/'))
         .on('end', () => {
           callback(null, 'Deployed!')
         })
         .on('error', () => {
           callback(null, 'Not deployed!')
         })
-    }
-  },
+  }
+},
   function (err, result) {
     if (err) {
       console.error(err)

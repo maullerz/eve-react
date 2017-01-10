@@ -10,20 +10,23 @@ import {
   ITEM_GET_BY_URL,
   ITEM_UPDATE_NEED,
   ITEM_SET_PRICES,
-  GET_USED_IN
+  GET_USED_IN,
+  SET_SIMILAR_ITEMS
 } from '../actions/itemActions'
 
 const initialState = {
   _need_get_bpc: false,
   _need_update_prices: false,
+  _need_get_similar_items: false,
   item_sugg: [],
   system_sugg: [],
+  similar_items: [],
   used_in: [],
   item: {},
-  type_price: "sell",
+  type_price: 'sell',
   prices: {
     sell: {},
-    buy: {},
+    buy: {}
   },
   page: 1,
   limit: 15,
@@ -41,6 +44,7 @@ export default (state = initialState, action = {}) => {
     case ITEM_SYSTEM_SET:
     case ITEM_SYSTEM_RESET:
     case ITEM_SEARCH_SYSTEM:
+    case SET_SIMILAR_ITEMS:
     case ITEM_SET_TYPE_PRICE:
     case ITEM_GET_BY_URL:
     case GET_USED_IN:
