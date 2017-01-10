@@ -6,8 +6,6 @@ import Paginate from '../Paginate'
 class UsedIn extends Component {
 
   onChangePage(pageNum) {
-
-    console.log(this.props);
     this.props.updNeed("page", pageNum)
     this.props.updNeed("_need_get_bpc", true)
   }
