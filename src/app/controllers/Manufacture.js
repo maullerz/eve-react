@@ -16,7 +16,6 @@ class Manufacture extends Component {
   }
 
   componentWillMount() {
-    // Initial bpc when load Url
     if (this.props.params.url && !this.props.bpc_title) {
       this.props.getBpc(this.props.params.url)
     }
