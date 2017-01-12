@@ -47,6 +47,13 @@ export default {
         }
       })
     },
+    similarBpc: function (itemId) {
+      return axios.get(baseUrl + '/search/similar-bpc.json', {
+        params: {
+          item_id: itemId
+        }
+      })
+    },
     component: function (term) {
       return axios.get(baseUrl + '/search/component.json', {
         params: {
@@ -56,10 +63,10 @@ export default {
     }
   },
   Item: {
-    whereUsedComponent: function (component_id, page = 1, limit = 25) {
+    whereUsedComponent: function (componentId, page = 1, limit = 25) {
       return axios.get(baseUrl + '/item/bpo.json', {
         params: {
-          component_id: component_id,
+          component_id: componentId,
           page: page,
           limit: limit
         }

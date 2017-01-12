@@ -7,17 +7,16 @@ import { Link } from 'react-router'
 class UsedIn extends Component {
 
   onChangePage(pageNum) {
-    this.props.updNeed("page", pageNum)
-    this.props.updNeed("_need_get_bpc", true)
+    this.props.updNeed('page', pageNum)
+    this.props.updNeed('_need_get_bpc', true)
   }
 
   render() {
-
     let used_in = this.props.used_in.map((val, index) => {
       console.log(val)
       return <li key={index}>
         <div className='m-b-1'>
-          <Link to={`manufacture/${val.url}-blueprint`}>
+          <Link to={`/>manufacture/${val.url}-blueprint`}>
             <img
               className='img24'
               alt={val.blueprint_id}
@@ -33,7 +32,7 @@ class UsedIn extends Component {
         <table>
           <thead>
             <tr>
-              <th>{this.props.item.item_name} Used In</th>
+              <th>{this.props.item.item_name} Used In {this.props.total_pages > 1 ? '(' + this.props.total_pages + ' page' + (this.props.total_pages > 1 ? 's' : '') + ')' : ''}</th>
             </tr>
           </thead>
           <tbody>
@@ -47,7 +46,7 @@ class UsedIn extends Component {
         </table>
       </div>
     </div>
-    return this.props.item.hasOwnProperty("item_id") ? usedIn : null
+    return this.props.item.hasOwnProperty('item_id') ? usedIn : null
   }
 }
 

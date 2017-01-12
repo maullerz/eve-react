@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Autosuggest from 'react-autosuggest'
 import {connect} from 'react-redux'
 import {searchItem, addItem, resetSearch} from '../../actions/itemActions'
-
+import {browserHistory} from "react-router"
 import {debounce} from "lodash"
 import Helper from "../../helpers"
 
@@ -25,6 +25,7 @@ class SearchItemPanel extends Component {
 
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.addItem(suggestion)
+    browserHistory.push("/item/" + suggestion.url)
   };
 
   onSuggestionsFetchRequested = value => {

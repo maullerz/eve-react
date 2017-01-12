@@ -9,10 +9,10 @@ import Item from './controllers/Item'
 
 export default (
   <Route path='/' component={App}>
-    <IndexRoute component={Home}/>
-    <Route path='/donate' component={Donate}/>
-    <Route path='/market' component={Market}/>
-    <Route path='/item(/:url)' component={Item}/>
-    <Route path='/manufacture(/:url)' component={Manufacture}/>
+    <IndexRoute component={Home} />
+    <Route path='/donate' component={Donate} />
+    <Route path='/market' component={Market} />
+    <Route path='/item(/:url)' component={Item} />
+    <Route path='/manufacture(/:url)' component={Manufacture} />
   </Route>
 )

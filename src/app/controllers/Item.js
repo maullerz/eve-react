@@ -1,15 +1,13 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import SearchItemPanel from '../components/item/SearchItemPanel'
-import {unmountItem, getComponentByUrl, updNeed, getPrices, getBpcByComponent} from '../actions/itemActions'
-import Settings from './../components/item/Settings'
+import { unmountItem, getComponentByUrl, updNeed, getPrices, getBpcByComponent, getSimilarItems } from '../actions/itemActions'
 import UsedIn from './../components/item/UsedIn'
-
+import SimilarItems from '../components//item/SimilarItems'
 
 class Item extends Component {
 
-  componentWillReceiveProps(np) {
-
+  componentWillReceiveProps (np) {
     if (np._need_update_prices) {
       this.props.updNeed('_need_update_prices', false)
       this.props.getPrices(np.item.item_id, np.system_id)
@@ -17,27 +15,32 @@ class Item extends Component {
 
     if (np._need_get_bpc) {
       this.props.updNeed('_need_get_bpc', false)
+      this.props.updNeed('_need_get_similar_items', false)
       this.props.getBpcByComponent(np.item.item_id, np.page, np.limit)
+    }
+    if (np._need_get_similar_items) {
+      this.props.updNeed('_need_get_similar_items', false)
+      this.props.getSimilarItems(np.item.item_id)
     }
   }
 
-  componentWillMount() {
+  componentWillMount () {
     if (this.props.params.url && !this.props.item.item_id) {
       this.props.getComponentByUrl(this.props.params.url)
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.props.unmountItem()
   }
 
-  render() {
+  render () {
     return (
       <div>
         <SearchItemPanel />
         <div className='row'>
           <div className='col-md-4 t-a_l col-first'>
-            <Settings />
+            <SimilarItems />
           </div>
           <div className='col-md-8 t-a_l col-last'>
             <UsedIn />
@@ -52,5 +55,6 @@ export default connect(state => state.itemReducer, {
   getComponentByUrl,
   updNeed,
   getPrices,
-  getBpcByComponent
+  getBpcByComponent,
+  getSimilarItems
 })(Item)
