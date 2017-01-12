@@ -1,18 +1,21 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {getBpc} from '../../actions/manufactureActions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getBpc } from '../../actions/manufactureActions'
+import { Link } from 'react-router'
 
 class UsedIn extends Component {
 
-  render () {
+  render() {
     this.used_in = this.props.used_in.map((val, index) => {
       return <li key={index}>
         <div className='m-b-1'>
-          <img
-            className='img24'
-            alt={val.blueprint_id}
-            src={'https://image.eveonline.com/Type/' + val.blueprint_id + '_64.png'} />
-          {val.blueprint_name} ({val.component_value})
+          <Link to={`/manufacture/${val.url}`}>
+            <img
+              className='img24'
+              alt={val.blueprint_id}
+              src={'https://image.eveonline.com/Type/' + val.blueprint_id + '_64.png'} />
+            {val.blueprint_name} ({val.component_value})
+          </Link>
         </div>
       </li>
     })
@@ -39,7 +42,7 @@ class UsedIn extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state.manufactureReducer
 }
-export default connect(mapStateToProps, {getBpc})(UsedIn)
+export default connect(mapStateToProps, { getBpc })(UsedIn)

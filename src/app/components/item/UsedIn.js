@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {updNeed} from './../../actions/itemActions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { updNeed } from './../../actions/itemActions'
 import Paginate from '../Paginate'
+import { Link } from 'react-router'
 
 class UsedIn extends Component {
 
@@ -13,13 +14,16 @@ class UsedIn extends Component {
   render() {
 
     let used_in = this.props.used_in.map((val, index) => {
+      console.log(val)
       return <li key={index}>
         <div className='m-b-1'>
-          <img
-            className='img24'
-            alt={val.blueprint_id}
-            src={'https://image.eveonline.com/Type/' + val.blueprint_id + '_64.png'}/>
-          {val.blueprint_name} ({val.qty})
+          <Link to={`manufacture/${val.url}-blueprint`}>
+            <img
+              className='img24'
+              alt={val.blueprint_id}
+              src={'https://image.eveonline.com/Type/' + val.blueprint_id + '_64.png'} />
+            {val.blueprint_name} ({val.qty})
+          </Link>
         </div>
       </li>
     })
@@ -28,17 +32,17 @@ class UsedIn extends Component {
       <div className='col-md-12'>
         <table>
           <thead>
-          <tr>
-            <th>{this.props.item.item_name} Used In</th>
-          </tr>
+            <tr>
+              <th>{this.props.item.item_name} Used In</th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>
-              <Paginate current={this.props.page} pages={this.props.total_pages} round={3} onChangePage={this.onChangePage.bind(this)}/>
-              <ul className='list'>{used_in}</ul>
-            </td>
-          </tr>
+            <tr>
+              <td>
+                <Paginate current={this.props.page} pages={this.props.total_pages} round={3} onChangePage={this.onChangePage.bind(this)} />
+                <ul className='list'>{used_in}</ul>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -47,4 +51,4 @@ class UsedIn extends Component {
   }
 }
 
-export default connect(state => state.itemReducer, {updNeed})(UsedIn)
+export default connect(state => state.itemReducer, { updNeed })(UsedIn)

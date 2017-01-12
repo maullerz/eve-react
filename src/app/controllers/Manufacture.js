@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {getBpc, unmountManufacture} from '../actions/manufactureActions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getBpc, unmountManufacture } from '../actions/manufactureActions'
 // components
 import SearchBpoPanel from './../components/manufacture/SearchBpoPanel'
 import UsedIn from './../components/manufacture/UsedIn'
@@ -8,6 +8,12 @@ import BpoComponents from './../components/manufacture/BpoComponents'
 import Calculator from './../components/manufacture/Calculator'
 
 class Manufacture extends Component {
+
+  componentWillReceiveProps(np) {
+    if (this.props.params.url !== np.params.url) {
+      this.props.getBpc(np.params.url)
+    }
+  }
 
   componentWillMount() {
     // Initial bpc when load Url
@@ -38,4 +44,4 @@ class Manufacture extends Component {
   }
 }
 
-export default connect(state => state.manufactureReducer, {getBpc, unmountManufacture})(Manufacture)
+export default connect(state => state.manufactureReducer, { getBpc, unmountManufacture })(Manufacture)
