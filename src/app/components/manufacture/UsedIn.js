@@ -9,7 +9,7 @@ class UsedIn extends Component {
     this.used_in = this.props.used_in.map((val, index) => {
       return <li key={index}>
         <div className='m-b-1'>
-          <Link to={`/manufacture/${val.url}`}>
+          <Link to={'/manufacture/' + val.url}>
             <img
               className='img24'
               alt={val.blueprint_id}
@@ -17,7 +17,7 @@ class UsedIn extends Component {
             {val.blueprint_name} ({val.component_value})
           </Link>
         </div>
-      </li>
+      </li >
     })
 
     let usedIn = <div className='row'>

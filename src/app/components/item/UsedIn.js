@@ -16,7 +16,7 @@ class UsedIn extends Component {
       console.log(val)
       return <li key={index}>
         <div className='m-b-1'>
-          <Link to={`/manufacture/${val.url}-blueprint`}>
+          <Link to={'/manufacture/' + val.url}>
             <img
               className='img24'
               alt={val.blueprint_id}
