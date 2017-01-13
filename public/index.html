@@ -1,12 +1,26 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <title>React App</title>
 </head>
+
 <body>
-<div id="root"></div>
+    <div id="root"></div>
+    <!-- Google Analytics -->
+    <script>
+        window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+        ga('create', 'UA-32882115-4', 'auto');
+        ga('require', 'eventTracker');
+        ga('require', 'outboundLinkTracker');
+        ga('require', 'urlChangeTracker');
+        ga('send', 'pageview');        
+    </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- End Google Analytics -->
 </body>
+
 </html>
