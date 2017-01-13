@@ -2,8 +2,8 @@ import { CHANGE_HEAD } from '../actions/appActions'
 
 const initialState = {
   headTitle: "EVE-Prod.",
-  headDescription: "EVE-Prod. DESC",
-  headKeywords: "eve-online, blueprint calculator, minerals, trade, market"
+  headDescription: "Manufacturing calculator and market monitoring for EVE Online will teach and help you to earn ISK easily and quickly!",
+  headKeywords: "eve online, eve market, market monitoring, trade, eve central"
 }
 
 export default (state = initialState, action = {}) => {

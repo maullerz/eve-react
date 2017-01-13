@@ -1,20 +1,24 @@
-import React, {Component} from 'react'
+import React from 'react'
+import UsersList from "../components/UsersList"
 
-export default class OneColumnTable extends Component {
-  render () {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>{this.props.title}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className={this.props._class}>{this.props.list}</td>
-          </tr>
-        </tbody>
-      </table>
-    )
-  }
+const OneColumnTable = ({_class, list, title}) => {
+
+  console.log(title)
+  const listUsers = list.map(function (val, index) {
+    return <UsersList key={index} char={val} />
+  })
+
+  return (<table>
+    <thead>
+      <tr>
+        <th>{title}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td className={_class}>{listUsers}</td>
+      </tr>
+    </tbody>
+  </table>)
 }
+export default OneColumnTable
