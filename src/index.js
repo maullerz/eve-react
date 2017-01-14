@@ -7,6 +7,7 @@ import './assets/styles/bootstrap.css'
 import './assets/styles/main.css'
 
 // GA Autotrack
+require('autotrack');
 require("autotrack/lib/plugins/outbound-form-tracker")
 require("autotrack/lib/plugins/url-change-tracker")
 require("autotrack/lib/plugins/clean-url-tracker")
