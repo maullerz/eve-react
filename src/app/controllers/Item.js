@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import SearchItemPanel from '../components/item/SearchItemPanel'
-import {unmountItem, getComponentByUrl, updNeed, getPrices, getBpcByComponent} from '../actions/itemActions'
+import { unmountItem, getComponentByUrl, updNeed, getPrices, getBpcByComponent } from '../actions/itemActions'
+import { setHead } from '../actions/appActions'
 import Settings from './../components/item/Settings'
 import UsedIn from './../components/item/UsedIn'
 
@@ -19,12 +20,25 @@ class Item extends Component {
       this.props.updNeed('_need_get_bpc', false)
       this.props.getBpcByComponent(np.item.item_id, np.page, np.limit)
     }
+
+    if (np.item && np.item.item_id !== this.props.item.item_id) {
+      this.props.setHead({
+        headTitle: this.props.headTitle + ", " + np.item.item_name,
+        headDescription: this.props.headDescription,
+        headKeywords: this.props.headKeywords + ", eve " + np.item.item_name.toLowerCase()
+      })
+    }
   }
 
   componentWillMount() {
     if (this.props.params.url && !this.props.item.item_id) {
       this.props.getComponentByUrl(this.props.params.url)
     }
+    this.props.setHead({
+      headTitle: this.props.headTitle,
+      headDescription: this.props.headDescription,
+      headKeywords: this.props.headKeywords
+    })
   }
 
   componentWillUnmount() {
@@ -52,5 +66,6 @@ export default connect(state => state.itemReducer, {
   getComponentByUrl,
   updNeed,
   getPrices,
-  getBpcByComponent
+  getBpcByComponent,
+  setHead
 })(Item)

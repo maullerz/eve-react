@@ -14,7 +14,6 @@ class UsedIn extends Component {
   render() {
 
     let used_in = this.props.used_in.map((val, index) => {
-      console.log(val)
       return <li key={index}>
         <div className='m-b-1'>
           <Link to={`manufacture/${val.url}-blueprint`}>
@@ -27,6 +26,7 @@ class UsedIn extends Component {
         </div>
       </li>
     })
+
 
     let usedIn = <div className='row'>
       <div className='col-md-12'>

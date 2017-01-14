@@ -23,6 +23,10 @@ import {
 } from '../actions/manufactureActions'
 
 const initialState = {
+  headTitle: "Manufacturing calculator",
+  headDescription: "Manufacturing calculator",
+  headKeywords: "manufacturing calculator, eve online, bpc calculator",
+
   _need_update_prices_item: false,
   _need_update_prices_components: false,
   _need_recalculate: false,

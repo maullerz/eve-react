@@ -9,7 +9,7 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_HEAD:
-      return { ...state, action }
+      return Object.assign({}, state, action)
 
     default:
       return state

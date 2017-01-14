@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {map} from 'lodash'
-import {updNeed, getChartData, unmountHome, getFacebookFeed} from '../actions/homeActions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { map } from 'lodash'
+import { updNeed, getChartData, unmountHome, getFacebookFeed } from '../actions/homeActions'
+import { setHead } from '../actions/appActions'
 
 import Copyright from '../components/blocks/_copyright'
 import PanelContent from '../components/blocks/_panel_content'
@@ -15,66 +16,35 @@ import HighChart from '../components/HomeChart'
 
 class Home extends Component {
 
-  constructor (props) {
-    super(props)
-    this.props.getChartData(props.region_id, props.item_id)
-    this.props.getFacebookFeed()
-    this.state = {
-      tableData: [
-        {
-          title: 'Market',
-          list: [
-            'Actual Prices (Eve-Central)',
-            'Prices Review Of One Item In Different Market Hubs',
-            'Buying And Selling Price Margin‎ In Different Systems',
-            'Search Of Fast And Slow Auctions',
-            'Dynamic Pricing Review',
-            'Orders Review In Real Time'
-          ]
-        },
-        {
-          title: 'Production',
-          list: [
-            'Actual Item Base',
-            'Changing Of Material Quantity Required For Production In Manual Mode',
-            'Drafting Settings Specifying',
-            'Additional Expenditures Specifying',
-            'Profit Сalculation From Production In Real Time',
-            'Unlimited Item Lists'
-          ]
-        },
-        {
-          title: 'More',
-          list: [
-            'Table Ore/Ice Processing',
-            'Minerals Exchange And Trade',
-            'Moon resources',
-            'Planet resources'
-          ]
-        }
-      ]
-    }
-  }
-
-  componentWillReceiveProps (np) {
+  componentWillReceiveProps(np) {
     if (+np.item_id !== +this.props.item_id || +np.region_id !== +this.props.region_id) {
       this.props.getChartData(np.region_id, np.item_id)
       this.props.updNeed('_need_update_chart', false)
     }
   }
 
-  componentWillUnmount () {
+  componentWillMount() {
+    this.props.getChartData(this.props.region_id, this.props.item_id)
+    this.props.getFacebookFeed()
+    this.props.setHead({
+      headTitle: this.props.headTitle,
+      headDescription: this.props.headDescription,
+      headKeywords: this.props.headKeywords
+    })
+  }
+
+  componentWillUnmount() {
     this.props.unmountHome()
   }
 
-  render () {
+  render() {
     let facebookFeed = map(this.props.facebook_feed, v => {
       return <FBFeedLine created_at={v.created_at} message={v.message} />
     })
 
     return (
       <div>
-        <IndexTables listTables={this.state.tableData} />
+        <IndexTables listTables={this.props.tableData} />
         <PanelContent title='Market Monitoring' />
         <div className='row'>
           <div className='col-md-8 col-first'>
@@ -119,4 +89,10 @@ class Home extends Component {
   }
 }
 
-export default connect(state => state.homeReducer, {updNeed, getChartData, unmountHome, getFacebookFeed})(Home)
+export default connect(state => state.homeReducer, {
+  updNeed,
+  getChartData,
+  unmountHome,
+  getFacebookFeed,
+  setHead
+})(Home)

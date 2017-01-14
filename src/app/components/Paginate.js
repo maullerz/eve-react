@@ -1,5 +1,5 @@
 import React from 'react'
-import {map} from 'lodash'
+import { map } from 'lodash'
 
 const Paginate = ({current, pages, round, onChangePage}) => {
   const _handleChangePage = page => {
@@ -18,12 +18,12 @@ const Paginate = ({current, pages, round, onChangePage}) => {
     if (i === round) {
       // add arrow to begin
       if (lElem.length && lElem[0] !== 1) {
-        lElem.unshift("..")
+        // lElem.unshift("..")
         lElem.unshift("<<")
       }
       // add arrow to end
       if (rElem.length && rElem[rElem.length - 1] !== pages) {
-        rElem.push("..")
+        // rElem.push("..")
         rElem.push(">>")
       }
     }
@@ -35,15 +35,16 @@ const Paginate = ({current, pages, round, onChangePage}) => {
     }
   })
 
-  return (
-    <ul className="list">
-      {pagination.map((v, i) => {
-        return (<li
-          onClick={_handleChangePage.bind(this, v.page)}
-          className={'li-inline' + (v.page === current ? ' active' : '')}
-          key={i}>{v.page === current ? v.txt + ' / ' + pages : v.txt}</li>)
-      })}
-    </ul>)
+  const renderedPagination = <ul className="list">
+    {pagination.map((v, i) => {
+      return (<li
+        onClick={_handleChangePage.bind(this, v.page)}
+        className={'li-inline' + (v.page === current ? ' active' : '')}
+        key={i}>{v.page === current ? v.txt + ' / ' + pages : v.txt}</li>)
+    })}
+  </ul>
+
+  return pages > 1 ? renderedPagination : null
 }
 
 export default Paginate

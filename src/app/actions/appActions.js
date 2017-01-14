@@ -1,13 +1,16 @@
 export const CHANGE_HEAD = 'CHANGE_HEAD'
 
-export function setHead() {
+export function setHead(obj) {
   return dispatch => {
-    dispatch(setHeadState())
+    dispatch(setHeadStateObj(obj))
   }
 }
 
-export function setHeadState() {
+function setHeadStateObj(obj) {
   return {
-    type: CHANGE_HEAD
+    type: CHANGE_HEAD,
+    headTitle: obj.headTitle,
+    headDescription: obj.headDescription,
+    headKeywords: obj.headKeywords,
   }
 }
