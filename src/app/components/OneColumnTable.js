@@ -1,9 +1,8 @@
 import React from 'react'
-import UsersList from "../components/UsersList"
+import UsersList from "../components/donate/UsersList"
 
 const OneColumnTable = ({_class, list, title}) => {
 
-  console.log(title)
   const listUsers = list.map(function (val, index) {
     return <UsersList key={index} char={val} />
   })

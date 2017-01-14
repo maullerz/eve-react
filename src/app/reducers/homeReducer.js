@@ -12,6 +12,43 @@ import {
 } from '../actions/homeActions'
 
 const initialState = {
+  headTitle: "Manufacturing calculator and market monitoring monitoring for EVE Online",
+  headDescription: "Manufacturing calculator and market monitoring for EVE Online will teach and help you to earn ISK easily and quickly!",
+  headKeywords: "eve online, eve market, market monitoring, manufacture calculator",
+  tableData: [
+    {
+      title: 'Market',
+      list: [
+        'Actual Prices (Eve-Central)',
+        'Prices Review Of One Item In Different Market Hubs',
+        'Buying And Selling Price Margin‎ In Different Systems',
+        'Search Of Fast And Slow Auctions',
+        'Dynamic Pricing Review',
+        'Orders Review In Real Time'
+      ]
+    },
+    {
+      title: 'Production',
+      list: [
+        'Actual Item Base',
+        'Changing Of Material Quantity Required For Production In Manual Mode',
+        'Drafting Settings Specifying',
+        'Additional Expenditures Specifying',
+        'Profit Сalculation From Production In Real Time',
+        'Unlimited Item Lists'
+      ]
+    },
+    {
+      title: 'More',
+      list: [
+        'Table Ore/Ice Processing',
+        'Minerals Exchange And Trade',
+        'Moon resources',
+        'Planet resources'
+      ]
+    }
+  ],
+
   _need_update_chart: false,
   _need_rebuild_chart: false,
   region_id: 10000002,

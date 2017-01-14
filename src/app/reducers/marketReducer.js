@@ -1,4 +1,4 @@
-import {findIndex, cloneDeep, each, reject} from 'lodash'
+import { findIndex, cloneDeep, each, reject } from 'lodash'
 import {
   MARKET_SET_SUGG,
   RESET_SUGG,
@@ -17,6 +17,10 @@ import {
 } from './../actions/marketActions'
 
 const initialState = {
+  headTitle: "Market",
+  headDescription: "Market help you see orders in other systems",
+  headKeywords: "eve online, eve items, eve market",
+
   _need_recalculate: false,
   _need_upd_prices: false,
   type_price: 'sell',
@@ -79,7 +83,7 @@ export default (state = initialState, action = {}) => {
       let withoutItem = reject(state.items, v => {
         return v.item_id === action._item
       })
-      return Object.assign({}, state, {items: withoutItem})
+      return Object.assign({}, state, { items: withoutItem })
 
     case SET_PERCENTAGE:
       let sell = cloneDeep(state.orig_prices.sell)
@@ -130,7 +134,7 @@ export default (state = initialState, action = {}) => {
       if (iindex === -1) {
         stateItems.push(action.new_item)
       }
-      return Object.assign({}, state, {items: stateItems, _need_upd_prices: true})
+      return Object.assign({}, state, { items: stateItems, _need_upd_prices: true })
 
     case GET_BODY:
       let stateItemsBody = cloneDeep(state.items)
@@ -144,7 +148,7 @@ export default (state = initialState, action = {}) => {
           }
         })
       }
-      return Object.assign({}, state, {items: stateItemsBody, _need_upd_prices: true})
+      return Object.assign({}, state, { items: stateItemsBody, _need_upd_prices: true })
 
     default:
       return state

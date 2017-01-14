@@ -1,26 +1,19 @@
-import React, {Component} from 'react'
-import OneColumnTable from '../OneColumnTable'
-import SimpleList from './../SimpleList'
+import React from 'react'
+import OneColumnTable from '../home/OneColumnTable'
 
-export default class indexTables extends Component {
-
-  render () {
-    let market = <SimpleList list={this.props.listTables[0].list} />
-    let productions = <SimpleList list={this.props.listTables[1].list} />
-    let more = <SimpleList list={this.props.listTables[2].list} />
-
-    return (
-      <div className='row'>
-        <div className='col-md-4 col-first'>
-          <OneColumnTable title={this.props.listTables[0].title} _class='t-a_l' list={market} />
-        </div>
-        <div className='col-md-4 col-midd'>
-          <OneColumnTable title={this.props.listTables[1].title} _class='t-a_l' list={productions} />
-        </div>
-        <div className='col-md-4 col-last'>
-          <OneColumnTable title={this.props.listTables[2].title} _class='t-a_l' list={more} />
-        </div>
+const indexTables = ({listTables}) => {
+  return (
+    <div className='row'>
+      <div className='col-md-4 col-first'>
+        <OneColumnTable data={listTables[0]} />
       </div>
-    )
-  }
+      <div className='col-md-4 col-midd'>
+        <OneColumnTable data={listTables[1]} />
+      </div>
+      <div className='col-md-4 col-last'>
+        <OneColumnTable data={listTables[2]} />
+      </div>
+    </div>
+  )
 }
+export default indexTables

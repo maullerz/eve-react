@@ -15,6 +15,10 @@ import {
 } from '../actions/itemActions'
 
 const initialState = {
+  headTitle: "Where the component is used",
+  headDescription: "Components are available, but you don't know what you can build with them? Our component database will help you",
+  headKeywords: "eve online, eve items, eve database, eve manufacturing calculator",
+
   _need_get_bpc: false,
   _need_update_prices: false,
   _need_get_similar_items: false,

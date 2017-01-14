@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getBpc, unmountManufacture } from '../actions/manufactureActions'
+import { setHead } from '../actions/appActions'
 // components
 import SearchBpoPanel from './../components/manufacture/SearchBpoPanel'
 import UsedIn from './../components/manufacture/UsedIn'
@@ -13,12 +14,24 @@ class Manufacture extends Component {
     if (this.props.params.url !== np.params.url) {
       this.props.getBpc(np.params.url)
     }
+    if (this.props.bpc_title !== np.bpc_title) {
+      this.props.setHead({
+        headTitle: this.props.headTitle + " " + np.bpc_title,
+        headDescription: this.props.headDescription + " " + np.bpc_title,
+        headKeywords: this.props.headKeywords + ", " + np.bpc_title.toLowerCase()
+      })
+    }
   }
 
   componentWillMount() {
     if (this.props.params.url && !this.props.bpc_title) {
       this.props.getBpc(this.props.params.url)
     }
+    this.props.setHead({
+      headTitle: this.props.headTitle,
+      headDescription: this.props.headDescription,
+      headKeywords: this.props.headKeywords
+    })
   }
 
   componentWillUnmount() {
@@ -43,4 +56,8 @@ class Manufacture extends Component {
   }
 }
 
-export default connect(state => state.manufactureReducer, { getBpc, unmountManufacture })(Manufacture)
+export default connect(state => state.manufactureReducer, {
+  getBpc,
+  unmountManufacture,
+  setHead
+})(Manufacture)

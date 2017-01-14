@@ -1,9 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest'
-import {connect} from 'react-redux'
-import {searchItem, addItem, resetSearch} from '../../actions/itemActions'
-import {browserHistory} from "react-router"
-import {debounce} from "lodash"
+import { connect } from 'react-redux'
+import { searchItem, addItem, resetSearch } from '../../actions/itemActions'
+import { setHead } from '../../actions/appActions'
+import { browserHistory } from "react-router"
+import { debounce } from "lodash"
 import Helper from "../../helpers"
 
 const getSuggestionValue = suggestion => suggestion.item_name
@@ -22,10 +23,14 @@ class SearchItemPanel extends Component {
   loadSuggestions(value) {
     this.props.searchItem(Helper.escapeRegexCharacters(value.value))
   }
-
   onSuggestionSelected = (event, {suggestion}) => {
     this.props.addItem(suggestion)
     browserHistory.push("/item/" + suggestion.url)
+    this.props.setHead({
+      headTitle: this.props.headTitle + ", " + suggestion.item_name,
+      headDescription: this.props.headDescription,
+      headKeywords: this.props.headKeywords + ", eve " + suggestion.item_name.toLowerCase()
+    })
   };
 
   onSuggestionsFetchRequested = value => {
@@ -35,7 +40,7 @@ class SearchItemPanel extends Component {
   };
   onSuggestionsClearRequested = () => {
     this.props.resetSearch();
-    this.setState({value: ""})
+    this.setState({ value: "" })
   };
   onChange = (event, {newValue}) => {
     this.setState({
@@ -66,11 +71,16 @@ class SearchItemPanel extends Component {
               renderSuggestion={renderSuggestion}
               onSuggestionSelected={this.onSuggestionSelected}
               inputProps={inputProps}
-            />
+              />
           </div>
         </div>
       </div>
     )
   }
 }
-export default connect(state => state.itemReducer, {searchItem, addItem, resetSearch})(SearchItemPanel);
+export default connect(state => state.itemReducer, {
+  searchItem,
+  addItem,
+  resetSearch,
+  setHead
+})(SearchItemPanel);

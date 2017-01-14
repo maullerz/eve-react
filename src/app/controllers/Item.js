@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import SearchItemPanel from '../components/item/SearchItemPanel'
 import { unmountItem, getComponentByUrl, updNeed, getPrices, getBpcByComponent, getSimilarItems } from '../actions/itemActions'
+import { setHead } from '../actions/appActions'
 import UsedIn from './../components/item/UsedIn'
-import SimilarItems from '../components//item/SimilarItems'
+import SimilarItems from '../components/item/SimilarItems'
 
 class Item extends Component {
 
-  componentWillReceiveProps (np) {
+  componentWillReceiveProps(np) {
     if (np._need_update_prices) {
       this.props.updNeed('_need_update_prices', false)
       this.props.getPrices(np.item.item_id, np.system_id)
@@ -18,23 +19,37 @@ class Item extends Component {
       this.props.updNeed('_need_get_similar_items', false)
       this.props.getBpcByComponent(np.item.item_id, np.page, np.limit)
     }
+
     if (np._need_get_similar_items) {
       this.props.updNeed('_need_get_similar_items', false)
       this.props.getSimilarItems(np.item.item_id)
     }
-  }
 
-  componentWillMount () {
-    if (this.props.params.url && !this.props.item.item_id) {
-      this.props.getComponentByUrl(this.props.params.url)
+    if (np.item && np.item.item_id !== this.props.item.item_id) {
+      this.props.setHead({
+        headTitle: this.props.headTitle + ", " + np.item.item_name,
+        headDescription: this.props.headDescription,
+        headKeywords: this.props.headKeywords + ", eve " + np.item.item_name.toLowerCase()
+      })
     }
   }
 
-  componentWillUnmount () {
+  componentWillMount() {
+    if (this.props.params.url && !this.props.item.item_id) {
+      this.props.getComponentByUrl(this.props.params.url)
+    }
+    this.props.setHead({
+      headTitle: this.props.headTitle,
+      headDescription: this.props.headDescription,
+      headKeywords: this.props.headKeywords
+    })
+  }
+
+  componentWillUnmount() {
     this.props.unmountItem()
   }
 
-  render () {
+  render() {
     return (
       <div>
         <SearchItemPanel />
@@ -56,5 +71,6 @@ export default connect(state => state.itemReducer, {
   updNeed,
   getPrices,
   getBpcByComponent,
-  getSimilarItems
+  getSimilarItems,
+  setHead
 })(Item)

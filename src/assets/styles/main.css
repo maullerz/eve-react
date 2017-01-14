@@ -25,7 +25,7 @@ body #root header {
   background-color: rgba(39,39,40,0.9);
 }
 body #root header #head {
-  padding: 5px 5px 5px 15px;
+  padding: 5px 5px 0 15px;
 }
 body #root header #head a {
   font-size: 2em;
@@ -136,7 +136,7 @@ a:hover {
   background-color: rgba(22,112,146,0.2);
   margin-right: 1px;
   display: inline-block;
-  padding: 8px 16px !important;
+  padding: 6.4px 12px !important;
 }
 .li-inline:hover {
   background-color: rgba(22,112,146,0.25);
