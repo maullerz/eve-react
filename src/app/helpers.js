@@ -1,24 +1,23 @@
 import numeraljs from '../../node_modules/numeral/numeral'
 
-let Helper
-Helper = {
-  shortNum (n) {
+let Helper = {
+  shortNum(n) {
     return numeraljs(n).format('0.[00]a')
   },
 
-  qty (n) {
+  qty(n) {
     return numeraljs(n).format('0,0')
   },
 
-  price (n) {
+  price(n) {
     return numeraljs(n).format('0,0.00')
   },
 
-  escapeRegexCharacters (str) {
+  escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   },
 
-  cfg: {
+  const: {
     debounceTimeout: 350,
     debounceScrollTimeout: 750
   },
@@ -26,11 +25,11 @@ Helper = {
   /**
    * @return {boolean}
    */
-  AutocompleteMinCharacters (str) {
+  AutocompleteMinCharacters(str) {
     return str.length >= 2
   },
 
-  toHHMMSS (sec) {
+  toHHMMSS(sec) {
     let secNum = parseInt(sec, 10)
 
     let days = Math.floor(secNum / 86400)
