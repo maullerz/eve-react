@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   searchManufactureSystem,
   setManufactureSystem,
   resetManufactureSystemSuggestions
 } from '../../actions/manufactureActions'
 import Autocomplete from "react-autosuggest"
-import {debounce} from "lodash"
+import { debounce } from "lodash"
 import Helper from "../../helpers"
 
 // autosuggest
@@ -20,7 +20,7 @@ class SystemManufacture extends Component {
     this.state = {
       value: ""
     }
-    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)
   }
 
   loadSuggestions(value) {
@@ -62,7 +62,7 @@ class SystemManufacture extends Component {
       renderSuggestion={renderSuggestion}
       onSuggestionSelected={this.onSuggestionSelected}
       inputProps={inputProps}
-    />
+      />
   }
 }
 

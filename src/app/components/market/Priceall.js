@@ -1,36 +1,36 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {sendBody} from '../../actions/marketActions'
-import {debounce} from 'lodash'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { sendBody } from '../../actions/marketActions'
+import { debounce } from 'lodash'
 import Helper from '../../helpers'
 
 class Priceall extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       body: '',
       isOpen: false
     }
-    this.debounceSendBody = debounce(this.sendBodyPriceall.bind(this), Helper.cfg.debounceTimeout)
+    this.debounceSendBody = debounce(this.sendBodyPriceall.bind(this), Helper.const.debounceTimeout)
   }
 
-  showCopyPasteZone () {
-    this.setState({isOpen: !this.state.isOpen})
+  showCopyPasteZone() {
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
-  sendBodyPriceall () {
+  sendBodyPriceall() {
     this.props.sendBody(this.state.body)
   }
 
-  changeBody (event) {
-    this.setState({body: event.target.value})
+  changeBody(event) {
+    this.setState({ body: event.target.value })
   }
-  resetBody () {
-    this.setState({body: ''})
+  resetBody() {
+    this.setState({ body: '' })
   }
 
-  render () {
+  render() {
     return <div className='row'>
       <div className='col-md-12'>
         <table>
@@ -46,10 +46,10 @@ class Priceall extends Component {
                   <div className='col-md-12 t-a_r'>
                     <textarea rows='4' cols='5' className='w100' value={this.state.body} onChange={this.changeBody.bind(this)} />
                     <button onClick={this.resetBody.bind(this)} className={this.state.body.trim().length === 0 ? 'hide' : ''}>
-                    Reset
+                      Reset
                   </button>
                     <button onClick={this.debounceSendBody} className={this.state.body.trim().length === 0 ? 'hide' : ''}>
-                    Send
+                      Send
                   </button>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ class Priceall extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state.marketReducer
 }
-export default connect(mapStateToProps, {sendBody})(Priceall)
+export default connect(mapStateToProps, { sendBody })(Priceall)

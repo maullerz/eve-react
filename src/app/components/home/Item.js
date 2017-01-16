@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   searchItem,
   resetItem,
   setItem
 } from '../../actions/homeActions'
 import Autocomplete from "react-autosuggest"
-import {debounce} from "lodash"
+import { debounce } from "lodash"
 import Helper from "../../helpers"
 
 // autosuggest
@@ -21,7 +21,7 @@ class Item extends Component {
       value: "30 Day Pilot's License Extension (PLEX)"
     }
 
-    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)
   }
 
   loadSuggestions(value) {
@@ -64,7 +64,7 @@ class Item extends Component {
           renderSuggestion={renderSuggestion}
           onSuggestionSelected={this.onSuggestionSelected}
           inputProps={inputProps}
-        />
+          />
       </div>)
   }
 }

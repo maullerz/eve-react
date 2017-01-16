@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest'
-import {connect} from 'react-redux'
-import {searchBpc, getBpc, resetSearch} from '../../actions/manufactureActions'
-import {browserHistory} from "react-router"
-import {debounce} from "lodash"
+import { connect } from 'react-redux'
+import { searchBpc, getBpc, resetSearch } from '../../actions/manufactureActions'
+import { browserHistory } from "react-router"
+import { debounce } from "lodash"
 import Helper from "../../helpers"
 
 const getSuggestionValue = suggestion => suggestion.blueprint_name
@@ -16,7 +16,7 @@ class SearchBpoPanel extends Component {
     this.state = {
       value: ""
     }
-    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)
   }
 
   loadSuggestions(value) {
@@ -34,7 +34,7 @@ class SearchBpoPanel extends Component {
   };
   onSuggestionsClearRequested = () => {
     this.props.resetSearch();
-    this.setState({value: ""})
+    this.setState({ value: "" })
   };
   onChange = (event, {newValue}) => {
     this.setState({
@@ -66,7 +66,7 @@ class SearchBpoPanel extends Component {
               renderSuggestion={renderSuggestion}
               onSuggestionSelected={this.onSuggestionSelected}
               inputProps={inputProps}
-            />
+              />
           </div>
         </div>
       </div>
@@ -77,4 +77,4 @@ class SearchBpoPanel extends Component {
 function mapStateToProps(state) {
   return state.manufactureReducer
 }
-export default connect(mapStateToProps, {searchBpc, getBpc, resetSearch})(SearchBpoPanel);
+export default connect(mapStateToProps, { searchBpc, getBpc, resetSearch })(SearchBpoPanel);
