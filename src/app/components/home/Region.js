@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   searchRegion,
   resetRegion,
   setRegion
 } from '../../actions/homeActions'
 import Autocomplete from "react-autosuggest"
-import {debounce} from "lodash"
+import { debounce } from "lodash"
 import Helper from "../../helpers"
 
 // autosuggest
@@ -21,7 +21,7 @@ class Region extends Component {
       value: "The Forge"
     }
 
-    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)
   }
 
   loadSuggestions(value) {
@@ -65,7 +65,7 @@ class Region extends Component {
           renderSuggestion={renderSuggestion}
           onSuggestionSelected={this.onSuggestionSelected}
           inputProps={inputProps}
-        />
+          />
       </div>)
   }
 }

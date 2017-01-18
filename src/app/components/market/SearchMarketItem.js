@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Autosuggest from 'react-autosuggest'
-import {connect} from 'react-redux'
-import {searchItem, addItem, resetSearch, getSimilarItems} from '../../actions/marketActions'
+import { connect } from 'react-redux'
+import { searchItem, addItem, resetSearch, getSimilarItems } from '../../actions/marketActions'
 
-import {debounce} from "lodash"
+import { debounce } from "lodash"
 import Helper from "../../helpers"
 
 const getSuggestionValue = suggestion => suggestion.item_name
@@ -16,7 +16,7 @@ class SearchMarketItem extends Component {
     this.state = {
       value: ""
     }
-    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)
   }
 
   loadSuggestions(value) {
@@ -34,7 +34,7 @@ class SearchMarketItem extends Component {
   };
   onSuggestionsClearRequested = () => {
     this.props.resetSearch();
-    this.setState({value: ""})
+    this.setState({ value: "" })
   };
   onChange = (event, {newValue}) => {
     this.setState({
@@ -66,7 +66,7 @@ class SearchMarketItem extends Component {
               renderSuggestion={renderSuggestion}
               onSuggestionSelected={this.onSuggestionSelected}
               inputProps={inputProps}
-            />
+              />
           </div>
         </div>
       </div>
@@ -74,4 +74,4 @@ class SearchMarketItem extends Component {
   }
 }
 
-export default connect(state => state.marketReducer, {searchItem, addItem, resetSearch, getSimilarItems})(SearchMarketItem);
+export default connect(state => state.marketReducer, { searchItem, addItem, resetSearch, getSimilarItems })(SearchMarketItem);

@@ -17,7 +17,7 @@ class SearchItemPanel extends Component {
     this.state = {
       value: ""
     }
-    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)
   }
 
   loadSuggestions(value) {

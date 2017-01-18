@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   resetSystemItemSuggestions,
   searchItemSystem,
   setItemSystem
 } from '../../actions/manufactureActions'
 import Autocomplete from "react-autosuggest"
-import {debounce} from "lodash"
+import { debounce } from "lodash"
 import Helper from "../../helpers"
 
 // autosuggest
@@ -20,7 +20,7 @@ class SystemItem extends Component {
     this.state = {
       value: "Jita"
     }
-    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.cfg.debounceTimeout)
+    this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)
   }
 
   loadSuggestions(value) {
@@ -64,7 +64,7 @@ class SystemItem extends Component {
           renderSuggestion={renderSuggestion}
           onSuggestionSelected={this.onSuggestionSelected}
           inputProps={inputProps}
-        />
+          />
       </div>)
   }
 }
