@@ -1,19 +1,19 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {setQty, removeItem} from '../../actions/marketActions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setQty, removeItem } from '../../actions/marketActions'
 import Helper from '../../helpers'
 
 class Items extends Component {
 
-  changeQty (itemId, event) {
+  changeQty(itemId, event) {
     this.props.setQty(itemId, event.target.value)
   }
 
-  removeItem (itemId) {
+  removeItem(itemId) {
     this.props.removeItem(itemId)
   }
 
-  render () {
+  render() {
     this.similar = this.props.items.map(val => {
       let priceItem = this.props.prices[this.props.type_price][val.item_id]
       return <li key={val.item_id}>
@@ -53,7 +53,7 @@ class Items extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return state.marketReducer
 }
-export default connect(mapStateToProps, {setQty, removeItem})(Items)
+export default connect(mapStateToProps, { setQty, removeItem })(Items)
