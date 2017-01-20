@@ -1,6 +1,19 @@
 body {
   background: url("../img/bg.jpg") repeat fixed;
 }
+body .loader {
+  left: calc(50% - 30px);
+  z-index: 2;
+  position: fixed;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 3px 2px 4px;
+  color: rgba(39,39,40,0.9);
+  background: #f3f3d1;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
 body .adsbygoogle {
   text-align: center;
 }
