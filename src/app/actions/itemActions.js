@@ -14,8 +14,18 @@ export const ITEM_UPDATE_NEED = 'ITEM_UPDATE_NEED'
 export const ITEM_SET_PRICES = 'ITEM_SET_PRICES'
 export const GET_USED_IN = 'GET_USED_IN'
 export const SET_SIMILAR_ITEMS = 'SET_SIMILAR_ITEMS'
+export const ITEM_POPULAR_ITEMS = 'ITEM_POPULAR_ITEMS'
 
-export function getSimilarItems (itemId) {
+
+export function getPopularItems() {
+  return dispatch => {
+    ApiService.Item.popularItems().then(json => {
+      dispatch(setPopularItemsState(json.data))
+    })
+  }
+}
+
+export function getSimilarItems(itemId) {
   return dispatch => {
     ApiService.Search.similarBpc(itemId).then(json => {
       dispatch(setSimilarItemsState(json.data.items))
@@ -23,7 +33,7 @@ export function getSimilarItems (itemId) {
   }
 }
 
-export function getBpcByComponent (componentId, page, limit) {
+export function getBpcByComponent(componentId, page, limit) {
   return dispatch => {
     ApiService.Item.whereUsedComponent(componentId, page, limit).then(json => {
       dispatch(getBpcByComponentState(json.data))
@@ -31,25 +41,25 @@ export function getBpcByComponent (componentId, page, limit) {
   }
 }
 
-export function setSystem (systemId) {
+export function setSystem(systemId) {
   return dispatch => {
     dispatch(setSystemState(systemId))
   }
 }
 
-export function updNeed (key, val) {
+export function updNeed(key, val) {
   return dispatch => {
     dispatch(updNeedState(key, val))
   }
 }
 
-export function resetSystem () {
+export function resetSystem() {
   return dispatch => {
     dispatch(resetSystemState())
   }
 }
 
-export function getComponentByUrl (url) {
+export function getComponentByUrl(url) {
   return dispatch => {
     ApiService.Search.componentByUrl(url).then(json => {
       dispatch(getComponentByUrlState(url, json.data.items))
@@ -57,7 +67,7 @@ export function getComponentByUrl (url) {
   }
 }
 
-export function getPrices (itemId, systemId) {
+export function getPrices(itemId, systemId) {
   return dispatch => {
     ApiService.Main.prices(systemId, itemId).then(json => {
       dispatch(getPricesState(json.data.prices))
@@ -65,7 +75,7 @@ export function getPrices (itemId, systemId) {
   }
 }
 
-export function searchSystem (term) {
+export function searchSystem(term) {
   return dispatch => {
     ApiService.Search.system(term).then(json => {
       dispatch(setSuggSystem(json.data.items))
@@ -73,37 +83,44 @@ export function searchSystem (term) {
   }
 }
 
-export function setTypePrice (type) {
+export function setTypePrice(type) {
   return dispatch => {
     dispatch(setTypePriceState(type))
   }
 }
 
-export function searchItem (term) {
+export function searchItem(term) {
   return dispatch => {
     ApiService.Search.component(term).then(json => {
       dispatch(setSugg(json.data.items))
     })
   }
 }
-export function unmountItem () {
+export function unmountItem() {
   return dispatch => {
     dispatch(unmountItemState())
   }
 }
-export function resetSearch () {
+export function resetSearch() {
   return dispatch => {
     dispatch(resetSearchState())
   }
 }
 
-export function addItem (item) {
+export function addItem(item) {
   return dispatch => {
     dispatch(addItemState(item))
   }
 }
 
-export function getBpcByComponentState (json) {
+export function setPopularItemsState(items) {
+  return {
+    type: "ITEM_POPULAR_ITEMS",
+    popular_items: items
+  }
+}
+
+export function getBpcByComponentState(json) {
   return {
     type: GET_USED_IN,
     used_in: json.items,
@@ -112,42 +129,42 @@ export function getBpcByComponentState (json) {
   }
 }
 
-export function setSystemState (systemId) {
+export function setSystemState(systemId) {
   return {
     type: ITEM_SYSTEM_SET,
     system_id: +systemId
   }
 }
-export function getPricesState (prices) {
+export function getPricesState(prices) {
   return {
     type: ITEM_SET_PRICES,
     prices: prices
   }
 }
-export function resetSystemState () {
+export function resetSystemState() {
   return {
     type: ITEM_SYSTEM_RESET,
     system_sugg: []
   }
 }
-export function setSuggSystem (items) {
+export function setSuggSystem(items) {
   return {
     type: ITEM_SEARCH_SYSTEM,
     system_sugg: items
   }
 }
-export function unmountItemState () {
+export function unmountItemState() {
   return {
     type: ITEM_UNMOUNT
   }
 }
-export function setSugg (items) {
+export function setSugg(items) {
   return {
     type: ITEM_SET,
     item_sugg: items
   }
 }
-export function getComponentByUrlState (url, items) {
+export function getComponentByUrlState(url, items) {
   let returned = {
     type: ITEM_GET_BY_URL,
     item: {},
@@ -166,7 +183,7 @@ export function getComponentByUrlState (url, items) {
   }
   return returned
 }
-export function addItemState (item) {
+export function addItemState(item) {
   return {
     type: ITEM_SELECT,
     item: item,
@@ -176,20 +193,20 @@ export function addItemState (item) {
     _need_get_similar_items: true
   }
 }
-function resetSearchState () {
+function resetSearchState() {
   return {
     type: ITEM_RESET_SUGG,
     item_sugg: []
   }
 }
 
-function setTypePriceState (type) {
+function setTypePriceState(type) {
   return {
     type: ITEM_SET_TYPE_PRICE,
     type_price: type
   }
 }
-export function updNeedState (key, val) {
+export function updNeedState(key, val) {
   return {
     type: ITEM_UPDATE_NEED,
     _k: key,
@@ -197,7 +214,7 @@ export function updNeedState (key, val) {
   }
 }
 
-export function setSimilarItemsState (items) {
+export function setSimilarItemsState(items) {
   return {
     type: SET_SIMILAR_ITEMS,
     similar_items: items

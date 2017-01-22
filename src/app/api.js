@@ -63,6 +63,9 @@ export default {
     }
   },
   Item: {
+    popularItems: function () {
+      return axios.get(baseUrl + '/item/popular.json')
+    },
     whereUsedComponent: function (componentId, page = 1, limit = 25) {
       return axios.get(baseUrl + '/item/bpo.json', {
         params: {

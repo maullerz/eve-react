@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import SearchItemPanel from '../components/item/SearchItemPanel'
-import { unmountItem, getComponentByUrl, updNeed, getPrices, getBpcByComponent, getSimilarItems } from '../actions/itemActions'
+import { unmountItem, getComponentByUrl, getPopularItems, updNeed, getPrices, getBpcByComponent, getSimilarItems } from '../actions/itemActions'
 import { setHead } from '../actions/appActions'
 import UsedIn from './../components/item/UsedIn'
 import SimilarItems from '../components/item/SimilarItems'
+import PopularItems from '../components/item/PopularItems'
 
 class Item extends Component {
 
@@ -43,6 +44,7 @@ class Item extends Component {
       headDescription: this.props.headDescription,
       headKeywords: this.props.headKeywords
     })
+    this.props.getPopularItems();
   }
 
   componentWillUnmount() {
@@ -50,15 +52,21 @@ class Item extends Component {
   }
 
   render() {
+    console.log(this.props.popular_items)
     return (
       <div>
         <SearchItemPanel />
         <div className='row'>
-          <div className='col-md-4 t-a_l col-first'>
+          <div className='col-md-4 col-sm-4 t-a_l col-first'>
             <SimilarItems />
           </div>
-          <div className='col-md-8 t-a_l col-last'>
+          <div className='col-md-8 col-sm-8 t-a_l col-last'>
             <UsedIn />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12 col-sm-12">
+            <PopularItems items={this.props.popular_items} />
           </div>
         </div>
       </div>
@@ -72,5 +80,6 @@ export default connect(state => state.itemReducer, {
   getPrices,
   getBpcByComponent,
   getSimilarItems,
-  setHead
+  setHead,
+  getPopularItems
 })(Item)

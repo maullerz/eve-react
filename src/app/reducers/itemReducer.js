@@ -11,7 +11,8 @@ import {
   ITEM_UPDATE_NEED,
   ITEM_SET_PRICES,
   GET_USED_IN,
-  SET_SIMILAR_ITEMS
+  SET_SIMILAR_ITEMS,
+  ITEM_POPULAR_ITEMS
 } from '../actions/itemActions'
 
 const initialState = {
@@ -25,6 +26,7 @@ const initialState = {
   item_sugg: [],
   system_sugg: [],
   similar_items: [],
+  popular_items: [],
   used_in: [],
   item: {},
   type_price: 'sell',
@@ -48,6 +50,7 @@ export default (state = initialState, action = {}) => {
     case ITEM_SYSTEM_SET:
     case ITEM_SYSTEM_RESET:
     case ITEM_SEARCH_SYSTEM:
+    case ITEM_POPULAR_ITEMS:
     case SET_SIMILAR_ITEMS:
     case ITEM_SET_TYPE_PRICE:
     case ITEM_GET_BY_URL:
