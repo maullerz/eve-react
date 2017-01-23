@@ -1,11 +1,10 @@
 import React from 'react'
 import ItemsList from "./ItemsList"
 
-const OneColumnTable = ({_class, list, title}) => {
+const OneColumnTable = ({_class, list, title,clickItem}) => {
 
   const listItems = list.map(function (val, index) {
-    console.log("val", val)
-    return <ItemsList key={index} item={val} />
+    return <ItemsList key={index} clickItem={clickItem} item={val} />
   })
 
   return <table>

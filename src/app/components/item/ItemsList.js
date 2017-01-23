@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
-import Helper from '../../helpers'
+import React from 'react'
 import ReactTooltip from 'react-tooltip'
 
-
-const ItemsList = ({item}) => {
-  console.log(item)
+const ItemsList = ({item, clickItem}) => {
+  let randId = 'id-' + Math.ceil(Math.random() * 1000000000)
   return (
-    <div className='inline user_img' data-tip data-for={randId}>
+    <div onClick={() => clickItem(item)} className='inline user_img' data-tip data-for={randId}>
       <img alt={item.item_name}
         src={'https://image.eveonline.com/Type/' + item.item_id + '_64.png'} />
       <ReactTooltip class='reactToolTip' delayHide={0} id={randId} type='dark' effect='solid'>
-        <div className='b'>{item.item_name}</div>
+        <div className='b'>
+          <div>{item.item_name}</div>
+          <div><small>{item.count}</small> items</div>
+        </div>
       </ReactTooltip>
     </div>
   )
