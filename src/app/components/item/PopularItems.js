@@ -16,6 +16,7 @@ class PopularItems extends Component {
       headDescription: this.props.headDescription,
       headKeywords: this.props.headKeywords + ", eve " + item.item_name.toLowerCase()
     })
+    window.scrollTo(0, 0)
   }
   render() {
     return this.props.items.length ? <OneColumnTable _class='td-padd-rb' clickItem={this.changeItem.bind(this)} title="Popular components" list={this.props.items} /> : null

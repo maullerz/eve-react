@@ -6,7 +6,7 @@ const ItemsList = ({item, clickItem}) => {
   return (
     <div onClick={() => clickItem(item)} className='inline user_img' data-tip data-for={randId}>
       <img alt={item.item_name}
-        src={'https://image.eveonline.com/Type/' + item.item_id + '_64.png'} />
+        src={'https://image.eveonline.com/Type/' + item.item_id + '_32.png'} />
       <ReactTooltip class='reactToolTip' delayHide={0} id={randId} type='dark' effect='solid'>
         <div className='b'>
           <div>{item.item_name}</div>

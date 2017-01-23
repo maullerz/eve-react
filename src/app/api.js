@@ -2,12 +2,43 @@ import axios from 'axios'
 let baseUrl = 'https://api.eve-productions.org'
 // let esiUrl = 'https://esi.tech.ccp.is'
 let crestUrl = 'https://crest-tq.eveonline.com'
+// actions
+import { setLoader } from "./actions/appActions"
+import reducers from './../rootReducer'
+
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+
+let store = createStore(reducers, applyMiddleware(thunk))
+console.log(store)
+
+export function getUser() {
+  console.log("123")
+  // Redux Thunk will inject dispatch here:
+  return dispatch => {
+    console.log("456")
+    // Reducers may handle this to set a flag like isFetching
+    dispatch({ type: "123444" })
+  }
+}
+store.dispatch(getUser(42));
+
+
+const _axios = axios.create({
+  transformRequest: [function (data) {
+    return data;
+  }],
+  transformResponse: [function (data) {
+    return JSON.parse(data);
+  }],
+
+});
 
 export default {
 
   Graph: {
     chart: function (regionId, typeID) {
-      return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
+      return _axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
     }
   },
 
