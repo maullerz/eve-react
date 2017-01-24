@@ -13,7 +13,7 @@ export function setLoader(bool) {
   }
 }
 
-function setHeadStateObj(obj) {
+export function setHeadStateObj(obj) {
   return {
     type: CHANGE_HEAD,
     headTitle: obj.headTitle,
@@ -21,7 +21,7 @@ function setHeadStateObj(obj) {
     headKeywords: obj.headKeywords,
   }
 }
-function setLoaderStateObj(bool) {
+export function setLoaderStateObj(bool) {
   return {
     type: CHANGE_LOADER,
     loader: bool

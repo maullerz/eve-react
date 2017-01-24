@@ -8,6 +8,7 @@ const initialState = {
 }
 
 export default (state = initialState, action = {}) => {
+
   switch (action.type) {
     case ACT.CHANGE_HEAD:
     case ACT.CHANGE_LOADER:
