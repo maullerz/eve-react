@@ -8,6 +8,7 @@ branches:
     - master
 
 install:
+  - npm i yarn -g
   - yarn
 
 script:
