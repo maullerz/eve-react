@@ -1,42 +1,42 @@
-import axios from 'axios'
+import _axios from 'axios'
 let baseUrl = 'https://api.eve-productions.org'
 // let esiUrl = 'https://esi.tech.ccp.is'
 let crestUrl = 'https://crest-tq.eveonline.com'
+
 // actions
 import { setLoaderStateObj } from "./actions/appActions"
 import reducers from './../rootReducer'
 
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { connect } from 'react-redux'
+// import { composeWithDevTools } from 'redux-devtools-extension'
 
-let store = createStore(reducers, applyMiddleware(thunk))
+// let store = createStore(reducers, applyMiddleware(thunk))
 
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
 
-
-
-setTimeout(() => {
-  console.log("123")
-  console.log(store.getState())
-}, 1000)
-
-
-const _axios = axios.create({
+const axios = _axios.create({
   transformRequest: [function (data) {
-    store.dispatch(setLoaderStateObj(true));
-    console.log("disp")
-    return data;
+    console.log("try to set true")
+    store.dispatch(setLoaderStateObj(true))
+    return data
   }],
   transformResponse: [function (data) {
-    return JSON.parse(data);
+    console.log("try to set false")
+    store.dispatch(setLoaderStateObj(false))
+    return JSON.parse(data)
   }],
 
 });
 
-export default {
+const API = {
 
   Graph: {
     chart: function (regionId, typeID) {
-      return _axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
+      console.log(this, "this")
+      return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
     }
   },
 
@@ -148,3 +148,5 @@ export default {
     }
   }
 }
+
+export default connect(state => state.appReducer, { setLoaderStateObj })(API)
