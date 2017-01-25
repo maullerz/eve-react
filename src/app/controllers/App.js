@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 class App extends Component {
 
   render() {
-    console.log("loader", this.props.loader)
     return (
       <div>
         <Helmet
@@ -17,7 +16,7 @@ class App extends Component {
             { name: "keywords", content: this.props.headKeywords }
           ]}
           />
-        <Loader isLoad={false} />
+        <Loader />
         <Header />
         {this.props.children}
       </div>)
