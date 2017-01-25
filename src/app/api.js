@@ -1,4 +1,5 @@
 import _axios from 'axios'
+
 let baseUrl = 'https://api.eve-productions.org'
 // let esiUrl = 'https://esi.tech.ccp.is'
 let crestUrl = 'https://crest-tq.eveonline.com'
@@ -9,22 +10,21 @@ const axios = _axios.create({
     document.getElementById("ajax_loader").style = 'display:flex'
     return data
   }],
+
   transformResponse: [function (data) {
     setTimeout(() => {
       document.getElementById("ajax_loader").style = 'display:none'
-    }, 250)
+    }, 200)
     return JSON.parse(data)
-  }],
+  }]
 });
 
 export default {
-
   Graph: {
     chart: function (regionId, typeID) {
       return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
     }
   },
-
   Search: {
     system: function (term) {
       return axios.get(baseUrl + '/search/system.json', {
