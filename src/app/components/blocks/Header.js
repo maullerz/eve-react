@@ -1,16 +1,16 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 export default class Header extends Component {
 
-  render () {
+  render() {
     return (
       <div>
         <div className='row'>
           <div className='col-md-12'>
             <header>
               <div id='head'>
-                <Link to='/'>EVE-Prod.</Link>
+                <Link id="ah_home" to='/'>EVE-Prod.</Link>
               </div>
             </header>
           </div>
@@ -20,12 +20,12 @@ export default class Header extends Component {
             <nav id='header-menu'>
               <ul>
                 <li>
-                  <Link to='/manufacture'>BPC calculator</Link>
+                  <Link id="ah_manufacture" to='/manufacture'>BPC calculator</Link>
                 </li>
-                <li><Link to='/market'>Market</Link></li>
-                <li><Link to='/item'>Where components used?</Link></li>
+                <li><Link id="ah_market" to='/market'>Market</Link></li>
+                <li><Link id="ah_item" to='/item'>Where components used?</Link></li>
                 <li className='red-cell'>
-                  <Link to='/donate'>Donate</Link>
+                  <Link id="ah_donate" to='/donate'>Donate</Link>
                 </li>
               </ul>
             </nav>

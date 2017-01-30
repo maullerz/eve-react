@@ -1,19 +1,4 @@
-import {
-  ITEM_SET,
-  ITEM_UNMOUNT,
-  ITEM_SELECT,
-  ITEM_RESET_SUGG,
-  ITEM_SET_TYPE_PRICE,
-  ITEM_SEARCH_SYSTEM,
-  ITEM_SYSTEM_SET,
-  ITEM_SYSTEM_RESET,
-  ITEM_GET_BY_URL,
-  ITEM_UPDATE_NEED,
-  ITEM_SET_PRICES,
-  GET_USED_IN,
-  SET_SIMILAR_ITEMS,
-  ITEM_POPULAR_ITEMS
-} from '../actions/itemActions'
+import * as Item from '../actions/itemActions'
 
 const initialState = {
   headTitle: "Where the component is used",
@@ -43,26 +28,26 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case ITEM_SET:
-    case ITEM_SELECT:
-    case ITEM_RESET_SUGG:
-    case ITEM_SET_PRICES:
-    case ITEM_SYSTEM_SET:
-    case ITEM_SYSTEM_RESET:
-    case ITEM_SEARCH_SYSTEM:
-    case ITEM_POPULAR_ITEMS:
-    case SET_SIMILAR_ITEMS:
-    case ITEM_SET_TYPE_PRICE:
-    case ITEM_GET_BY_URL:
-    case GET_USED_IN:
+    case Item.ITEM_SET:
+    case Item.ITEM_SELECT:
+    case Item.ITEM_RESET_SUGG:
+    case Item.ITEM_SET_PRICES:
+    case Item.ITEM_SYSTEM_SET:
+    case Item.ITEM_SYSTEM_RESET:
+    case Item.ITEM_SEARCH_SYSTEM:
+    case Item.ITEM_POPULAR_ITEMS:
+    case Item.SET_SIMILAR_ITEMS:
+    case Item.ITEM_SET_TYPE_PRICE:
+    case Item.ITEM_GET_BY_URL:
+    case Item.GET_USED_IN:
       return Object.assign({}, state, action)
 
-    case ITEM_UPDATE_NEED:
+    case Item.ITEM_UPDATE_NEED:
       let ns = {}
       ns[action._k] = action._v
       return Object.assign({}, state, ns)
 
-    case ITEM_UNMOUNT:
+    case Item.ITEM_UNMOUNT:
       return Object.assign({}, state, initialState)
 
     default:
