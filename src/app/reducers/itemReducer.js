@@ -29,7 +29,7 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case Item.ITEM_SET:
-    case Item.Item.ITEM_SELECT:
+    case Item.ITEM_SELECT:
     case Item.ITEM_RESET_SUGG:
     case Item.ITEM_SET_PRICES:
     case Item.ITEM_SYSTEM_SET:

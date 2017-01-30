@@ -47,7 +47,7 @@
   },
   "jest": {
     "testPathDirs": [
-      "./src/tests/unit/"
+      "./src/tests/"
     ]
   }
 }
