@@ -1,4 +1,4 @@
-import { SET_LIST, DONATE_UNMOUNT } from '../actions/donateActions'
+import * as Donate from '../actions/donateActions'
 
 const initialState = {
 
@@ -16,11 +16,11 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    
-    case SET_LIST:
+
+    case Donate.SET_LIST:
       return Object.assign({}, state, action)
 
-    case DONATE_UNMOUNT:
+    case Donate.DONATE_UNMOUNT:
       return Object.assign({}, state, initialState)
 
     default:
