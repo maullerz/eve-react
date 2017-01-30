@@ -1,10 +1,5 @@
 language: node_js
 
-cache:
-  yarn: true
-  directories:
-    - node_modules
-
 node_js:
   - "node"
 
@@ -13,15 +8,10 @@ branches:
     - master
 
 install:
-  - npm i pushstate-server -g
   - npm install
 
 script:
   - npm run build
-  - pushstate-server build &
-  - APP_TEST_PID=$(echo $!)
-  - PORT=3001 CI=true npm run test
-  - kill $APP_TEST_PID
 
 after_success:
   - node ./deploy/ftp.js
