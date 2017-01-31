@@ -1,22 +1,24 @@
-import _axios from 'axios'
-
+import axios from 'axios'
 let baseUrl = 'https://api.eve-productions.org'
 // let esiUrl = 'https://esi.tech.ccp.is'
 let crestUrl = 'https://crest-tq.eveonline.com'
 
-// actions
-const axios = _axios.create({
-  transformRequest: [function (data) {
-    document.getElementById("ajax_loader").style = 'display:flex'
-    return data
-  }],
 
-  transformResponse: [function (data) {
-    setTimeout(() => {
-      document.getElementById("ajax_loader").style = 'display:none'
-    }, 200)
-    return JSON.parse(data)
-  }]
+axios.interceptors.request.use(function (config) {
+  document.getElementById("ajax_loader").style = 'display:flex'
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+});
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+  setTimeout(() => {
+    document.getElementById("ajax_loader").style = 'display:none'
+  }, 250)
+  return response;
+}, function (error) {
+  return Promise.reject(error);
 });
 
 export default {

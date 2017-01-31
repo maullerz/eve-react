@@ -15,7 +15,7 @@ export const GET_PRICES = 'GET_PRICES'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const GET_BODY = 'GET_BODY'
 
-export function getPrices (systemId, itemIds) {
+export function getPrices(systemId, itemIds) {
   return dispatch => {
     return ApiService.Main.prices(systemId, itemIds.join(','))
       .then(json => {
@@ -24,7 +24,7 @@ export function getPrices (systemId, itemIds) {
   }
 }
 
-export function sendBody (body) {
+export function sendBody(body) {
   return dispatch => {
     return ApiService.Priceall.send(body)
       .then(json => {
@@ -33,7 +33,7 @@ export function sendBody (body) {
   }
 }
 
-export function sendBodyState (json) {
+export function sendBodyState(json) {
   let items = []
   if (json.items.length) {
     json.items.forEach(function (val) {
@@ -46,30 +46,30 @@ export function sendBodyState (json) {
   }
 }
 
-export function removeItem (itemId) {
+export function removeItem(itemId) {
   return dispatch => {
     dispatch(removeItemState(itemId))
   }
 }
 
-export function updNeed (key, value) {
+export function updNeed(key, value) {
   return dispatch => {
     dispatch(updNeedState(key, value))
   }
 }
 
-export function setQty (itemId, qty) {
+export function setQty(itemId, qty) {
   return dispatch => {
     dispatch(setQtyState(itemId, qty))
   }
 }
 
-export function resetSystem () {
+export function resetSystem() {
   return dispatch => {
     dispatch(resetSystemState())
   }
 }
-export function searchSystem (term) {
+export function searchSystem(term) {
   return dispatch => {
     return ApiService.Search.system(term).then(json => {
       dispatch(searchSystemState(json.data.items))
@@ -77,36 +77,36 @@ export function searchSystem (term) {
   }
 }
 
-export function setSystem (systemId) {
+export function setSystem(systemId) {
   return dispatch => {
     dispatch(setSystemState(systemId))
   }
 }
 
-export function changePercentage (percentage) {
+export function changePercentage(percentage) {
   return dispatch => {
     dispatch(changePercentageState(percentage))
   }
 }
 
-export function setTypePrice (type) {
+export function setTypePrice(type) {
   return dispatch => {
     dispatch(setTypePriceState(type))
   }
 }
 
-export function addItem (item) {
+export function addItem(item) {
   return dispatch => {
     dispatch(addItemState(item))
   }
 }
 
-export function resetSearch () {
+export function resetSearch() {
   return dispatch => {
     dispatch(resetSearchState())
   }
 }
-export function searchItem (term) {
+export function searchItem(term) {
   return dispatch => {
     ApiService.Search.item(term).then(json => {
       dispatch(setSuggMarket(json.data.items))
@@ -114,27 +114,27 @@ export function searchItem (term) {
   }
 }
 
-export function unmountMarket () {
+export function unmountMarket() {
   return dispatch => {
     dispatch(unmountMarketState())
   }
 }
 
-export function removeItemState (itemID) {
+export function removeItemState(itemID) {
   return {
     type: REMOVE_ITEM,
     _item: itemID
   }
 }
 
-export function updPricesState (prices) {
+export function updPricesState(prices) {
   return {
     type: GET_PRICES,
     orig_prices: prices,
     prices: prices
   }
 }
-export function updNeedState (key, val) {
+export function updNeedState(key, val) {
   return {
     type: UPDATE_NEED,
     key: key,
@@ -142,7 +142,7 @@ export function updNeedState (key, val) {
   }
 }
 
-export function setQtyState (itemId, qty) {
+export function setQtyState(itemId, qty) {
   return {
     type: SET_QTY,
     _item_id: itemId,
@@ -150,7 +150,7 @@ export function setQtyState (itemId, qty) {
   }
 }
 
-export function setSystemState (systemId) {
+export function setSystemState(systemId) {
   return {
     type: SET_SYSTEM_ID,
     system_id: systemId,
@@ -158,28 +158,28 @@ export function setSystemState (systemId) {
   }
 }
 
-export function searchSystemState (items) {
+export function searchSystemState(items) {
   return {
     type: SET_SYSTEM_SUGG,
     s_sugg: items
   }
 }
 
-export function changePercentageState (percentage) {
+export function changePercentageState(percentage) {
   return {
     type: SET_PERCENTAGE,
     percentage: +percentage
   }
 }
 
-export function setTypePriceState (type) {
+export function setTypePriceState(type) {
   return {
     type: SET_TYPE_PRICES,
     type_price: type
   }
 }
 
-export function addItemState (item) {
+export function addItemState(item) {
   item.qty = 1
   return {
     type: ADD_ITEM,
@@ -188,27 +188,27 @@ export function addItemState (item) {
   }
 }
 
-export function resetSearchState () {
+export function resetSearchState() {
   return {
     type: RESET_SUGG,
     sugg: []
   }
 }
 
-export function resetSystemState () {
+export function resetSystemState() {
   return {
     type: UNSET_SYSTEM_SUGG,
     s_sugg: []
   }
 }
 
-export function setSuggMarket (items) {
+export function setSuggMarket(items) {
   return {
     type: MARKET_SET_SUGG,
     sugg: items
   }
 }
-export function unmountMarketState () {
+export function unmountMarketState() {
   return {
     type: UNMOUNT_MARKET
   }
