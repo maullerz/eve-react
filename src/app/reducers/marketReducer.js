@@ -124,12 +124,15 @@ export default (state = initialState, action = {}) => {
     case Market.GET_BODY:
       let stateItemsBody = cloneDeep(state.items)
       if (action._new_items.length) {
+        
         action._new_items.forEach(item => {
           let index = findIndex(stateItemsBody, function (i) {
             return +i.item_id === +item.item_id
           })
           if (index === -1) {
             stateItemsBody.push(item)
+          } else {
+            stateItemsBody[index].qty = item.qty
           }
         })
       }
