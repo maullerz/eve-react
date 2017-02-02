@@ -5,46 +5,28 @@ let crestUrl = 'https://crest-tq.eveonline.com'
 
 
 axios.interceptors.request.use(function (config) {
-  console.log("beforeRequest!!")
-  // Do something before request is sent
+  document.getElementById("ajax_loader").style = 'display:flex'
   return config;
 }, function (error) {
-  // Do something with request error
   return Promise.reject(error);
 });
 
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
-  // Do something with response data
+  setTimeout(() => {
+    document.getElementById("ajax_loader").style = 'display:none'
+  }, 250)
   return response;
 }, function (error) {
-  // Do something with response error
   return Promise.reject(error);
 });
 
-// actions
-// const axios = _axios.create({
-//   transformRequest: [function (data) {
-//     console.log("transformRequest", data)
-//     document.getElementById("ajax_loader").style = 'display:flex'
-//     return data
-//   }],
-//   transformResponse: [function (data) {
-//     setTimeout(() => {
-//       document.getElementById("ajax_loader").style = 'display:none'
-//     }, 250)
-//     return JSON.parse(data)
-//   }],
-// });
-
 export default {
-
   Graph: {
     chart: function (regionId, typeID) {
       return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
     }
   },
-
   Search: {
     system: function (term) {
       return axios.get(baseUrl + '/search/system.json', {
@@ -113,7 +95,7 @@ export default {
   Priceall: {
     send: function (body) {
       return axios.post(baseUrl + '/priceall', {
-        body: "123"
+        body: body
       })
     }
   },

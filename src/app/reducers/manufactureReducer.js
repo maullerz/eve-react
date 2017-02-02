@@ -1,26 +1,4 @@
-import {
-  SEARCH_BPC,
-  GET_BPC,
-  RESET_SEARCH,
-  CHANGE_ME,
-  CHANGE_RUN,
-  CHANGE_TE,
-  RECALCULATE_MANUFACTURE,
-  SET_BPC_COST,
-  CHANGE_TYPE_PRICE_ITEM,
-  CHANGE_TYPE_PRICE_COMPONENTS,
-  SEARCH_MANUFACTURE_SYSTEM,
-  SET_MANUFACTURE_SYSTEM,
-  SEARCH_COMPONENT_SYSTEM,
-  RESET_COMPONENT_SYSTEM,
-  SET_COMPONENTS_PRICES,
-  SET_ITEM_PRICE,
-  RESET_SYSTEM_ITEM,
-  SEARCH_ITEM_SYSTEM,
-  UNMOUNT_MANUFACTURE,
-  SET_FACILITY,
-  SET_FACILITY_VAL
-} from '../actions/manufactureActions'
+import * as Bpc from '../actions/manufactureActions'
 
 const initialState = {
   headTitle: "Manufacturing calculator",
@@ -83,29 +61,29 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
 
-    case SET_FACILITY:
-    case SET_FACILITY_VAL:
-    case RESET_SYSTEM_ITEM:
-    case SEARCH_ITEM_SYSTEM:
-    case SET_ITEM_PRICE:
-    case SET_COMPONENTS_PRICES:
-    case RESET_COMPONENT_SYSTEM:
-    case SET_MANUFACTURE_SYSTEM:
-    case SEARCH_COMPONENT_SYSTEM:
-    case SEARCH_MANUFACTURE_SYSTEM:
-    case CHANGE_TYPE_PRICE_ITEM:
-    case CHANGE_TYPE_PRICE_COMPONENTS:
-    case SET_BPC_COST:
-    case RECALCULATE_MANUFACTURE:
-    case CHANGE_RUN:
-    case CHANGE_TE:
-    case CHANGE_ME:
-    case SEARCH_BPC:
-    case RESET_SEARCH:
-    case GET_BPC:
+    case Bpc.SET_FACILITY:
+    case Bpc.SET_FACILITY_VAL:
+    case Bpc.RESET_SYSTEM_ITEM:
+    case Bpc.SEARCH_ITEM_SYSTEM:
+    case Bpc.SET_ITEM_PRICE:
+    case Bpc.SET_COMPONENTS_PRICES:
+    case Bpc.RESET_COMPONENT_SYSTEM:
+    case Bpc.SET_MANUFACTURE_SYSTEM:
+    case Bpc.SEARCH_COMPONENT_SYSTEM:
+    case Bpc.SEARCH_MANUFACTURE_SYSTEM:
+    case Bpc.CHANGE_TYPE_PRICE_ITEM:
+    case Bpc.CHANGE_TYPE_PRICE_COMPONENTS:
+    case Bpc.SET_BPC_COST:
+    case Bpc.RECALCULATE_MANUFACTURE:
+    case Bpc.CHANGE_RUN:
+    case Bpc.CHANGE_TE:
+    case Bpc.CHANGE_ME:
+    case Bpc.SEARCH_BPC:
+    case Bpc.RESET_SEARCH:
+    case Bpc.GET_BPC:
       return Object.assign({}, state, action)
 
-    case UNMOUNT_MANUFACTURE:
+    case Bpc.UNMOUNT_MANUFACTURE:
       return Object.assign({}, initialState)
 
     default:

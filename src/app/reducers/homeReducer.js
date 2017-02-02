@@ -1,15 +1,4 @@
-import {
-  SET_REGION_SUGG,
-  SET_REGION,
-  RESET_REGION_SUGG,
-  SET_ITEM_SUGG,
-  RESET_ITEM,
-  UPD_NEED,
-  SET_ITEM,
-  GET_CHART_DATA,
-  HOME_UNMOUNT,
-  FACEBOOK_FEED
-} from '../actions/homeActions'
+import * as Home from '../actions/homeActions'
 
 const initialState = {
   headTitle: "Manufacturing calculator and market monitoring monitoring for EVE Online",
@@ -63,34 +52,34 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case GET_CHART_DATA:
-    case FACEBOOK_FEED:
-    case RESET_ITEM:
-    case SET_REGION:
+    case Home.GET_CHART_DATA:
+    case Home.FACEBOOK_FEED:
+    case Home.RESET_ITEM:
+    case Home.SET_REGION:
       if (+state.region_id !== +action.region_id) {
         return Object.assign({}, state, action)
       } else {
         return state
       }
 
-    case SET_ITEM:
+    case Home.SET_ITEM:
       if (+state.item_id !== +action.item_id) {
         return Object.assign({}, state, action)
       } else {
         return state
       }
 
-    case SET_ITEM_SUGG:
-    case SET_REGION_SUGG:
-    case RESET_REGION_SUGG:
+    case Home.SET_ITEM_SUGG:
+    case Home.SET_REGION_SUGG:
+    case Home.RESET_REGION_SUGG:
       return Object.assign({}, state, action)
 
-    case UPD_NEED:
+    case Home.UPD_NEED:
       let ns = {}
       ns[action._k] = action._v
       return Object.assign({}, state, ns)
 
-    case HOME_UNMOUNT:
+    case Home.HOME_UNMOUNT:
       return Object.assign({}, initialState)
 
     default:
