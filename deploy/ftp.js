@@ -4,6 +4,7 @@ let Ftp = require('vinyl-ftp')
 let async = require('async')
 let _ = require('lodash')
 let fss = require('fs')
+require('shelljs/global')
 
 if (!process.env.ftp_host) {
   console.error('ENV variables is not defined')
