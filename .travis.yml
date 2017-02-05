@@ -12,10 +12,10 @@ install:
 
 script:
   - npm run build
-  - sed -ie 's/<\/body>/<script src="\/ads.js?<?php echo uniqid() ?>"><\/script><\/body>/g' ./build/index.html
-  - sed -ie 's/__aid__/<?php echo uniqid() ?>/g' ./build/index.html
-  - mv ./build/index.html ./build/index.php
-  - rm -f ./build/index.htmle
+  #  - sed -ie 's/<\/body>/<script src="\/ads.js?<?php echo uniqid() ?>"><\/script><\/body>/g' ./build/index.html
+  #  - sed -ie 's/__aid__/<?php echo uniqid() ?>/g' ./build/index.html
+  #  - mv ./build/index.html ./build/index.php
+  #  - rm -f ./build/index.htmle
 
 after_success:
   - node ./deploy/ftp.js
