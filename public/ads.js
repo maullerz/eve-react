@@ -1,0 +1,1 @@
+var e=document.createElement('div'); e.id=AID; e.style.display='none'; document.body.appendChild(e);

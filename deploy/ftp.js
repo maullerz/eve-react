@@ -17,32 +17,39 @@ let conn = new Ftp({
 })
 
 async.series({
+    // change html to php
+    renameToPhp: function (callback) {
+      fs.rename('./../build/index.html', './../build/index.php', () => {
+        sed('-i', '<!--adlock-->', '<script src="/ads.js?<?php echo uniqid() ?>"></script>', './../build/index.php');
+        callback(null, true)
+      })
+    },
     // Clean ftp before deploy
-  cleanStatic: function (callback) {
-    conn.rmdir('./static', () => {
-      callback(null, true)
-    })
-  },
-  cleanManifest: function (callback) {
-    conn.delete('./asset-manifest.json', () => {
-      callback(null, true)
-    })
-  },
-  cleanIndex: function (callback) {
-    conn.delete('./index.html', () => {
-      callback(null, true)
-    })
-  },
-  status: function (callback) {
-    fs.src(['./build/**'], {buffer: false}).pipe(conn.dest('/'))
+    cleanStatic: function (callback) {
+      conn.rmdir('./static', () => {
+        callback(null, true)
+      })
+    },
+    cleanManifest: function (callback) {
+      conn.delete('./asset-manifest.json', () => {
+        callback(null, true)
+      })
+    },
+    cleanIndex: function (callback) {
+      conn.delete('./index.php', () => {
+        callback(null, true)
+      })
+    },
+    status: function (callback) {
+      fs.src(['./build/**'], {buffer: false}).pipe(conn.dest('/'))
         .on('end', () => {
           callback(null, 'Deployed!')
         })
         .on('error', () => {
           callback(null, 'Not deployed!')
         })
-  }
-},
+    }
+  },
   function (err, result) {
     if (err) {
       console.error(err)
