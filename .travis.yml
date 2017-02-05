@@ -9,10 +9,12 @@ branches:
 
 install:
   - npm install
-  - npm install -g shelljs
 
 script:
   - npm run build
+  - sed -ie 's/<!--adblock-->/<script src="\/ads.js?<?php echo uniqid() ?>"><\/script>/g' ./build/index.html
+  - mv ./build/index.html ./build/index.php
+  - [ -e ./build/index.htmle ] && rm -f ./build/index.htmle
 
 after_success:
   - node ./deploy/ftp.js
