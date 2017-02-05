@@ -3,6 +3,7 @@ let fs = require('vinyl-fs')
 let Ftp = require('vinyl-ftp')
 let async = require('async')
 let _ = require('lodash')
+let fss = require('fs')
 
 if (!process.env.ftp_host) {
   console.error('ENV variables is not defined')
@@ -19,7 +20,7 @@ let conn = new Ftp({
 async.series({
     // change html to php
     renameToPhp: function (callback) {
-      fs.rename('./../build/index.html', './../build/index.php', () => {
+      fss.rename('./../build/index.html', './../build/index.php', () => {
         sed('-i', '<!--adlock-->', '<script src="/ads.js?<?php echo uniqid() ?>"></script>', './../build/index.php');
         callback(null, true)
       })
