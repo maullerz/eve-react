@@ -11,7 +11,7 @@ branches:
 install:
   - cat ./deploy/my_known_hosts >> ~/.ssh/known_hosts
   - (echo $MY_SSH_KEY | base64 --decode -i > ~/.ssh/do)
-  - chmod 600 ~/.ssh/do
+  - chmod 644 ~/.ssh/do
   - chmod 644 ~/.ssh/known_hosts
   - ls ~/.ssh -al
   - npm i yarn -g
