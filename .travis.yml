@@ -8,9 +8,6 @@ addons:
         packages:
             - sshpass
 
-env:
-  - OS_TYPE=ubuntu OS_VERSION=16
-
 branches:
   only:
     - master
@@ -19,8 +16,8 @@ install:
   - npm install --silent
 
 script:
-  #- npm run build
+  - npm run build
 
 after_success:
-  #- which sshpass
+  - which sshpass
   - /usr/bin/sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
