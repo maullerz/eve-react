@@ -15,7 +15,7 @@ branches:
     - master
 
 install:
-  - sudo apt nstall sshpass -y
+  - sudo apt install sshpass -y
   - npm install --silent
 
 script:
