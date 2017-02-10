@@ -123,6 +123,9 @@ a:hover {
   top: 0;
   right: 0;
 }
+#aZone {
+  display: none;
+}
 .txt-yellow,
 .profit {
   color: #cddc39;
