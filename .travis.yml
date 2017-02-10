@@ -13,11 +13,12 @@ install:
   - (echo $MY_SSH_KEY | base64 --decode -i > ~/.ssh/id_rsa)
   - chmod 600 ~/.ssh/id_rsa
   - chmod 644 ~/.ssh/known_hosts
-  - npm install --silent
+  - npm i yarn -g
+  - yarn install --production
   
 script:
-  - npm run build
+  - yarn build
 
 after_success:
-  - ssh $SSH_CONNECTING_STRING
+  - ssh -i id_rsa $SSH_CONNECTING_STRING
   - pwd
