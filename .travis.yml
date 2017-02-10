@@ -22,4 +22,5 @@ script:
   - npm run build
 
 after_success:
+  - pwd
   - sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
