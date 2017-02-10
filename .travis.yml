@@ -3,6 +3,11 @@ language: node_js
 node_js:
   - "node"
 
+addons:
+    apt:
+        packages:
+            - sshpass
+
 branches:
   only:
     - master
@@ -14,4 +19,5 @@ script:
   - npm run build
 
 after_success:
-  - node ./deploy/ftp.js
+  - export SSHPASS=$SSH_PASSWORD
+  - sshpass -e ssh $SSH_USER@$SSH_HOST pwd
