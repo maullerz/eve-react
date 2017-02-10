@@ -5,9 +5,9 @@ node_js:
   - "node"
 
 addons:
-    apt:
-        packages:
-            - sshpass
+  apt:
+    packages:
+    - sshpass
 
 branches:
   only:
