@@ -13,15 +13,14 @@ branches:
     - master
 
 install:
-  - npm install
+  #- npm install --silent
 
 script:
-  - npm run build
+  #- npm run build
   #  - sed -ie 's/<\/body>/<script src="\/ads.js?<?php echo uniqid() ?>"><\/script><\/body>/g' ./build/index.html
   #  - sed -ie 's/__aid__/<?php echo uniqid() ?>/g' ./build/index.html
   #  - mv ./build/index.html ./build/index.php
   #  - rm -f ./build/index.htmle
 
 after_success:
-  - export SSHPASS=$SSH_PASSWORD
-  - sshpass -e ssh $SSH_USER@$SSH_HOST pwd
+  - sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
