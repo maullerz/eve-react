@@ -10,8 +10,8 @@ branches:
 
 install:
   - cat ./deploy/my_known_hosts >> ~/.ssh/known_hosts
-  - (echo $MY_SSH_KEY | base64 --decode -i > ~/.ssh/id_rsa)
-  - chmod 600 ~/.ssh/id_rsa
+  - (echo $MY_SSH_KEY | base64 --decode -i > ~/.ssh/do)
+  - chmod 600 ~/.ssh/do
   - chmod 644 ~/.ssh/known_hosts
   - npm i yarn -g
   - yarn install --production
@@ -20,5 +20,5 @@ script:
   - yarn build
 
 after_success:
-  - ssh -i id_rsa $SSH_CONNECTING_STRING
+  - ssh -i do $SSH_CONNECTING_STRING
   - pwd
