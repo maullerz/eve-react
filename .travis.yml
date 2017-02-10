@@ -23,5 +23,7 @@ script:
 
 after_success:
   - pwd
+  - ls /home/travis -al
+  - ls /home/travis/.ssh -al
   - ssh --version
   - sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
