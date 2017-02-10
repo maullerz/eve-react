@@ -13,8 +13,7 @@ branches:
     - master
 
 install:
-  #- npm install --silent
-  - npm -v
+  - npm install --silent
 
 script:
   #- npm run build
