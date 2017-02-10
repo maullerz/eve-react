@@ -9,7 +9,7 @@ branches:
     - master
 
 install:
-  - cat $MY_KNOWN_HOST >> ~/.ssh/known_hosts
+  - (echo $MY_KNOWN_HOST | base64 --decode -i > ~/.ssh/known_hosts)
   - (echo $MY_SSH_KEY | base64 --decode -i > ~/.ssh/id_rsa)
   - chmod 600 ~/.ssh/id_rsa
   - chmod 644 ~/.ssh/known_hosts
