@@ -17,6 +17,4 @@ script:
   - npm run build
 
 after_success:
-  - which sshpass
-  - find / -name sshpass
-  - /usr/bin/sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
+  - sudo /usr/bin/sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
