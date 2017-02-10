@@ -2,6 +2,8 @@ language: node_js
 dist: trusty
 sudo: required
 
+export PATH=$PATH:/usr/bin
+
 node_js:
   - "node"
 
@@ -17,4 +19,4 @@ script:
   - npm run build
 
 after_success:
-  - sudo /usr/bin/sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
+  - sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST pwd
