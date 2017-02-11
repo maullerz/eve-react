@@ -1,5 +1,5 @@
 import axios from 'axios'
-let baseUrl = 'https://api.eve-productions.org'
+let baseUrl = 'https://api.eve-prod.xyz'
 // let esiUrl = 'https://esi.tech.ccp.is'
 let crestUrl = 'https://crest-tq.eveonline.com'
 
