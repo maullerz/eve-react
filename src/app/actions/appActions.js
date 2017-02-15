@@ -7,23 +7,11 @@ export function setHead(obj) {
   }
 }
 
-export function setLoader(bool) {
-  return dispatch => {
-    dispatch(setLoaderStateObj(bool))
-  }
-}
-
 export function setHeadStateObj(obj) {
   return {
     type: CHANGE_HEAD,
     headTitle: obj.headTitle,
     headDescription: obj.headDescription,
     headKeywords: obj.headKeywords,
-  }
-}
-export function setLoaderStateObj(bool) {
-  return {
-    type: CHANGE_LOADER,
-    loader: bool
   }
 }
