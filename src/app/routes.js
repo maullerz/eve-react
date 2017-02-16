@@ -6,6 +6,8 @@ import Donate from './controllers/Donate'
 import Manufacture from './controllers/Manufacture'
 import Market from './controllers/Market'
 import Item from './controllers/Item'
+import Ore from './controllers/Ore'
+import Planet from './controllers/Planet'
 
 export default (
   <Route path='/' component={App}>
@@ -14,5 +16,7 @@ export default (
     <Route path='/market' component={Market} />
     <Route path='/item(/:url)' component={Item} />
     <Route path='/manufacture(/:url)' component={Manufacture} />
+    <Route path='/ore' component={Ore} />
+    <Route path='/planet' component={Planet} />
   </Route>
 )

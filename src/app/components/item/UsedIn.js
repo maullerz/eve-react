@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updNeed } from './../../actions/itemActions'
-import Paginate from '../Paginate'
+import Paginate from '../blocks/_paginate'
 import { Link } from 'react-router'
+
 
 class UsedIn extends Component {
 

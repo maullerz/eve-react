@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import OneColumnTable from '../components/OneColumnTable'
+import OneColumnTable from '../components/blocks/_one_column_table'
 import { connect } from 'react-redux'
 import { getDonatorList, unmountDonate } from "../actions/donateActions"
 import { setHead } from "../actions/appActions"

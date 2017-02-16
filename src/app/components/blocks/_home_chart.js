@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Highcharts from 'highcharts'
 import {map} from 'lodash'
-import {updNeed} from '../actions/homeActions'
+import {updNeed} from '../../actions/homeActions'
 
 class HomeChart extends Component {
 

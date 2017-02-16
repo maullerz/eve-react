@@ -5,6 +5,8 @@ import homeReducer from './app/reducers/homeReducer'
 import itemReducer from './app/reducers/itemReducer'
 import appReducer from './app/reducers/appReducer'
 import donateReducer from './app/reducers/donateReducer'
+import oreReducer from './app/reducers/oreReducer'
+import planetReducer from './app/reducers/planetReducer'
 
 export default combineReducers({
   appReducer,
@@ -12,5 +14,7 @@ export default combineReducers({
   marketReducer,
   homeReducer,
   itemReducer,
-  donateReducer
+  donateReducer,
+  oreReducer,
+  planetReducer
 })

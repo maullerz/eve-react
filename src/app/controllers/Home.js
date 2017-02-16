@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { map } from 'lodash'
 import { updNeed, getChartData, unmountHome, getFacebookFeed } from '../actions/homeActions'
@@ -9,12 +9,12 @@ import PanelContent from '../components/blocks/_panel_content'
 import IndexTables from '../components/blocks/_index_tables'
 import Region from '../components/home/Region'
 import SearchItem from '../components/home/Item'
-import FacebookWidget from '../components/FacebookWidget'
-import SimpleList from '../components/SimpleList'
+import FacebookWidget from '../components/blocks/_facebook_widget'
+import SimpleList from '../components/blocks/_simple_list'
 import FBFeedLine from '../components/home/FBFeedLine'
-import HighChart from '../components/HomeChart'
+import HighChart from '../components/blocks/_home_chart'
 
-class Home extends Component {
+class Home extends React.Component {
 
   componentWillReceiveProps(np) {
     if (+np.item_id !== +this.props.item_id || +np.region_id !== +this.props.region_id) {

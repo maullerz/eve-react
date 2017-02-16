@@ -1,5 +1,5 @@
 import React from 'react'
-import SimpleList from "../SimpleList"
+import SimpleList from "../blocks/_simple_list"
 
 const OneColumnTable = ({data}) => {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import UsersList from "../components/donate/UsersList"
+import UsersList from "../donate/UsersList"
 
 const OneColumnTable = ({_class, list, title}) => {
 

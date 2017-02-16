@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Header from '../components/blocks/Header'
 import Ads from '../components/blocks/_ads'
-import Loader from '../components/Loader'
+import Loader from '../components/blocks/_loader'
 import Helmet from 'react-helmet'
 import {connect} from 'react-redux'
 
