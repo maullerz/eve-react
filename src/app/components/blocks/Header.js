@@ -2,6 +2,17 @@ import React  from 'react'
 import {Link} from 'react-router'
 
 const Header = () => {
+
+  /*
+  <li>
+    <Link to="">Resourses</Link>
+    <ul>
+      <li><Link id="ah_ore" to='/planet'>Planet resourses</Link></li>
+      <li><Link id="ah_ore" to='/ore'>Ore</Link></li>
+    </ul>
+  </li>
+  */
+
   return (
     <div>
       <div className='row'>
@@ -22,15 +33,6 @@ const Header = () => {
               </li>
               <li><Link id="ah_market" to='/market'>Market</Link></li>
               <li><Link id="ah_item" to='/item'>Where components used?</Link></li>
-
-              <li>
-                <Link to="">Resourses</Link>
-                <ul>
-                  <li><Link id="ah_ore" to='/planet'>Planet resourses</Link></li>
-                  <li><Link id="ah_ore" to='/ore'>Ore</Link></li>
-                </ul>
-              </li>
-
               <li className='red-cell'>
                 <Link id="ah_donate" to='/donate'>Donate</Link>
               </li>
