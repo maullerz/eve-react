@@ -10,8 +10,6 @@ class Donate extends Component {
     this.props.getDonatorList()
   }
 
-  com
-
   componentWillMount() {
     this.props.setHead({
       headTitle: this.props.headTitle,

@@ -5,5 +5,5 @@ build/
 *.log*
 *.sh
 .vscode
-*/__snapshots__/*
+__snapshots__
 .history
