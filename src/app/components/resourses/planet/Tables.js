@@ -1,45 +1,73 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {forEach} from 'lodash'
+import {browserHistory} from "react-router"
+import {getSchemes} from './../../../actions/planetActions'
+// components
+import OneTable from './../planet/OneTable'
 
 class Tables extends React.Component {
 
-  componentDidMount () {
-    console.log("get resourses");
+  constructor(props) {
+    super(props)
+    this.isLock = false
   }
 
-  render () {
-    let col = {
-      left: 'col-md-4',
-      right: 'col-md-8'
-    }
+  componentDidMount() {
+    this.props.getSchemes()
+  }
 
+  render() {
     return <div className='row'>
-        <div className='col-md-12'>
-          <table className='inside'>
-            <thead>
-            <tr>
-              <th colSpan='2'>Calculator</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td colSpan='2' className='inside-table'>
-                <div className='row'>
-                  <div className={col.left}>Factory</div>
-                  <div className={col.right}>
+      <OneTable _class='col-md-3 col-first'
+                lh={this.lh.bind(this)}
+                hr={this.hr.bind(this)}
+                title={this.props.titles[1334]}
+                data={this.props.schemes[1334]}/>
+      <OneTable _class='col-md-3 col-midd'
+                lh={this.lh.bind(this)}
+                hr={this.hr.bind(this)}
+                title={this.props.titles[1335]}
+                data={this.props.schemes[1335]}/>
+      <OneTable _class='col-md-3 col-midd'
+                lh={this.lh.bind(this)}
+                hr={this.hr.bind(this)}
+                title={this.props.titles[1336]}
+                data={this.props.schemes[1336]}/>
+      <OneTable _class='col-md-3 col-last'
+                lh={this.lh.bind(this)}
+                hr={this.hr.bind(this)}
+                title={this.props.titles[1337]}
+                data={this.props.schemes[1337]}/>
+    </div>
+  }
 
-                  </div>
-                </div>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  // lock Highlight
+  lh(url) {
+    this.isLock = !this.isLock
+    if (this.isLock) {
+      browserHistory.push('/planet/scheme/' + url)
+    }
+  }
+
+  // Highlight Relations
+  hr(itemId) {
+    if (!this.isLock) {
+      let li = window.document.querySelectorAll("li.pea")
+      // hightlight relations
+      forEach(li, v => {
+        v.classList.remove('active')
+        let dp = v.getAttribute('data-parent')
+        let dc = v.getAttribute('data-childs')
+        if (dc.indexOf('-' + itemId + '-') !== -1) {
+          v.classList.add('active')
+        }
+        if (dp.toString() === itemId.toString()) {
+          v.classList.add('active')
+        }
+      })
+    }
   }
 }
 
-function mapStateToProps (state) {
-  return state.manufactureReducer
-}
-export default connect(mapStateToProps, {})(Tables)
+export default connect(state => state.planetReducer, {getSchemes})(Tables)
