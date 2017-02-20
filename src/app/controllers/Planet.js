@@ -15,15 +15,14 @@ class Planet extends React.Component {
     if (np.params.url !== this.props.params.url) {
       this.props.getScheme(np.params.url)
     }
-    if (this.props._need_upd_iprices) {
+    if (np._need_upd_iprices && this.props.materials.length) {
       let inputComponent = map(this.props.materials, 'item_id')
-      this.props.updPrice(this.props.input_system_id, inputComponent)
+      this.props.updPrice(np.input_system_id, inputComponent)
       this.props.updFalse('_need_upd_iprices')
     }
-    if (this.props._need_upd_oprices) {
+    if (np._need_upd_oprices && np.scheme.typeID) {
+      this.props.updPrice(np.output_system_id, [np.scheme.typeID])
       this.props.updFalse('_need_upd_oprices')
-      this.props.updPrice(this.props.output_system_id, [this.props.scheme.typeID])
-
     }
   }
 

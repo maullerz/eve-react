@@ -32,6 +32,8 @@ const initialState = {
   type_price_output: 'sell',
   output_amount: 0,
   input_amount: 0,
+  input_volume: 0,
+  output_volume: 0,
   cycle: -1,
   prices: {
     sell: [],

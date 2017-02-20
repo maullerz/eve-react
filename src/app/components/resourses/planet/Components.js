@@ -35,7 +35,7 @@ class Components extends React.Component {
             <table>
               <thead>
               <tr>
-                <th>Input materials ({Helper.shortNum(this.props.input_amount)} isk)</th>
+                <th>Input materials ({Helper.shortNum(this.props.input_volume)} m3)</th>
               </tr>
               </thead>
               <tbody>
@@ -55,7 +55,7 @@ class Components extends React.Component {
             <table>
               <thead>
               <tr>
-                <th>Output material ({Helper.shortNum(this.props.output_amount)} isk)</th>
+                <th>Output material ({Helper.shortNum(this.props.output_volume)} m3)</th>
               </tr>
               </thead>
               <tbody>
