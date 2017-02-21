@@ -5,6 +5,7 @@ const initialState = {
   _need_upd_iprices: false,
   _need_upd_oprices: false,
   _need_recalculate: false,
+  _need_update_headers: false,
   headTitle: "Planet",
   headDescription: "Planet refinery calculator",
   headKeywords: "",
@@ -35,6 +36,7 @@ const initialState = {
   input_volume: 0,
   output_volume: 0,
   cycle: -1,
+  profit: 0,
   prices: {
     sell: [],
     buy: []
@@ -45,12 +47,38 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
 
+    case Planet.PLANET_RECALCULATE:
+      // calculate volumes materials
+      let vMaterials = 0
+      let vOutput = 0
+      let pInput = 0
+      let pOutput = 0
+      forEach(cloneDeep(state.materials), v => {
+        vMaterials += (state.x * v.item_id)
+      })
+      // volume output items
+      vOutput = state.x * state.scheme.quantity
+      // prices input
+      forEach(cloneDeep(state.materials), v => {
+        pInput += state.prices[state.type_price_input][v.item_id] * v.quantity * state.x
+      })
+      // price output
+      pOutput = state.prices[state.type_price_output][state.scheme.typeID] * state.scheme.quantity * state.x
+
+      return Object.assign({}, state, {
+        type: Planet.PLANET_RECALCULATE,
+        input_volume: vMaterials,
+        output_volume: vOutput,
+        input_amount: pInput,
+        output_amount: pOutput,
+        profit: pOutput - pInput
+      })
+
     case Planet.PLANET_UPD_PRICES:
 
       let pricesSell = cloneDeep(state.prices.sell)
       let pricesBuy = cloneDeep(state.prices.buy)
       let newPrices = action.payload
-
       forEach(newPrices.sell, (v, k) => {
         pricesSell[k] = v
       })
@@ -67,13 +95,19 @@ export default (state = initialState, action = {}) => {
       }
       return Object.assign({}, state, prices)
 
-    
     case Planet.PLANET_SET_CYCLE:
       let cycle = action.cycle
-      console.log(cycle);
+      let x = 1
+
+      if(action.cycle.toString() === '-1') {
+        x = 1
+      } else {
+        x = state.scheme.cycle === 3600 ? cycle * 24 :  cycle * 24 * 2
+      }
       let payload = {
         _need_recalculate: true,
-        cycle: cycle
+        cycle: cycle,
+        x: x
       }
       return Object.assign({}, state, payload)
 

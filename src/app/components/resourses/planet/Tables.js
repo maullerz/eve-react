@@ -43,11 +43,9 @@ class Tables extends React.Component {
   }
 
   // lock Highlight
-  lh(url) {
+  lh(itemId, url) {
+    browserHistory.push('/planet/scheme/' + url)
     this.isLock = !this.isLock
-    if (this.isLock) {
-      browserHistory.push('/planet/scheme/' + url)
-    }
   }
 
   // Highlight Relations

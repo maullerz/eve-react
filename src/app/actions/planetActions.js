@@ -16,7 +16,16 @@ export const PLANET_RESET_INPUT_SUGG = 'PLANET_RESET_INPUT_SUGG'
 export const PLANET_SET_CYCLE = 'PLANET_SET_CYCLE'
 export const PLANET_UPD_FALSE = 'PLANET_UPD_FALSE'
 export const PLANET_UPD_PRICES = 'PLANET_UPD_PRICES'
+export const PLANET_RECALCULATE = 'PLANET_RECALCULATE'
 
+
+export function recalculate() {
+  return dispatch => {
+    return dispatch({
+      type: PLANET_RECALCULATE
+    })
+  }
+}
 
 export function updPrice(system_id, items) {
   return dispatch => {
@@ -160,7 +169,8 @@ export function getScheme(url) {
           buy: keys
         },
         _need_upd_iprices: true,
-        _need_upd_oprices: true
+        _need_upd_oprices: true,
+        _need_update_headers: true
       })
     })
   }
