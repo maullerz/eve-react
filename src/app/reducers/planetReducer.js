@@ -54,10 +54,10 @@ export default (state = initialState, action = {}) => {
       let pInput = 0
       let pOutput = 0
       forEach(cloneDeep(state.materials), v => {
-        vMaterials += (state.x * v.item_id)
+        vMaterials += (state.x * v.volume * v.quantity)
       })
       // volume output items
-      vOutput = state.x * state.scheme.quantity
+      vOutput = state.x * state.scheme.quantity * state.scheme.volume
       // prices input
       forEach(cloneDeep(state.materials), v => {
         pInput += state.prices[state.type_price_input][v.item_id] * v.quantity * state.x
