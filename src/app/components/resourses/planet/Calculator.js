@@ -132,7 +132,7 @@ class Calculator extends React.Component {
       </div>
     )
 
-    return this.props.scheme ? panel : null
+    return this.props.materials.length ? panel : null
   }
 }
 
