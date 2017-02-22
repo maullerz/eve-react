@@ -8,18 +8,6 @@ import SystemInput from './../planet/SystemInput'
 
 class Calculator extends React.Component {
 
-  componentWillReceiveProps(np) {
-    //if (np._need_update_prices_item) {
-    //  this.props.setItemSystem(this.props.pisystem_id, np)
-    //}
-    //if (np._need_update_prices_components) {
-    //  this.props.setComponentsSystem(this.props.pcsystem_id, np)
-    //}
-    //if (np._need_recalculate) {
-    //  this.props.recalculateManufacture(np)
-    //}
-  }
-
   changePriceTypeInput(type) {
     this.props.changePriceTypeInput(type)
   }
@@ -31,30 +19,6 @@ class Calculator extends React.Component {
   changeCycle(event) {
     this.props.changeCycle(event.target.value)
   }
-  //
-  //changeBpcCost (event) {
-  //  this.props.changeBpcCost(event.target.value)
-  //}
-  //
-
-  //
-  //changeMe (event) {
-  //  this.props.changeMe(event.target.value)
-  //}
-  //
-  //changeFacility (event) {
-  //  let facilityId = event.target.value
-  //  let facilityVal = find(this.props.facility, function (val) {
-  //    return val.id === +facilityId
-  //  })
-  //  if (facilityVal) {
-  //    this.props.setFacilityVal(facilityVal.me, facilityVal.te)
-  //  }
-  //}
-  //
-  //changeTe (event) {
-  //  this.props.changeTe(event.target.value)
-  //}
 
   render() {
     let col = {
