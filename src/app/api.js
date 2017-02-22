@@ -78,6 +78,14 @@ export default {
       })
     }
   },
+  Planet: {
+    schemes() {
+      return axios.get(baseUrl + '/planet/schemes')
+    },
+    schema(url) {
+      return axios.get(baseUrl + '/planet/scheme/' + url)
+    }
+  },
   Item: {
     popularItems: function () {
       return axios.get(baseUrl + '/item/popular')

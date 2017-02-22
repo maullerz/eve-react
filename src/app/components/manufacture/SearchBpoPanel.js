@@ -74,7 +74,4 @@ class SearchBpoPanel extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state.manufactureReducer
-}
-export default connect(mapStateToProps, { searchBpc, getBpc, resetSearch })(SearchBpoPanel);
+export default connect(state => state.manufactureReducer, { searchBpc, getBpc, resetSearch })(SearchBpoPanel);

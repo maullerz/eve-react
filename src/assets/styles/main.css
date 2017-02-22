@@ -368,6 +368,12 @@ textarea {
 .pointer {
   cursor: pointer;
 }
+.pea {
+  pointer-events: all;
+}
+.pen {
+  pointer-events: none;
+}
 .w100 {
   width: 100%;
 }

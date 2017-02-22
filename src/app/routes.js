@@ -17,6 +17,7 @@ export default (
     <Route path='/item(/:url)' component={Item} />
     <Route path='/manufacture(/:url)' component={Manufacture} />
     <Route path='/ore' component={Ore} />
-    <Route path='/planet' component={Planet} />
+    <Route path='/planet/schemes' component={Planet} />
+    <Route path='/planet/scheme/:url' component={Planet} />
   </Route>
 )

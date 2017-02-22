@@ -19,7 +19,25 @@ let Helper = {
 
   const: {
     debounceTimeout: 350,
-    debounceScrollTimeout: 750
+    debounceScrollTimeout: 750,
+    cycles: [
+      {
+        val: -1,
+        name: '1 cycle'
+      },
+      {
+        val: 1,
+        name: '1 day'
+      },
+      {
+        val: 14,
+        name: '14 days'
+      },
+      {
+        val: 30,
+        name: '1 month'
+      }
+    ]
   },
 
   /**
