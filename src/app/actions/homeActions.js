@@ -11,6 +11,19 @@ export const GET_CHART_DATA = 'GET_CHART_DATA'
 export const HOME_UNMOUNT = 'HOME_UNMOUNT'
 export const FACEBOOK_FEED = 'FACEBOOK_FEED'
 
+export const HOME_INFO = 'HOME_INFO'
+
+export function getHomeInfo() {
+  return dispatch => {
+    return ApiService.Main.index().then(json => {
+      dispatch({
+        type: HOME_INFO,
+        info: json.data
+      })
+    })
+  }
+}
+
 export function getFacebookFeed () {
   return dispatch => {
     return ApiService.Main.facebook_feed().then(json => {

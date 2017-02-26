@@ -45,6 +45,7 @@ const initialState = {
   region_sugg: [],
   item_sugg: [],
   facebook_feed: [],
+  info: [],
   item_id: 29668,
   item_name: '30 Day Pilot\'s License Extension (PLEX)',
   chartData: []
@@ -53,6 +54,7 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case Home.GET_CHART_DATA:
+    case Home.HOME_INFO:
     case Home.FACEBOOK_FEED:
     case Home.RESET_ITEM:
     case Home.SET_REGION:

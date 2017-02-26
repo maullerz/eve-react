@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { map } from 'lodash'
-import { updNeed, getChartData, unmountHome, getFacebookFeed } from '../actions/homeActions'
+import { updNeed, getChartData, unmountHome, getFacebookFeed, getHomeInfo } from '../actions/homeActions'
 import { setHead } from '../actions/appActions'
 
 import Copyright from '../components/blocks/_copyright'
@@ -31,6 +31,10 @@ class Home extends React.Component {
       headDescription: this.props.headDescription,
       headKeywords: this.props.headKeywords
     })
+  }
+
+  componentDidMount() {
+    this.props.getHomeInfo()
   }
 
   componentWillUnmount() {
@@ -83,7 +87,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <Copyright />
+        <Copyright info={this.props.info} />
       </div>
     )
   }
@@ -94,5 +98,6 @@ export default connect(state => state.homeReducer, {
   getChartData,
   unmountHome,
   getFacebookFeed,
-  setHead
+  setHead,
+  getHomeInfo
 })(Home)

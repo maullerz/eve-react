@@ -3,7 +3,6 @@ let baseUrl = 'http://api.eve-prod.xyz'
 // let esiUrl = 'https://esi.tech.ccp.is'
 let crestUrl = 'https://crest-tq.eveonline.com'
 
-
 axios.interceptors.request.use(function (config) {
   document.getElementById("ajax_loader").style = 'display:flex'
   return config;
@@ -23,54 +22,54 @@ axios.interceptors.response.use(function (response) {
 
 export default {
   Graph: {
-    chart: function (regionId, typeID) {
+    chart: (regionId, typeID) => {
       return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
     }
   },
   Search: {
-    system: function (term) {
+    system(term) {
       return axios.get(baseUrl + '/search/system', {
         params: {
           term: term
         }
       })
     },
-    region: function (term) {
+    region(term) {
       return axios.get(baseUrl + '/search/region', {
         params: {
           term: term
         }
       })
     },
-    item: function (term) {
+    item(term) {
       return axios.get(baseUrl + '/search/item', {
         params: {
           term: term
         }
       })
     },
-    componentByUrl: function (url) {
+    componentByUrl(url) {
       return axios.get(baseUrl + '/search/component', {
         params: {
           url: url
         }
       })
     },
-    similar: function (itemId) {
+    similar(itemId) {
       return axios.get(baseUrl + '/search/similar', {
         params: {
           item_id: itemId
         }
       })
     },
-    similarBpc: function (itemId) {
+    similarBpc(itemId) {
       return axios.get(baseUrl + '/search/similar-bpc', {
         params: {
           item_id: itemId
         }
       })
     },
-    component: function (term) {
+    component(term) {
       return axios.get(baseUrl + '/search/component', {
         params: {
           term: term
@@ -95,10 +94,10 @@ export default {
     }
   },
   Item: {
-    popularItems: function () {
+    popularItems() {
       return axios.get(baseUrl + '/item/popular')
     },
-    whereUsedComponent: function (componentId, page = 1, limit = 25) {
+    whereUsedComponent (componentId, page = 1, limit = 25) {
       return axios.get(baseUrl + '/item/bpo', {
         params: {
           component_id: componentId,
@@ -109,7 +108,7 @@ export default {
     }
   },
   Priceall: {
-    send: function (body) {
+    send(body) {
       return axios.post(baseUrl + '/priceall', {
         body: body
       })
@@ -117,13 +116,16 @@ export default {
   },
 
   Main: {
-    facebook_feed: function () {
+    index() {
+      return axios.get(baseUrl)
+    },
+    facebook_feed() {
       return axios.get(baseUrl + '/facebook_feed')
     },
-    prices: function (systemId, items) {
+    prices (systemId, items) {
       return axios.get(baseUrl + '/prices/' + systemId + '/' + items)
     },
-    facilities: function (activityID) {
+    facilities(activityID) {
       return axios.get(baseUrl + '/facility', {
         params: {
           activityID: activityID
@@ -133,20 +135,20 @@ export default {
   },
 
   Donate: {
-    donate: function () {
+    donate() {
       return axios.get(baseUrl + '/donate')
     }
   },
 
   Manufacture: {
-    searchBpc: function (term) {
+    searchBpc(term) {
       return axios.get(baseUrl + '/search/bpc', {
         params: {
           term: term
         }
       })
     },
-    getBpc: function (url) {
+    getBpc (url) {
       return axios.get(baseUrl + '/manufacture/' + url)
     }
   }
