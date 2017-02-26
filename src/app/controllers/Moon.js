@@ -1,15 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {unmountPlanet, getScheme, updFalse, updPrice, recalculate} from '../actions/planetActions'
+import {unmountMoon, getScheme, updFalse, updPrice, recalculate} from '../actions/moonActions'
 import {setHead} from '../actions/appActions'
 import {map} from 'lodash'
 
 // components
-import TableResourses from './../components/resourses/planet/Tables'
-import Calculator from './../components/resourses/planet/Calculator'
-import Components from './../components/resourses/planet/Components'
+import TableResourses from './../components/resourses/moon/Tables'
+import Calculator from './../components/resourses/moon/Calculator'
+import Components from './../components/resourses/moon/Components'
 
-class Planet extends React.Component {
+class Moon extends React.Component {
 
   componentWillReceiveProps(np) {
     if (np.params.url !== this.props.params.url) {
@@ -21,7 +21,7 @@ class Planet extends React.Component {
       this.props.updFalse('_need_upd_iprices')
     }
     if (np._need_upd_oprices) {
-      this.props.updPrice(np.output_system_id, [np.scheme.typeID])
+      this.props.updPrice(np.output_system_id, [np.scheme.item_id])
       this.props.updFalse('_need_upd_oprices')
     }
     if (!np._need_upd_iprices && !np._need_upd_oprices && np._need_recalculate) {
@@ -30,9 +30,9 @@ class Planet extends React.Component {
     if (np._need_update_headers) {
       this.props.updFalse('_need_update_headers')
       this.props.setHead({
-        headTitle: np.scheme.schema_name,
-        headDescription: np.scheme.schema_name + " planet resourse schema",
-        headKeywords: np.scheme.schema_name + ", eve online, planet resourses"
+        headTitle: np.scheme.item_name,
+        headDescription: np.scheme.item_name + " moon resourses schema",
+        headKeywords: np.scheme.item_name + ", eve online, moon resourses"
       })
     }
   }
@@ -44,10 +44,11 @@ class Planet extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.unmountPlanet()
+    this.props.unmountMoon()
   }
 
   render() {
+
     let calculateBlock = <div className='row'>
       <div className='col-md-6 t-a_l col-first'>
         <Calculator />
@@ -69,11 +70,11 @@ class Planet extends React.Component {
     )
   }
 }
-export default connect(state => state.planetReducer, {
-  unmountPlanet,
+export default connect(state => state.moonReducer, {
+  unmountMoon,
   setHead,
   getScheme,
   updFalse,
   updPrice,
   recalculate
-})(Planet)
+})(Moon)

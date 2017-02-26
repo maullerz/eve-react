@@ -86,6 +86,14 @@ export default {
       return axios.get(baseUrl + '/planet/scheme/' + url)
     }
   },
+  Moon: {
+    schemes() {
+      return axios.get(baseUrl + '/moon/schemes')
+    },
+    schema(url) {
+      return axios.get(baseUrl + '/moon/scheme/' + url)
+    }
+  },
   Item: {
     popularItems: function () {
       return axios.get(baseUrl + '/item/popular')

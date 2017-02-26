@@ -26,7 +26,8 @@ const Header = () => {
               <li>
                 <Link to="">Resourses</Link>
                 <ul>
-                  <li><Link id="ah_ore" to='/planet/schemes'>Planet resourses</Link></li>
+                  <li><Link id="ah_planet" to='/planet/schemes'>Planet resourses</Link></li>
+                  <li><Link id="ah_moon" to='/moon/schemes'>Moon resourses</Link></li>
                 </ul>
               </li>
               <li className='red-cell'>

@@ -7,6 +7,7 @@ import appReducer from './app/reducers/appReducer'
 import donateReducer from './app/reducers/donateReducer'
 import oreReducer from './app/reducers/oreReducer'
 import planetReducer from './app/reducers/planetReducer'
+import moonReducer from './app/reducers/moonReducer'
 
 export default combineReducers({
   appReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   itemReducer,
   donateReducer,
   oreReducer,
-  planetReducer
+  planetReducer,
+  moonReducer
 })
