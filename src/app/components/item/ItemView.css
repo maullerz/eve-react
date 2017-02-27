@@ -1,0 +1,33 @@
+.item-view-cont {
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.item-descr {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item-row-first {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+}
+
+.item-name {
+  width: 70%;
+}
+
+.item-amount {
+  text-align: right;
+  padding-right: 3px;
+}
+
+.item-price {
+  width: 30%;
+  text-align: right;
+  padding-right: 3px;
+}

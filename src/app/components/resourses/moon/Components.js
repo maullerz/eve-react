@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Helper from '../../../helpers'
+import { ItemView } from '../../item'
+
 
 class Components extends React.Component {
 
@@ -8,21 +10,15 @@ class Components extends React.Component {
     let _inputComponents = this.props.materials.map((val) => {
       let itemId = val.item_id
       let price = this.props.prices[this.props.type_price_input][itemId]
-      return (<li key={val.item_id}>
-        <div className='containter'>
-          <div className='img-box'>
-            <img
-              alt={val.item_name}
-              src={'https://image.eveonline.com/Type/' + val.item_id + '_32.png'}/>
-          </div>
-          <div className='text-holder'>
-            {val.item_name} x {Helper.qty(val.quantity  * this.props.x)} (<span className='txt-lime'>{Helper.price(price)}</span>)
-            <div>
-              <span className='txt-yellow b'>{Helper.price(price * val.quantity * this.props.x)} ISK</span>
-            </div>
-          </div>
-        </div>
-      </li>)
+      return (
+        <ItemView
+          key={val.item_id}
+          typeID={val.item_id}
+          name={val.item_name}
+          price={price}
+          quantity={val.quantity}
+        />
+      )
     })
 
     let scheme = this.props.scheme
@@ -62,22 +58,12 @@ class Components extends React.Component {
               <tr>
                 <td>
                   <ul className='components list'>
-                    <li key={scheme.item_id}>
-                      <div className='containter'>
-                        <div className='img-box'>
-                          <img
-                            alt={scheme.item_name}
-                            src={'https://image.eveonline.com/Type/' + scheme.item_id + '_32.png'}/>
-                        </div>
-                        <div className='text-holder'>
-                          {scheme.item_name} x {Helper.qty(scheme.quantity * this.props.x)} (<span
-                          className='txt-lime'>{Helper.price(outputPrice)}</span>)
-                          <div>
-                            <span className='txt-yellow b'>{Helper.price(outputPrice * scheme.quantity * this.props.x)} ISK</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                    <ItemView
+                      typeID={scheme.item_id}
+                      name={scheme.item_name}
+                      price={outputPrice}
+                      quantity={scheme.quantity}
+                    />
                   </ul>
                 </td>
               </tr>
