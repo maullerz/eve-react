@@ -23,7 +23,7 @@ axios.interceptors.response.use(function (response) {
 export default {
   Graph: {
     chart: (regionId, typeID) => {
-      return axios.get(crestUrl + '/market/' + regionId + '/history/?type=https://crest-tq.eveonline.com/inventory/types/' + typeID + '/')
+      return axios.get(crestUrl + '/market/' + regionId + '/history/?type=' + crestUrl + '/inventory/types/' + typeID + '/')
     }
   },
   Search: {
@@ -109,18 +109,13 @@ export default {
   },
   Priceall: {
     send(body) {
-      // https://github.com/mzabriskie/axios/issues/700
       return axios({
         url: `${baseUrl}/priceall`,
         method: 'post',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        data: `body=${body}`,
-        // this dont work:
-        // data: {
-        //   body: body
-        // }
+        data: `body=${body}`
       })
 
     }

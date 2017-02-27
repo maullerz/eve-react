@@ -26,7 +26,7 @@ class BpoComponents extends Component {
           <table>
             <thead>
               <tr>
-                <th>Components ({Helper.shortNum(this.props.components_amount)} isk)</th>
+                <th>Components ({Helper.shortNum(this.props.components_amount * this.props.run)} isk)</th>
               </tr>
             </thead>
             <tbody>

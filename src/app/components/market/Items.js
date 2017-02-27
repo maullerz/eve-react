@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { setQty, removeItem } from '../../actions/marketActions'
-import { ItemView } from '../item'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {setQty, removeItem} from '../../actions/marketActions'
+import {ItemView} from '../item'
 
 const SortableButton = props => (
   <div
@@ -15,15 +15,15 @@ const SortableButton = props => (
 // TODO: move this to 'components/common/SortableHeader.js'
 class SortableHeader extends Component {
   render() {
-    const { title, handleSortClick, currSort } = this.props
+    const {title, handleSortClick, currSort} = this.props
     return (
       <th className='sortable-header'>
         {false && <span className='header-title'>{title}</span>}
         <div className='sortable-columns'>
-          <SortableButton type='name' currSort={currSort} onClick={handleSortClick} />
-          <SortableButton type='total' currSort={currSort} onClick={handleSortClick} />
-          <SortableButton type='quantity' currSort={currSort} onClick={handleSortClick} />
-          <SortableButton type='price' currSort={currSort} onClick={handleSortClick} />
+          <SortableButton type='name' currSort={currSort} onClick={handleSortClick}/>
+          <SortableButton type='total' currSort={currSort} onClick={handleSortClick}/>
+          <SortableButton type='quantity' currSort={currSort} onClick={handleSortClick}/>
+          <SortableButton type='price' currSort={currSort} onClick={handleSortClick}/>
         </div>
       </th>
     );
@@ -57,8 +57,8 @@ class Items extends Component {
   }
 
   getSortableItems() {
-    const { items, prices, type_price } = this.props
-    const { sortBy, order } = this.state
+    const {items, prices, type_price} = this.props
+    const {sortBy, order} = this.state
     return items.sort((itemA, itemB) => {
       switch (sortBy) {
         case 'name':
@@ -109,32 +109,28 @@ class Items extends Component {
       <div className='col-md-12'>
         <table>
           <thead>
-            <tr>
-              <SortableHeader
-                title='List market'
-                currSort={this.state.sortBy}
-                handleSortClick={this.handleSortClick}
-              />
-            </tr>
+          <tr>
+            <SortableHeader
+              title='List market'
+              currSort={this.state.sortBy}
+              handleSortClick={this.handleSortClick}
+            />
+          </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <ul className='list'>
-                  {this.renderItems()}
-                </ul>
-              </td>
-            </tr>
+          <tr>
+            <td>
+              <ul className='list'>
+                {this.renderItems()}
+              </ul>
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>
     </div>
-
     return this.props.items.length ? similarItems : null
   }
 }
 
-function mapStateToProps(state) {
-  return state.marketReducer
-}
-export default connect(mapStateToProps, { setQty, removeItem })(Items)
+export default connect(state => state.marketReducer, {setQty, removeItem})(Items)

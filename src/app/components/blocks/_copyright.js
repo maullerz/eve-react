@@ -1,7 +1,6 @@
 import React from 'react'
 
 const _copyright = ({info}) => {
-  console.log(info);
   return <div className='row'>
     <div className='col-md-12'>
       <div className='grayback t-small'>
