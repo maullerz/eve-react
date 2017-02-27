@@ -103,7 +103,8 @@ ul.components li .text-holder {
   padding: 0;
   font-size: 0.85em;
 }
-ul.components li .img-box {
+
+li .img-box {
   float: left;
   margin-right: 3px;
 }
@@ -445,4 +446,57 @@ textarea {
   body {
     font-size: 1.3em;
   }
+}
+
+.price-textarea {
+  resize: both;
+  min-width: 100%;
+}
+
+
+.sortable-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.sortable-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sortable-btn {
+  cursor: pointer;
+  opacity: 0.5;
+  text-align: right;
+  padding-right: 3px;
+}
+
+.sortable-btn.active {
+  opacity: 1;
+}
+
+/* Name */
+.sortable-btn:first-child {
+  width: 32px;
+  font-size: 0.65em;
+  line-height: 18px;
+}
+
+/* Total */
+.sortable-btn:nth-child(2) {
+  width: 70%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* Qty */
+.sortable-btn:nth-child(3) {
+  text-align: center;
+}
+
+/* Price */
+.sortable-btn:last-child {
+  width: 30%;
 }

@@ -16,9 +16,15 @@ const ItemView = props => {
         </div>
         <div className='item-descr'>
           <div className='item-row-first'>
-            <div className='item-name'>{name}</div>
-            <div>{'x'}&nbsp;{Helper.qty(quantity)}</div>
-            <div className='item-price txt-lime'>{price}</div>
+            <div className='item-name'>
+              {name}
+            </div>
+            <div className='item-amount'>
+              {'x'}&nbsp;{Helper.qty(quantity)}
+            </div>
+            <div className='item-price txt-lime'>
+              {price}
+            </div>
           </div>
           <span className='txt-yellow b'>{sum} ISK</span>
         </div>

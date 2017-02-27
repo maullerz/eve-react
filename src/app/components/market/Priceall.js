@@ -9,8 +9,10 @@ class Priceall extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      // for debug develop:
+      // body: "449,555   Fernite Carbide\n100,498   Sylramic Fibers\n8,707     Phenolic Composites\n8,371     Fullerides\n4,330     Plasmonic Metamaterials\n4,109     Nanotransistors\n703       Hypersynaptic Fibers\n630       Ferrogel\n95        Fermionic Condensates",
       body: '',
-      isOpen: false
+      isOpen: true
     }
     this.debounceSendBody = debounce(this.sendBodyPriceall.bind(this), Helper.const.debounceTimeout)
   }
@@ -44,7 +46,7 @@ class Priceall extends Component {
               <td className='inside-table-form'>
                 <div className='row'>
                   <div className='col-md-12 t-a_r'>
-                    <textarea rows='4' cols='5' className='w100' value={this.state.body} onChange={this.changeBody.bind(this)} />
+                    <textarea rows='4' cols='5' className='w100 price-textarea' value={this.state.body} onChange={this.changeBody.bind(this)} />
                     <button onClick={this.resetBody.bind(this)} className={this.state.body.trim().length === 0 ? 'hide' : ''}>
                       Reset
                   </button>
