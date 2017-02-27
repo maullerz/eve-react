@@ -136,7 +136,7 @@ class Calculator extends Component {
                           className={this.props.type_p_components === 'buy' ? 'active' : ''}>buy
                       </button>
                       </div>
-                      <span className='padd-left-3 txt-yellow'>{Helper.price(this.props.components_amount)}</span>
+                      <span className='padd-left-3 txt-yellow'>{Helper.price(this.props.components_amount * this.props.run)}</span>
                     </div>
                   </div>
                   <div className='row'>

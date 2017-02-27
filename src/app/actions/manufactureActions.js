@@ -357,7 +357,7 @@ export function updateManufacture (props) {
   let adjustCost = Math.ceil(baseCost * (props.costIndex + 1) * props.stationFee) * props.run
 
   // cost components, bpc, other
-  let manufactureCost = amount + (props.bpc_cost * props.run) + adjustCost
+  let manufactureCost = (amount + props.bpc_cost) * props.run + adjustCost
 
   return {
     type: RECALCULATE_MANUFACTURE,
