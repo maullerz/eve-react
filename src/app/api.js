@@ -109,9 +109,20 @@ export default {
   },
   Priceall: {
     send(body) {
-      return axios.post(baseUrl + '/priceall', {
-        body: body
+      // https://github.com/mzabriskie/axios/issues/700
+      return axios({
+        url: `${baseUrl}/priceall`,
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        data: `body=${body}`,
+        // this dont work:
+        // data: {
+        //   body: body
+        // }
       })
+
     }
   },
 
