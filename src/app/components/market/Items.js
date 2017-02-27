@@ -40,8 +40,8 @@ class Items extends Component {
   }
 
   handleSortClick = column => {
-    let newOrder = this.state.order
-    if (this.state.sortBy === column) newOrder *= -1
+    let newOrder = 1
+    if (this.state.sortBy === column) newOrder = this.state.order * -1
     this.setState({
       sortBy: column,
       order: newOrder,
@@ -61,6 +61,13 @@ class Items extends Component {
     const { sortBy, order } = this.state
     return items.sort((itemA, itemB) => {
       switch (sortBy) {
+        case 'name':
+          let nameA = itemA.item_name
+          let nameB = itemB.item_name
+          let result = 0
+          if (nameA > nameB) result = 1
+          if (nameA < nameB) result = -1
+          return result * order
         case 'total':
           let totalA = prices[type_price][itemA.item_id] * itemA.qty
           let totalB = prices[type_price][itemB.item_id] * itemB.qty
