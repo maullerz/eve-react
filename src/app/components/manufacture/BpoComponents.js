@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Helper from '../../helpers'
+import { ItemView } from '../item'
+
 
 class BpoComponents extends Component {
 
@@ -8,21 +10,15 @@ class BpoComponents extends Component {
     this._components = this.props.bpc_components.map((val) => {
       let itemId = val.item_id
       let price = this.props.prices[this.props.type_p_components][itemId]
-      return (<li key={val.item_id}>
-        <div className='containter'>
-          <div className='img-box'>
-            <img
-              alt={val.item_name}
-              src={'https://image.eveonline.com/Type/' + val.item_id + '_32.png'} />
-          </div>
-          <div className='text-holder'>
-            {val.item_name} x {Helper.qty(val.orig_qty)} (<span className='txt-lime'>{Helper.price(price)}</span>)
-            <div>
-              <span className='txt-yellow b'>{Helper.price(price * val.orig_qty)} ISK</span>
-            </div>
-          </div>
-        </div>
-      </li>)
+      return (
+        <ItemView
+          key={val.item_id}
+          typeID={val.item_id}
+          name={val.item_name}
+          price={price}
+          quantity={val.orig_qty}
+        />
+      )
     })
     let components = (
       <div className='row'>
