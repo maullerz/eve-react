@@ -8,6 +8,7 @@ const initialState = {
   _need_update_prices_item: false,
   _need_update_prices_components: false,
   _need_recalculate: false,
+  is_build_own: false,
 
   suggestions: [],
   // system manufacture suggestions
@@ -23,6 +24,8 @@ const initialState = {
   bpc_title: '',
   used_in: [],
   bpc_components: [],
+  build_components: [],
+
   // decryptors: [],
   item: {},
   price_items: {},
@@ -79,8 +82,9 @@ export default (state = initialState, action = {}) => {
     case Bpc.CHANGE_TE:
     case Bpc.CHANGE_ME:
     case Bpc.SEARCH_BPC:
-    case Bpc.RESET_SEARCH:
     case Bpc.GET_BPC:
+    case Bpc.M_CHANGE_BUILD_OWN_COMPONENTS:
+    case Bpc.RESET_SEARCH:
       return Object.assign({}, state, action)
 
     case Bpc.UNMOUNT_MANUFACTURE:

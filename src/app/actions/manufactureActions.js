@@ -1,5 +1,5 @@
 import ApiService from './../api'
-import {forEach, cloneDeep, ceil, map} from 'lodash'
+import {forEach, cloneDeep, ceil, map, filter} from 'lodash'
 import Helper from '../helpers'
 
 export const SEARCH_BPC = 'SEARCH_BPC'
@@ -24,6 +24,17 @@ export const RESET_SYSTEM_ITEM = 'RESET_SYSTEM_ITEM'
 export const UNMOUNT_MANUFACTURE = 'UNMOUNT_MANUFACTURE'
 export const SET_FACILITY = 'SET_FACILITY'
 export const SET_FACILITY_VAL = 'SET_FACILITY_VAL'
+export const M_CHANGE_BUILD_OWN_COMPONENTS = 'M_CHANGE_BUILD_OWN_COMPONENTS'
+
+
+export function changeBuildComponents(type) {
+  return dispatch => {
+    dispatch({
+      type: M_CHANGE_BUILD_OWN_COMPONENTS,
+      is_build_own: type
+    })
+  }
+}
 
 export function unmountManufacture () {
   return dispatch => {
@@ -308,6 +319,7 @@ export function setBpc (response) {
     bpc_title: response.bpc.blueprint_name,
     used_in: response.used_in,
     bpc_components: response.bpc_components,
+    build_components: filter(response.bpc_components, {is_build: true}),
     origin_bpc_components: cloneDeep(response.bpc_components),
     item: response.item,
     price_items: priceItems,

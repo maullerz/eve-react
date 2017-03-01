@@ -7,6 +7,7 @@ import SearchBpoPanel from './../components/manufacture/SearchBpoPanel'
 import UsedIn from './../components/manufacture/UsedIn'
 import BpoComponents from './../components/manufacture/BpoComponents'
 import Calculator from './../components/manufacture/Calculator'
+import BuildOwnComponents from './../components/manufacture/BuildOwnComponents'
 
 class Manufacture extends Component {
 
@@ -48,6 +49,7 @@ class Manufacture extends Component {
             <UsedIn />
           </div>
           <div className='col-md-6 t-a_l col-last'>
+            <BuildOwnComponents />
             <BpoComponents />
           </div>
         </div>
