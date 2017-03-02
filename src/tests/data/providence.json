@@ -1,0 +1,234 @@
+{
+  "bpc": {
+    "blueprint_id": 20184,
+    "blueprint_name": "Providence Blueprint",
+    "output": 1,
+    "productionTime": 1500000,
+    "productTypeID": 20183
+  },
+  "bpc_components": [
+    {
+      "adjustPrice": 8429533.95,
+      "item_id": 21027,
+      "item_name": "Capital Cargo Bay",
+      "url": "capital-cargo-bay",
+      "volume": 10000,
+      "orig_qty": 83,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 34,
+          "orig_qty": 874902,
+          "qty": 874902
+        },
+        {
+          "item_id": 35,
+          "orig_qty": 72154,
+          "qty": 72154
+        },
+        {
+          "item_id": 36,
+          "orig_qty": 24616,
+          "qty": 24616
+        },
+        {
+          "item_id": 37,
+          "orig_qty": 3504,
+          "qty": 3504
+        },
+        {
+          "item_id": 38,
+          "orig_qty": 998,
+          "qty": 998
+        },
+        {
+          "item_id": 39,
+          "orig_qty": 286,
+          "qty": 286
+        },
+        {
+          "item_id": 40,
+          "orig_qty": 64,
+          "qty": 64
+        }
+      ]
+    },
+    {
+      "adjustPrice": 9360961.94,
+      "item_id": 21037,
+      "item_name": "Capital Construction Parts",
+      "url": "capital-construction-parts",
+      "volume": 10000,
+      "orig_qty": 53,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 34,
+          "orig_qty": 388208,
+          "qty": 388208
+        },
+        {
+          "item_id": 35,
+          "orig_qty": 93777,
+          "qty": 93777
+        },
+        {
+          "item_id": 36,
+          "orig_qty": 37729,
+          "qty": 37729
+        },
+        {
+          "item_id": 37,
+          "orig_qty": 5104,
+          "qty": 5104
+        },
+        {
+          "item_id": 38,
+          "orig_qty": 1530,
+          "qty": 1530
+        },
+        {
+          "item_id": 39,
+          "orig_qty": 538,
+          "qty": 538
+        },
+        {
+          "item_id": 40,
+          "orig_qty": 212,
+          "qty": 212
+        }
+      ]
+    },
+    {
+      "adjustPrice": 7627946.82,
+      "item_id": 21009,
+      "item_name": "Capital Propulsion Engine",
+      "url": "capital-propulsion-engine",
+      "volume": 10000,
+      "orig_qty": 22,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 34,
+          "orig_qty": 457050,
+          "qty": 457050
+        },
+        {
+          "item_id": 35,
+          "orig_qty": 110416,
+          "qty": 110416
+        },
+        {
+          "item_id": 36,
+          "orig_qty": 41994,
+          "qty": 41994
+        },
+        {
+          "item_id": 37,
+          "orig_qty": 6938,
+          "qty": 6938
+        },
+        {
+          "item_id": 38,
+          "orig_qty": 2110,
+          "qty": 2110
+        },
+        {
+          "item_id": 39,
+          "orig_qty": 604,
+          "qty": 604
+        },
+        {
+          "item_id": 40,
+          "orig_qty": 302,
+          "qty": 302
+        }
+      ]
+    },
+    {
+      "adjustPrice": 6581944.58,
+      "item_id": 21017,
+      "item_name": "Capital Armor Plates",
+      "url": "capital-armor-plates",
+      "volume": 10000,
+      "orig_qty": 17,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 34,
+          "orig_qty": 473141,
+          "qty": 473141
+        },
+        {
+          "item_id": 35,
+          "orig_qty": 111118,
+          "qty": 111118
+        },
+        {
+          "item_id": 36,
+          "orig_qty": 43324,
+          "qty": 43324
+        },
+        {
+          "item_id": 37,
+          "orig_qty": 7109,
+          "qty": 7109
+        },
+        {
+          "item_id": 38,
+          "orig_qty": 2141,
+          "qty": 2141
+        },
+        {
+          "item_id": 39,
+          "orig_qty": 682,
+          "qty": 682
+        },
+        {
+          "item_id": 40,
+          "orig_qty": 304,
+          "qty": 304
+        }
+      ]
+    }
+  ],
+  "item": {
+    "item_id": 20183,
+    "item_name": "Providence",
+    "url": "providence",
+    "volume": 18500000,
+    "adjustPrice": 1386218257.8
+  },
+  "price_items": {
+    "20183": 0,
+    "21027": 0,
+    "21037": 0,
+    "21009": 0,
+    "21017": 0,
+    "0": 0,
+    "34201": 0,
+    "34202": 0,
+    "34203": 0,
+    "34204": 0,
+    "34205": 0,
+    "34206": 0,
+    "34207": 0,
+    "34208": 0,
+    "34": 0,
+    "35": 0,
+    "36": 0,
+    "37": 0,
+    "38": 0,
+    "39": 0,
+    "40": 0
+  },
+  "used_in": [
+    {
+      "blueprint_id": 28851,
+      "component_value": 1,
+      "blueprint_name": "Ark Blueprint",
+      "url": "ark-blueprint",
+      "volume": 0.01
+    }
+  ]
+}

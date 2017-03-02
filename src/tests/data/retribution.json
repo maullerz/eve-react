@@ -1,0 +1,336 @@
+{
+  "bpc": {
+    "blueprint_id": 11394,
+    "blueprint_name": "Retribution Blueprint",
+    "output": 1,
+    "productionTime": 120000,
+    "productTypeID": 11393
+  },
+  "bpc_components": [
+    {
+      "adjustPrice": 4489.37,
+      "item_id": 11543,
+      "item_name": "Tungsten Carbide Armor Plate",
+      "url": "tungsten-carbide-armor-plate",
+      "volume": 1,
+      "orig_qty": 900,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 16672,
+          "orig_qty": 44,
+          "qty": 44
+        },
+        {
+          "item_id": 16678,
+          "orig_qty": 11,
+          "qty": 11
+        }
+      ]
+    },
+    {
+      "adjustPrice": 28729.06,
+      "item_id": 11539,
+      "item_name": "Nanoelectrical Microprocessor",
+      "url": "nanoelectrical-microprocessor",
+      "volume": 1,
+      "orig_qty": 135,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 16672,
+          "orig_qty": 17,
+          "qty": 17
+        },
+        {
+          "item_id": 16680,
+          "orig_qty": 6,
+          "qty": 6
+        },
+        {
+          "item_id": 16681,
+          "orig_qty": 2,
+          "qty": 2
+        },
+        {
+          "item_id": 33360,
+          "orig_qty": 2,
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "adjustPrice": 34253.99,
+      "item_id": 11554,
+      "item_name": "Tesseract Capacitor Unit",
+      "url": "tesseract-capacitor-unit",
+      "volume": 1,
+      "orig_qty": 90,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 16672,
+          "orig_qty": 27,
+          "qty": 27
+        },
+        {
+          "item_id": 16679,
+          "orig_qty": 11,
+          "qty": 11
+        },
+        {
+          "item_id": 33360,
+          "orig_qty": 2,
+          "qty": 2
+        },
+        {
+          "item_id": 16681,
+          "orig_qty": 1,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "adjustPrice": 4435,
+      "item_id": 11399,
+      "item_name": "Morphite",
+      "url": "morphite",
+      "volume": 0.01,
+      "orig_qty": 45,
+      "is_build": false,
+      "components": []
+    },
+    {
+      "adjustPrice": 4834.06,
+      "item_id": 3828,
+      "item_name": "Construction Blocks",
+      "url": "construction-blocks",
+      "volume": 1.5,
+      "orig_qty": 38,
+      "is_build": false,
+      "components": []
+    },
+    {
+      "adjustPrice": 8215.19,
+      "item_id": 11537,
+      "item_name": "Radar Sensor Cluster",
+      "url": "radar-sensor-cluster",
+      "volume": 1,
+      "orig_qty": 30,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 16672,
+          "orig_qty": 22,
+          "qty": 22
+        },
+        {
+          "item_id": 16682,
+          "orig_qty": 2,
+          "qty": 2
+        },
+        {
+          "item_id": 16681,
+          "orig_qty": 1,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "adjustPrice": 8172.11,
+      "item_id": 11557,
+      "item_name": "Linear Shield Emitter",
+      "url": "linear-shield-emitter",
+      "volume": 1,
+      "orig_qty": 30,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 16672,
+          "orig_qty": 22,
+          "qty": 22
+        },
+        {
+          "item_id": 16678,
+          "orig_qty": 9,
+          "qty": 9
+        },
+        {
+          "item_id": 16683,
+          "orig_qty": 1,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "adjustPrice": 9354.6,
+      "item_id": 11532,
+      "item_name": "Fusion Thruster",
+      "url": "fusion-thruster",
+      "volume": 1,
+      "orig_qty": 23,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 16672,
+          "orig_qty": 13,
+          "qty": 13
+        },
+        {
+          "item_id": 16680,
+          "orig_qty": 3,
+          "qty": 3
+        },
+        {
+          "item_id": 16683,
+          "orig_qty": 1,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "adjustPrice": 38777.13,
+      "item_id": 11549,
+      "item_name": "Antimatter Reactor Unit",
+      "url": "antimatter-reactor-unit",
+      "volume": 1,
+      "orig_qty": 8,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 16672,
+          "orig_qty": 9,
+          "qty": 9
+        },
+        {
+          "item_id": 17317,
+          "orig_qty": 2,
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "adjustPrice": 225.27,
+      "item_id": 11478,
+      "item_name": "R.A.M.- Starship Tech",
+      "url": "r-a-m-starship-tech",
+      "volume": 0.04,
+      "orig_qty": 6,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 34,
+          "orig_qty": 556,
+          "qty": 556
+        },
+        {
+          "item_id": 35,
+          "orig_qty": 444,
+          "qty": 444
+        },
+        {
+          "item_id": 36,
+          "orig_qty": 222,
+          "qty": 222
+        },
+        {
+          "item_id": 37,
+          "orig_qty": 82,
+          "qty": 82
+        },
+        {
+          "item_id": 38,
+          "orig_qty": 36,
+          "qty": 36
+        }
+      ]
+    },
+    {
+      "adjustPrice": 363135.93,
+      "item_id": 597,
+      "item_name": "Punisher",
+      "url": "punisher",
+      "volume": 28600,
+      "orig_qty": 1,
+      "is_build": true,
+      "components": [
+        {
+          "item_id": 34,
+          "orig_qty": 22778,
+          "qty": 22778
+        },
+        {
+          "item_id": 35,
+          "orig_qty": 6111,
+          "qty": 6111
+        },
+        {
+          "item_id": 36,
+          "orig_qty": 2889,
+          "qty": 2889
+        },
+        {
+          "item_id": 37,
+          "orig_qty": 400,
+          "qty": 400
+        },
+        {
+          "item_id": 38,
+          "orig_qty": 89,
+          "qty": 89
+        },
+        {
+          "item_id": 39,
+          "orig_qty": 34,
+          "qty": 34
+        }
+      ]
+    }
+  ],
+  "item": {
+    "item_id": 11393,
+    "item_name": "Retribution",
+    "url": "retribution",
+    "volume": 28600,
+    "adjustPrice": 23565251.59
+  },
+  "price_items": {
+    "11393": 0,
+    "11543": 0,
+    "11539": 0,
+    "11554": 0,
+    "11399": 0,
+    "3828": 0,
+    "11537": 0,
+    "11557": 0,
+    "11532": 0,
+    "11549": 0,
+    "11478": 0,
+    "597": 0,
+    "0": 0,
+    "34201": 0,
+    "34202": 0,
+    "34203": 0,
+    "34204": 0,
+    "34205": 0,
+    "34206": 0,
+    "34207": 0,
+    "34208": 0,
+    "34": 0,
+    "35": 0,
+    "36": 0,
+    "37": 0,
+    "38": 0,
+    "16672": 0,
+    "39": 0,
+    "16678": 0,
+    "16679": 0,
+    "16680": 0,
+    "16682": 0,
+    "17317": 0,
+    "33360": 0,
+    "16681": 0,
+    "16683": 0
+  },
+  "used_in": []
+}

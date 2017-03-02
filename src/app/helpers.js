@@ -1,4 +1,5 @@
 import numeraljs from '../../node_modules/numeral/numeral'
+import {map} from 'lodash'
 
 let Helper = {
   shortNum(n) {
@@ -82,6 +83,13 @@ let Helper = {
     for (var i = 0; i < len; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
+  },
+
+  manufactureQty(components, me = 0, facility_me = 1, run = 1) {
+    map(components, v => {
+      v['qty'] = v.orig_qty === 1 ? run : Math.ceil((v.orig_qty * ((100 - me) / 100)) * facility_me * run)
+    })
+    return components
   }
 }
 
