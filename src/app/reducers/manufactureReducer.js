@@ -39,6 +39,10 @@ const initialState = {
   me: 10,
   te: 10,
   run: 1,
+
+  component_me: 10,
+  component_te: 10,
+
   output: 0,
   timeRun: 0,
   origin_bpc_components: [],
@@ -76,6 +80,7 @@ export default (state = initialState, action = {}) => {
     case Bpc.SEARCH_MANUFACTURE_SYSTEM:
     case Bpc.CHANGE_TYPE_PRICE_ITEM:
     case Bpc.CHANGE_TYPE_PRICE_COMPONENTS:
+    case Bpc.METE_CH_OWN_COMPONENTS:
     case Bpc.SET_BPC_COST:
     case Bpc.RECALCULATE_MANUFACTURE:
     case Bpc.CHANGE_RUN:
