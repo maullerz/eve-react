@@ -6,11 +6,10 @@ import './ItemView.css'
 
 const ItemView = props => {
   const {typeID, name, quantity, components, component_me, facility_me, prices} = props
-  const sum = Helper.price(props.price * quantity)
-  const price = Helper.price(props.price)
-
+  let price = 0
   let cmps = Helper.manufactureQty(components, component_me, facility_me, quantity)
   let _components = cmps.map(val => {
+    price += val.qty * prices[val.item_id]
     return <SingleComponentItemView
       key={val.item_id}
       typeID={val.item_id}
@@ -35,7 +34,7 @@ const ItemView = props => {
               {'x'}&nbsp;{Helper.qty(quantity)}
             </div>
             <div className='item-price txt-lime'>
-              {price}
+              {Helper.price(price)}
             </div>
           </div>
         </div>
