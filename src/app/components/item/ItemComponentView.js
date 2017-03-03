@@ -7,6 +7,7 @@ import "./ItemView.css";
 const ItemView = props => {
   const {
     typeID,
+    output,
     name,
     quantity,
     components,
@@ -22,13 +23,14 @@ const ItemView = props => {
     quantity
   );
   let _components = cmps.map(val => {
-    price += val.qty * prices[val.item_id];
+    let qty = Math.ceil(val.qty / output);
+    price += qty * prices[val.item_id];
     return (
       <SingleComponentItemView
         key={val.item_id}
         typeID={val.item_id}
         name={val.item_name}
-        quantity={val.qty}
+        quantity={qty}
         prices={prices}
       />
     );

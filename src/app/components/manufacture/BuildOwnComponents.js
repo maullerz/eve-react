@@ -47,6 +47,7 @@ class BuildOwnComponents extends Component {
       let typePrices = prices[type_p_components];
       return (
         <ItemComponentView
+          output={val.output}
           component_me={component_me}
           facility_me={facility_val.me}
           components={val.components}
@@ -60,6 +61,8 @@ class BuildOwnComponents extends Component {
     });
 
     // calculate group components
+    // TODO:: calculate qty / output from parent components
+    console.log(cmps);
     let ParentComponents = map(cmps, "components");
     let GroupComponents = [];
     let uniqueOwnComponents = [];
@@ -69,7 +72,6 @@ class BuildOwnComponents extends Component {
         GroupComponents.push(item);
       });
     });
-
     forEach(GroupComponents, v => {
       let index = findIndex(uniqueOwnComponents, { item_id: v.item_id });
       if (index !== -1) {
