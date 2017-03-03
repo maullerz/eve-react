@@ -1,36 +1,38 @@
-import React from 'react'
-import Helper from '../../helpers'
+import React from "react";
+import Helper from "../../helpers";
 
-import './ItemView.css'
+import "./ItemView.css";
 
 const ItemView = props => {
-  const { typeID, name, quantity } = props
-  const sum = Helper.price(props.price * quantity)
-  const price = Helper.price(props.price)
+  const { typeID, name, quantity, price } = props;
+  const sum = Helper.price(price * quantity);
 
   return (
     <li>
-      <div className='item-view-cont'>
-        <div className='img-box'>
-          <img alt={name} src={`https://image.eveonline.com/Type/${typeID}_32.png`} />
+      <div className="item-view-cont">
+        <div className="img-box">
+          <img
+            alt={name}
+            src={`https://image.eveonline.com/Type/${typeID}_32.png`}
+          />
         </div>
-        <div className='item-descr'>
-          <div className='item-row-first'>
-            <div className='item-name'>
+        <div className="item-descr">
+          <div className="item-row-first">
+            <div className="item-name">
               {name}
             </div>
-            <div className='item-amount'>
-              {'x'}&nbsp;{Helper.qty(quantity)}
+            <div className="item-amount">
+              {"x"}&nbsp;{Helper.qty(quantity)}
             </div>
-            <div className='item-price txt-lime'>
-              {price}
+            <div className="item-price txt-lime">
+              {Helper.price(price)}
             </div>
           </div>
-          <span className='txt-yellow b'>{sum} ISK</span>
+          <span className="txt-yellow b">{sum} ISK</span>
         </div>
       </div>
     </li>
-  )
-}
+  );
+};
 
-export default ItemView
+export default ItemView;
