@@ -428,6 +428,8 @@ export function updateManufacture(props) {
     });
   }
 
+  manufactureCost += componentsAmount;
+
   return {
     type: RECALCULATE_MANUFACTURE,
     bpc_components: bpcc,
