@@ -1,5 +1,5 @@
 import numeraljs from "../../node_modules/numeral/numeral";
-import { map } from "lodash";
+import { map, ceil } from "lodash";
 
 let Helper = {
   shortNum(n) {
@@ -85,11 +85,11 @@ let Helper = {
     return text;
   },
 
-  manufactureQty(components, me = 0, fme = 1, run = 1) {
+  manufactureQty(components, me = 0, fme = 1, run = 1, portion = 1) {
     map(components, v => {
       v["qty"] = v.orig_qty === 1
         ? run
-        : Math.ceil(v.orig_qty * ((100 - me) / 100) * fme * run);
+        : ceil(ceil(v.orig_qty * ((100 - me) / 100) * fme * run) / portion);
     });
     return components;
   }

@@ -41,7 +41,8 @@ export function updateVariable(variable, value) {
 
 export function changeMeTeComponents(type, value) {
   let payload = {
-    type: METE_CH_OWN_COMPONENTS
+    type: METE_CH_OWN_COMPONENTS,
+    _need_recalculate: true
   };
   payload[type] = value;
   return dispatch => {
@@ -411,14 +412,16 @@ export function updateManufacture(props) {
       props.facility_val.me,
       props.run
     );
-
     forEach(bpcComponents, components => {
       let calculatedComponents = Helper.manufactureQty(
         components.components,
         props.component_me,
-        props.facility_val.me
+        props.facility_val.me,
+        components.qty,
+        components.output
       );
       forEach(calculatedComponents, v => {
+        //console.log(v.item_id, "=", v.qty, v.portion);
         componentsAmount += v.qty *
           props.prices[props.type_p_components][v.item_id];
       });
@@ -428,7 +431,7 @@ export function updateManufacture(props) {
   return {
     type: RECALCULATE_MANUFACTURE,
     bpc_components: bpcc,
-    components_amount: amount,
+    components_amount: amount + componentsAmount,
     components_volume: Helper.price(volume),
     item_amount: itemAmount,
     own_amount: componentsAmount,

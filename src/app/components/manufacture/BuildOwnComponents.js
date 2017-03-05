@@ -7,7 +7,7 @@ import {
   updateVariable
 } from "../../actions/manufactureActions";
 import Helper from "./../../helpers";
-import { map, forEach, findIndex } from "lodash";
+import { forEach, findIndex, cloneDeep } from "lodash";
 
 class BuildOwnComponents extends Component {
   showCopyPasteZone() {
@@ -43,6 +43,8 @@ class BuildOwnComponents extends Component {
       run
     );
 
+    let origCmps = cloneDeep(cmps);
+
     let _components = cmps.map(val => {
       let typePrices = prices[type_p_components];
       return (
@@ -61,15 +63,13 @@ class BuildOwnComponents extends Component {
     });
 
     // calculate group components
-    // TODO:: calculate qty / output from parent components
-    console.log(cmps);
-    let ParentComponents = map(cmps, "components");
     let GroupComponents = [];
     let uniqueOwnComponents = [];
 
-    forEach(ParentComponents, v => {
-      forEach(v, item => {
-        GroupComponents.push(item);
+    forEach(origCmps, v => {
+      forEach(v.components, component => {
+        component["qty"] = component.qty;
+        GroupComponents.push(component);
       });
     });
     forEach(GroupComponents, v => {
@@ -85,9 +85,6 @@ class BuildOwnComponents extends Component {
       let typePrices = prices[type_p_components];
       return (
         <ItemView
-          component_me={component_me}
-          facility_me={facility_val.me}
-          components={val.components}
           key={val.item_id}
           typeID={val.item_id}
           name={val.item_name}
