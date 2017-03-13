@@ -73,25 +73,40 @@ export default (state = initialState, action = {}) => {
       })
 
     case Moon.MOON_UPD_PRICES:
-
-      let pricesSell = cloneDeep(state.prices.sell)
-      let pricesBuy = cloneDeep(state.prices.buy)
-      let newPrices = action.payload
-      forEach(newPrices.sell, (v, k) => {
-        pricesSell[k] = v
-      })
-      forEach(newPrices.buy, (v, k) => {
-        pricesBuy[k] = v
-      })
-
-      let prices = {
-        _need_recalculate: true,
+      // console.warn('MOON_UPD_PRICES')
+      return {
+        ...state,
         prices: {
-          sell: pricesSell,
-          buy: pricesBuy
+          sell: {
+            ...state.prices.sell,
+            ...action.payload.sell,
+          },
+          buy: {
+            ...state.prices.buy,
+            ...action.payload.buy,
+          }
         }
       }
-      return Object.assign({}, state, prices)
+
+      // legacy:
+      // let pricesSell = cloneDeep(state.prices.sell)
+      // let pricesBuy = cloneDeep(state.prices.buy)
+      // let newPrices = action.payload
+      // forEach(newPrices.sell, (v, k) => {
+      //   pricesSell[k] = v
+      // })
+      // forEach(newPrices.buy, (v, k) => {
+      //   pricesBuy[k] = v
+      // })
+
+      // let prices = {
+      //   _need_recalculate: true,
+      //   prices: {
+      //     sell: pricesSell,
+      //     buy: pricesBuy
+      //   }
+      // }
+      // return Object.assign({}, state, prices)
 
     case Moon.MOON_SET_CYCLE:
       let cycle = action.cycle

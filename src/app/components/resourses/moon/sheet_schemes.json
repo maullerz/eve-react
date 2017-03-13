@@ -1,0 +1,2079 @@
+{
+  "17941": {
+    "name": "Caesarium Cadmide Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16663,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Caesarium Cadmide",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A dark-golden hued alloy composed of cadmium and caesium. Often confused with tritanium due to its tint. An essential ingredient in various composites and condensates.",
+        "ru": "Сплав темно-золотистого цвета, состоящий из кадмия и цезия. Из-за характерного оттенка его часто путают с тританием. Важный компонент различных композитных материалов и конденсатов."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16643,
+        "iconId": 2567,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cadmium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16647,
+        "iconId": 2568,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Caesium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17942": {
+    "name": "Carbon Polymers Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16659,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Carbon Polymers",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A synthetic carbon compound created from raw hydrocarbons and silicate rock materials. Important ingredients in a variety of carbon- and gel-based composites.",
+        "ru": "Синтетический углеродный композит, созданный из углеводородного сырья и кремниевых материалов. Применяется для создания композитов и гелей на основе углерода."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16633,
+        "iconId": 2669,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Hydrocarbons",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16636,
+        "iconId": 2670,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Silicates",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17943": {
+    "name": "Ceramic Powder Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16660,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Ceramic Powder",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A fine powder synthesized from various natural gases and solids through reactant processes. Used as a strengthening agent in both armor plating and shield generators, as well as constituting an important part of many other composite materials.",
+        "ru": "Мелкий порошок, полученный посредством синтеза природных газов и твердых веществ. Используется для укрепления брони и генераторов щитов, а также в составе различных композитов."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16635,
+        "iconId": 2667,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Evaporite Deposits",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16636,
+        "iconId": 2670,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Silicates",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17944": {
+    "name": "Crystallite Alloy Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16655,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Crystallite Alloy",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A polynuclear heterometallic compound created from cobalt and cadmium. Crystallite alloys are a fundamental building block in the creation of crystalline composites.",
+        "ru": "Многоядерное гетерометаллическое соединение, созданное из кобальта и кадмия. Сплавы кристаллита служат основой для создания композитных материалов."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16640,
+        "iconId": 2570,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cobalt",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16643,
+        "iconId": 2567,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cadmium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17945": {
+    "name": "Dysporite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16668,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Dysporite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Quicksilver mixed with dysprosium forms the soft but extremely resilient dysporite, an amalgamatic alloy which plays a key role in most advanced sensor and reactor technologies.",
+        "ru": "Ртуть, смешанная с Dysprosium, формирует Dysporite – чрезвычайно упругий сплав, который является основным компонентом в производстве современных сенсоров и сканеров."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16646,
+        "iconId": 2573,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Mercury",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16650,
+        "iconId": 2571,
+        "amount": 100,
+        "volume": 1,
+        "name": "Dysprosium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17946": {
+    "name": "Fernite Alloy Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16656,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Fernite Alloy",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "An intensely durable and extremely versatile alloy, Fernite, when combined with certain other materials, is a crucial stepping stone in the creation of a whole host of advanced technologies.",
+        "ru": "Интенсивнно стойкий и чрезвычайно многофункциональный сплав Fernite, в комбинации с определенными другими материалами - основа создания целого ряда новых технологий."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16639,
+        "iconId": 2577,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Scandium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16642,
+        "iconId": 2581,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17947": {
+    "name": "Ferrofluid Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16669,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Ferrofluid",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Ferrofluids are superparamagnetic fluids containing tiny particles of magnetic solids suspended in liquid. The primary component in the creation of ferrogels.",
+        "ru": "Ferrofluid — парамагнитные жидкости, представляющие собой взвесь мелких частиц магнитных материалов в жидкости. Это основной компонент, использующийся при создании феррогелей."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16648,
+        "iconId": 2572,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Hafnium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16650,
+        "iconId": 2571,
+        "amount": 100,
+        "volume": 1,
+        "name": "Dysprosium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17948": {
+    "name": "Fluxed Condensates Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 17769,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Fluxed Condensates",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "When combined with other materials and alloys, fluxed condensates help contribute to a unique quantum state highly conducive to efficient reactor operation.",
+        "ru": "В комбинации с другими сплавами жидкие конденсаты помогают создать уникальное квантовое состояние, способствующее эффективному управлению реактором."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16651,
+        "iconId": 2574,
+        "amount": 100,
+        "volume": 1,
+        "name": "Neodymium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16653,
+        "iconId": 2579,
+        "amount": 100,
+        "volume": 1,
+        "name": "Thulium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17949": {
+    "name": "Hexite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16665,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Hexite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A chemical compound, formed through electrosporadic oxidization of chromium and platinum.  Has a wide range of applications in the production of advanced technology and is highly sought-after by industrial manufacturers.",
+        "ru": "Химическое вещество, образующееся при гальваническом окислении хрома и платины. Применяется в высокотехнологичном производстве и пользуется огромным спросом у промышленников."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16641,
+        "iconId": 2569,
+        "amount": 100,
+        "volume": 0.6,
+        "name": "Chromium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16644,
+        "iconId": 2575,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17950": {
+    "name": "Hyperflurite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16666,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Hyperflurite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Hyperflurite is one of the most radioactive substances known to man. Composed of a mixture of radioactive metals and raw hydrocarbons, this luminescent goop provides catalysis for a variety of generative and reactive machine processes.",
+        "ru": "Hyperflurite — одно из наиболее радиоактивных веществ, известных человечеству. Эта светящаяся вязкая масса, состоящая из смеси радиоактивных металлов и сырых углеродов, представляет собой прекрасный катализатор различных реакций."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16642,
+        "iconId": 2581,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16652,
+        "iconId": 2576,
+        "amount": 100,
+        "volume": 1,
+        "name": "Promethium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17951": {
+    "name": "Neo Mercurite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16667,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Neo Mercurite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A silvery, shimmering liquid compound, Neo Mercurite is a crucial element in many forms of advanced sensor and processor technology.",
+        "ru": "Серебристая, мерцающая жидкая смесь Neo Mercurite – жизненно важный компонент многих форм усовершенствованных датчиков и процессорных технологий."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16646,
+        "iconId": 2573,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Mercury",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16651,
+        "iconId": 2574,
+        "amount": 100,
+        "volume": 1,
+        "name": "Neodymium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17952": {
+    "name": "Platinum Technite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16662,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Platinum Technite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "An intensely resilient alloy composed of platinum and technetium. Highly sought-after in the machinery and armament industries.",
+        "ru": "Очень прочный сплав из платины и технеция. Используется в машиностроении и производстве вооружения."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16644,
+        "iconId": 2575,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16649,
+        "iconId": 2578,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Technetium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17953": {
+    "name": "Rolled Tungsten Alloy Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16657,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Rolled Tungsten Alloy",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "An extremely strong compound, made from tungsten rolled in a sheath of platinum. A crucial component in the creation of carbides which have a wide field of utility in the manufacture of various equipment.",
+        "ru": "Исключительно прочное соединение, изготавливается из катаных листов вольфрама и платины. Важнейший компонент для создания карбидов, широко применяющихся для производства оборудования."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16637,
+        "iconId": 2580,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Tungsten",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16644,
+        "iconId": 2575,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17954": {
+    "name": "Silicon Diborite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16658,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Silicon Diborite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A mineral composite which, in large quantities, gives off a distinct crystalline glow. When combined with other composites, is usable for a variety of manufacturing purposes.",
+        "ru": "Минеральный композит, который при достижении большого объема начинает характерно светиться. При сочетании с другими композитами используется для промышленных целей."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16635,
+        "iconId": 2667,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Evaporite Deposits",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16636,
+        "iconId": 2670,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Silicates",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17955": {
+    "name": "Solerium Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16664,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Solerium",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "When chromium and caesium are combined with raw silicates in the proper proportions, Solerium is created.  Since its initial discovery, Solerium's uniquely shifting dark-to-bright red hue has prompted poet and musician alike to create hymns in praise of its uniquely shifting deep red hue.",
+        "ru": "Solerium образуется при соединении хрома и цезия с сырыми кремнекислыми солями. После первоначального открытия этого вещества многие поэты и музыканты посвятили ему свои произведения из-за его характерного красного цвета, меняющего оттенок с яркого на темный и обратно."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16641,
+        "iconId": 2569,
+        "amount": 100,
+        "volume": 0.6,
+        "name": "Chromium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16647,
+        "iconId": 2568,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Caesium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17956": {
+    "name": "Sulfuric Acid Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16661,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Sulfuric Acid",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A strong mineral acid, used in many chemical reactions and production processes. One of the most widely used chemicals in history.",
+        "ru": "Сильная минеральная кислота, используется во многих химических реакциях и в производстве. Один из наиболее широко используемых химикатов в истории."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16634,
+        "iconId": 2668,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Atmospheric Gases",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16635,
+        "iconId": 2667,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Evaporite Deposits",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17957": {
+    "name": "Titanium Chromide Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 16654,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Titanium Chromide",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Titanium Chromide is in high demand among technicians and manufacturers for its unique combination of strength, light weight and catalytic potential.",
+        "ru": "Titanium Chromide высоко востребован технологами и производителями за его уникальную комбинацию силы, легкого веса и каталитического потенциала."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16638,
+        "iconId": 2582,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Titanium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16641,
+        "iconId": 2569,
+        "amount": 100,
+        "volume": 0.6,
+        "name": "Chromium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17958": {
+    "name": "Vanadium Hafnite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 17959,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Vanadium Hafnite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A stable binary compound composed of vanadium and hafnium. Performs a variety of catalytic functions, and is an important intermediate for more complex construction processes.",
+        "ru": "Стабильное бинарное соединение ванадия и гафния. Выполняет различные каталитические функции и является важным промежуточным продуктом для более сложных строительных процессов."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16642,
+        "iconId": 2581,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16648,
+        "iconId": 2572,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Hafnium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17961": {
+    "name": "Prometium Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "output": {
+      "typeId": 17960,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Prometium",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A highly radioactive cadmium-promethium compound, used as a catalytic agent in the manufacturing of thrusters, reactor units and shield emitters, among other things.",
+        "ru": "Крайне реактивная смесь кадмия-прометия, используемая в качестве катализатора в производстве двигателей, реакторов и генераторов щита."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16643,
+        "iconId": 2567,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cadmium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16652,
+        "iconId": 2576,
+        "amount": 100,
+        "volume": 1,
+        "name": "Promethium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ]
+  },
+  "17962": {
+    "name": "Titanium Carbide Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16671,
+      "iconId": 2681,
+      "amount": 10000,
+      "volume": 0.01,
+      "name": "Titanium Carbide",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Due to its immense strength and molecular malleability, Titanium Carbide has become the darling of the Caldari technological industry, seeing use in everything from reactor units to weapons systems.",
+        "ru": "Благодаря своей чрезвычайной силе и молекулярной пластичности, карбид титана стал очень любим технологической промышленностью Caldari, которые разглядели в нем потенциал использования как в реакторах, так и оружейных системах."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16654,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Titanium Chromide",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16658,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Silicon Diborite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17963": {
+    "name": "Crystalline Carbonide Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16670,
+      "iconId": 2679,
+      "amount": 10000,
+      "volume": 0.01,
+      "name": "Crystalline Carbonide",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "An exeptionally hard material created from crystallite alloys and carbon polymers, crystalline carbonite is a primary component in various forms of advanced Gallente technology, such as thrusters and armor plating.",
+        "ru": "Исключительно тяжелый материал, созданный из кристаллических сплавов и углеродных полимеров. Кристаллический карбонид является основным компонентом разных форм продвинутых технологий Gallente, таких как щиты и обшивки."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16655,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Crystallite Alloy",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16659,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Carbon Polymers",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17964": {
+    "name": "Fernite Carbide Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16673,
+      "iconId": 2680,
+      "amount": 10000,
+      "volume": 0.01,
+      "name": "Fernite Carbide",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "A revolutionary ceramic carbide compound, much favored by the Matari both for its earthy quality and its extremely wide range of technological uses.",
+        "ru": "Революционная керамическая карбидовая смесь, любимая Minmatar как за ее земные качества, так и за ряд способов ее использования в технологиях."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16656,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Fernite Alloy",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16660,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Ceramic Powder",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17965": {
+    "name": "Tungsten Carbide Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16672,
+      "iconId": 2682,
+      "amount": 10000,
+      "volume": 0.01,
+      "name": "Tungsten Carbide",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Tungsten Carbide is a much-used composite, greatly favored by the Amarrians for construction of their advanced technologies.",
+        "ru": "Карбид тунгстена - композитный материал, широко используемый Amarr в передовых технологиях."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16657,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Rolled Tungsten Alloy",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16661,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Sulfuric Acid",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17966": {
+    "name": "Sylramic Fibers Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16678,
+      "iconId": 2662,
+      "amount": 6000,
+      "volume": 0.05,
+      "name": "Sylramic Fibers",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Extremely strong fibers, used in laminated armor plating.",
+        "ru": "Крайне прочные волокна, используемые в многослойной бронированной обшивке."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16660,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Ceramic Powder",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16665,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Hexite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17967": {
+    "name": "Fulleride Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16679,
+      "iconId": 2684,
+      "amount": 3000,
+      "volume": 0.15,
+      "name": "Fullerides",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Fullerides are highly superconductive materials used in capacitors, armor plating and weapons systems.  ",
+        "ru": "  Фуллериды - высокопроводниковые материалы, используемые в конденсаторах, бронированной обшивке и системах оружия."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16659,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Carbon Polymers",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16662,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum Technite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17968": {
+    "name": "Phenolic Composites Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16680,
+      "iconId": 2661,
+      "amount": 2200,
+      "volume": 0.2,
+      "name": "Phenolic Composites",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "A extremely heat-resistant material used in thrusters and as heat shielding.",
+        "ru": "Чрезвычайно термостойкий материал, используемый в маневровых двигателях и системах защиты от перегрева."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16658,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Silicon Diborite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16663,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Caesarium Cadmide",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 17959,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium Hafnite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17969": {
+    "name": "Nanotransistors Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16681,
+      "iconId": 2686,
+      "amount": 1500,
+      "volume": 0.25,
+      "name": "Nanotransistors",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Extremely complex molecular-level transistors used in nanoscale electronics, such as microprocessors and capacitor units.",
+        "ru": "Очень сложные молекулярные транзисторы, используемые в наноэлектронных устройствах, таких как микропроцессоры или конденсаторы."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16661,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Sulfuric Acid",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16662,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum Technite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16667,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Neo Mercurite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17970": {
+    "name": "Hypersynaptic Fibers Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16682,
+      "iconId": 2685,
+      "amount": 750,
+      "volume": 0.6,
+      "name": "Hypersynaptic Fibers",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Whenever the transmission of visual or numerical data is a matter of life and death, the data network needs the fastest possible relay system. Hypersynaptic fibers, due to their immense frequency range and speed of conduction, have become the industry standard for sensor arrays and targeting systems.",
+        "ru": "Везде, где крайне важна передача наглядных или цифровых данных, для сетей данных требуется как можно более быстрая релейная система. Гиперсинаптические волокна обладают огромным диапазоном частот и скоростью передачи, они стали стандартным материалом для сенсоров и прицельных систем."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16664,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Solerium",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16668,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Dysporite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 17959,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium Hafnite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17971": {
+    "name": "Ferrogel Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 16683,
+      "iconId": 2678,
+      "amount": 400,
+      "volume": 1,
+      "name": "Ferrogel",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "A magnetised liquid, used to control the flow of cold plasma fields in shield systems, reactor cores, pulse generators and thruster systems.",
+        "ru": "Магнетическая жидкость, используемая, чтобы контролировать поток холодных плазменных полей в щитовых системах, реакторных ядрах, пульсовых генераторах и тяговых системах."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16665,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Hexite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16666,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Hyperflurite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16669,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Ferrofluid",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 17960,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Prometium",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "17972": {
+    "name": "Fermionic Condensates Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "output": {
+      "typeId": 17317,
+      "iconId": 2683,
+      "amount": 200,
+      "volume": 1.3,
+      "name": "Fermionic Condensates",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "One of the most complex composites known to man, fermionic condensates consist of superconductive boson particles all occupying the same quantum state, thus creating a nearly resistance-free environment for electric current. These condensates have therefore become a staple in advanced reactor manufacture.",
+        "ru": "Фермионные конденсаты состоят из сверхпроводящих бозонных частиц в одинаковом квантовом состоянии, за счет чего они создают электропроводящую среду с почти нулевым сопротивлением. Этот конденсат используется при производстве высокоэффективных реакторов."
+      }
+    },
+    "input": [
+      {
+        "typeId": 16663,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Caesarium Cadmide",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16668,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Dysporite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 17769,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Fluxed Condensates",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 17960,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Prometium",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ]
+  },
+  "29640": {
+    "name": "Unrefined Hyperflurite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16641,
+        "iconId": 2569,
+        "amount": 100,
+        "volume": 0.6,
+        "name": "Chromium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16642,
+        "iconId": 2581,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 29664,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Hyperflurite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Hyperflurite is one of the most radioactive substances known to man. Composed of a mixture of radioactive metals and raw hydrocarbons, this luminescent goop provides catalysis for a variety of generative and reactive machine processes.",
+        "ru": "Hyperflurite — одно из наиболее радиоактивных веществ, известных человечеству. Эта светящаяся вязкая масса, состоящая из смеси радиоактивных металлов и сырых углеродов, представляет собой прекрасный катализатор различных реакций."
+      }
+    }
+  },
+  "29641": {
+    "name": "Unrefined Ferrofluid Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16643,
+        "iconId": 2567,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cadmium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16648,
+        "iconId": 2572,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Hafnium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 29663,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Ferrofluid",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Ferrofluids are superparamagnetic fluids containing tiny particles of magnetic solids suspended in liquid. The primary component in the creation of ferrogels.",
+        "ru": "Ferrofluid — парамагнитные жидкости, представляющие собой взвесь мелких частиц магнитных материалов в жидкости. Это основной компонент, использующийся при создании феррогелей."
+      }
+    }
+  },
+  "29642": {
+    "name": "Unrefined Prometium Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16641,
+        "iconId": 2569,
+        "amount": 100,
+        "volume": 0.6,
+        "name": "Chromium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16643,
+        "iconId": 2567,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cadmium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 29662,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Prometium",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A highly radioactive cadmium-promethium compound, used as a catalytic agent in the manufacturing of thrusters, reactor units and shield emitters, among other things.",
+        "ru": "Крайне реактивная смесь кадмия-прометия, используемая в качестве катализатора в производстве двигателей, реакторов и генераторов щита."
+      }
+    }
+  },
+  "29643": {
+    "name": "Unrefined Neo Mercurite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16644,
+        "iconId": 2575,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16646,
+        "iconId": 2573,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Mercury",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 29661,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Neo Mercurite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A silvery, shimmering liquid compound, Neo Mercurite is a crucial element in many forms of advanced sensor and processor technology.",
+        "ru": "Серебристая, мерцающая жидкая смесь Neo Mercurite – жизненно важный компонент многих форм усовершенствованных датчиков и процессорных технологий."
+      }
+    }
+  },
+  "29644": {
+    "name": "Unrefined Dysporite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16643,
+        "iconId": 2567,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cadmium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16646,
+        "iconId": 2573,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Mercury",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 29660,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Dysporite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Quicksilver mixed with dysprosium forms the soft but extremely resilient dysporite, an amalgamatic alloy which plays a key role in most advanced sensor and reactor technologies.",
+        "ru": "Ртуть, смешанная с Dysprosium, формирует Dysporite – чрезвычайно упругий сплав, который является основным компонентом в производстве современных сенсоров и сканеров."
+      }
+    }
+  },
+  "29645": {
+    "name": "Unrefined Fluxed Condensates Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16642,
+        "iconId": 2581,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16644,
+        "iconId": 2575,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 29659,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Fluxed Condensates",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "When combined with other materials and alloys, fluxed condensates help contribute to a unique quantum state highly conducive to efficient reactor operation.",
+        "ru": "В комбинации с другими сплавами жидкие конденсаты помогают создать уникальное квантовое состояние, способствующее эффективному управлению реактором."
+      }
+    }
+  },
+  "32830": {
+    "name": "Unrefined Vanadium Hafnite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16638,
+        "iconId": 2582,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Titanium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16642,
+        "iconId": 2581,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32821,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Vanadium Hafnite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A stable binary compound composed of vanadium and hafnium. Performs a variety of catalytic functions, and is an important intermediate for more complex construction processes.",
+        "ru": "Стабильное бинарное соединение ванадия и гафния. Выполняет различные каталитические функции и является важным промежуточным продуктом для более сложных строительных процессов."
+      }
+    }
+  },
+  "32831": {
+    "name": "Unrefined Platinum Technite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16640,
+        "iconId": 2570,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cobalt",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16644,
+        "iconId": 2575,
+        "amount": 100,
+        "volume": 1,
+        "name": "Platinum",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32822,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Platinum Technite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "An intensely resilient alloy composed of platinum and technetium. Highly sought-after in the machinery and armament industries.",
+        "ru": "Очень прочный сплав из платины и технеция. Используется в машиностроении и производстве вооружения."
+      }
+    }
+  },
+  "32832": {
+    "name": "Unrefined Solerium Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16639,
+        "iconId": 2577,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Scandium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16641,
+        "iconId": 2569,
+        "amount": 100,
+        "volume": 0.6,
+        "name": "Chromium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32823,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Solerium",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "When chromium and caesium are combined with raw silicates in the proper proportions, Solerium is created. Since its initial discovery, Solerium's uniquely shifting dark-to-bright red hue has prompted poet and musician alike to create hymns in praise of its uniquely shifting deep red hue.",
+        "ru": "Solerium образуется при соединении хрома и цезия с сырьевыми силикатами. Со времени открытия этого вещества он вдохновил многих поэтов и музыкантов благодаря своему характерному переливчатому густо-красному цвету."
+      }
+    }
+  },
+  "32833": {
+    "name": "Unrefined Caesarium Cadmide Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16639,
+        "iconId": 2577,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Scandium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16643,
+        "iconId": 2567,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cadmium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32824,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Caesarium Cadmide",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A dark-golden hued alloy composed of cadmium and caesium. Often confused with tritanium due to its tint. An essential ingredient in various composites and condensates.",
+        "ru": "Сплав темно-золотистого цвета, состоящий из кадмия и цезия. Из-за характерного оттенка его часто путают с Tritanium. Важный компонент различных композитных материалов и конденсатов."
+      }
+    }
+  },
+  "32834": {
+    "name": "Unrefined Hexite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16635,
+        "iconId": 2667,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Evaporite Deposits",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16634,
+        "iconId": 2668,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Atmospheric Gases",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32825,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Hexite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A chemical compound, formed through electrosporadic oxidization of chromium and platinum. Has a wide range of applications in the production of advanced technology and is highly sought-after by industrial manufacturers.",
+        "ru": "Химическое вещество, образующееся при гальваническом окислении хрома и платины. Применяется в высокотехнологичном производстве и пользуется огромным спросом у промышленников."
+      }
+    }
+  },
+  "32835": {
+    "name": "Unrefined Rolled Tungsten Alloy Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16634,
+        "iconId": 2668,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Atmospheric Gases",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16637,
+        "iconId": 2580,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Tungsten",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32826,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Rolled Tungsten Alloy",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "An extremely strong compound, made from tungsten rolled in a sheath of platinum. A crucial component in the creation of carbides which have a wide field of utility in the manufacture of various equipment.",
+        "ru": "Исключительно прочное соединение, изготавливается из катаных листов вольфрама и платины. Важнейший компонент для создания карбидов, широко применяющихся для производства оборудования."
+      }
+    }
+  },
+  "32836": {
+    "name": "Unrefined Titanium Chromide Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16635,
+        "iconId": 2667,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Evaporite Deposits",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16638,
+        "iconId": 2582,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Titanium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32827,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Titanium Chromide",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Titanium Chromide is in high demand among technicians and manufacturers for its unique combination of strength, light weight and catalytic potential.",
+        "ru": "Titanium Chromide высоко востребован технологами и производителями из-за его уникальных свойств, сочетающих прочность, малую массу и высокий каталитический потенциал."
+      }
+    }
+  },
+  "32837": {
+    "name": "Unrefined Fernite Alloy Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16633,
+        "iconId": 2669,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Hydrocarbons",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16639,
+        "iconId": 2577,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Scandium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32828,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Fernite Alloy",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "An intensely durable and extremely versatile alloy, Fernite, when combined with certain other materials, is a crucial stepping stone in the creation of a whole host of advanced technologies.",
+        "ru": "Чрезвычайно прочный многофункциональный сплав Fernite в сочетании с рядом других материалов лег в основу создания целого ряда новых, усовершенствованных технологий."
+      }
+    }
+  },
+  "32838": {
+    "name": "Unrefined Crystallite Alloy Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16636,
+        "iconId": 2670,
+        "amount": 100,
+        "volume": 0.1,
+        "name": "Silicates",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16640,
+        "iconId": 2570,
+        "amount": 100,
+        "volume": 0.4,
+        "name": "Cobalt",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 32829,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Crystallite Alloy",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A polynuclear heterometallic compound created from cobalt and cadmium. Crystallite alloys are a fundamental building block in the creation of crystalline composites.",
+        "ru": "Многоядерное гетерометаллическое соединение, созданное из кобальта и кадмия. Сплавы кристаллита служат основой для создания композитных материалов."
+      }
+    }
+  },
+  "33340": {
+    "name": "Thulium Hafnite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16653,
+        "iconId": 2579,
+        "amount": 100,
+        "volume": 1,
+        "name": "Thulium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16648,
+        "iconId": 2572,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Hafnium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33336,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Thulium Hafnite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Despite its unremarkable gray appearance, Thulium Hafnite has proven to be extremely effective as shielding against electromagnetic radiation and free neutrons. It is a valuable component in the production of processor and capacitor technologies, especially in the Gallente Federation.",
+        "ru": "Несмотря на свой невзрачный серый вид, Thulium Hafnite обладает замечательными экранирующими свойствами от электромагнитного излучения и свободных нейтронов. Он широко используется при производстве процессоров и в технологических разработках накопителей, особенно в федерации Галленте."
+      }
+    }
+  },
+  "33341": {
+    "name": "Promethium Mercurite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16652,
+        "iconId": 2576,
+        "amount": 100,
+        "volume": 1,
+        "name": "Promethium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16646,
+        "iconId": 2573,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Mercury",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33337,
+      "iconId": 2664,
+      "amount": 200,
+      "volume": 1,
+      "name": "Promethium Mercurite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A metallic radioactive compound, Promethium Mercurite emits a faint green glow visible to the naked eye. It is a crucial part of a new generation of processors and capacitor units being developed by the Amarr Empire.",
+        "ru": "Металлическое радиоактивное соединение Promethium Mercurite издает слабое зеленоватое сияние, заметное даже невооруженным глазом. Это чрезвычайно важный компонент нового поколения процессоров и накопителей, разрабатываемых в империи Амарр."
+      }
+    }
+  },
+  "33342": {
+    "name": "Unrefined Thulium Hafnite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16642,
+        "iconId": 2581,
+        "amount": 100,
+        "volume": 1,
+        "name": "Vanadium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16648,
+        "iconId": 2572,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Hafnium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33339,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Thulium Hafnite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "Despite its unremarkable gray appearance, Thulium Hafnite has proven to be extremely effective as shielding against electromagnetic radiation and free neutrons. It is a valuable component in the production of processor and capacitor technologies, especially in the Gallente Federation.",
+        "ru": "Несмотря на свой невзрачный серый вид, Thulium Hafnite обладает замечательными экранирующими свойствами от электромагнитного излучения и свободных нейтронов. Он широко используется при производстве процессоров и в технологических разработках накопителей, особенно в федерации Галленте."
+      }
+    }
+  },
+  "33343": {
+    "name": "Unrefined Promethium Mercurite Reaction",
+    "grpId": 436,
+    "group": "Simple Reaction",
+    "input": [
+      {
+        "typeId": 16646,
+        "iconId": 2573,
+        "amount": 100,
+        "volume": 0.8,
+        "name": "Mercury",
+        "grpId": 427,
+        "group": "Moon Materials"
+      },
+      {
+        "typeId": 16641,
+        "iconId": 2569,
+        "amount": 100,
+        "volume": 0.6,
+        "name": "Chromium",
+        "grpId": 427,
+        "group": "Moon Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33338,
+      "iconId": 2664,
+      "amount": 1,
+      "volume": 1,
+      "name": "Unrefined Promethium Mercurite",
+      "grpId": 428,
+      "group": "Intermediate Materials",
+      "descr": {
+        "en": "A metallic radioactive compound, Promethium Mercurite emits a faint green glow visible to the naked eye. It is a crucial part of a new generation of processors and capacitor units being developed by the Amarr Empire.",
+        "ru": "Металлическое радиоактивное соединение Promethium Mercurite издает слабое зеленоватое сияние, заметное даже невооруженным глазом. Это чрезвычайно важный компонент нового поколения процессоров и накопителей, разрабатываемых в империи Амарр."
+      }
+    }
+  },
+  "33363": {
+    "name": "Nonlinear Metamaterials Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "input": [
+      {
+        "typeId": 16669,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Ferrofluid",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16654,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Titanium Chromide",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33362,
+      "iconId": 2678,
+      "amount": 300,
+      "volume": 1,
+      "name": "Nonlinear Metamaterials",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Labs in the Caldari State have recently managed to construct the first known composites with negative refractive indexes. Known as nonlinear metamaterials, these advanced composites are finding increasing use in the State's latest capacitor units and microprocessors.",
+        "ru": "В лабораториях государства Калдари недавно удалось получить первые композитные материалы с негативным коэффициентом рефракции. Им было присвоено название нелинейных метаматериалов, и они находят все более широкое применение в производстве новейших накопителей и микропроцессоров государства."
+      }
+    }
+  },
+  "33364": {
+    "name": "Photonic Metamaterials Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "input": [
+      {
+        "typeId": 33336,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Thulium Hafnite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16655,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Crystallite Alloy",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33359,
+      "iconId": 2678,
+      "amount": 300,
+      "volume": 1,
+      "name": "Photonic Metamaterials",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "A carefully engineered latticework designed for precise optical control, photonic metamaterials are a component in advanced Gallente microprocessors and capacitor units.",
+        "ru": "Фотонные метаматериалы имеют сложную решетчатую структуру, обеспечивающую сверхточный оптический контроль; они широко используются в производстве новейших микропроцессоров и накопителей Галлентской Федерации."
+      }
+    }
+  },
+  "33365": {
+    "name": "Plasmonic Metamaterials Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "input": [
+      {
+        "typeId": 16667,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Neo Mercurite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16656,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Fernite Alloy",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33361,
+      "iconId": 2678,
+      "amount": 300,
+      "volume": 1,
+      "name": "Plasmonic Metamaterials",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "Carefully fabricated composites of neo mercurite and fernite alloy, plasmonic metamaterials are a key component in advanced Minmatar processors and capacitor units.",
+        "ru": "Плазмонические метаматериалы -- сложные композиты из неомеркурита и фернитового сплава, и в республике Минматар они являются ключевым компонентом в производстве новейшего поколения процессоров и накопителей. "
+      }
+    }
+  },
+  "33366": {
+    "name": "Terahertz Metamaterials Reaction",
+    "grpId": 484,
+    "group": "Complex Reactions",
+    "input": [
+      {
+        "typeId": 33337,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Promethium Mercurite",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      },
+      {
+        "typeId": 16657,
+        "iconId": 2664,
+        "amount": 100,
+        "volume": 1,
+        "name": "Rolled Tungsten Alloy",
+        "grpId": 428,
+        "group": "Intermediate Materials"
+      }
+    ],
+    "output": {
+      "typeId": 33360,
+      "iconId": 2678,
+      "amount": 300,
+      "volume": 1,
+      "name": "Terahertz Metamaterials",
+      "grpId": 429,
+      "group": "Composite",
+      "descr": {
+        "en": "An advanced composite designed to manipulate electromagnetic waves just beyond the microwave band, terahertz metamaterials are found in the latest generation of processors and capacitor units in the Amarr Empire.",
+        "ru": "Терагерцевые метаматериалы представляют собой усовершенствованный композитный материал, предназначенный для манипулирования электромагнитными волнами с частотой, лишь немного превышающей частоты микроволнового диапазона, и они применяются для производства новейшего поколения процессоров и накопителей империи Амарр."
+      }
+    }
+  }
+}
