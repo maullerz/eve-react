@@ -1,32 +1,32 @@
-import ApiService from './../api';
-import { forEach, cloneDeep, ceil, map, filter, uniq, keys } from 'lodash';
-import Helper from '../helpers';
+import ApiService from "./../api";
+import { forEach, cloneDeep, ceil, map, filter, uniq, keys } from "lodash";
+import Helper from "../helpers";
 
-export const SEARCH_BPC = 'SEARCH_BPC';
-export const GET_BPC = 'GET_BPC';
-export const RESET_SEARCH = 'RESET_SEARCH';
-export const CHANGE_ME = 'CHANGE_ME';
-export const CHANGE_TE = 'CHANGE_TE';
-export const CHANGE_RUN = 'CHANGE_RUN';
-export const RECALCULATE_MANUFACTURE = 'RECALCULATE_MANUFACTURE';
-export const SET_BPC_COST = 'SET_BPC_COST';
-export const CHANGE_TYPE_PRICE_COMPONENTS = 'CHANGE_TYPE_PRICE_COMPONENTS';
-export const CHANGE_TYPE_PRICE_ITEM = 'CHANGE_TYPE_PRICE_ITEM';
-export const SEARCH_MANUFACTURE_SYSTEM = 'SEARCH_MANUFACTURE_SYSTEM';
-export const SET_MANUFACTURE_SYSTEM = 'SET_MANUFACTURE_SYSTEM';
-export const RESET_MANUFACTURE_SUGGESTIONS = 'RESET_MANUFACTURE_SUGGESTIONS';
-export const SEARCH_COMPONENT_SYSTEM = 'SEARCH_COMPONENT_SYSTEM';
-export const RESET_COMPONENT_SYSTEM = 'RESET_COMPONENT_SYSTEM';
-export const SET_COMPONENTS_PRICES = 'SET_COMPONENTS_PRICES';
-export const SET_ITEM_PRICE = 'SET_ITEM_PRICE';
-export const SEARCH_ITEM_SYSTEM = 'SEARCH_ITEM_SYSTEM';
-export const RESET_SYSTEM_ITEM = 'RESET_SYSTEM_ITEM';
-export const UNMOUNT_MANUFACTURE = 'UNMOUNT_MANUFACTURE';
-export const SET_FACILITY_VAL = 'SET_FACILITY_VAL';
-export const M_CHANGE_BUILD_OWN_COMPONENTS = 'M_CHANGE_BUILD_OWN_COMPONENTS';
-export const METE_CH_OWN_COMPONENTS = 'METE_CH_OWN_COMPONENTS';
-export const MANUFACTURE_CHANGE_VARIABLE = 'MANUFACTURE_CHANGE_VARIABLE';
-export const MANUFACTURE_GET_STRUCTURES = 'MANUFACTURE_GET_STRUCTURES';
+export const SEARCH_BPC = "SEARCH_BPC";
+export const GET_BPC = "GET_BPC";
+export const RESET_SEARCH = "RESET_SEARCH";
+export const CHANGE_ME = "CHANGE_ME";
+export const CHANGE_TE = "CHANGE_TE";
+export const CHANGE_RUN = "CHANGE_RUN";
+export const RECALCULATE_MANUFACTURE = "RECALCULATE_MANUFACTURE";
+export const SET_BPC_COST = "SET_BPC_COST";
+export const CHANGE_TYPE_PRICE_COMPONENTS = "CHANGE_TYPE_PRICE_COMPONENTS";
+export const CHANGE_TYPE_PRICE_ITEM = "CHANGE_TYPE_PRICE_ITEM";
+export const SEARCH_MANUFACTURE_SYSTEM = "SEARCH_MANUFACTURE_SYSTEM";
+export const SET_MANUFACTURE_SYSTEM = "SET_MANUFACTURE_SYSTEM";
+export const RESET_MANUFACTURE_SUGGESTIONS = "RESET_MANUFACTURE_SUGGESTIONS";
+export const SEARCH_COMPONENT_SYSTEM = "SEARCH_COMPONENT_SYSTEM";
+export const RESET_COMPONENT_SYSTEM = "RESET_COMPONENT_SYSTEM";
+export const SET_COMPONENTS_PRICES = "SET_COMPONENTS_PRICES";
+export const SET_ITEM_PRICE = "SET_ITEM_PRICE";
+export const SEARCH_ITEM_SYSTEM = "SEARCH_ITEM_SYSTEM";
+export const RESET_SYSTEM_ITEM = "RESET_SYSTEM_ITEM";
+export const UNMOUNT_MANUFACTURE = "UNMOUNT_MANUFACTURE";
+export const SET_FACILITY_VAL = "SET_FACILITY_VAL";
+export const M_CHANGE_BUILD_OWN_COMPONENTS = "M_CHANGE_BUILD_OWN_COMPONENTS";
+export const METE_CH_OWN_COMPONENTS = "METE_CH_OWN_COMPONENTS";
+export const MANUFACTURE_CHANGE_VARIABLE = "MANUFACTURE_CHANGE_VARIABLE";
+export const MANUFACTURE_GET_STRUCTURES = "MANUFACTURE_GET_STRUCTURES";
 
 export function getStructures() {
   return dispatch => {
@@ -88,8 +88,8 @@ export function setFacilityVal(me, te) {
 
 export function setComponentsSystem(systemId, props) {
   let c = [];
-  let cpms = map(props.bpc_components, 'item_id');
-  let components = map(props.bpc_components, 'components');
+  let cpms = map(props.bpc_components, "item_id");
+  let components = map(props.bpc_components, "components");
   if (components.length) {
     forEach(components, v => {
       forEach(v, item => {
@@ -237,7 +237,7 @@ export function updateManufactureSystem(system) {
     sm_system_id: system.system_id,
     sm_system_name: system.system_name,
     sm_sugg: [],
-    stationFee: system.systemType === 'NPC' ? 1.1 : 1,
+    stationFee: system.systemType === "NPC" ? 1.1 : 1,
     _need_recalculate: true
   };
 }
@@ -247,8 +247,8 @@ export function setComponentsPrices(prices, props) {
   let pricesSell = cloneDeep(props.prices.sell);
   let pricesBuy = cloneDeep(props.prices.buy);
   forEach(keys(prices.prices.sell), v => {
-    pricesSell[v] = prices.prices['sell'][v];
-    pricesBuy[v] = prices.prices['buy'][v];
+    pricesSell[v] = prices.prices["sell"][v];
+    pricesBuy[v] = prices.prices["buy"][v];
   });
   return {
     type: SET_COMPONENTS_PRICES,
@@ -266,8 +266,8 @@ export function setItemPrice(prices, props) {
   let pricesSell = cloneDeep(props.prices.sell);
   let pricesBuy = cloneDeep(props.prices.buy);
 
-  pricesSell[props.item.item_id] = prices.prices['sell'][props.item.item_id];
-  pricesBuy[props.item.item_id] = prices.prices['buy'][props.item.item_id];
+  pricesSell[props.item.item_id] = prices.prices["sell"][props.item.item_id];
+  pricesBuy[props.item.item_id] = prices.prices["buy"][props.item.item_id];
 
   return {
     type: SET_ITEM_PRICE,
@@ -360,14 +360,19 @@ export function setBpc(response) {
 export function updateManufacture(props) {
   let oldProps = cloneDeep(props);
   let bpcc = oldProps.origin_bpc_components;
-  let percentage = (100 - (+props.me)) / 100;
-  let percentageTe = (100 - (+props.te)) / 100;
+  let percentage = (100 - +props.me) / 100;
+  let percentageTe = (100 - +props.te) / 100;
   let amount = 0;
   let componentsAmount = 0;
   let volume = 0;
   let baseCost = 0;
-  let itemAmount = oldProps.prices[oldProps.type_p_item][oldProps.item.item_id] * oldProps.run;
-  let timeRun = percentageTe * props.bpc.productionTime * props.facility_val.te * props.run;
+  let itemAmount = oldProps.prices[oldProps.type_p_item][
+    oldProps.item.item_id
+  ] * oldProps.run;
+  let timeRun = percentageTe *
+    props.bpc.productionTime *
+    props.facility_val.te *
+    props.run;
 
   forEach(bpcc, val => {
     // calculate new QTY
@@ -378,23 +383,31 @@ export function updateManufacture(props) {
     val.orig_qty = ceil(qty * props.run * props.facility_val.me);
 
     // total amount
-    if (props.own_vtype === 'h' || !val.is_build) {
-      amount += Math.ceil(qty) * props.prices[props.type_p_components][val.item_id];
+    if (props.own_vtype === "h" || !val.is_build) {
+      amount += Math.ceil(qty) *
+        props.prices[props.type_p_components][val.item_id];
     }
     // total volume
     volume += Math.ceil(qty) * val.volume;
     // total base cost
-    baseCost += (+val.adjustPrice) * adjustQty.orig_qty;
+    baseCost += +val.adjustPrice * adjustQty.orig_qty;
   });
 
   // adust cost for run in facility
-  let adjustCost = Math.ceil(baseCost * (props.costIndex + 1) * props.stationFee) * props.run;
+  let adjustCost = Math.ceil(
+    baseCost * (props.costIndex + 1) * props.stationFee
+  ) * props.run;
 
   // cost components, bpc, other
   let manufactureCost = (amount + props.bpc_cost) * props.run + adjustCost;
 
-  if (props.own_vtype !== 'h') {
-    let bpcComponents = Helper.manufactureQty(props.build_components, props.me, props.facility_val.me, props.run);
+  if (props.own_vtype !== "h") {
+    let bpcComponents = Helper.manufactureQty(
+      props.build_components,
+      props.me,
+      props.facility_val.me,
+      props.run
+    );
     forEach(bpcComponents, components => {
       let calculatedComponents = Helper.manufactureQty(
         components.components,
@@ -405,7 +418,8 @@ export function updateManufacture(props) {
       );
       forEach(calculatedComponents, v => {
         //console.log(v.item_id, "=", v.qty, v.portion);
-        componentsAmount += v.qty * props.prices[props.type_p_components][v.item_id];
+        componentsAmount += v.qty *
+          props.prices[props.type_p_components][v.item_id];
       });
     });
   }

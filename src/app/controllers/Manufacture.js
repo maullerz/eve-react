@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getBpc, unmountManufacture, getStructures } from '../actions/manufactureActions';
-import { setHead } from '../actions/appActions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import {
+  getBpc,
+  unmountManufacture,
+  getStructures
+} from "../actions/manufactureActions";
+import { setHead } from "../actions/appActions";
 // components
-import SearchBpoPanel from './../components/manufacture/SearchBpoPanel';
-import UsedIn from './../components/manufacture/UsedIn';
-import BpoComponents from './../components/manufacture/BpoComponents';
-import Calculator from './../components/manufacture/Calculator';
-import BuildOwnComponents from './../components/manufacture/BuildOwnComponents';
+import SearchBpoPanel from "./../components/manufacture/SearchBpoPanel";
+import UsedIn from "./../components/manufacture/UsedIn";
+import BpoComponents from "./../components/manufacture/BpoComponents";
+import Calculator from "./../components/manufacture/Calculator";
+import BuildOwnComponents from "./../components/manufacture/BuildOwnComponents";
 
 class Manufacture extends Component {
   componentWillReceiveProps(np) {
@@ -16,9 +20,11 @@ class Manufacture extends Component {
     }
     if (this.props.bpc_title !== np.bpc_title) {
       this.props.setHead({
-        headTitle: this.props.headTitle + ' ' + np.bpc_title,
-        headDescription: this.props.headDescription + ' ' + np.bpc_title,
-        headKeywords: this.props.headKeywords + ', ' + np.bpc_title.toLowerCase()
+        headTitle: this.props.headTitle + " " + np.bpc_title,
+        headDescription: this.props.headDescription + " " + np.bpc_title,
+        headKeywords: this.props.headKeywords +
+          ", " +
+          np.bpc_title.toLowerCase()
       });
     }
   }

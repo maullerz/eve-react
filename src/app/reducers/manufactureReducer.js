@@ -1,9 +1,9 @@
-import * as Bpc from '../actions/manufactureActions';
+import * as Bpc from "../actions/manufactureActions";
 
 const initialState = {
-  headTitle: 'Manufacturing calculator',
-  headDescription: 'Manufacturing calculator',
-  headKeywords: 'manufacturing calculator, eve online, bpc calculator',
+  headTitle: "Manufacturing calculator",
+  headDescription: "Manufacturing calculator",
+  headKeywords: "manufacturing calculator, eve online, bpc calculator",
 
   _need_update_prices_item: false,
   _need_update_prices_components: false,
@@ -14,14 +14,14 @@ const initialState = {
   // system manufacture suggestions
   sm_sugg: [],
   costIndex: 0,
-  sm_systemType: '',
+  sm_systemType: "",
   sm_system_id: 0,
-  sm_system_name: '',
+  sm_system_name: "",
   stationFee: 0,
   adjustCost: 0,
 
   bpc: {},
-  bpc_title: '',
+  bpc_title: "",
   used_in: [],
   bpc_components: [],
   build_components: [],
@@ -44,7 +44,7 @@ const initialState = {
   component_me: 10,
   component_te: 10,
 
-  own_vtype: 'h',
+  own_vtype: "h",
 
   output: 0,
   timeRun: 0,
@@ -52,22 +52,22 @@ const initialState = {
   profit: 0,
   bpc_cost: 0,
   total: 0,
-  type_p_item: 'sell',
-  type_p_components: 'sell',
+  type_p_item: "sell",
+  type_p_components: "sell",
   // search section
   pcsystem_id: 30000142,
-  pcsystem_name: 'Jita',
+  pcsystem_name: "Jita",
   pcs_sugg: [],
   pis_sugg: [],
   pisystem_id: 30000142,
-  pisystem_name: 'Jita',
+  pisystem_name: "Jita",
   facility: [],
   facility_val: {
     me: 1,
     te: 1
   },
-  type_structure: 'outposts',
-  types_structure: ['outposts', 'pos', 'structures'],
+  type_structure: "outposts",
+  types_structure: ["outposts", "pos", "structures"],
   structures: {
     outposts: [],
     pos: [],

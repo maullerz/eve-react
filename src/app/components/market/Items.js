@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setQty, removeItem } from '../../actions/marketActions';
-import { ItemView } from '../item';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setQty, removeItem } from "../../actions/marketActions";
+import { ItemView } from "../item";
 
 /*
 const SortableButton = props => (
@@ -53,14 +53,14 @@ class Items extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortBy: 'price',
+      sortBy: "price",
       order: 1
     };
   }
 
   handleSortClick = column => {
     let newOrder = 1;
-    if (this.state.sortBy === column) newOrder = this.state.order * (-1);
+    if (this.state.sortBy === column) newOrder = this.state.order * -1;
     this.setState({
       sortBy: column,
       order: newOrder
@@ -80,22 +80,22 @@ class Items extends Component {
     const { sortBy, order } = this.state;
     return items.sort((itemA, itemB) => {
       switch (sortBy) {
-        case 'name':
+        case "name":
           let nameA = itemA.item_name;
           let nameB = itemB.item_name;
           let result = 0;
           if (nameA > nameB) result = 1;
           if (nameA < nameB) result = -1;
           return result * order;
-        case 'total':
+        case "total":
           let totalA = prices[type_price][itemA.item_id] * itemA.qty;
           let totalB = prices[type_price][itemB.item_id] * itemB.qty;
           return (totalB - totalA) * order;
-        case 'quantity':
+        case "quantity":
           let qtyA = itemA.qty;
           let qtyB = itemB.qty;
           return (qtyB - qtyA) * order;
-        case 'price':
+        case "price":
         default:
           let priceA = prices[type_price][itemA.item_id];
           let priceB = prices[type_price][itemB.item_id];
@@ -111,7 +111,15 @@ class Items extends Component {
       // TODO:
       // editable
       // onAmountChange={this.changeQty.bind(this, val.item_id)}
-      return <ItemView key={val.item_id} typeID={val.item_id} name={val.item_name} price={price} quantity={val.qty} />;
+      return (
+        <ItemView
+          key={val.item_id}
+          typeID={val.item_id}
+          name={val.item_name}
+          price={price}
+          quantity={val.qty}
+        />
+      );
     });
   }
 
@@ -149,4 +157,6 @@ class Items extends Component {
   }
 }
 
-export default connect(state => state.marketReducer, { setQty, removeItem })(Items);
+export default connect(state => state.marketReducer, { setQty, removeItem })(
+  Items
+);
