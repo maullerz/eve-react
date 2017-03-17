@@ -8,6 +8,7 @@ import donateReducer from "./app/reducers/donateReducer";
 import oreReducer from "./app/reducers/oreReducer";
 import planetReducer from "./app/reducers/planetReducer";
 import moonReducer from "./app/reducers/moonReducer";
+import moonSheetReducer from "./app/reducers/moonsheetReducer";
 
 export default combineReducers({
   appReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   donateReducer,
   oreReducer,
   planetReducer,
-  moonReducer
+  moonReducer,
+  moonSheetReducer
 });

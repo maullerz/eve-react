@@ -9,6 +9,7 @@ import Item from './controllers/Item'
 import Ore from './controllers/Ore'
 import Planet from './controllers/Planet'
 import Moon from './controllers/Moon'
+import MoonSheet from './controllers/MoonSheet'
 
 export default (
   <Route path='/' component={App}>
@@ -22,5 +23,6 @@ export default (
     <Route path='/planet/scheme/:url' component={Planet}/>
     <Route path='/moon/schemes' component={Moon}/>
     <Route path='/moon/scheme/:url' component={Moon}/>
+    <Route path='/moon/sheet' component={MoonSheet}/>
   </Route>
 )
