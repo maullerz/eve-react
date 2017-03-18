@@ -5,28 +5,39 @@ import { map } from "lodash";
 import OneItem from "./OneItem";
 
 class SheetItems extends React.Component {
-  constructor() {
-    super();
-    this.reactionList = [];
-  }
+  render() {
+    let {
+      reactions,
+      filter,
+      price_input_type,
+      price_output_type,
+      prices
+    } = this.props;
+    filter = filter.toString().toLowerCase();
 
-  componentWillReceiveProps(np) {
-    this.reactionList = np.reactions.map((v, i) => {
-      let filter = np.filter.toString().toLowerCase();
+    let reactionList = map(reactions, (v, i) => {
       let inputItems = map(v.input, "item_name");
 
       inputItems.push(v["item_name"]);
-      let filtered = map(inputItems, v => {
+      let ftd = map(inputItems, v => {
         return v.toLowerCase();
       });
-      return filtered.join("|").indexOf(filter) >= 0
-        ? <OneItem key={i} item={v} />
-        : null;
+      ftd = ftd.join(",");
+      let preparedData = null;
+      if (ftd.indexOf(filter) !== -1) {
+        preparedData = (
+          <OneItem
+            key={i}
+            item={v}
+            prices={this.props.prices}
+            price_input={prices[price_input_type]}
+            price_output={prices[price_output_type]}
+          />
+        );
+      }
+      return preparedData;
     });
-  }
-
-  render() {
-    return <div>{this.reactionList}</div>;
+    return <div>{reactionList}</div>;
   }
 }
 

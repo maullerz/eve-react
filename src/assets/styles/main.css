@@ -94,6 +94,11 @@ body #root table tfoot tr td ul.list > li.active {
   background-color: rgba(22,112,146,0.35);
   opacity: 1;
 }
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .txt-normal {
   font-weight: normal;
 }

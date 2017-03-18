@@ -1,5 +1,5 @@
 import numeraljs from "../../node_modules/numeral/numeral";
-import { map, ceil } from "lodash";
+import { map, ceil, each } from "lodash";
 
 let Helper = {
   shortNum(n) {
@@ -92,6 +92,18 @@ let Helper = {
         : ceil(ceil(v.orig_qty * ((100 - me) / 100) * fme * run) / portion);
     });
     return components;
+  },
+
+  getKeys(arr, keyInArray, getAttribute) {
+    let result = [];
+    each(arr, v => {
+      each(v[keyInArray], attr => {
+        if (result.indexOf(attr[getAttribute]) === -1) {
+          result.push(attr[getAttribute]);
+        }
+      });
+    });
+    return result.sort();
   }
 };
 

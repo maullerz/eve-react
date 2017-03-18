@@ -1,7 +1,51 @@
 import Api from "../api";
+import { zipObject, cloneDeep, range, map, uniq } from "lodash";
+import Helper from "./../helpers";
 export const MSHEET_UNMOUNT = "MSHEET_UNMOUNT";
 export const MSHEET_GET = "MSHEET_GET";
 export const MSHEET_UPDATE_VARIABLE = "MSHEET_UPDATE_VARIABLE";
+export const MSHEET_GET_PRICES = "MSHEET_GET_PRICES";
+export const MSHEET_SEARCH_OUTPUT_SYSTEMS = "MSHEET_SEARCH_OUTPUT_SYSTEMS";
+export const MSHEET_SEARCH_INPUT_SYSTEMS = "MSHEET_SEARCH_INPUT_SYSTEMS";
+
+export function searchOutputSystem(term) {
+  return dispatch => {
+    return Api.Search.system(term).then(json => {
+      dispatch({
+        type: MSHEET_SEARCH_OUTPUT_SYSTEMS,
+        payload: {
+          suggestions_output: json.data.items
+        }
+      });
+    });
+  };
+}
+
+export function searchInputSystem(term) {
+  return dispatch => {
+    return Api.Search.system(term).then(json => {
+      dispatch({
+        type: MSHEET_SEARCH_INPUT_SYSTEMS,
+        payload: {
+          suggestions_input: json.data.items
+        }
+      });
+    });
+  };
+}
+
+export function getPrices(systemID, typeIDs) {
+  return dispatch => {
+    return Api.Main.prices(systemID, typeIDs).then(json => {
+      dispatch({
+        type: MSHEET_GET_PRICES,
+        payload: {
+          prices: json.data.prices
+        }
+      });
+    });
+  };
+}
 
 export function updateVar(variable, value) {
   let responsePayload = {
@@ -19,11 +63,26 @@ export function updateVar(variable, value) {
 export function getSheet() {
   return dispatch => {
     return Api.Moon.sheet().then(json => {
+      let keyMaterials = Helper.getKeys(json.data.reactions, "input", "item_id");
+      keyMaterials = uniq(keyMaterials);
+
+      let keyMain = map(json.data.reactions, "item_id");
+      let keys = uniq(keyMaterials.concat(keyMain));
+      let keyZipped = zipObject(keys, range(0, keys.length, 0));
+
       dispatch({
         type: MSHEET_GET,
         payload: {
           reactions: json.data.reactions,
-          refined: json.data.refined
+          refined: json.data.refined,
+          prices: {
+            sell: cloneDeep(keyZipped),
+            buy: cloneDeep(keyZipped)
+          },
+          _need_upd_price_input: true,
+          _need_upd_price_output: true,
+          items_input: keyMaterials,
+          items_output: keyMain
         }
       });
     });

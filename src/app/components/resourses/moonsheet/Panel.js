@@ -1,23 +1,53 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateVar } from "../../../actions/moonsheetActions";
+import { updateVar, searchOutputSystem, searchInputSystem } from "../../../actions/moonsheetActions";
 
 // components
-import SystemPrice from "./SystemPrice";
+import SystemSellBuy from "./../../blocks/SystemSellBuy";
 
 class Panel extends React.Component {
-  changePriceType(v) {
-    this.props.updateVar("price_type", v);
+  // Output material systems
+  getSuggestionsOutputSystem(term) {
+    this.props.searchOutputSystem(term);
   }
 
-  makeFilter(e) {
-    this.props.updateVar("filter", e.target.value);
+  resetSuggestionsOutputSystem() {
+    this.props.updateVar("suggestions_output", []);
+  }
+
+  setOutputSystem(system_id, system_name) {
+    this.props.updateVar("output_system_id", system_id);
+    this.props.updateVar("output_system", system_name);
+    this.props.updateVar("_need_upd_price_output", true);
+  }
+
+  changePriceTypeOutput(typePrice) {
+    this.props.updateVar("price_output_type", typePrice);
+  }
+
+  // Input material systems
+  getSuggestionsInputSystem(term) {
+    this.props.searchInputSystem(term);
+  }
+
+  resetSuggestionsInputSystem() {
+    this.props.updateVar("suggestions_input", []);
+  }
+
+  setInputSystem(system_id, system_name) {
+    this.props.updateVar("input_system_id", system_id);
+    this.props.updateVar("input_system", system_name);
+    this.props.updateVar("_need_upd_price_input", true);
+  }
+
+  changePriceTypeInput(typePrice) {
+    this.props.updateVar("price_input_type", typePrice);
   }
 
   render() {
     let colLeft = "col-md-4";
     let colRight = "col-md-8";
-    let { price_type, filter } = this.props;
+    let { price_input_type, price_output_type, suggestions_output, suggestions_input } = this.props;
 
     return (
       <div className="row">
@@ -32,33 +62,28 @@ class Panel extends React.Component {
               <tr>
                 <td colSpan="2" className="inside-table">
                   <div className="row">
-                    <div className={colLeft}>Price System</div>
+                    <div className={colLeft}>Input materials</div>
                     <div className={colRight}>
-                      <SystemPrice />
-                      <div className="btn-group">
-                        <button
-                          onClick={this.changePriceType.bind(this, "sell")}
-                          className={price_type === "sell" ? "active" : ""}
-                        >
-                          sell
-                        </button>
-                        <button
-                          onClick={this.changePriceType.bind(this, "buy")}
-                          className={price_type === "buy" ? "active" : ""}
-                        >
-                          buy
-                        </button>
-                      </div>
+                      <SystemSellBuy
+                        suggestions={suggestions_input}
+                        setSystem={this.setInputSystem.bind(this)}
+                        getSuggestions={this.getSuggestionsInputSystem.bind(this)}
+                        resetSuggestions={this.resetSuggestionsInputSystem.bind(this)}
+                        typePrice={price_input_type}
+                        setTypePrice={this.changePriceTypeInput.bind(this)}
+                      />
                     </div>
                   </div>
                   <div className="row">
-                    <div className={colLeft}>Filter</div>
+                    <div className={colLeft}>Output materials</div>
                     <div className={colRight}>
-                      <input
-                        className="w130px"
-                        onChange={this.makeFilter.bind(this)}
-                        value={filter}
-                        placeholder="Item name"
+                      <SystemSellBuy
+                        suggestions={suggestions_output}
+                        setSystem={this.setOutputSystem.bind(this)}
+                        getSuggestions={this.getSuggestionsOutputSystem.bind(this)}
+                        resetSuggestions={this.resetSuggestionsOutputSystem.bind(this)}
+                        typePrice={price_output_type}
+                        setTypePrice={this.changePriceTypeOutput.bind(this)}
                       />
                     </div>
                   </div>
@@ -72,4 +97,4 @@ class Panel extends React.Component {
   }
 }
 
-export default connect(state => state.moonSheetReducer, { updateVar })(Panel);
+export default connect(state => state.moonSheetReducer, { updateVar, searchOutputSystem, searchInputSystem })(Panel);
