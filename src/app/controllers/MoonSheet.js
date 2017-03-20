@@ -31,11 +31,11 @@ class MoonSheet extends React.Component {
 
   componentWillReceiveProps(np) {
     let { getPrices, input_system_id, output_system_id, updateVar, items_input, items_output } = np;
-    if (np._need_upd_price_input) {
+    if (np._need_upd_price_input && items_input.length) {
       getPrices(input_system_id, items_input.join(","));
       updateVar("_need_upd_price_input", false);
     }
-    if (np._need_upd_price_output) {
+    if (np._need_upd_price_output && items_output.length) {
       getPrices(output_system_id, items_output.join(","));
       updateVar("_need_upd_price_output", false);
     }
