@@ -15,10 +15,12 @@ export class SettingsPanel extends React.Component {
   render() {
     const { expanded, onExpand } = this.props
     return (
-      <div className="row">
-        <button onClick={onExpand} className={expanded ? "active" : ""}>
-          {expanded ? '[-]' : '[+]'}
-        </button>
+      <div className="row" className="row">
+        <div style={{ padding: '5px 15px' }}>
+          <button onClick={onExpand} className={expanded ? "active" : ""}>
+            {expanded ? '[-]' : '[+]'}
+          </button>
+        </div>
       </div>
     );
   }
