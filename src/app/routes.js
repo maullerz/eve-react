@@ -10,6 +10,7 @@ import Ore from "./controllers/Ore";
 import Planet from "./controllers/Planet";
 import Moon from "./controllers/Moon";
 import MoonSheet from "./controllers/MoonSheet";
+import PlanetSheet from "./controllers/PlanetSheet";
 
 export default (
   <Route path="/" component={App}>
@@ -24,5 +25,6 @@ export default (
     <Route path="/moon/schemes" component={Moon} />
     <Route path="/moon/scheme/:url" component={Moon} />
     <Route path="/moon/sheet" component={MoonSheet} />
+    <Route path="/planet/sheet" component={PlanetSheet} />
   </Route>
 );

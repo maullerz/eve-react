@@ -101,6 +101,9 @@ export default {
     },
     schema(url) {
       return axios.get(baseUrl + "/planet/scheme/" + url);
+    },
+    sheet() {
+      return axios.get(baseUrl + "/planet/sheet");
     }
   },
   Moon: {
