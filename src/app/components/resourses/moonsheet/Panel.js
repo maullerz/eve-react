@@ -44,10 +44,14 @@ class Panel extends React.Component {
     this.props.updateVar("price_input_type", typePrice);
   }
 
+  chLT(type) {
+    this.props.updateVar("list_type", type);
+  }
+
   render() {
     let colLeft = "col-md-4";
     let colRight = "col-md-8";
-    let { price_input_type, price_output_type, suggestions_output, suggestions_input } = this.props;
+    let { price_input_type, price_output_type, suggestions_output, suggestions_input,list_type } = this.props;
 
     return (
       <div className="row">
@@ -85,6 +89,25 @@ class Panel extends React.Component {
                         typePrice={price_output_type}
                         setTypePrice={this.changePriceTypeOutput.bind(this)}
                       />
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className={colLeft}>List type</div>
+                    <div className={colRight}>
+                      <div className="btn-group">
+                        <button onClick={this.chLT.bind(this, "full")} className={list_type === "full" ? "active" : ""}>
+                          full
+                        </button>
+                        <button onClick={this.chLT.bind(this, "short")} className={list_type === "short" ? "active" : ""}>
+                          short
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className={colLeft}>Profit</div>
+                    <div className={colRight}>
+                      Colorized values (red or green)
                     </div>
                   </div>
                 </td>

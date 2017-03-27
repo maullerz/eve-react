@@ -25,7 +25,8 @@ const initialState = {
   suggestions_output: [],
   suggestions_input: [],
   items_input: [],
-  items_output: []
+  items_output: [],
+  list_type: 'full'
 };
 
 export default (state = initialState, action = {}) => {
