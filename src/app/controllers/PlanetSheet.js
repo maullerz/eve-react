@@ -5,8 +5,8 @@ import { setHead } from "../actions/appActions";
 
 // components
 import FilterPanel from "./../components/resourses/planetsheet/FilterPanel";
-//import Panel from "./../components/resourses/moonsheet/Panel";
-//import SheetItems from "./../components/resourses/moonsheet/SheetItems";
+import Panel from "./../components/resourses/planetsheet/Panel";
+import SheetItems from "./../components/resourses/planetsheet/SheetItems";
 
 class PlanetSheet extends React.Component {
   componentDidMount() {
@@ -42,17 +42,15 @@ class PlanetSheet extends React.Component {
   //}
 
   render() {
-    // <Panel />
-    // <SheetItems title="Moon materials" />
     return (
       <div>
         <FilterPanel />
         <div className="row">
           <div className="col-md-4 t-a_l col-first">
-
+            <Panel />
           </div>
           <div className="col-md-8 t-a_l col-last">
-
+            <SheetItems title="Planet materials" />
           </div>
         </div>
       </div>
