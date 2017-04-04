@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
-import { unmountPlanetSheet, getSheet, getPrices, updateVars } from "../actions/planetSheetActions";
-import { setHead } from "../actions/appActions";
+import {connect} from "react-redux";
+import {unmountPlanetSheet, getSheet, getPrices, updateVars} from "../actions/planetSheetActions";
+import {setHead} from "../actions/appActions";
 
 // components
 import FilterPanel from "./../components/resourses/planetsheet/FilterPanel";
@@ -29,17 +29,17 @@ class PlanetSheet extends React.Component {
     this.props.unmountPlanetSheet();
   }
 
-  //componentWillReceiveProps(np) {
-  //  let { getPrices, input_system_id, output_system_id, updateVar, items_input, items_output } = np;
-  //  if (np._need_upd_price_input && items_input.length) {
-  //    getPrices(input_system_id, items_input.join(","));
-  //    updateVar("_need_upd_price_input", false);
-  //  }
-  //  if (np._need_upd_price_output && items_output.length) {
-  //    getPrices(output_system_id, items_output.join(","));
-  //    updateVar("_need_upd_price_output", false);
-  //  }
-  //}
+  componentWillReceiveProps(np) {
+    let {input_system_id, getPrices, _need_upd_price_input, _need_upd_price_output, output_system_id, updateVars, items_input, items_output} = np;
+    if (_need_upd_price_input && Object.keys(items_input).length) {
+      getPrices(input_system_id, Object.keys(items_input).join(","));
+      updateVars({_need_upd_price_input: false});
+    }
+    if (_need_upd_price_output && Object.keys(items_output).length) {
+      getPrices(output_system_id, Object.keys(items_output).join(","));
+      updateVars({_need_upd_price_output: false});
+    }
+  }
 
   render() {
     return (
@@ -50,7 +50,7 @@ class PlanetSheet extends React.Component {
             <Panel />
           </div>
           <div className="col-md-8 t-a_l col-last">
-            <SheetItems title="Planet materials" />
+            <SheetItems title="Planet materials"/>
           </div>
         </div>
       </div>

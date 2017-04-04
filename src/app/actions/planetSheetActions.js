@@ -1,10 +1,10 @@
 import Api from "../api";
-import {zipObject, cloneDeep, range, map, uniq, each} from "lodash";
+import {zipObject, range, map, uniq, each} from "lodash"
 import Helper from "./../helpers";
 export const PSHEET_UNMOUNT = "PSHEET_UNMOUNT";
 export const PSHEET_GET = "PSHEET_GET";
 export const PSHEET_UPDATE_VARIABLES = "PSHEET_UPDATE_VARIABLES";
-//export const PSHEET_GET_PRICES = "PSHEET_GET_PRICES";
+export const PSHEET_GET_PRICES = "PSHEET_GET_PRICES";
 export const PSHEET_SEARCH_OUTPUT_SYSTEMS = "PSHEET_SEARCH_OUTPUT_SYSTEMS";
 export const PSHEET_SEARCH_INPUT_SYSTEMS = "PSHEET_SEARCH_INPUT_SYSTEMS";
 
@@ -34,18 +34,18 @@ export function searchOutputSystem(term) {
   };
 }
 
-//export function getPrices(systemID, typeIDs) {
-//  return dispatch => {
-//    return Api.Main.prices(systemID, typeIDs).then(json => {
-//      dispatch({
-//        type: PSHEET_GET_PRICES,
-//        payload: {
-//          prices: json.data.prices
-//        }
-//      });
-//    });
-//  };
-//}
+export function getPrices(systemID, typeIDs) {
+  return dispatch => {
+    return Api.Main.prices(systemID, typeIDs).then(json => {
+      dispatch({
+        type: PSHEET_GET_PRICES,
+        payload: {
+          prices: json.data.prices
+        }
+      });
+    });
+  };
+}
 
 export function updateVars(vars) {
   let responsePayload = {
@@ -62,6 +62,7 @@ export function updateVars(vars) {
   };
 }
 
+
 export function getSheet() {
   return dispatch => {
     return Api.Planet.sheet().then(json => {
@@ -77,6 +78,7 @@ export function getSheet() {
 
       let keyZippedAllIDS = zipObject(allTypes, range(0, allTypes.length, 0));
 
+      // TODO:: add input items [sell, buy] and output items [sell, by prices]
       dispatch({
         type: PSHEET_GET,
         payload: {

@@ -1,5 +1,5 @@
 import * as PlanetSheet from "../actions/planetSheetActions";
-import {each, find, cloneDeep} from "lodash";
+//import {each, find, cloneDeep} from "lodash";
 
 const initialState = {
   _need_recalculate: false,
@@ -28,6 +28,9 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case PlanetSheet.PSHEET_GET_PRICES:
+      return Object.assign({}, state, {});
+
     case PlanetSheet.PSHEET_SEARCH_INPUT_SYSTEMS:
     case PlanetSheet.PSHEET_SEARCH_OUTPUT_SYSTEMS:
     case PlanetSheet.PSHEET_GET:
