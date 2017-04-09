@@ -16,20 +16,32 @@ const initialState = {
   output_system: "Jita",
   input_system_id: 30000142,
   output_system_id: 30000142,
-  p_sell: {},
-  p_buy: {},
   // Search
   suggestions_output: [],
   suggestions_input: [],
   items_input: [],
   items_output: [],
-  list_type: 'full'
+  input_prices: {
+    sell: {},
+    buy: {}
+  },
+  output_prices: {
+    sell: {},
+    buy: {}
+  },
+  list_type: 'short'
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case PlanetSheet.PSHEET_GET_PRICES:
-      return Object.assign({}, state, {});
+      let upd = {}
+      if (action.payload.typeItems === 'input') {
+        upd['input_prices'] = action.payload.prices
+      } else if (action.payload.typeItems === 'output') {
+        upd['output_prices'] = action.payload.prices
+      }
+      return Object.assign({}, state, upd);
 
     case PlanetSheet.PSHEET_SEARCH_INPUT_SYSTEMS:
     case PlanetSheet.PSHEET_SEARCH_OUTPUT_SYSTEMS:

@@ -34,15 +34,61 @@ export function searchOutputSystem(term) {
   };
 }
 
-export function getPrices(systemID, typeIDs) {
+export function getPrices(systemID, typeIDs, typeItems = 'input') {
   return dispatch => {
     return Api.Main.prices(systemID, typeIDs).then(json => {
       dispatch({
         type: PSHEET_GET_PRICES,
         payload: {
-          prices: json.data.prices
+          prices: json.data.prices,
+          typeItems: typeItems
         }
       });
+    });
+  };
+}
+
+
+
+
+export function getSheet() {
+  return dispatch => {
+    return Api.Planet.sheet().then(json => {
+      let keyMaterials = Helper.getKeys(json.data, "input", "item_id");
+      keyMaterials = uniq(keyMaterials);
+      let typeIds = map(json.data, 'typeID')
+      typeIds = uniq(typeIds);
+
+      let allTypes = [].concat(keyMaterials, typeIds)
+      allTypes = uniq(allTypes)
+
+      let keyZippedAllIDS = zipObject(allTypes, range(0, allTypes.length, 0));
+      dispatch({
+        type: PSHEET_GET,
+        payload: {
+          schemes: json.data,
+          input_prices: {
+            sell: keyZippedAllIDS,
+            buy: keyZippedAllIDS
+          },
+          output_prices: {
+            sell: keyZippedAllIDS,
+            buy: keyZippedAllIDS
+          },
+          _need_upd_price_input: true,
+          _need_upd_price_output: true,
+          items_input: allTypes,
+          items_output: allTypes
+        }
+      });
+    });
+  };
+}
+
+export function unmountPlanetSheet() {
+  return dispatch => {
+    return dispatch({
+      type: PSHEET_UNMOUNT
     });
   };
 }
@@ -58,47 +104,6 @@ export function updateVars(vars) {
     dispatch({
       type: PSHEET_UPDATE_VARIABLES,
       payload: responsePayload
-    });
-  };
-}
-
-
-export function getSheet() {
-  return dispatch => {
-    return Api.Planet.sheet().then(json => {
-      let keyMaterials = Helper.getKeys(json.data, "input", "item_id");
-      keyMaterials = uniq(keyMaterials);
-      let typeIds = map(json.data, 'typeID')
-      typeIds = uniq(typeIds);
-
-      let keyZippedMaterials = zipObject(keyMaterials, range(0, keyMaterials.length, 0));
-      let keyZippedTypeIDS = zipObject(typeIds, range(0, typeIds.length, 0));
-      let allTypes = [].concat(keyMaterials, typeIds)
-      allTypes = uniq(allTypes)
-
-      let keyZippedAllIDS = zipObject(allTypes, range(0, allTypes.length, 0));
-
-      // TODO:: add input items [sell, buy] and output items [sell, by prices]
-      dispatch({
-        type: PSHEET_GET,
-        payload: {
-          schemes: json.data,
-          p_sell: keyZippedAllIDS,
-          p_buy: keyZippedAllIDS,
-          _need_upd_price_input: true,
-          _need_upd_price_output: true,
-          items_input: keyZippedTypeIDS,
-          items_output: keyZippedMaterials
-        }
-      });
-    });
-  };
-}
-
-export function unmountPlanetSheet() {
-  return dispatch => {
-    return dispatch({
-      type: PSHEET_UNMOUNT
     });
   };
 }

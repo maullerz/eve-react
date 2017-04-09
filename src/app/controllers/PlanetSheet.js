@@ -31,12 +31,12 @@ class PlanetSheet extends React.Component {
 
   componentWillReceiveProps(np) {
     let {input_system_id, getPrices, _need_upd_price_input, _need_upd_price_output, output_system_id, updateVars, items_input, items_output} = np;
-    if (_need_upd_price_input && Object.keys(items_input).length) {
-      getPrices(input_system_id, Object.keys(items_input).join(","));
+    if (_need_upd_price_input && items_input.length) {
+      getPrices(input_system_id, items_input.join(","), 'input');
       updateVars({_need_upd_price_input: false});
     }
-    if (_need_upd_price_output && Object.keys(items_output).length) {
-      getPrices(output_system_id, Object.keys(items_output).join(","));
+    if (_need_upd_price_output && items_output.length) {
+      getPrices(output_system_id, items_output.join(","), 'output');
       updateVars({_need_upd_price_output: false});
     }
   }
