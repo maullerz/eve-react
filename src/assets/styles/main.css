@@ -108,6 +108,11 @@ body #root table tfoot tr td ul.list > li.active {
 .h-opacity-1:hover {
   opacity: 1;
 }
+.img16 {
+  margin-left: 1px;
+  margin-right: 4px;
+  width: 24px;
+}
 ul.components li .containter {
   margin: 0;
   overflow: hidden;

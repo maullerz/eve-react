@@ -46,10 +46,10 @@ class PlanetSheet extends React.Component {
       <div>
         <FilterPanel />
         <div className="row">
-          <div className="col-md-4 t-a_l col-first">
+          <div className="col-md-4 col-sm-4 col-lg-4 t-a_l col-first">
             <Panel />
           </div>
-          <div className="col-md-8 t-a_l col-last">
+          <div className="col-md-8 col-sm-8 col-lg-8 t-a_l col-last">
             <SheetItems title="Planet materials"/>
           </div>
         </div>

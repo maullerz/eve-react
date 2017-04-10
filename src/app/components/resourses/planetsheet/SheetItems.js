@@ -39,15 +39,16 @@ class SheetItems extends React.Component {
       if (ftd.indexOf(String(filter).toLowerCase()) === -1) {
         return null;
       }
+
       const shortList = <ShortList item={v} />;
       const oneItem = <OneItem item={v} input_prices={input_prices} price_input_type={price_input_type} />;
 
-      return list_type === "full" ? oneItem : shortList;
+      return list_type === "full" ? <div key={i}>{oneItem}</div> : <div key={i}>{shortList}</div>;
     });
     return list_type === "full"
       ? <div>{resultList}</div>
       : <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 col-sm-12 col-lg-12 col-xs-12">
             <table className="inside">
               <thead>
                 <tr>
