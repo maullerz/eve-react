@@ -4,6 +4,7 @@ import { map, sum, each, sortBy } from "lodash";
 
 // components
 import ShortList from "./ShortList";
+import OneItem from "./OneItem";
 
 const getProfit = (item, props) => {
   let { typeID, quantity, input } = item;
@@ -25,7 +26,7 @@ class SheetItems extends React.Component {
   }
 
   getMaterialList(schemes) {
-    const { filter, list_type } = this.props;
+    const { filter, list_type,input_prices, price_input_type } = this.props;
     if (schemes.length === 0) {
       return null;
     }
@@ -39,8 +40,9 @@ class SheetItems extends React.Component {
         return null;
       }
       const shortList = <ShortList item={v} />;
+      const oneItem = <OneItem item={v} input_prices={input_prices} price_input_type={price_input_type} />;
 
-      return list_type === "full" ? null : shortList;
+      return list_type === "full" ? oneItem : shortList;
     });
     return list_type === "full"
       ? <div>{resultList}</div>

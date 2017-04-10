@@ -29,7 +29,7 @@ const initialState = {
     sell: {},
     buy: {}
   },
-  list_type: 'short'
+  list_type: 'full'
 };
 
 export default (state = initialState, action = {}) => {
