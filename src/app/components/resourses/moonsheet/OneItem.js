@@ -25,7 +25,10 @@ const OneItem = (props) => {
     return (
       <div key={i} className="row">
         <div className="col-md-12 col-sm-12 col-xs-12 flex-between">
-          <span>{v.item_name}</span>
+          <span>
+            <img className="img16 pen" role="presentation" src={`https://image.eveonline.com/Type/${v.item_id}_32.png`} />
+            {v.item_name} {v.quantity} x {Helper.price(price_input[v.item_id])} isk
+          </span>
           <span>{Helper.price(amount)}</span>
         </div>
       </div>
@@ -55,9 +58,9 @@ const OneItem = (props) => {
           <th colSpan="2">
             <div className="flex-between">
               <div className="item-output">
-                <div>{item.item_name}</div>
+                <div>{item.item_name} x {item.quantity}</div>
                 <div className={percColor}>
-                  {outputValue}
+                  {outputValue} isk
                 </div>
               </div>
               <span className="txt-normal">

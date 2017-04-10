@@ -10,7 +10,7 @@ const ShortList = (props) => {
   } = props
   const profit = getProfit(item, props)
   const outputValue = Helper.price(profit)
-  const percColor = profit >= 0 ? "txt-yellow" : "profit-minus"
+  const percColor = profit >= 0 ? "txt-yellow b" : "profit-minus"
 
   return (<div key={item.item_id} className="row">
     <div className="col-md-12 col-sm-12 col-xs-12 flex-between">
