@@ -9,7 +9,7 @@ const ShortList = props => {
         <span>
           <img
             className="img16 pen"
-            role="presentation"
+            alt={item.schema_name}
             src={`https://image.eveonline.com/Type/${item.typeID}_32.png`}
           />
           {item.schema_name}
