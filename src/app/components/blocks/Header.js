@@ -39,6 +39,7 @@ const Header = () => {
                   </li>
                   <li><Link id="ah_moon" to="/moon/sheet">Moon sheet</Link></li>
                   <li><Link id="ah_planet" to="/planet/sheet">Planet sheet</Link></li>
+                  <li><Link id="ah_gas" to="/gas/sheet">Gas sheet</Link></li>
                 </ul>
               </li>
               <li className="red-cell">

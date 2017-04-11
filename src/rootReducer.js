@@ -10,6 +10,7 @@ import planetReducer from "./app/reducers/planetReducer";
 import moonReducer from "./app/reducers/moonReducer";
 import moonSheetReducer from "./app/reducers/moonsheetReducer";
 import planetSheetReducer from "./app/reducers/planetsheetReducer";
+import gasReducer from "./app/reducers/gasReducer";
 
 export default combineReducers({
   appReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
   planetReducer,
   moonReducer,
   moonSheetReducer,
-  planetSheetReducer
+  planetSheetReducer,
+  gasReducer
 });

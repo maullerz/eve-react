@@ -145,6 +145,9 @@ export default {
   },
 
   Main: {
+    gas() {
+      return axios.get(baseUrl + "/gas");
+    },
     structures() {
       return axios.get(baseUrl + "/structures");
     },
