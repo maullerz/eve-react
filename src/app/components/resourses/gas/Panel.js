@@ -21,6 +21,7 @@ class Panel extends React.Component {
     this.props.updateVars({
       system_name: system_name,
       system_id: system_id,
+      _need_upd_prices: true
     });
   }
 
