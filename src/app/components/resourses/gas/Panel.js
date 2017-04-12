@@ -1,12 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { updateVars, searchOutputSystem } from '../../../actions/gasActions';
+import React from "react";
+import { connect } from "react-redux";
+import { updateVars, searchOutputSystem } from "../../../actions/gasActions";
 
 // components
-import SystemSellBuy from './../../blocks/SystemSellBuy';
+import SystemSellBuy from "./../../blocks/SystemSellBuy";
 
 class Panel extends React.Component {
-
   // Get suggestions
   getSuggestionsOutputSystem(term) {
     this.props.searchOutputSystem(term);
@@ -14,7 +13,7 @@ class Panel extends React.Component {
 
   // Reset suggestions
   resetSuggestionsOutputSystem() {
-    this.props.updateVars({suggestions: []});
+    this.props.updateVars({ suggestions: [] });
   }
 
   setOutputSystem(system_id, system_name) {
@@ -33,10 +32,9 @@ class Panel extends React.Component {
     this.props.updateVars({ list_type: type });
   }
 
-
   render() {
-    let colLeft = 'col-md-4';
-    let colRight = 'col-md-8';
+    let colLeft = "col-md-4";
+    let colRight = "col-md-8";
     let { suggestions, list_type, price_type } = this.props;
 
     return (
@@ -68,14 +66,17 @@ class Panel extends React.Component {
                     <div className={colLeft}>List type</div>
                     <div className={colRight}>
                       <div className="btn-group">
-                        <button onClick={this.chLT.bind(this, 'full')} className={list_type === 'full' ? 'active' : ''}>
-                          full
+                        <button
+                          onClick={this.chLT.bind(this, "venture")}
+                          className={list_type === "venture" ? "active" : ""}
+                        >
+                          venture
                         </button>
                         <button
-                          onClick={this.chLT.bind(this, 'short')}
-                          className={list_type === 'short' ? 'active' : ''}
+                          onClick={this.chLT.bind(this, "isk/m3")}
+                          className={list_type === "isk/m3" ? "active" : ""}
                         >
-                          short
+                          isk/m3
                         </button>
                       </div>
                     </div>
