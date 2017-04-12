@@ -47,7 +47,7 @@ class SheetItems extends React.Component {
                 <th colSpan="2">
                   <div className="flex-between">
                     <div>Gases</div>
-                    <div>Venture Cargo ({ventureCargo} m3)</div>
+                    <div>{list_type === 'venture' ? 'Venture Cargo ('+ventureCargo+' m3)' : ''}</div>
                   </div>
                 </th>
               </tr>

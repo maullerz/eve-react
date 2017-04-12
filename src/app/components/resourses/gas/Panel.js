@@ -70,7 +70,7 @@ class Panel extends React.Component {
                           onClick={this.chLT.bind(this, "venture")}
                           className={list_type === "venture" ? "active" : ""}
                         >
-                          venture
+                          isk/venture
                         </button>
                         <button
                           onClick={this.chLT.bind(this, "isk/m3")}
