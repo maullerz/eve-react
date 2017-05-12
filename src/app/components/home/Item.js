@@ -18,7 +18,7 @@ class Item extends Component {
   constructor() {
     super()
     this.state = {
-      value: "30 Day Pilot's License Extension (PLEX)"
+      value: "PLEX"
     }
 
     this.debounceGetSuggestions = debounce(this.loadSuggestions, Helper.const.debounceTimeout)

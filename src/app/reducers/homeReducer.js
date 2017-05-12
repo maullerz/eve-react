@@ -46,8 +46,8 @@ const initialState = {
   item_sugg: [],
   facebook_feed: [],
   info: [],
-  item_id: 29668,
-  item_name: '30 Day Pilot\'s License Extension (PLEX)',
+  item_id: 44992,
+  item_name: 'PLEX',
   chartData: []
 }
 
