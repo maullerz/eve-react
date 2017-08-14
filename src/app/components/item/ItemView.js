@@ -1,7 +1,7 @@
-import React from "react";
-import Helper from "../../helpers";
+import React from 'react';
+import Helper from '../../helpers';
 
-import "./ItemView.css";
+import './ItemView.css';
 
 const ItemView = props => {
   const { typeID, name, quantity, price } = props;
@@ -11,10 +11,7 @@ const ItemView = props => {
     <li>
       <div className="item-view-cont">
         <div className="img-box">
-          <img
-            alt={name}
-            src={`https://image.eveonline.com/Type/${typeID}_32.png`}
-          />
+          <img alt={name} src={`https://image.eveonline.com/Type/${typeID}_32.png`} />
         </div>
         <div className="item-descr">
           <div className="item-row-first">
@@ -22,7 +19,7 @@ const ItemView = props => {
               {name}
             </div>
             <div className="item-amount">
-              {"x"}&nbsp;{Helper.qty(quantity)}
+              {'x'}&nbsp;{Helper.qty(quantity)}
             </div>
             <div className="item-price txt-lime">
               {Helper.price(price)}
