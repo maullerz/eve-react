@@ -8,3 +8,4 @@ build/
 __snapshots__
 .history
 .DS_Store
+tmpold

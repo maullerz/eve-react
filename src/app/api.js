@@ -157,9 +157,18 @@ export default {
     facebook_feed() {
       return axios.get(baseUrl + "/facebook_feed");
     },
+
     prices(systemId, items) {
       return axios.get(baseUrl + "/prices/" + systemId + "/" + items);
     },
+    pricesMarketer(systemId, items) {
+      const url = "https://api.evemarketer.com/ec/marketstat/json?regionlimit=10000002&typeid=";
+      return axios.get(
+        url + items,
+        { headers: { 'Access-Control-Allow-Origin': '*' } },
+      );
+    },
+
     facilities(activityID) {
       return axios.get(baseUrl + "/facility", {
         params: {

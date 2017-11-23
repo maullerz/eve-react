@@ -26,6 +26,7 @@ const OneItem = (props) => {
       <div key={i} className="row">
         <div className="col-md-12 col-sm-12 col-xs-12 flex-between">
           <span>
+            &nbsp;&nbsp;&nbsp;
             <img className="img16 pen" alt={v.item_name} src={`https://image.eveonline.com/Type/${v.item_id}_32.png`} />
             {v.item_name} {v.quantity} x {Helper.price(price_input[v.item_id])} isk
           </span>
@@ -36,6 +37,7 @@ const OneItem = (props) => {
   });
 
   let outputCost = 0
+  let outputCostLifeblood = 0
   if (unrefined) {
     const outputs = refinedOutputs[item.item_id]
     outputs.forEach(item => {
@@ -49,23 +51,31 @@ const OneItem = (props) => {
   const profit = getProfit(item, props)
   const outputValue = Helper.price(profit)
   const percColor = profit >= 0 ? "txt-yellow" : "profit-minus"
+  // Lifeblood Athanor
+  const outputValueLifeblood = Helper.price(profit * (unrefined ? 60.0/225.0 : 60.0/113.0))
 
   return (<div className="row">
     <div className="col-md-12">
       <table className="inside">
         <thead>
         <tr>
-          <th colSpan="2">
+          <th colSpan="3">
             <div className="flex-between">
               <div className="item-output">
-                <div>{item.item_name} x {item.quantity}</div>
+                <div>
+                  <img className="img16 pen" alt={item.item_name} src={`https://image.eveonline.com/Type/${item.item_id}_32.png`} />
+                  <span>{item.item_name} x {item.quantity}</span>
+                </div>
                 <div className={percColor}>
                   {outputValue} isk
                 </div>
+                <div className={percColor}>
+                  {outputValueLifeblood} isk
+                </div>
               </div>
               <span className="txt-normal">
-                    {Helper.price(outputCost)}
-                  </span>
+                {Helper.price(outputCost)}
+              </span>
             </div>
           </th>
         </tr>

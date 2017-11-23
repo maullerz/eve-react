@@ -18,7 +18,7 @@ class App extends Component {
         />
         <Loader />
         <Header />
-        <Ads />
+        {false && <Ads />}
         {this.props.children}
       </div>)
   }

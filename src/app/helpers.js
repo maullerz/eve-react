@@ -11,7 +11,7 @@ let Helper = {
   },
 
   price(n) {
-    return numeraljs(n).format("0,0.00");
+    return numeraljs(n).format("0,0");
   },
 
   escapeRegexCharacters(str) {

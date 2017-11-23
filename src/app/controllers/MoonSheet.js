@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { unmountMoonSheet, getSheet, getPrices, updateVar } from "../actions/moonsheetActions";
+import { unmountMoonSheet, getSheet, getPrices, getPricesMarketer, updateVar } from "../actions/moonsheetActions";
 import { setHead } from "../actions/appActions";
 
 // components
@@ -29,14 +29,30 @@ class MoonSheet extends React.Component {
     this.props.unmountMoonSheet();
   }
 
+  excludeUnrefItems(reactions, ids) {
+    // because we dont use price of unrefined items for calculations
+    const result = []
+    ids.forEach(id => {
+      const name = reactions.find(r => r.item_id === id).item_name
+      if (name.indexOf('Unref') === -1) {
+        result.push(id)
+      } else {
+        // console.log('excuded:', name)
+      }
+    })
+    return result
+  }
+
   componentWillReceiveProps(np) {
-    let { getPrices, input_system_id, output_system_id, updateVar, items_input, items_output } = np;
+    let { getPrices, getPricesMarketer, input_system_id, output_system_id, updateVar, items_input, items_output, reactions } = np;
     if (np._need_upd_price_input && items_input.length) {
-      getPrices(input_system_id, items_input.join(","));
+      // getPrices(input_system_id, items_input.join(","));
+      getPricesMarketer(input_system_id, items_input.join("&typeid="));
       updateVar("_need_upd_price_input", false);
     }
-    if (np._need_upd_price_output && items_output.length) {
-      getPrices(output_system_id, items_output.join(","));
+    const typeIds = this.excludeUnrefItems(reactions, items_output)
+    if (np._need_upd_price_output && typeIds.length) {
+      getPricesMarketer(output_system_id, typeIds.join("&typeid="));
       updateVar("_need_upd_price_output", false);
     }
   }
@@ -62,5 +78,6 @@ export default connect(state => state.moonSheetReducer, {
   setHead,
   getSheet,
   getPrices,
-  updateVar
+  getPricesMarketer,
+  updateVar,
 })(MoonSheet);

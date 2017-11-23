@@ -47,6 +47,39 @@ export function getPrices(systemID, typeIDs) {
   };
 }
 
+export function getPricesMarketer(systemID, typeIDs) {
+  return dispatch => {
+    return Api.Main.pricesMarketer(systemID, typeIDs).then(json => {
+      // console.log('marketer json:', json)
+      const buy = {}
+      const sell = {}
+      json.data.forEach(item => {
+        const typeId = item.buy.forQuery.types[0]
+        buy[typeId] = item.buy.max
+        sell[typeId] = item.sell.min
+        if (!item.buy.max) {
+          console.log('zero buy:', item)
+        }
+        if (!item.sell.min) {
+          if (typeId === 16648) {
+            buy[typeId] = 9200
+            sell[typeId] = 10500
+          } else {
+            console.log('zero sell:', item)
+          }
+        }
+      })
+
+      const prices = { sell, buy }
+      console.log('prices:', prices)
+      dispatch({
+        type: MSHEET_GET_PRICES,
+        payload: { prices }
+      });
+    });
+  };
+}
+
 export function updateVar(variable, value) {
   let responsePayload = {
     _need_recalculate: true

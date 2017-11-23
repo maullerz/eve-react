@@ -1,7 +1,15 @@
 .item-output {
-  width: 70%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
+}
+
+.item-output div {
+  width: 25%;
+}
+
+.item-output div:first-child {
+  width: 50%;
 }
 
 .item-output div:last-child {

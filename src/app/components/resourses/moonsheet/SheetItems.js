@@ -39,7 +39,8 @@ const getUnrefProfit = (item, props) => {
 
 const sortCalcFunc = (item, props) => {
   const isUnref = startsWith(item.item_name, 'Unref');
-  return isUnref ? getUnrefProfit(item, props) : getProfit(item, props);
+  const profit = isUnref ? getUnrefProfit(item, props) : getProfit(item, props);
+  return profit * (isUnref ? 60.0/225.0 : 60.0/113.0)
 };
 
 class SheetItems extends React.Component {
@@ -67,6 +68,9 @@ class SheetItems extends React.Component {
       }
       const isUnref = startsWith(v.item_name, 'Unref');
 
+      // Without unref
+      // if (isUnref) return null
+
       const FullList = <OneItem
         key={i}
         item={v}
@@ -92,28 +96,30 @@ class SheetItems extends React.Component {
       return list_type === 'full' ? FullList : shortList;
     });
 
-    return list_type === 'full' ? <div>{resultList}</div> : (<div className="row">
-      <div className="col-md-12">
-        <table className="inside">
-          <thead>
-          <tr>
-            <th colSpan="2">
-              <div className="flex-between">
-                <div>Reactions</div>
-              </div>
-            </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td colSpan="2" className="inside-table">
-              {resultList}
-            </td>
-          </tr>
-          </tbody>
-        </table>
+    return list_type === 'full' ? <div>{resultList}</div> : (
+      <div className="row">
+        <div className="col-md-12">
+          <table className="inside">
+            <thead>
+            <tr>
+              <th colSpan="2">
+                <div className="flex-between">
+                  <div>Reactions</div>
+                </div>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td colSpan="2" className="inside-table">
+                {resultList}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>);
+    );
   }
 
   render() {
