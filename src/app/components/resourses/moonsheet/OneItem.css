@@ -10,6 +10,7 @@
 
 .item-output div:first-child {
   width: 50%;
+  text-align: left;
 }
 
 .item-output div:last-child {

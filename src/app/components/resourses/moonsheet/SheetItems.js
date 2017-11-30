@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {map} from 'lodash';
 import startsWith from 'lodash/startsWith';
+import Helper from "./../../../../app/helpers";
 
 import OneItem from './OneItem';
 import refinedOutputs from './refinedOutputs.json';
@@ -40,7 +41,7 @@ const getUnrefProfit = (item, props) => {
 const sortCalcFunc = (item, props) => {
   const isUnref = startsWith(item.item_name, 'Unref');
   const profit = isUnref ? getUnrefProfit(item, props) : getProfit(item, props);
-  return profit * (isUnref ? 60.0/225.0 : 60.0/113.0)
+  return Helper.reactionProfit(profit, isUnref)
 };
 
 class SheetItems extends React.Component {
@@ -96,7 +97,13 @@ class SheetItems extends React.Component {
       return list_type === 'full' ? FullList : shortList;
     });
 
-    return list_type === 'full' ? <div>{resultList}</div> : (
+
+    const sheetTitle = list_type === 'full'
+      ? 'Output & Inputs / cycle-profit / isk-hour-profit / output cost'
+      : 'Output / cycle-profit / isk-hour-profit'
+
+    // return list_type === 'full' ? <div>{resultList}</div> : (
+    return (
       <div className="row">
         <div className="col-md-12">
           <table className="inside">
@@ -104,7 +111,7 @@ class SheetItems extends React.Component {
             <tr>
               <th colSpan="2">
                 <div className="flex-between">
-                  <div>Reactions</div>
+                  <div>{sheetTitle}</div>
                 </div>
               </th>
             </tr>

@@ -52,7 +52,8 @@ const OneItem = (props) => {
   const outputValue = Helper.price(profit)
   const percColor = profit >= 0 ? "txt-yellow" : "profit-minus"
   // Lifeblood Athanor
-  const outputValueLifeblood = Helper.price(profit * (unrefined ? 60.0/225.0 : 60.0/113.0))
+  const reactionProfit = Helper.reactionProfit(profit, unrefined)
+  const outputValueLifeblood = Helper.price(reactionProfit)
 
   return (<div className="row">
     <div className="col-md-12">
@@ -67,10 +68,10 @@ const OneItem = (props) => {
                   <span>{item.item_name} x {item.quantity}</span>
                 </div>
                 <div className={percColor}>
-                  {outputValue} isk
+                  {outputValue}
                 </div>
                 <div className={percColor}>
-                  {outputValueLifeblood} isk
+                  {outputValueLifeblood}
                 </div>
               </div>
               <span className="txt-normal">
