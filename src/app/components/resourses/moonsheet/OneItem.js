@@ -61,23 +61,21 @@ const OneItem = (props) => {
       <table className="inside">
         <thead>
         <tr>
-          <th colSpan="3">
-            <div className="flex-between">
-              <div className="item-output">
-                <div>
-                  <img className="img16 pen" alt={item.item_name} src={`https://image.eveonline.com/Type/${item.item_id}_32.png`} />
-                  <span>{item.item_name} x {item.quantity}</span>
-                </div>
-                <div className={percColor}>
-                  {outputValue}
-                </div>
-                <div className={percColor}>
-                  {outputValueLifeblood}
-                </div>
+          <th>
+            <div className="item-output-short">
+              <div>
+                <img className="img16 pen" alt={item.item_name} src={`https://image.eveonline.com/Type/${item.item_id}_32.png`} />
+                <span>{item.item_name} x {item.quantity}</span>
               </div>
-              <span className="txt-normal">
+              <div className={percColor}>
+                {outputValue}
+              </div>
+              <div className={percColor}>
+                {outputValueLifeblood}
+              </div>
+              <div className="txt-normal">
                 {Helper.price(outputCost)}
-              </span>
+              </div>
             </div>
           </th>
         </tr>

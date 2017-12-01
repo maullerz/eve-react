@@ -98,9 +98,7 @@ class SheetItems extends React.Component {
     });
 
 
-    const sheetTitle = list_type === 'full'
-      ? 'Output & Inputs / cycle-profit / isk-hour-profit / output cost'
-      : 'Output / cycle-profit / isk-hour-profit'
+    const sheetTitle = this.renderHeader(list_type)
 
     // return list_type === 'full' ? <div>{resultList}</div> : (
     return (
@@ -109,11 +107,7 @@ class SheetItems extends React.Component {
           <table className="inside">
             <thead>
             <tr>
-              <th colSpan="2">
-                <div className="flex-between">
-                  <div>{sheetTitle}</div>
-                </div>
-              </th>
+              <th>{sheetTitle}</th>
             </tr>
             </thead>
             <tbody>
@@ -127,6 +121,26 @@ class SheetItems extends React.Component {
         </div>
       </div>
     );
+  }
+
+  renderHeader(list_type) {
+    if (list_type === 'full') {
+      return (
+        <div className="item-output-short">
+          <div>Output & Inputs</div>
+          <div>Profit per Cycle</div>
+          <div>Profit per Hour</div>
+          <div>Output Cost</div>
+        </div>
+      )
+    }
+    return (
+      <div className="col-md-12 col-sm-12 col-xs-12 flex-between item-output-short">
+        <div>Output</div>
+        <div>Profit per Cycle</div>
+        <div>Profit per Hour</div>
+      </div>
+    )
   }
 
   render() {
