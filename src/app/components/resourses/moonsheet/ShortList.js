@@ -9,13 +9,13 @@ const ShortList = (props) => {
     item,
     getProfit,
     unrefined,
+    refinery_type,
   } = props
   const profit = getProfit(item, props)
   const outputValue = Helper.price(profit)
   const percColor = profit >= 0 ? "txt-yellow b" : "profit-minus"
 
-  console.log('unrefined:', unrefined)
-  const reactionProfit = Helper.reactionProfit(profit, unrefined)
+  const reactionProfit = Helper.reactionProfit(profit, unrefined, refinery_type)
   const outputValueLifeblood = Helper.price(reactionProfit)
 
   // const title = `${item.item_id}: ${item.item_name}`

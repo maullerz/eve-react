@@ -54,7 +54,7 @@ class SheetItems extends React.Component {
   }
 
   getReactionsList(reactions) {
-    const {filter, price_input_type, price_output_type, prices, list_type} = this.props;
+    const {filter, price_input_type, price_output_type, prices, list_type, refinery_type} = this.props;
     if (reactions.length === 0) {
       return null;
     }
@@ -75,7 +75,7 @@ class SheetItems extends React.Component {
       const FullList = <OneItem
         key={i}
         item={v}
-        list_type={list_type}
+        refinery_type={refinery_type}
         unrefined={isUnref}
         getProfit={isUnref ? getUnrefProfit : getProfit}
         prices={prices}
@@ -86,7 +86,7 @@ class SheetItems extends React.Component {
       const shortList = <ShortList
         key={i}
         item={v}
-        list_type={list_type}
+        refinery_type={refinery_type}
         unrefined={isUnref}
         getProfit={isUnref ? getUnrefProfit : getProfit}
         prices={prices}

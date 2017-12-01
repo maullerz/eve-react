@@ -15,7 +15,8 @@ const OneItem = (props) => {
     price_input_type,
     price_output_type,
     getProfit,
-    unrefined
+    unrefined,
+    refinery_type,
   } = props
   const price_input = prices[price_input_type]
   const price_output = prices[price_output_type]
@@ -52,7 +53,7 @@ const OneItem = (props) => {
   const outputValue = Helper.price(profit)
   const percColor = profit >= 0 ? "txt-yellow" : "profit-minus"
   // Lifeblood Athanor
-  const reactionProfit = Helper.reactionProfit(profit, unrefined)
+  const reactionProfit = Helper.reactionProfit(profit, unrefined, refinery_type)
   const outputValueLifeblood = Helper.price(reactionProfit)
 
   return (<div className="row">

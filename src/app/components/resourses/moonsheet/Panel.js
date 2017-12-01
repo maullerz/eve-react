@@ -48,10 +48,14 @@ class Panel extends React.Component {
     this.props.updateVar("list_type", type);
   }
 
+  chRefinery(type) {
+    this.props.updateVar("refinery_type", type);
+  }
+
   render() {
     let colLeft = "col-md-4";
     let colRight = "col-md-8";
-    let { price_input_type, price_output_type, suggestions_output, suggestions_input,list_type } = this.props;
+    let { price_input_type, price_output_type, suggestions_output, suggestions_input, list_type, refinery_type } = this.props;
 
     return (
       <div className="row">
@@ -100,6 +104,14 @@ class Panel extends React.Component {
                         </button>
                         <button onClick={this.chLT.bind(this, "short")} className={list_type === "short" ? "active" : ""}>
                           short
+                        </button>
+                      </div>
+                      <div className="btn-group">
+                        <button onClick={this.chRefinery.bind(this, "athanor")} className={refinery_type === "athanor" ? "active" : ""}>
+                          athanor
+                        </button>
+                        <button onClick={this.chRefinery.bind(this, "tatara")} className={refinery_type === "tatara" ? "active" : ""}>
+                          tatara
                         </button>
                       </div>
                     </div>

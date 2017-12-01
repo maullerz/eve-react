@@ -28,6 +28,7 @@ const initialState = {
   items_output: [],
   // list_type: 'full',
   list_type: 'short',
+  refinery_type: 'athanor',
 };
 
 export default (state = initialState, action = {}) => {
